@@ -1,0 +1,91 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+	/*background: url("../images/fabric_plaid.png");*/
+}
+.help-inline {
+    font-style: italic;
+    font-size: 11px;
+}
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+.toolbar {
+	margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+/*.row-number-item , .action-item {
+	width : 35px;
+}
+
+.form-actions {
+	margin-bottom: 0px;
+	border-bottom: 1px solid #DDD;
+}
+
+legend span {
+	padding-left: 45px;
+}
+
+.action_icon:hover {
+	cursor: pointer;
+}
+
+.username{
+	color : #08C;;
+}
+
+
+footer {
+	text-align: center;
+}
+
+footer p {
+	font-size: 10px;
+}
+
+.list_view {
+	padding-top: 20px;
+}
+
+.list_view li{
+	list-style: none;
+	padding-top: 15px;
+}
+
+.list_view .accordion a{
+	text-decoration : none;
+	font-weight:bold;
+	
+}
+
+.list_view .accordion .accordion-heading {
+	background: #2C2C2C;
+}
+.list_view .accordion .accordion-heading a{
+	color: #999;
+}
+.list_view .accordion .active-head a {
+	color : white ;
+}
+
+.list_view .accordion .in 
+.list_view .accordion .accordion-inner a{
+	color : #888;
+}
+
+.list_view .accordion .accordion-inner {
+	background: white
+}
+
+.list_view li i{
+	padding-right : 5px;
+}
+
+.toolbar_div {
+	margin-bottom: 30px;
+    margin-top: 10px;
+}
+*/

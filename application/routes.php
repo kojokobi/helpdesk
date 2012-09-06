@@ -38,6 +38,11 @@ Route::get('/', function()
 });
 
 /*
+ *Admin routes go here
+ */
+Route::get("admin", array("as"=> "admin", "uses"=> "admin@index"));
+
+/*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
 |--------------------------------------------------------------------------
