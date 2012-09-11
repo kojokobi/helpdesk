@@ -1,7 +1,9 @@
 body {
 	padding-top: 60px;
 	padding-bottom: 40px;
-	/*background: url("../images/fabric_plaid.png");*/
+	/*background-color: #C6BEA6;
+	background: url("../img/custom/back1.png");
+	background-repeat: repeat repeat;*/
 }
 .help-inline {
     font-style: italic;
