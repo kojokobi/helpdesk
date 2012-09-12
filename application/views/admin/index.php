@@ -34,16 +34,16 @@
             <a class="brand" href="/">AXON Help Desk</a>
             <div class="nav-collapse">
               <ul class="nav pull-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  Logged in as<span class='username'> Selasie </span>
-                <b class="caret"></b>
-                </a>
-             
-              <ul class="dropdown-menu">
-               <li> <a href="/logout"> <i class="icon-off"></i> Sign out</a> </li>
-              </ul>
-            </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      Logged in as<span class='username'> Selasie </span>
+                    <b class="caret"></b>
+                    </a>
+                 
+                  <ul class="dropdown-menu">
+                   <li> <a href="/logout"> <i class="icon-off"></i> Sign out</a> </li>
+                  </ul>
+                </li>
           </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -156,9 +156,9 @@
             </div>
           </form>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer"> 
           <a href="#" class="btn btn-success"><i class='icon-white icon-user'></i> Save User </a>
-          <a href="#" class="btn">Cancel</a>
+          <a href="#" class="btn"><i class='icon icon-ban-circle'></i> Cancel</a>
         </div>
       </div>
       <!-- END OF ADD USER FORM -->
@@ -188,7 +188,7 @@
         </div>
         <div class="modal-footer">
           <a href="#" class="btn btn-success"><i class='icon-white icon-th-list'></i> Save Project </a>
-          <a href="#" class="btn">Cancel</a>
+          <a href="#" class="btn"><i class='icon icon-ban-circle'></i> Cancel</a>
         </div>
       </div>
       <!-- END OF ADD PAROJECT FORM -->
