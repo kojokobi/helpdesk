@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="helpdesk">
   <head>
     <meta charset="utf-8">
     <title>Axon HelpDesk</title>
@@ -24,6 +24,14 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
+    <!-- header scripts go here -->
+    <script type="text/javascript" src='js/libs/angular-1.0.1.js'></script>
+    <script type="text/javascript" src='js/libs/angular-resource-1.0.1.js'></script>
+    <!-- app scripts -->
+    <script type="text/javascript" src="js/app/app.js"></script>
+    <script type="text/javascript" src="js/app/usercontroller.js"></script>
+    <!-- end of app scripts -->
   </head>
 
   <body>

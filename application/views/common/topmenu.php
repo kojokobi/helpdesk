@@ -1,5 +1,5 @@
 <!-- Beginning of header -->
-    <div class="navbar navbar-inverse navbar-fixed-top"  ng-controller="ProfileCtrl">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
           <div class="container-fluid">
             <a class="brand" href="">AXON Help Desk</a>

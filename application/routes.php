@@ -41,7 +41,10 @@ Route::get('/', function()
  *Admin routes go here
  */
 Route::get("admin", array("as"=> "admin", "uses"=> "admin@index"));
-
+Route::get('login', function()
+{
+	return View::make('login.index');
+});
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
