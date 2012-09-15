@@ -3,8 +3,12 @@ body {
 	background: whiteSmoke;
 	/*padding-bottom: 40px;*/
 	/*background-color: #C6BEA6;
-	background: url("../img/custom/back1.png");
+	background: url("../img/custom/fabric_plaid.png");
 	background-repeat: repeat repeat;*/
+}
+
+label, input, button, select, textarea { 
+	font-size: 13px;
 }
 a {
 	color : #444;
@@ -24,7 +28,7 @@ a {
 }
 
 .thesidebar {
-	position: absolute !important;
+	position: fixed; !important;
 	width: 270px !important;
 	height: 100%;
 	border-right: 1px solid #E5E5E5;;
@@ -106,7 +110,64 @@ footer p {
 }
 
 
+.project_detail {
 
+}
+
+.project_detail label {
+	display: inline;
+	float: left;
+	margin-left: 50px;
+	width: 100px;
+}
+
+.project_detail .controls{
+	margin-left: 150px;
+}
+
+.project_detail .project_item_group {
+	margin-bottom: 12px;
+}
+.user_group {
+	margin-left: 50px;
+}
+.user_group label {
+	width : 50px;
+	margin-left: 0px;
+}
+
+.user_group .user_group_control {
+	margin-left: 100px;
+}
+
+.user_group .user_group_control_right {
+	margin-left: 240px;
+}
+
+.user_group .user_group_control_right label {
+	width : 50px;
+	margin-left: 0px;
+}
+
+ .user_group #user_group_user {
+	width: 130px;
+}
+.user_group .user_group_control_right select{
+	margin-left: 0px;
+	margin-right: 3px;
+}
+.project_item_group .user_group_table {
+	margin-left: 50px;
+	width: 400px;
+}
+
+#projectDetails .modal-footer{
+	padding-right: 100px
+}
+
+.project_item_group .action {
+	width: 10px;
+}
 /*.row-number-item , .action-item {
 	width : 35px;
 }

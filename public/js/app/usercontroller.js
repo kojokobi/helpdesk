@@ -1,5 +1,5 @@
 function UserController ($scope){
-	$scope.userFormTitle = "Add User";
+	$scope.formTitle = "Add User";
 	$scope.users = [
 		{ 
 			firstName : "Selasie",

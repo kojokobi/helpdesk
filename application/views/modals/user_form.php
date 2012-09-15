@@ -2,7 +2,7 @@
         <div class="modal hide fade" id="user_form" data-backdrop="static" data-keyboard="false" ng-controller="UserController">
           <div class="modal-header">
             <a class="close" data-dismiss="modal">×</a>
-            <h3> {{userFormTitle}} </h3>
+            <h3> {{ formTitle }} </h3>
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
