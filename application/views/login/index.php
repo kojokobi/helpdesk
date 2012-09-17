@@ -13,6 +13,9 @@
 			margin-top : 250px;
 		}
 
+		input {
+			width: 260px;
+		}
 		.panel {
 			border: 1px solid #D6D6D6;
 			box-shadow: 0 1px 3px rgba(100, 100, 100, 0.1);
@@ -61,6 +64,7 @@
 		}
 		.instructions {
 			color: #B94A48;
+			font-size: 13px;
 		}
 
 	</style>
@@ -74,13 +78,16 @@
 						<span class="login_icon"><i class="icon-lock"></i></span>Login
 					</div>
 					<div class="panel_body">
-						<form action="/login" method='post' class="form-horizontal">
-							<p class='instructions'>Please enter details to login</p>
+						<?php echo Form::open("login", "post", array("class" => "form-horizontal")); ?>
+						<?php if (Session::has('login_errors')) { ?>
+					        <span class="error">Username or password incorrect.</span>
+					    <?php  } ?>
+											<p class='instructions'>Please enter details to login</p>
 						<fieldset>
 							<div class="control-group">
 					            <div class="controls">
 					              <div class="input-prepend">
-					                <span class="add-on"><i class="icon-user"></i></span><input class="span3" name="username" id="username" type="text" placeholder="username">
+					                <span class="add-on"><i class="icon-user"></i></span><input class="" name="username" id="username" type="text" placeholder="username">
 					              </div>
 					              
 					            </div>
@@ -88,7 +95,7 @@
 					        <div class="control-group">
 					            <div class="controls">
 					              <div class="input-prepend">
-					                <span class="add-on"><i class="icon-random"></i></span><input class="span3" name='password' id="password" type="password" placeholder="password">
+					                <span class="add-on"><i class="icon-random"></i></span><input class="" name='password' id="password" type="password" placeholder="password">
 					              </div>
 					              
 					            </div>
@@ -98,7 +105,7 @@
 					        </div>
 						</fieldset>
 						
-					</form>
+					<?php echo Form::close(); ?>
 					</div>
 					
 				</div>

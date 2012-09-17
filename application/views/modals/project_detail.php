@@ -56,7 +56,6 @@
         </tbody>
       </table>
     </div>
-
   </div>
   <div class="modal-footer">
     <a href="#" class="btn btn-primary">Done</a>

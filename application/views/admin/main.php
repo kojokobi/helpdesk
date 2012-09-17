@@ -15,30 +15,32 @@
             <a class='btn btn-info'> <i class='icon-white icon-pencil'></i> </a>
             <a class='btn btn-danger'> <i class='icon-white icon-trash'></i> </a>
           </div>
-          <table class='table table-striped table-bordered my-table'>
-              <thead>
-                <tr>
-                  <!-- <th>#</th> -->
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>No. Projects</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- <tr>
-                  <td colspan='100'>No Users created.</td>
-                </tr> -->
-                <tr ng-repeat="user in users">
-                  <td> {{user.firstName}} </td>
-                  <td> {{user.lastName}} </td>
-                  <td> {{user.userName}} </td>
-                  <td> {{user.email}} </td>
-                  <td> {{user.numProjects}} </td>
-                </tr>
-              </tbody>
-          </table>
+          <div>
+            <table class='table table-striped table-bordered my-table'>
+                <thead>
+                  <tr>
+                    <!-- <th>#</th> -->
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>No. Projects</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- <tr>
+                    <td colspan='100'>No Users created.</td>
+                  </tr> -->
+                  <tr ng-repeat="user in users">
+                    <td> {{user.firstName}} </td>
+                    <td> {{user.lastName}} </td>
+                    <td> {{user.userName}} </td>
+                    <td> {{user.email}} </td>
+                    <td> {{user.numProjects}} </td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
         </div>
         <div class="tab-pane" id="project" ng-controller="ProjectController">
           <div class="toolbar">
