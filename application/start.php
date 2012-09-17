@@ -59,7 +59,18 @@ Laravel\Autoloader::$aliases = $aliases;
 */
 
 Autoloader::map(array(
-	'Base_Controller' => path('app').'controllers/base.php',
+
+	'Base_Controller'	=>  path('app').'controllers/base.php',
+	'login'				=>	path('app').'models/security.php',
+	'HelperFunction'	=>	path('app').'libraries/helperfunctions.php',
+	'User'				=>	path('app').'models/user.php',
+	'Security'			=>	path('app').'models/security.php',
+	'JobTitle'			=>	path('app').'models/jobTitles.php',
+	'Role'				=>	path('app').'models/roles.php',
+	'Project'			=>	path('app').'models/project.php',
+	'Group'				=>	path('app').'models/group.php'
+
+	
 ));
 
 /*
