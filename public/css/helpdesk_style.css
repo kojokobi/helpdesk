@@ -1,0 +1,243 @@
+body {
+	padding-top: 40px;
+	background: whiteSmoke;
+	/*padding-bottom: 40px;*/
+	/*background-color: #C6BEA6;
+	background: url("../img/custom/fabric_plaid.png");
+	background-repeat: repeat repeat;*/
+}
+
+label, input, button, select, textarea { 
+	font-size: 13px;
+}
+a {
+	color : #444;
+	font-size: 13px;
+}
+.divider {
+	height: 5px;
+	background: #bbb;
+}
+.container-fluid {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.help-inline {
+    font-style: italic;
+    font-size: 11px;
+}
+
+.thesidebar {
+	position: fixed; !important;
+	width: 270px !important;
+	height: 100%;
+	border-right: 1px solid #E5E5E5;;
+}
+
+.sidebar-nav a {
+	text-decoration: none;
+}
+.sidebar-nav a:hover {
+	color :#000;
+}
+
+.sidebar-nav {
+	padding: 0px;
+}
+
+.sidebar-nav .accordion-group {
+	margin-bottom: 0px;
+	border-bottom: 1px solid #E5E5E5;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+
+.sidebar-nav .accordion-inner {
+	padding: 0px;
+	background: #ECECEC;
+	border-top: 1px solid #A1A1A1;
+}
+.sidebar-nav .accordion-inner .badge{ 
+	margin-right: 5px;
+}
+.sidebar-nav .accordion-inner ul{
+	margin-bottom: 0px;
+	margin-left :0px;
+}
+.sidebar-nav .accordion-inner li{ 
+	list-style: none;
+	padding: 8px 0px;
+	padding-left: 35px;
+}
+.sidebar-nav .accordion-inner li i{ 
+	margin-right: 10px;
+}
+#main_pane {
+	/*width: 100%;*/
+	background: white;
+	min-height: 700px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+
+	position: static;
+	margin-left: 270px;;
+}
+
+#main_pane .row-fluid{
+	width: 100%
+}
+.toolbar {
+	margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.my-table thead {
+	background-color: #EBEBEB;
+}
+
+.my-table th, .my-table td{
+	font-size: 13px;
+}
+
+footer {
+	text-align: center;
+}
+
+footer p {
+	font-size: 10px;
+}
+
+
+.project_detail {
+
+}
+
+.project_detail label {
+	display: inline;
+	float: left;
+	margin-left: 50px;
+	width: 100px;
+}
+
+.project_detail .controls{
+	margin-left: 150px;
+}
+
+.project_detail .project_item_group {
+	margin-bottom: 12px;
+}
+.user_group {
+	margin-left: 50px;
+}
+.user_group label {
+	width : 50px;
+	margin-left: 0px;
+}
+
+.user_group .user_group_control {
+	margin-left: 100px;
+}
+
+.user_group .user_group_control_right {
+	margin-left: 240px;
+}
+
+.user_group .user_group_control_right label {
+	width : 50px;
+	margin-left: 0px;
+}
+
+ .user_group #user_group_user {
+	width: 130px;
+}
+.user_group .user_group_control_right select{
+	margin-left: 0px;
+	margin-right: 3px;
+}
+.project_item_group .user_group_table {
+	margin-left: 50px;
+	width: 400px;
+}
+
+#projectDetails .modal-footer{
+	padding-right: 100px
+}
+
+.project_item_group .action {
+	width: 10px;
+}
+/*.row-number-item , .action-item {
+	width : 35px;
+}
+
+.form-actions {
+	margin-bottom: 0px;
+	border-bottom: 1px solid #DDD;
+}
+
+legend span {
+	padding-left: 45px;
+}
+
+.action_icon:hover {
+	cursor: pointer;
+}
+
+.username{
+	color : #08C;;
+}
+
+
+footer {
+	text-align: center;
+}
+
+footer p {
+	font-size: 10px;
+}
+
+.list_view {
+	padding-top: 20px;
+}
+
+.list_view li{
+	list-style: none;
+	padding-top: 15px;
+}
+
+.list_view .accordion a{
+	text-decoration : none;
+	font-weight:bold;
+	
+}
+
+.list_view .accordion .accordion-heading {
+	background: #2C2C2C;
+}
+.list_view .accordion .accordion-heading a{
+	color: #999;
+}
+.list_view .accordion .active-head a {
+	color : white ;
+}
+
+.list_view .accordion .in 
+.list_view .accordion .accordion-inner a{
+	color : #888;
+}
+
+.list_view .accordion .accordion-inner {
+	background: white
+}
+
+.list_view li i{
+	padding-right : 5px;
+}
+
+.toolbar_div {
+	margin-bottom: 30px;
+    margin-top: 10px;
+}
+*/
