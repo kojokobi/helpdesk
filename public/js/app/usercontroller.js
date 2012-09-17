@@ -4,8 +4,7 @@ function UserController ($scope, User){
 
 	function getUsers(){
 		User.query(function (res){
-			window.x = res
-			$scope.users = angular.copy(res);
+			$scope.users = angular.copy(res.data);
 		});	
 	}
 

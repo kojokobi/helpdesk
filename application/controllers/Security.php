@@ -21,8 +21,9 @@ class Security_Controller extends Base_Controller{
 		
 	}
 
-	public function post_logout(){
-		
+	public function get_logout(){
+		Auth::logout();
+		return Redirect::to("login");
 	}
 	public function post_user(){
 	
@@ -65,7 +66,7 @@ class Security_Controller extends Base_Controller{
 		return Response::json(User::update_user($userData));
 	}
 	public function get_users(){
-
+		//var_dump(Auth::user());
 		return Response::json(User::get_users(Input::all()));
 	}
 	

@@ -72,10 +72,11 @@ Route::delete('group',array('uses' => 'home@group'));
  *secutity routes
  */
 Route::post('login',array('uses' => 'security@login'));
+Route::get("logout", array("uses" => "security@logout"));
 /*
  *Admin routes go here
  */
-Route::get("admin", array("as"=> "admin", "uses"=> "admin@index"));
+Route::get("admin", array("as"=> "admin", "before" => "auth", "uses"=> "admin@index"));
 Route::get('login', function()
 {
 	return View::make('login.index');

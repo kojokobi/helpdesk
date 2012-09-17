@@ -7,12 +7,12 @@
               <ul class="nav pull-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      Logged in as<span class='username'> <?php //echo Auth::user()->username; ?> </span>
+                      Logged in as<span class='username'> <?php echo Auth::user()->username; ?> </span>
                     <b class="caret"></b>
                     </a>
                  
                   <ul class="dropdown-menu">
-                   <li> <a href="/logout"> <i class="icon-off"></i> Sign out</a> </li>
+                   <li> <a href="logout"> <i class="icon-off"></i> Sign out</a> </li>
                   </ul>
                 </li>
           </ul>
