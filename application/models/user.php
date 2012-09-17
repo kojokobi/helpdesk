@@ -10,6 +10,8 @@ class User extends Eloquent{
 	$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
 
 
+			$pword = Hash::make($user['password']);
+
 			$id = DB::table('users')->insert_get_id(
 
 					$arrayName = array(
@@ -20,8 +22,8 @@ class User extends Eloquent{
 							'otherNames'	=> $user['otherNames'],
 							'email'			=> $user['email'],
 							'phone'			=> $user['phone'],
-							//'password'		=>  Hash::make($user['password']),
-							'password'		=>  $user['password'],
+							'password'		=>  $pword,
+							//'password'		=>  $user['password'],
 							'jobTitleId'	=>	$user['jobTitleId'],
 							'roleId'		=>	$user['roleId'],
 							//'pictureFileName'	=> $user['pictureFileName']
@@ -31,6 +33,7 @@ class User extends Eloquent{
 							'lastUpdateBy'	=>	$user['lastUpdateBy']
 						)
 				);
+			
 		$data = HelperFunction::return_json_data(array('id' => $id),true,'record saved');
 		return $data;
 	}
@@ -81,8 +84,28 @@ class User extends Eloquent{
 						$query = HelperFunction::filter_data($query,'roleId',$obj,'int');
 
 				});
+		//get total count 
+		$total =$selectQuery->count();
+		$resultSet = $selectQuery->get();
 
-		$data = HelperFunction::return_json_data($selectQuery->get(),true,'record loaded',$selectQuery->count());
-		return $data;
+		$out = array_map(function($data){
+
+			$arr = array();
+			$arr['id'] 			= $data->id;
+			$arr['firstName']	= $data->firstname;
+			$arr['lastName']	= $data->lastname;
+			$arr['userName']	= $data->username;
+			$arr['otherNames']	= $data->othernames;
+			$arr['email']		= $data->email;
+			$arr['phone']		= $data->phone;
+			$arr['otherNames']	= $data->othernames;
+			
+
+
+			return $arr;
+		},$resultSet);
+
+		return HelperFunction::return_json_data($out,true,'record loaded',$total);
+		
 	}
 }

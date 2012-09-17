@@ -8,25 +8,17 @@ class Security_Controller extends Base_Controller{
 	*login method.
 	*
 	*/
-	public function post_index(){
+	public function post_login(){
 
-		$credentials = array(
-
-				'username'=> Input::get('username'),
-				'password'=> Input::get('password'),
-			);
-
+		$credentials = Input::all();
 		$security = new Security();
 		$isAuth = $security->login($credentials);
+
+		if($isAuth)
+			return Redirect::to("admin");
+		else
+			return Redirect::to('login')->with('login_errors',true);
 		
-		if($isAuth){
-			//redirect to dashboard/landingPage
-			echo "logged In succesfully";
-			//return View::make('lookUps.index');
-		}else{
-			echo "failed";
-			//return View::make('lookUps.index');
-		}
 	}
 
 	public function post_logout(){
@@ -45,8 +37,8 @@ class Security_Controller extends Base_Controller{
 				'password'		=> Input::get('password'),
 				'jobTitleId'	=> Input::get('jobTitleId'),
 				'roleId'		=> Input::get('roleId'),
-				'createdBy'		=> HelperFunction::get_user_id(),
-				'lastUpdateBy'	=> HelperFunction::get_user_id()
+				'createdBy'		=> Auth::user()->id,
+				'lastUpdateBy'	=> Auth::user()->id
 				
 			);	
 		return Response::json(User::create_user($userData));
@@ -66,8 +58,8 @@ class Security_Controller extends Base_Controller{
 				'password'		=> Input::get('password'),
 				'jobTitleId'	=> Input::get('jobTitleId'),
 				'roleId'		=> Input::get('roleId'),
-				'createdBy'		=> HelperFunction::get_user_id(),
-				'lastUpdateBy'	=> HelperFunction::get_user_id()
+				'createdBy'		=> Auth::user()->id,
+				'lastUpdateBy'	=> Auth::user()->id
 				
 			);	
 		return Response::json(User::update_user($userData));

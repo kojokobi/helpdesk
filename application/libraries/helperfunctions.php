@@ -25,7 +25,8 @@ class HelperFunction extends Eloquent{
 			'total'		=>	$total,
 
 			);
-		return json_encode($dataToReturn);
+		return $dataToReturn;
+		//return json_encode($dataToReturn);
 	}
 	public static function success_save_message(){
 

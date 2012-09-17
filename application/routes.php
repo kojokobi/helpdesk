@@ -40,35 +40,38 @@
 Route::put('jobtitle',array('uses' => 'home@jobtitle'));
 Route::post('jobtitle',array('uses' => 'home@jobtitle'));
 Route::get('jobtitle',array('uses' => 'home@jobtitles'));
-
-//role routes
+/*
+ *Roles routes
+ */
 Route::post('role',array('uses' => 'home@role'));
 Route::put('role',array('uses' => 'home@role'));
 Route::get('role',array('uses' => 'home@roles'));
 Route::delete('role',array('uses' => 'home@role'));
-
-//projet routes
+/*
+ *projet routes
+ */
 Route::post('project',array('uses' => 'home@project'));
 Route::put('project',array('uses' => 'home@project'));
 Route::get('project',array('uses' => 'home@projects'));
 Route::delete('project',array('uses' => 'home@project'));
-
-//user routes
+/*
+ *user routes
+ */
 Route::post('user',array('uses' => 'security@user'));
 Route::put('user',array('uses' => 'security@user'));
 Route::get('user',array('uses' => 'security@users'));
 Route::delete('user',array('uses' => 'security@user'));
-
-//group routes
+/*
+ *group routes
+ */
 Route::post('group',array('uses' => 'home@group'));
 Route::put('group',array('uses' => 'home@group'));
 Route::get('group',array('uses' => 'home@group'));
 Route::delete('group',array('uses' => 'home@group'));
-
-//secutity routes
-Route::post('login',array('uses' => 'security@index'));
-
-
+/*
+ *secutity routes
+ */
+Route::post('login',array('uses' => 'security@login'));
 /*
  *Admin routes go here
  */
