@@ -30,6 +30,7 @@
     <script type="text/javascript" src='js/libs/angular-resource-1.0.1.js'></script>
     <!-- app scripts -->
     <script type="text/javascript" src="js/app/app.js"></script>
+    <script type="text/javascript" src="js/app/services.js"></script>
     <script type="text/javascript" src="js/app/usercontroller.js"></script>
     <script type="text/javascript" src="js/app/projectcontroller.js"></script>
     <!-- end of app scripts -->
