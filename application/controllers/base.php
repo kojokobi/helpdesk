@@ -26,6 +26,9 @@ class Base_Controller extends Controller {
                 $this->filter('before', 'auth')->only(array('logout'));
                 $this->filter('before', 'nonauth');
                 break;
+            case "Security_Controller":
+            	$this->filter("before","nonauth");
+            	break;
             default:
                 $this->filter('before', 'auth');
                 break;
