@@ -1,4 +1,4 @@
-function UserController ($scope, User){
+function UserController ($scope, User,$http){
 	$scope.formTitle = "Add User";
 	$scope.users = [];
 
@@ -6,6 +6,18 @@ function UserController ($scope, User){
 		User.query(function (res){
 			$scope.users = angular.copy(res.data);
 		});	
+	}
+
+	function getRoles(){
+		$http.get('roles').success(function (res){
+			$scope.roles = res.data;
+		});
+	}
+
+	function getJobTitles(){
+		$http.get('jobtitles').success(function (res){
+			$scope.jobTitles = res.data;
+		});
 	}
 
 	$scope.addUser =  function (newUser){
@@ -18,7 +30,7 @@ function UserController ($scope, User){
 		}else {
 			var user =  angular.copy(newUser);
 			var theUser = new User(user);
-			
+			window.xx = newUser;
 			theUser.$save(function (){
 				//fetch fresh items
 				getUsers();
@@ -28,7 +40,7 @@ function UserController ($scope, User){
 	}
 
 	$scope.clear =  function (){
-		//$scope.newUser = {};
+		$scope.newUser = {};
 		//$scope.title = "Add New User";
 		//$scope.statusText = "Add User";
 	}
@@ -36,4 +48,6 @@ function UserController ($scope, User){
 
 	//make calls here
 	getUsers();
+	getRoles();
+	getJobTitles();
 }
