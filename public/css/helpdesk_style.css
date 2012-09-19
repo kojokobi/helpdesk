@@ -1,6 +1,7 @@
 body {
 	padding-top: 40px;
 	background: whiteSmoke;
+	font-size: 13px;
 	/*padding-bottom: 40px;*/
 	/*background-color: #C6BEA6;
 	background: url("../img/custom/fabric_plaid.png");
@@ -101,6 +102,9 @@ a {
 	font-size: 13px;
 }
 
+.modal-header {
+	background: whiteSmoke;
+}
 footer {
 	text-align: center;
 }
@@ -171,6 +175,12 @@ footer p {
 
 .project_item_group .action {
 	width: 10px;
+}
+
+
+/*pnotify*/
+.ui-pnotify-title {
+	font-size: 14px;
 }
 /*.row-number-item , .action-item {
 	width : 35px;

@@ -1,5 +1,5 @@
-     <!-- ADD USER FORM -->
-        <div class="modal hide fade" id="user_form" data-backdrop="static" data-keyboard="false" ng-controller="UserController">
+             <!-- ADD USER FORM -->
+        <div class="modal hide fade" id="user_form" data-backdrop="static" data-keyboard="false">
           <div class="modal-header">
             <a class="close" data-dismiss="modal">×</a>
             <h3> {{ formTitle }} </h3>

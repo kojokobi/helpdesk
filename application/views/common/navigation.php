@@ -4,7 +4,7 @@
               <div class="accordion-group">
                   <div class="accordion-heading">
                     <a href="#dashboardCollapse" data-parent="#navigatingAccordion" data-toggle="collapse" class="accordion-toggle">
-                     <i class='icon-th-list icon'></i> Dashboard
+                     <i class='icon-picture icon'></i> Dashboard
                     </a>
                   </div>
                   <div class="accordion-body collapse" id="dashboardCollapse" >

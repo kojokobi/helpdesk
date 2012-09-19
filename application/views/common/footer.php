@@ -15,6 +15,7 @@
     <script src="js/bootstrap-collapse.js"></script>
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.pnotify.js"></script>
 
   </body>
 </html>
