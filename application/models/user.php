@@ -7,12 +7,12 @@ class User extends Eloquent{
 	public static function create_user($user){
 
 			$arr = DataHelper::create_audit_entries(Auth::user()->id);
-			$arr['first_name']	= $$user->firstName;
-			$arr['last_name']	= $$user->lastName;
+			$arr['first_name']	= $user->firstName;
+			$arr['last_name']	= $user->lastName;
 			$arr['user_name']	= $user->userName;
-			$arr['other_names']	= $user->otherNames;
+			//$arr['other_names']	= $user->otherNames == null ? "" : $user->otherNames;
 			$arr['email']		= $user->email;
-			$arr['phone']		= $user->phone;
+			//$arr['phone']		= $user->phone;
 			$arr['job_title_id']	= $user->jobTitleId;
 			$arr['role_id']		= $user->roleId;
 			$arr['password']	= Hash::make($user->password);

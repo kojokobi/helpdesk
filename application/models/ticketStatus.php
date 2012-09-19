@@ -5,6 +5,12 @@ class TicketStatus extends Eloquent{
 	
 	public static function create_ticket_status($ticketStatus){
 
+			$grp_array = DataHelper::create_audit_entries(Auth::user()->id);
+            $grp_array['name'] = $ticketStatus->name;
+            $grp_array['description'] = $ticketStatus->description;
+
+            $inserted_record = DataHelper::insert_record('ticket_status',$grp_array);
+            return $inserted_record;
 			$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
 			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
 			$id = DB::table('ticketStatuss')->insert_get_id(
