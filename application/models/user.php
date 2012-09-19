@@ -34,7 +34,7 @@ class User extends Eloquent{
 			$arr['phone']		= $user->phone;
 			$arr['job_title_id']	= $user->jobTitleId;
 			$arr['role_id']		= $user->roleId;
-			$arr['password']	= Hash::make($user->password)
+			$arr['password']	= Hash::make($user->password);
 
 			$updated_record = DataHelper::update_record('users',$user->id,$arr);
             return $updated_record;
@@ -60,15 +60,15 @@ class User extends Eloquent{
 		//get total count 
 		$total =$selectQuery->count();
 		$resultSet = $selectQuery->get();
-
+		
 		$out = array_map(function($data){
 
 			$arr = array();
 			$arr['id'] 			= $data->id;
-			$arr['first_name']	= $data->firstname;
-			$arr['last_name']	= $data->lastname;
-			$arr['user_name']	= $data->username;
-			$arr['other_names']	= $data->othernames;
+			$arr['firstName']	= $data->first_name;
+			$arr['lastName']	= $data->last_name;
+			$arr['userName']	= $data->user_name;
+			$arr['otherNames']	= $data->other_names;
 			$arr['email']		= $data->email;
 			$arr['phone']		= $data->phone;
 
