@@ -6,65 +6,38 @@ class User extends Eloquent{
 	
 	public static function create_user($user){
 
-	$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-	$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-
-
-			$pword = Hash::make($user['password']);
-
-			$id = DB::table('users')->insert_get_id(
-
-					$arrayName = array(
-
-							'firstName' 	=>	$user['firstName'],
-							'lastName'		=> $user['lastName'],
-							'userName'		=> 	$user['userName'],
-							'otherNames'	=> $user['otherNames'],
-							'email'			=> $user['email'],
-							'phone'			=> $user['phone'],
-							'password'		=>  $pword,
-							//'password'		=>  $user['password'],
-							'jobTitleId'	=>	$user['jobTitleId'],
-							'roleId'		=>	$user['roleId'],
-							//'pictureFileName'	=> $user['pictureFileName']
-							'createdDate'	=>	$createdDate,
-							'lastUpdateDate'=>  $lastUpdatedDate,
-							'createdBy'		=>	$user['createdBy'],
-							'lastUpdateBy'	=>	$user['lastUpdateBy']
-						)
-				);
+			$arr = DataHelper::create_audit_entries(Auth::user()->id);
+			$arr['first_name']	= $$user->firstName;
+			$arr['last_name']	= $$user->lastName;
+			$arr['user_name']	= $user->userName;
+			$arr['other_names']	= $user->otherNames;
+			$arr['email']		= $user->email;
+			$arr['phone']		= $user->phone;
+			$arr['job_title_id']	= $user->jobTitleId;
+			$arr['role_id']		= $user->roleId;
+			$arr['password']	= Hash::make($user->password)
 			
-		$data = HelperFunction::return_json_data(array('id' => $id),true,'record saved');
-		return $data;
+			$inserted_record = DataHelper::insert_record('users',$arr);
+			return $inserted_record;
+		
 	}
 
 	
 	public static function update_user($user){
 
-		$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-		$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
+			$arr = DataHelper::update_audit_entries(Auth::user()->id);
+			$arr['first_name']	= $$user->firstname;
+			$arr['last_name']	= $$user->lastname;
+			$arr['user_name']	= $user->username;
+			$arr['other_names']	= $user->othernames;
+			$arr['email']		= $user->email;
+			$arr['phone']		= $user->phone;
+			$arr['job_title_id']	= $user->jobTitleId;
+			$arr['role_id']		= $user->roleId;
+			$arr['password']	= Hash::make($user->password)
 
-			$id = DB::table('users')
-						->where('id','=',$user['id'])
-						->update($arrayName = array(
-
-							'id' =>		$user['id'],
-							'firstName' 	=>	$user['firstname'],
-							'lastName'		=> $user['lastName'],
-							'userName'		=> 	$user['userName'],
-							'otherNames'	=> $user['otherNames'],
-							'email'			=> $user['email'],
-							'phone'			=> $user['phone'],
-							'jobTitleId'	=>	$user['jobTitleId'],
-							//'pictureFileName'	=> $user['pictureFileName'],
-							'roleId'		=>	$user['roleId'],
-							'lastUpdateDate'=> $this->lastUpdateDate,
-							'lastUpdateBy'	=>	$user['lastUpdateBy']
-
-							)
-						);
-			$data = HelperFunction::return_json_data(array('id' => $arrayName),true,'record saved');
-			return $data;
+			$updated_record = DataHelper::update_record('users',$user->id,$arr);
+            return $updated_record;
 
 	}
 	public static function delete_user($id){
@@ -78,10 +51,10 @@ class User extends Eloquent{
 					   ->where(function($query) use ($obj){
 
 						$query = HelperFunction::filter_data($query,'id',$obj,'int');
-						$query = HelperFunction::filter_data($query,'firstname',$obj,'string');
-						$query = HelperFunction::filter_data($query,'lastName',$obj,'string');
-						$query = HelperFunction::filter_data($query,'jobTitleId',$obj,'int');
-						$query = HelperFunction::filter_data($query,'roleId',$obj,'int');
+						$query = HelperFunction::filter_data($query,'first_name',$obj,'string');
+						$query = HelperFunction::filter_data($query,'last_name',$obj,'string');
+						$query = HelperFunction::filter_data($query,'job_title_id',$obj,'int');
+						$query = HelperFunction::filter_data($query,'role_id',$obj,'int');
 
 				});
 		//get total count 
@@ -92,15 +65,12 @@ class User extends Eloquent{
 
 			$arr = array();
 			$arr['id'] 			= $data->id;
-			$arr['firstName']	= $data->firstname;
-			$arr['lastName']	= $data->lastname;
-			$arr['userName']	= $data->username;
-			$arr['otherNames']	= $data->othernames;
+			$arr['first_name']	= $data->firstname;
+			$arr['last_name']	= $data->lastname;
+			$arr['user_name']	= $data->username;
+			$arr['other_names']	= $data->othernames;
 			$arr['email']		= $data->email;
 			$arr['phone']		= $data->phone;
-			$arr['otherNames']	= $data->othernames;
-			
-
 
 			return $arr;
 		},$resultSet);

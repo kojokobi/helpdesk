@@ -37,37 +37,38 @@
 // 	return View::make('home.index');
 // });
 //Route::get('/',array('uses' => 'Security@index'));
-Route::put('jobtitle',array('uses' => 'home@jobtitle'));
-Route::post('jobtitle',array('uses' => 'home@jobtitle'));
-Route::get('jobtitle',array('uses' => 'home@jobtitles'));
+Route::put('jobtitles',array('uses' => 'home@jobtitle'));
+Route::post('jobtitles',array('uses' => 'home@jobtitle'));
+Route::get('jobtitles',array('uses' => 'home@jobtitles'));
+Route::get('jobtitles',array('uses' => 'home@jobtitles'));
 /*
  *Roles routes
  */
-Route::post('role',array('uses' => 'home@role'));
-Route::put('role',array('uses' => 'home@role'));
-Route::get('role',array('uses' => 'home@roles'));
-Route::delete('role',array('uses' => 'home@role'));
+Route::post('roles',array('uses' => 'home@role'));
+Route::put('roles',array('uses' => 'home@role'));
+Route::get('roles',array('uses' => 'home@roles'));
+Route::delete('roles',array('uses' => 'home@role'));
 /*
  *projet routes
  */
-Route::post('project',array('uses' => 'home@project'));
-Route::put('project',array('uses' => 'home@project'));
-Route::get('project',array('uses' => 'home@projects'));
-Route::delete('project',array('uses' => 'home@project'));
+Route::post('projects',array('uses' => 'home@project'));
+Route::put('projects',array('uses' => 'home@project'));
+Route::get('projects',array('uses' => 'home@projects'));
+Route::delete('projects',array('uses' => 'home@project'));
 /*
  *user routes
  */
-Route::post('user',array('uses' => 'security@user'));
-Route::put('user',array('uses' => 'security@user'));
-Route::get('user',array('uses' => 'security@users'));
-Route::delete('user',array('uses' => 'security@user'));
+Route::post('users',array('uses' => 'security@user'));
+Route::put('users',array('uses' => 'security@user'));
+Route::get('users',array('uses' => 'security@users'));
+Route::delete('users',array('uses' => 'security@user'));
 /*
  *group routes
  */
-Route::post('group',array('uses' => 'home@group'));
-Route::put('group',array('uses' => 'home@group'));
-Route::get('group',array('uses' => 'home@group'));
-Route::delete('group',array('uses' => 'home@group'));
+Route::post('groups',array('uses' => 'home@create_project'));
+Route::put('groups',array('uses' => 'home@group'));
+Route::get('groups',array('uses' => 'home@group'));
+Route::delete('groups',array('uses' => 'home@group'));
 /*
  *secutity routes
  */

@@ -68,7 +68,8 @@ Autoloader::map(array(
 	'JobTitle'			=>	path('app').'models/jobTitles.php',
 	'Role'				=>	path('app').'models/roles.php',
 	'Project'			=>	path('app').'models/project.php',
-	'Group'				=>	path('app').'models/group.php'
+	'Group'				=>	path('app').'models/group.php',
+	'DataHelper'		=>	path('app').'libraries/dbhelperfunctions.php',
 
 	
 ));

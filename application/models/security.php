@@ -1,6 +1,6 @@
 <?php
 
-class Security Extends Eloquent{
+class Security {
 
 	public function login($credentials){
 		
