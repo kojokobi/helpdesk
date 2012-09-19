@@ -184,9 +184,9 @@ class Home_Controller extends Base_Controller {
 	public function get_tickettypes(){
 		return Response::json(tickettype::get_ticket_type(Input::all()));
 	}
-	public function post_create_project(){
+	// public function post_create_project(){
 
-		$client_data = Input::json();
-		return Group::create_group($client_data);
-	}
+	// 	$client_data = Input::json();
+	// 	return Group::create_group($client_data);
+	// }
 }

@@ -8,7 +8,7 @@ function ProjectController ($scope,$http,Project,MSG) {
 	 */
 	function getProjects (){
 		Project.query(function (res){
-			$scope.projects = res.data;
+			$scope.projects = angular.copy(res.data);
 		})
 	}
 
@@ -33,11 +33,12 @@ function ProjectController ($scope,$http,Project,MSG) {
 				if(res.success){
 					getProjects();
 					$scope.clear();	
+					var msg = res.message || "Record saved succefully"; 
+					MSG.show(msg,"success");
 				}else {
 					var msg = res.message || "Sorry errors were ecountered"; 
 					MSG.show(msg);
 				}
-				
 			});
 		}
 	}

@@ -37,7 +37,6 @@ function UserController ($scope, User,$http,MSG){
 		}else {
 			var user =  angular.copy(newUser);
 			var theUser = new User(user);
-			window.xx = newUser;
 			theUser.$save(function (res){
 				//fetch fresh items
 				if(res.success){

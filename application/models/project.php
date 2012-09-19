@@ -4,11 +4,11 @@ class Project extends Eloquent {
 	
 	public static function create_project($project){
 
-			$project = DataHelper::create_audit_entries(Auth::user()->id);
-            $project['name'] = $project->name;
-            $project['description'] = $project->description;
+			$arr = DataHelper::create_audit_entries(Auth::user()->id);
+            $arr['name'] = $project->name;
+            $arr['description'] = $project->description; 
 
-            $inserted_record = DataHelper::insert_record('projects',$project);
+            $inserted_record = DataHelper::insert_record('projects',$arr);
             return $inserted_record;
 			
 	}
