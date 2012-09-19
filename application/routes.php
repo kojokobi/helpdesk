@@ -81,6 +81,9 @@ Route::get("logout", array("uses" => "security@logout"));
  *Admin routes go here
  */
 Route::get("admin", array("as"=> "admin", "uses"=> "admin@index"));
+Route::get("tickets", function (){
+	return View::make("tickets.index");
+});
 Route::get('login', function()
 {
 	return View::make('login.index');
