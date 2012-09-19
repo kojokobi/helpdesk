@@ -1,1 +1,1 @@
-var main = angular.module('helpdesk',[]);
+var main = angular.module('helpdesk',["helpdeskServices"]);

@@ -72,7 +72,12 @@ Route::delete('groups',array('uses' => 'home@group'));
 /*
  *secutity routes
  */
+
+Route::get("en", function (){
+	echo "hello selasie";
+});
 Route::post('login',array('uses' => 'security@login'));
+Route::get("logout", array("uses" => "security@logout"));
 /*
  *Admin routes go here
  */

@@ -36,6 +36,18 @@
                   <input type="password" id="password" placeholder="Password" class='input-xlarge'>
                 </div>
               </div>
+              <div class="control-group">
+                <label class="control-label" for="jobTitleId">Job Title:</label>
+                <div class="controls">
+                  <select id="jobTitleId" ng-model="newUser.jobTitleId" class='input-xlarge user_select' name="jobTitleId" ></select>
+                  </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="roleId">Role:</label>
+                <div class="controls">
+                  <select id="roleId" ng-model="newUser.roleId" class='input-xlarge user_select' name="roleId" ></select>
+                </div>
+              </div>
             </form>
           </div>
           <div class="modal-footer"> 
