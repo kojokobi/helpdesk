@@ -15,6 +15,8 @@ class Group extends Eloquent{
             $grp_array['description'] = $group->description;
 
             $inserted_record = DataHelper::insert_record('project_groups',$grp_array);
+
+            
             return $inserted_record;
 	}
 	/**

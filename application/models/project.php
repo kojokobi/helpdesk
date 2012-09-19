@@ -4,45 +4,23 @@ class Project extends Eloquent {
 	
 	public static function create_project($project){
 
-			$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
+			$project = DataHelper::create_audit_entries(Auth::user()->id);
+            $project['name'] = $project->name;
+            $project['description'] = $project->description;
 
-			$id = DB::table('projects')->insert_get_id(
-
-					$arrayName = array(
-
-							'name' =>	$project['name'],
-							'title'=>	$project['title'],
-							'description'	=> $project['description'],
-							'createdDate' 	=> $createdDate,
-							'lastUpdateDate' => $lastUpdatedDate,
-							'createdBy'		=>	$project['createdBy'],
-							'lastUpdateBy'	=>	$project['lastUpdateBy']
-						)
-				);
-
-		$data = HelperFunction::return_json_data(array('id' => $id),true,'record saved');
-		return $data;
+            $inserted_record = DataHelper::insert_record('projects',$project);
+            return $inserted_record;
 			
 	}
 	public static function update_project($project){
 
 
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$update = DB::table('projects')
-						->where('id','=',$project['id'])
-						->update($arrayName = array(
-
-							'id' =>		$project['id'],
-							'name' =>	$project['name'],
-							'description'	=> $project['description'],
-							'lastUpdateDate' => $lastUpdatedDate,
-							'lastUpdateBy'	=>	$project['lastUpdateBy']
-
-							)
-						);
-			$data = HelperFunction::return_json_data($arrayName,true,'record saved');
-			return $data;
+			$project = DataHelper::update_audit_entries(Auth::user()->id);
+            $project['name'] = $project->name;
+            $project['description'] = $project->description;
+            //update_record($table_name,$value,$update_parameters_array,$key='id',$operator='=',)
+            $updated_record = DataHelper::update_record('projects',$project->id,$project);
+            return $updated_record;
 	}
 	public static function delete_project($projectId){
 

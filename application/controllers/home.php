@@ -111,28 +111,14 @@ class Home_Controller extends Base_Controller {
 	}
 
 	//project actions
-	public function post_project(){
+	public function post_create_project(){
 
-			$project = Input::all();
-			$projectArray = array(
-						   'name' 			=> $project['name'],
-						   'description' 	=> $project['description'],
-						   'createdBy'		=> HelperFunction::get_user_id(),
-						   'lastUpdateBy'	=> HelperFunction::get_user_id()
-		 		);
-			return Response::json(Project::create_project($projectArray));
-		}
-	public function put_project(){
+			return Response::json(Project::create_project(Input::json()));
+	}
+	public function put_update_project(){
 
-				$project = Input::all();
-				$projectArray = array(
-							'id'			=> $project['id'],
-							'name' 			=> $project['name'],
-						   'description' 	=> $project['description'],
-						   'lastUpdateBy'	=> HelperFunction::get_user_id()
-		 		);
-				return Response::json(Project::update_project($projectArray));
-			}
+			return Response::json(Project::update_project(Input::json()));
+	}
 	public function delete_project(){
 
 			return Reponse::json(Project::delete_project(Input::get('id')));
@@ -156,15 +142,10 @@ class Home_Controller extends Base_Controller {
 		return  Response::json(ticketStatus::create_ticket_status($roleArray));}
 	public function put_ticketstatus(){
 
-		$project = Input::all();
-				$projectArray = array(
-							'id'			=> $project['id'],
-							'name' 			=> $project['name'],
-						   'description' 	=> $project['description'],
-						   'lastUpdateBy'	=> HelperFunction::get_user_id()
-		 		);
-				return Response::json(Project::update_ticket_status($projectArray));
-			}
+		$client_data = Input::json();
+		return Response::json(TicketStatus::create_project($client_data));
+		
+	}
 	public function delete_ticketstatus(){
 		return Reponse::json(ticketStatus::delete_ticket_status(Input::get('id')));
 	}

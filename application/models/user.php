@@ -26,14 +26,14 @@ class User extends Eloquent{
 	public static function update_user($user){
 
 			$arr = DataHelper::update_audit_entries(Auth::user()->id);
-			$arr['first_name']	= $$user->firstname;
-			$arr['last_name']	= $$user->lastname;
-			$arr['user_name']	= $user->username;
-			$arr['other_names']	= $user->othernames;
+			$arr['firstName']	= $$user->first_name;
+			$arr['lastName']	= $$user->last_name;
+			$arr['userName']	= $user->user_name;
+			//$arr['other_names']	= $user->othernames;
 			$arr['email']		= $user->email;
 			$arr['phone']		= $user->phone;
-			$arr['job_title_id']	= $user->jobTitleId;
-			$arr['role_id']		= $user->roleId;
+			$arr['jobTitleId']	= $user->job_title_id;
+			$arr['roleId']		= $user->role_id;
 			$arr['password']	= Hash::make($user->password);
 
 			$updated_record = DataHelper::update_record('users',$user->id,$arr);
@@ -56,7 +56,8 @@ class User extends Eloquent{
 						$query = HelperFunction::filter_data($query,'job_title_id',$obj,'int');
 						$query = HelperFunction::filter_data($query,'role_id',$obj,'int');
 
-				});
+				})
+				->order_by('id','desc');
 		//get total count 
 		$total =$selectQuery->count();
 		$resultSet = $selectQuery->get();
