@@ -15,7 +15,7 @@ class User extends Eloquent{
 			$arr['phone']		= $user->phone;
 			$arr['job_title_id']	= $user->jobTitleId;
 			$arr['role_id']		= $user->roleId;
-			$arr['password']	= Hash::make($user->password)
+			$arr['password']	= Hash::make($user->password);
 			
 			$inserted_record = DataHelper::insert_record('users',$arr);
 			return $inserted_record;
