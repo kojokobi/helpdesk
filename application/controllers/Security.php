@@ -18,7 +18,6 @@ class Security_Controller extends Base_Controller{
 			return Redirect::to("admin");
 		else
 			return Redirect::to('login')->with('login_errors',true);
-		
 	}
 
 	public function get_logout(){
@@ -29,23 +28,6 @@ class Security_Controller extends Base_Controller{
 
 		$client_data = Input::json();
 		return Response::json(User::create_user($client_data));
-	
-		// $userData = array(
-
-		// 		'firstName' 	=> Input::get('firstName'),
-		// 		'lastName' 		=> Input::get('lastName'),
-		// 		'userName' 		=> Input::get('userName'),
-		// 		'otherNames'	=> Input::get('otherNames'),
-		// 		'email'			=> Input::get('email'),
-		// 		'phone'			=> Input::get('phone'),
-		// 		'password'		=> Input::get('password'),
-		// 		'jobTitleId'	=> Input::get('jobTitleId'),
-		// 		'roleId'		=> Input::get('roleId'),
-		// 		'createdBy'		=> Auth::user()->id,
-		// 		'lastUpdateBy'	=> Auth::user()->id
-				
-		// 	);	
-		// return Response::json(User::create_user($userData));
 	}
 	public function put_user(){
 
