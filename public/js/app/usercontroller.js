@@ -7,7 +7,6 @@ function UserController ($scope, User,$http,MSG){
 	function getUsers(){
 		User.query(function (res){
 			$scope.users = angular.copy(res.data);
-			MSG.show('Users loaded succesfully', "success");
 		});	
 	}
 
@@ -25,9 +24,14 @@ function UserController ($scope, User,$http,MSG){
 
 	$scope.addUser =  function (newUser){
 		if (newUser["id"]){
-			User.update(newUser, function (){
-				getUsers();
-				$scope.clear();
+			User.update(newUser, function (res){
+				if (res.success){
+					getUsers();
+					$scope.clear();
+				}else {
+
+				}
+				
 			});
 			
 		}else {
@@ -36,12 +40,12 @@ function UserController ($scope, User,$http,MSG){
 			window.xx = newUser;
 			theUser.$save(function (res){
 				//fetch fresh items
-				window.xxx = res;
 				if(res.success){
 					getUsers();
 					$scope.clear();	
 				}else {
-					MSG.show("errors were ecountered");
+					var msg = res.message || "Sorry errors were ecountered"; 
+					MSG.show(msg);
 				}
 				
 			});

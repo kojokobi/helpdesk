@@ -22,9 +22,9 @@
                 </tr> -->
 
                 <tr ng-repeat="project in projects">
-                    <td> {{project.title}} </td>
+                    <td> {{project.name}} </td>
                     <td> {{project.description }} </td>
-                    <td> {{project.createdOn}} </td>
+                    <td> {{project.createdAt}} </td>
                 </tr>
               </tbody>
           </table>

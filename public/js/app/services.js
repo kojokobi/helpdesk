@@ -5,4 +5,10 @@ factory("User", function ($resource){
 	},
 	    update : {method : 'PUT'}
 	  });
+}).factory("Project", function ($resource){
+	return $resource('projects/:id', {id : '@id'}, {
+	    query: {method:'GET', params:{}, //isArray:true
+	},
+	    update : {method : 'PUT'}
+	  });
 });
