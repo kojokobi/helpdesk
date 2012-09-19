@@ -6,7 +6,7 @@
         <div class="span10" id="main_pane">
           <?php echo View::make("admin.main"); ?>
         </div><!--/span-->
-        <?php echo View::make("modals.modals"); ?>
+        
         <!-- <footer>
           <p>&copy; Axon Information Systems 2012</p>
         </footer> -->

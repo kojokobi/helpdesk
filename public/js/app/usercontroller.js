@@ -1,10 +1,13 @@
-function UserController ($scope, User,$http){
+function UserController ($scope, User,$http,MSG){
 	$scope.formTitle = "Add User";
 	$scope.users = [];
 
+	
+	
 	function getUsers(){
 		User.query(function (res){
 			$scope.users = angular.copy(res.data);
+			MSG.show('Users loaded succesfully', "success");
 		});	
 	}
 
@@ -31,10 +34,16 @@ function UserController ($scope, User,$http){
 			var user =  angular.copy(newUser);
 			var theUser = new User(user);
 			window.xx = newUser;
-			theUser.$save(function (){
+			theUser.$save(function (res){
 				//fetch fresh items
-				getUsers();
-				$scope.clear();
+				window.xxx = res;
+				if(res.success){
+					getUsers();
+					$scope.clear();	
+				}else {
+					MSG.show("errors were ecountered");
+				}
+				
 			});
 		}
 	}
