@@ -12,7 +12,7 @@ class JobTitle extends Eloquent{
 			$jobTitle['createdDate'] = $createdDate;
 			$jobTitle['lastUpdateDate'] = $lastUpdatedDate;
 
-			$jobTitleId = DB::table('jobTitles')->insert_get_id(
+			$jobTitleId = DB::table('job_titles')->insert_get_id(
 					$arrayName	=	$jobTitle
 				);
 
@@ -25,7 +25,7 @@ class JobTitle extends Eloquent{
 
 			$jobTitle['$lastUpdateDate'] = $lastUpdateDate;
 
-			$update = DB::table('jobTitles')
+			$update = DB::table('job_titles')
 						->where('id','=',$jobTitle['id'])
 						->update(
 							$arrayName = array(
@@ -41,8 +41,7 @@ class JobTitle extends Eloquent{
 	}
 	public static function get_jobTitles($obj = null){
 
-		
-		$selectQuery = DB::table('jobTitles')
+		$selectQuery = DB::table('job_titles')
 				->where(function($query) use ($obj){
 						
 						$query = HelperFunction::filter_data($query,'name',$obj,'string');

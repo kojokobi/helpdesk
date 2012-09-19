@@ -51,8 +51,8 @@ Route::delete('roles',array('uses' => 'home@role'));
 /*
  *projet routes
  */
-Route::post('projects',array('uses' => 'home@project'));
-Route::put('projects',array('uses' => 'home@project'));
+Route::post('projects',array('uses' => 'home@create_project'));
+Route::put('projects',array('uses' => 'home@update_project'));
 Route::get('projects',array('uses' => 'home@projects'));
 Route::delete('projects',array('uses' => 'home@project'));
 /*
@@ -65,7 +65,7 @@ Route::delete('users',array('uses' => 'security@user'));
 /*
  *group routes
  */
-Route::post('groups',array('uses' => 'home@create_project'));
+Route::post('groups',array('uses' => 'home@create_group'));
 Route::put('groups',array('uses' => 'home@group'));
 Route::get('groups',array('uses' => 'home@group'));
 Route::delete('groups',array('uses' => 'home@group'));

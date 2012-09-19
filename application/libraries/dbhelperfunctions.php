@@ -12,7 +12,7 @@ class DataHelper extends Eloquent {
 
 		try{
 
-		$id = DB::table($table)->insert_get_id(
+		$id = DB::table($table_name)->insert_get_id(
 				$inserted_record = $insert_parameters_array
 			);
 
@@ -21,12 +21,12 @@ class DataHelper extends Eloquent {
 		else
 			return array();
 
-		 $data_to_return  = DataHelper::return_json_data($inserted_record,true,HelpFunction::success_save_message());	
+		 $data_to_return  = DataHelper::return_json_data($inserted_record,true,HelperFunction::success_save_message());	
 		 return $data_to_return;
 		
 	}catch(Exception $e){
 
-		return return_json_data(array(),false,$e);
+		return DataHelper::return_json_data(array(),false,$e);
 	}
 
 }
@@ -39,7 +39,7 @@ class DataHelper extends Eloquent {
 	 * @param  [array] $update_parameters_array  [description]
 	 * @return [type]                            [description]
 	 */
-	public static function update_record($table_name,$value,$update_parameters_array,$key='id',$operator='=',){
+	public static function update_record($table_name,$value,$update_parameters_array,$key='id',$operator='='){
 		
 		try{
 
@@ -50,7 +50,7 @@ class DataHelper extends Eloquent {
 							$update_array = $update_parameters_array
 					);
 			
-			$data_to_return =  DataHelper::return_json_data($update_array,true,HelpFunction::success_update_message());
+			$data_to_return =  DataHelper::return_json_data($update_array,true,HelperFunction::success_update_message());
 			return $data_to_return;
 
 		}catch(Exception $e){
@@ -143,7 +143,7 @@ class DataHelper extends Eloquent {
         
     	$audit_array = array(
 
-    		'updated_at' => HelpFunction::get_date(),
+    		'updated_at' => HelperFunction::get_date(),
     		'updated_by' => $user_id
 
     		);
