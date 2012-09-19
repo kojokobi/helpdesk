@@ -1,34 +1,21 @@
 <?php
 
 class Group extends Eloquent{
-
-	
 	
 	/**
-	 * Function that creates a new group
-	 * @param  array of group fields
-	 * @return json containing Id of record created and other properties
+	 * Inserts a new record into the group table
+	 * @param   [object]        $group  [arrayarray of group fields
+	 * @return  [int]           [json containing Id of record created and other properties]
 	 */
 	public static function create_group($group){
 
-			$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
+			$grp_array = DataHelper::create_audit_entries(Auth::user()->id);
+            $grp_array['name'] = $group->name;
+            $grp_array['project_id'] = $group->project_id;
+            $grp_array['description'] = $group->description;
 
-			$id = Db::table('groups')->insert_get_id(
-
-					$arrayName = array(
-
-							'name' =>	$group['name'],
-							'description'	=> $group['description'],
-							'createdDate' 	=>  $createdDate,
-							'lastUpdateDate' => $lastUpdateDate,
-							'createdBy'		=>	$group['createdBy'],
-							'lastUpdateBy'	=>	$group['lastUpdateBy']
-						)
-				);
-
-			$data = HelperFunction::return_json_data($id,true,'record saved');
-			return $data;
+            $inserted_record = DataHelper::insert_record('project_groups',$grp_array);
+            return $inserted_record;
 	}
 	/**
 	 * [update]
@@ -37,30 +24,18 @@ class Group extends Eloquent{
 	 */
 	public static function update_group($group){
 
-
-			$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-
-			$update = DB::table('groups')
-
-						->where('id','=',$group['id'])
-						->update($arrayName = array(
-
-							'id' =>		$group['id'],
-							'name' =>	$group['name'],
-							'description'	=> $group['description'],
-							'lastUpdateDate' => $lastUpdateDate,
-							'lastUpdateBy'	=>	$group['lastUpdateBy']
-
-							)
-						);
-			$data = HelperFunction::return_json_data($update,true,'record updated succesfully');
-			return $data;
+			$grp_array = DataHelper::update_audit_entries(Auth::user()->id);
+            $grp_array['name'] = $group->name;
+            $grp_array['project_id'] = $group->project_id;
+            $grp_array['description'] = $group->description;
+            //update_record($table_name,$value,$update_parameters_array,$key='id',$operator='=',)
+            $updated_record = DataHelper::update_record('groups',$group->id,$grp_array);
+            return $updated_record;
 	}
 	public static function delete_group($groupId){
 
 		//DB::table('groups')->where('id','=',$groupId)->delete();
-		return DB:table('groups')->delete($id);
+		return DB::table('groups')->delete($id);
 	}
 	public static function get_groups($obj){
 
@@ -69,10 +44,11 @@ class Group extends Eloquent{
 
 						$query = HelperFunction::filter_data($query,'id',$obj,'int');
 						$query = HelperFunction::filter_data($query,'name',$obj,'string');
+						$query = HelperFunction::filter_data($query,'project_id',$obj,'int');
 
-				})
+				});
 
-		$data = HelperFunction::return_json_data($selectQuery->get(),true,'record loaded',selectQuery->count());
+		$data = HelperFunction::return_json_data($selectQuery->get(),true,'record loaded',$selectQuery->count());
 		return $data;
 	}
 }

@@ -26,19 +26,20 @@ class HelperFunction extends Eloquent{
 
 			);
 		return $dataToReturn;
-		//return json_encode($dataToReturn);
 	}
 	public static function success_save_message(){
 
 		return 'record saved successfully';
+	}
+	public static function success_update_message(){
+
+		return 'record updated successfully';
 	}
 	public static function failed_save_message(){
 		return "failed to save record.contact your admin for further assistance";
 	}
 	public static function filter_data($query = null,$key='id',$array = null,$type='int'){
 				
-				// var_dump($query);
-				// var_dump($array);
 				if($query == null or $array == null) return;
 				switch ($type) {
 
@@ -59,6 +60,10 @@ class HelperFunction extends Eloquent{
 				}
 				return $query;
 	}
+	public static function get_date($format='Y-m-d'){
+		return Date($format);
+	}
+
 	public static function get_user_id(){
 		return 1;
 	}
