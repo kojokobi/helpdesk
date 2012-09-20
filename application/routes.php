@@ -67,8 +67,8 @@ Route::delete('users',array('uses' => 'security@user'));
  */
 Route::post('projectgroups',array('uses' => 'home@create_project_group'));
 Route::put('projectgroups',array('uses' => 'home@update_project_group'));
-Route::get('projectgroups',array('uses' => 'home@project_group'));
-Route::delete('projectgroups',array('uses' => 'home@project_groups'));
+Route::get('projectgroups',array('uses' => 'home@project_groups'));
+Route::delete('projectgroups',array('uses' => 'home@project_group'));
 /*
  *Project User Groups routes
  */
