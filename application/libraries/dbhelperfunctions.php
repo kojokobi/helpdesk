@@ -19,7 +19,7 @@ class DataHelper extends Eloquent {
 		if($id > 0)
 			$inserted_record['id'] = $id;
 		else
-			return array();
+			return DataHelper::return_json_data(array(),true,HelperFunction::success_save_message());	
 
 		 $data_to_return  = DataHelper::return_json_data($inserted_record,true,HelperFunction::success_save_message());	
 		 return $data_to_return;

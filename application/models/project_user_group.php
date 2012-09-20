@@ -18,7 +18,7 @@ class ProjectUserGroup extends Eloquent{
         $grp_array['project_group_id'] = $project_user_group->projectGroupId;
         $grp_array['user_id'] = $project_user_group->userId;
         
-        $inserted_record = DataHelper::insert_record('project_user_groups',$grp_array);
+        $inserted_record = DataHelper::update_record('project_user_groups',$grp_array);
         return $inserted_record;
 	}
 	public static function delete_project_user_group(){

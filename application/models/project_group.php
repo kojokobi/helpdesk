@@ -60,8 +60,6 @@ class ProjectGroup extends Eloquent{
 
 				})
 		->order_by('project_groups.id','desc');
-		$som = $selectQuery;
-		var_dump($som->get());
 		//get total count 
 		$total =$selectQuery->count();
 		$result_set = $selectQuery->get(
