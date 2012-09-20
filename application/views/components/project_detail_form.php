@@ -24,18 +24,18 @@
       <div class='pull-left'>
         <label>User:</label>
         <div class='user_group_control'>
-          <select name="" class='input-small' id='user_group_user'>
-            <option>Kojo Mensah</option>
-          </select>
+          <select id="user_group_user" ng-model="userGroup.userId" class='input-small' name="user_group_user"
+                    ng-options='user.id as user.firstName for user in users'
+          ></select>
         </div>
       </div>
       <div class='user_group_control_right'>
         <label>Group:</label>
         <div class=''>
-          <select name="" class='input-small'>
-            <option>Group 1</option>
-          </select>
-           <a href="#" class=""><i class="icon icon-plus-sign"></i></a>
+          <select id="user_group_group" ng-model="userGroup.projectGroupId" class='input-small' name="user_group_group"
+                    ng-options='group.id as group.name for group in userGroups'
+          ></select>
+           <a href="#" class="" ng-click="addUserToGroup(userGroup)"><i class="icon icon-plus-sign"></i></a>
         </div>
       </div>
     </div>
@@ -50,9 +50,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Kojo Kumah</td>
-            <td>Axon</td>
+          <tr ng-repeat="prus in projectUsers">
+            <td> {{ prus.name }}</td>
+            <td> {{ prus.group }} </td>
             <td> <a href="#"> <i class='icon icon-remove'></i></a> </td>
           </tr>
         </tbody>

@@ -1,7 +1,9 @@
-function ProjectController ($scope,$http,Project,Group,MSG) {
+function ProjectController ($scope,$http,Project,Group,UserGroup,User,MSG) {
 	$scope.formTitle = "Add Project";
 	$scope.projects = [];
-
+	$scope.userGroups = [];
+	$scope.users = [];
+	$scope.projectUsers = [];
 	/**
 	 * Gets all projects
 	 * @return void
@@ -42,6 +44,18 @@ function ProjectController ($scope,$http,Project,Group,MSG) {
 		}
 	}
 
+	function getUsers(){
+		User.query(function (res){
+			$scope.users = res.data;
+		});
+	}
+
+	function getProjectGroups(id){
+		Group.query({projectId : id },function (res){
+			$scope.userGroups =  res.data;
+		});
+	}
+
 	/**
 	 * Brings the form which allows us to add a user  to a group
 	 * @param  {object} project to be updated
@@ -54,6 +68,8 @@ function ProjectController ($scope,$http,Project,Group,MSG) {
 		$scope.currentProject = {}
 		$scope.currentProject.name = project.name;
 		$scope.currentProject.projectId = project.id;
+		getUsers();
+		getProjectGroups(project.id);
 	}
 
 	$scope.addGroup = function (currentProject){
@@ -66,7 +82,21 @@ function ProjectController ($scope,$http,Project,Group,MSG) {
 			if (res.success){
 				var msg = res.message || "Group created"; 
 				MSG.show(msg,"success");
+				getProjectGroups(currentProject.projectId);
 			} else {
+				var msg = res.message || "Sorry errors were ecountered"; 
+				MSG.show(msg);
+			}
+		});
+	}
+
+	$scope.addUserToGroup =  function (userGroup){
+		var projectUserGroup = new UserGroup(userGroup);
+		projectUserGroup.$save(function (res){
+			if(res.success){
+				var msg = res.message || "User added to group created"; 
+				MSG.show(msg,"success");
+			}else {
 				var msg = res.message || "Sorry errors were ecountered"; 
 				MSG.show(msg);
 			}
@@ -82,4 +112,5 @@ function ProjectController ($scope,$http,Project,Group,MSG) {
 
 	//make calls here
 	getProjects();
+
 }
