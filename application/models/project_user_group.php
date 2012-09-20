@@ -7,7 +7,7 @@ class ProjectUserGroup extends Eloquent{
 			$grp_array = DataHelper::create_audit_entries(Auth::user()->id);
 
             $grp_array['project_group_id'] = $project_user_group->projectGroupId;
-            $grp_array['user_id'] = $project_user_group->projectId;
+            $grp_array['user_id'] = $project_user_group->userId;
             
             $inserted_record = DataHelper::insert_record('project_user_groups',$grp_array);
             return $inserted_record;
