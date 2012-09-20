@@ -63,12 +63,12 @@ Route::put('users',array('uses' => 'security@user'));
 Route::get('users',array('uses' => 'security@users'));
 Route::delete('users',array('uses' => 'security@user'));
 /*
- *group routes
+ *Project Groups routes
  */
-Route::post('groups',array('uses' => 'home@create_group'));
-Route::put('groups',array('uses' => 'home@group'));
-Route::get('groups',array('uses' => 'home@group'));
-Route::delete('groups',array('uses' => 'home@group'));
+Route::post('projectgroups',array('uses' => 'home@create_project_group'));
+Route::put('projectgroups',array('uses' => 'home@update_project_group'));
+Route::get('projectgroups',array('uses' => 'home@delete_project_group'));
+Route::delete('projectgroups',array('uses' => 'home@get_project_group's));
 /*
  *secutity routes
  */
