@@ -55,11 +55,13 @@ class ProjectGroup extends Eloquent{
 
 
 						$query = DataHelper::filter_data($query,'project_groups.id',$new_filter_array,'int');
-						$query = DataHelper::filter_data($query,'project_groups.name',$new_filter_array,'string');
+						$query = DataHelper::filter_data($query,'name',$new_filter_array,'string');
 						$query = DataHelper::filter_data($query,'project_id',$new_filter_array,'int');
 
-				});
-		//->order_by('project_groups.id','desc');
+				})
+		->order_by('project_groups.id','desc');
+		$som = $selectQuery;
+		var_dump($som->get());
 		//get total count 
 		$total =$selectQuery->count();
 		$result_set = $selectQuery->get(
