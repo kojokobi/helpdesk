@@ -85,7 +85,7 @@ class User extends Eloquent{
 			return $arr;
 		},$resultSet);
 
-		return HelperFunction::return_json_data($resultSet,true,'record loaded',$total);
+		return HelperFunction::return_json_data($out,true,'record loaded',$total);
 		
 	}
 }
