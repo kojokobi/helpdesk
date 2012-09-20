@@ -47,7 +47,8 @@ class Home_Controller extends Base_Controller {
 			);
 
 		$id = JobTitle::create_jobtitle($jobTitle);
-		return HelperFunction::return_json_data($id,true,"record created");}
+		return HelperFunction::return_json_data($id,true,"record created");
+	}
 	public function put_jobtitle(){
 
 		$jobTitle = array(
@@ -127,6 +128,40 @@ class Home_Controller extends Base_Controller {
 
 		return Response::json(Project::get_projects(Input::all()));
 	}
+	//project groups actions
+	public function post_create_project_group(){
+
+			return Response::json(ProjectGroup::create_project_group(Input::json()));
+	}
+	public function put_update_project_group(){
+
+			return Response::json(ProjectGroup::update_project_group(Input::json()));
+	}
+	public function delete_project_group(){
+
+			return Reponse::json(ProjectGroup::delete_project_group(Input::get('id')));
+		}
+	public function get_project_groups(){
+
+		return Response::json(ProjectGroup::get_project_groups(Input::all()));
+	}
+	//project User Groups actions
+	public function post_create_project_user_group(){
+
+			return Response::json(ProjectUserGroup::create_project_user_group(Input::json()));
+	}
+	public function put_update_project_user_group(){
+
+			return Response::json(ProjectUserGroup::update_project_user_group(Input::json()));
+	}
+	public function delete_project_user_group(){
+
+			return Reponse::json(ProjectUserGroup::delete_project_user_group(Input::get('id')));
+		}
+	public function get_project_user_groups(){
+
+		return Response::json(ProjectUserGroup::get_project_user_groups(Input::all()));
+	}
 
 	//ticketStatus Actions
 	public function post_ticketstatus(){
@@ -139,7 +174,8 @@ class Home_Controller extends Base_Controller {
 						   'lastUpdateBy'	=> HelperFunction::get_user_id()
 		 		);
 
-		return  Response::json(ticketStatus::create_ticket_status($roleArray));}
+		return  Response::json(ticketStatus::create_ticket_status($roleArray));
+	}
 	public function put_ticketstatus(){
 
 		$client_data = Input::json();
