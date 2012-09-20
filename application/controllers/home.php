@@ -140,7 +140,7 @@ class Home_Controller extends Base_Controller {
 	public function delete_project_group(){
 
 			return Reponse::json(ProjectGroup::delete_project_group(Input::get('id')));
-		}
+	}
 	public function get_project_groups(){
 
 		return Response::json(ProjectGroup::get_project_groups(Input::all()));
