@@ -29,7 +29,7 @@ class Home_Controller extends Base_Controller {
 	|		}
 	|
 	*/
-
+	
 	public $restful	 = true;
 	public function action_index()
 	{

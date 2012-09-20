@@ -99,6 +99,7 @@ Route::get("dashboard", function (){
 
 Route::get('login', function()
 {
+	
 	return View::make('login.index');
 });
 /*
