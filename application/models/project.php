@@ -18,7 +18,7 @@ class Project extends Eloquent {
 			$project = DataHelper::update_audit_entries(Auth::user()->id);
             $project['name'] = $project->name;
             $project['description'] = $project->description;
-            //update_record($table_name,$value,$update_parameters_array,$key='id',$operator='=',)
+            
             $updated_record = DataHelper::update_record('projects',$project->id,$project);
             return $updated_record;
 	}
@@ -36,9 +36,25 @@ class Project extends Eloquent {
 						$query = HelperFunction::filter_data($query,'id',$obj,'int');
 						$query = HelperFunction::filter_data($query,'name',$obj,'string');
 
-				});
+				})
+				->order_by('id','desc');
+		//get total count 
+		$total =$selectQuery->count();
+		$resultSet = $selectQuery->get();
+	
+		$out = array_map(function($data){
+
+			$arr = array();
+			$arr['id'] 			= $data->id;
+			$arr['name']		= $data->name;
+			$arr['description']	= $data->description;
+			$arr['createdAt']	= $data->created_at;
+			
+
+			return $arr;
+		},$resultSet);
 				
-		$data = HelperFunction::return_json_data($selectQuery->get(),true,'record loaded',$selectQuery->count());
+		$data = HelperFunction::return_json_data($out,true,'record loaded',$total);
 		return $data;
 		
 	}
