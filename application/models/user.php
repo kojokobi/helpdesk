@@ -48,6 +48,8 @@ class User extends Eloquent{
 	public static function get_users($obj){
 
 		$selectQuery = DB::table('users')
+					   ->join('roles','users.role_id','=','roles.id')
+					   ->join('job_titles','users.job_title_id','=','job_titles.id')
 					   ->where(function($query) use ($obj){
 
 						$query = HelperFunction::filter_data($query,'id',$obj,'int');
@@ -57,11 +59,15 @@ class User extends Eloquent{
 						$query = HelperFunction::filter_data($query,'role_id',$obj,'int');
 
 				})
-				->order_by('id','desc');
+				->order_by('users.id','desc');
 		//get total count 
 		$total =$selectQuery->count();
-		$resultSet = $selectQuery->get();
-		
+		$resultSet = $selectQuery->get(
+
+			array('users.id','first_name','last_name','user_name','email','phone','role_id','roles.name as role_name' ,
+				'job_title_id','job_titles.name as job_title')
+		);
+		//var_dump($resultSet);
 		$out = array_map(function($data){
 
 			$arr = array();
@@ -69,14 +75,17 @@ class User extends Eloquent{
 			$arr['firstName']	= $data->first_name;
 			$arr['lastName']	= $data->last_name;
 			$arr['userName']	= $data->user_name;
-			$arr['otherNames']	= $data->other_names;
 			$arr['email']		= $data->email;
 			$arr['phone']		= $data->phone;
+			$arr['roleId']		= $data->role_id;
+			$arr['role']		= $data->role_name;
+			$arr['jobTitleId']		= $data->job_title_id;
+			$arr['jobTitle']		= $data->job_title;
 
 			return $arr;
 		},$resultSet);
 
-		return HelperFunction::return_json_data($out,true,'record loaded',$total);
+		return HelperFunction::return_json_data($resultSet,true,'record loaded',$total);
 		
 	}
 }
