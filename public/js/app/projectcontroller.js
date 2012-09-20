@@ -58,6 +58,10 @@ function ProjectController ($scope,$http,Project,Group,MSG) {
 
 	$scope.addGroup = function (currentProject){
 		var group =  new Group(angular.copy(currentProject));
+		group["name"] = group["newGroup"];
+		group["description"] = "";
+		
+		//todo add description later
 		group.$save(function (res){
 			if (res.success){
 				var msg = res.message || "Group created"; 
