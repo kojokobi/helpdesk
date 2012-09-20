@@ -160,6 +160,7 @@ footer p {
  .user_group #user_group_user {
 	width: 130px;
 }
+
 .user_group .user_group_control_right select{
 	margin-left: 0px;
 	margin-right: 3px;
@@ -173,7 +174,7 @@ footer p {
 	padding-right: 100px
 }
 
-.project_item_group .action {
+.project_item_group .action , .my-table .action{
 	width: 10px;
 }
 

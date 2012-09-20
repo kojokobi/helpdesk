@@ -5,7 +5,6 @@
             <a class='btn btn-info'> <i class='icon-white icon-pencil'></i></a>
             <a class='btn btn-danger'> <i class='icon-white icon-trash'></i></a>
 
-            <a class='btn btn-inverse pull-right' data-toggle="modal" href="#projectDetails"> <i class='icon-white icon-user'></i> Project Details </a>
           </div>
           <table  class='table table-striped table-bordered my-table'>
               <thead>
@@ -14,6 +13,7 @@
                   <th>Title</th>
                   <th>Description</th>
                   <th>Date Created</th>
+                  <th class='action'></th>
                 </tr>
               </thead>
               <tbody>
@@ -25,6 +25,7 @@
                     <td> {{project.name}} </td>
                     <td> {{project.description }} </td>
                     <td> {{project.createdAt}} </td>
+                    <td> <a href="#"  ng-click="updateProjectDetails(project)"> <i class='icon icon-pencil'> </a></i> </td>
                 </tr>
               </tbody>
           </table>

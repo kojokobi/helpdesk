@@ -8,14 +8,15 @@
     <div class='project_item_group'>
       <label>Title:  </label>
       <div class="controls">
-        <input type="text" class="input-xlarge" value="Axon Desk"/>
+        <!-- <input type="text" class="input-xlarge uneditable-input" ng-model="currentProject.name"/> -->
+        <span class="input-xlarge uneditable-input"> {{currentProject.name}} <span>
       </div>
     </div>
-    <div class="project_item_group" >
+    <div class="project_item_group">
       <label>New Group:</label>
       <div class='controls'>
-        <input type="text" class="input-xlarge" />  
-        <a href="#" class=""><i class="icon icon-plus-sign"></i></a>
+        <input type="text" class="input-xlarge" ng-model="currentProject.newGroup"/>  
+        <a href="#" class="" ng-click="addGroup(currentProject)"><i class="icon icon-plus-sign"></i></a>
       </div>
     </div>
 
@@ -57,6 +58,7 @@
         </tbody>
       </table>
     </div>
+    <input type="hidden" name="projectId" ng-model="currentProject.projectId">
   </div>
   <div class="modal-footer">
     <a href="#" class="btn btn-primary">Done</a>
