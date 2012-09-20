@@ -167,12 +167,11 @@ class Home_Controller extends Base_Controller {
 	public function post_ticketstatus(){
 		$clientdata = Input::all();
 		$ticketStatusArray = array(
-
-						   'name' 			=> $clientdata['name'],
-						   'description' 	=> $clientdata['description'],
-						   'createdBy'		=> HelperFunction::get_user_id(),
-						   'lastUpdateBy'	=> HelperFunction::get_user_id()
-		 		);
+				   'name' 			=> $clientdata['name'],
+				   'description' 	=> $clientdata['description'],
+				   'createdBy'		=> HelperFunction::get_user_id(),
+				   'lastUpdateBy'	=> HelperFunction::get_user_id()
+		);
 
 		return  Response::json(ticketStatus::create_ticket_status($roleArray));
 	}
