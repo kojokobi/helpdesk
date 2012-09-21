@@ -1,8 +1,8 @@
 <!-- TICKETS FORM -->
-    <div class="modal" id="tickets_form" data-backdrop="static" data-keyboard="false">
+    <div class="modal hide fade" id="tickets_form" data-backdrop="static" data-keyboard="false">
       <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
-        <h3> Add Ticket </h3>
+        <h3> New Ticket </h3>
       </div>
       <div class="modal-body">
         <form class="form-vertical">

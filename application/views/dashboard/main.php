@@ -1,3 +1,5 @@
 <div>
-	<h1>Dashboard</h1>
+	<fieldset>
+		<legend>Dashboard</legend>
+	</fieldset>
 </div>

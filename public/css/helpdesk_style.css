@@ -63,6 +63,11 @@ a {
 .sidebar-nav .accordion-inner .badge{ 
 	margin-right: 5px;
 }
+
+.ticket_badges .badge {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 10px;	
+}
 .sidebar-nav .accordion-inner ul{
 	margin-bottom: 0px;
 	margin-left :0px;
@@ -75,6 +80,8 @@ a {
 .sidebar-nav .accordion-inner li i{ 
 	margin-right: 10px;
 }
+
+
 #main_pane {
 	/*width: 100%;*/
 	background: white;
@@ -186,6 +193,18 @@ footer p {
 #tickets_form .ticket_combo {
 	width: 130px;
 	margin-right: 24px;
+}
+
+.project_ticket_control {
+	margin-bottom: 4px;
+}
+.project_ticket_control label {
+	display: inline;
+	font-size: 15px;
+}
+
+.project_ticket_control select {
+	margin-bottom: 0px;
 }
 
 .my_clear {

@@ -24,7 +24,7 @@
                   </div>
                   <div class="accordion-body collapse" id="ticketsCollapse" >
                     <div class="accordion-inner">
-                     <ul>
+                     <ul class="ticket_badges">
                         <li><a href="tickets#unassigned"> Unassigned tickets</a> <span class='badge pull-right'> 35 </span> </li>
                         <li><a href="tickets#assigned"> Assigned tickets</a> <span class='badge badge-info pull-right'> 30 </span> </li>
                         <li><a href="tickets#opened"> Open tickets </a> <span class='badge badge-warning pull-right'> 20 </span> </li>
