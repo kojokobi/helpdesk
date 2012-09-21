@@ -1,8 +1,10 @@
 <div class="tab-pane active" id="users" ng-controller="UserController">
-          <div class="toolbar">
-            <a class='btn btn-success' data-toggle="modal" href="#user_form"> <i class='icon-white icon-user'></i> </a>
-            <a class='btn btn-info'> <i class='icon-white icon-pencil'></i> </a>
-            <a class='btn btn-danger'> <i class='icon-white icon-trash'></i> </a>
+           <div class="btn-toolbar" style="margin-bottom: 9px">
+            <div class="btn-group">
+              <a class='btn btn-success' data-toggle="modal" href="#user_form"> <i class='icon-white icon-user'></i> </a>
+              <a class='btn btn-info'> <i class='icon-white icon-pencil'></i> </a>
+              <a class='btn btn-danger'> <i class='icon-white icon-trash'></i> </a>
+            </div>
           </div>
           <div>
             <table class='table table-striped table-bordered my-table'>

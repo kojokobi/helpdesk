@@ -1,10 +1,11 @@
 body {
 	padding-top: 40px;
 	background: whiteSmoke;
-	font-size: 13px;
+	font-size: 12px !important;
+	font-family:  "Lucida Sans Unicode", "Lucida Grande", "tahoma", Verdana, sans-serif !important; 
 	/*padding-bottom: 40px;*/
 	/*background-color: #C6BEA6;
-	background: url("../img/custom/fabric_plaid.png");
+	background: url("../img/custom/bg_body.jpg");
 	background-repeat: repeat repeat;*/
 }
 
@@ -99,7 +100,8 @@ a {
 }
 
 .my-table th, .my-table td{
-	font-size: 13px;
+	font-size: 12px;
+	line-height: 13px;
 }
 
 .modal-header {
@@ -176,6 +178,23 @@ footer p {
 
 .project_item_group .action , .my-table .action{
 	width: 10px;
+}
+
+#tickets_form .title_field, #tickets_form .message_field {
+	width :97%;
+}
+#tickets_form .ticket_combo {
+	width: 130px;
+	margin-right: 24px;
+}
+
+.my_clear {
+	clear : both;
+	overflow: hidden;
+}
+
+label, input, button, select, textarea { 
+	font-size: 12px;
 }
 
 

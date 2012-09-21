@@ -1,3 +1,4 @@
-<div>
-	<h1>Tickets go here</h1>
+<div ng-controller="TicketController">
+	<h3>Tickets </h3>
+	<?php echo View::make("components.tickets_form"); ?>
 </div>
