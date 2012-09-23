@@ -2,7 +2,7 @@
     <?php echo View::make("common.topmenu"); ?>
     <div class="container-fluid">
       <div class="row-fluid">
-      <?php echo View::make("common.navigation"); ?>
+      <?php echo View::make("common.navigation")->with("page","dashboard"); ?>
         <div class="span10" id="main_pane">
           <?php echo View::make("dashboard.main"); ?>
         </div><!--/span-->

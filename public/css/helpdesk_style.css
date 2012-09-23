@@ -1,6 +1,6 @@
 body {
 	padding-top: 40px;
-	background: whiteSmoke;
+	background: #f2f2f2;
 	font-size: 12px !important;
 	font-family:  "Lucida Sans Unicode", "Lucida Grande", "tahoma", Verdana, sans-serif !important; 
 	/*padding-bottom: 40px;*/
@@ -53,6 +53,7 @@ a {
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
+	border-right: 0px;
 }
 
 .sidebar-nav .accordion-inner {
@@ -63,6 +64,25 @@ a {
 .sidebar-nav .accordion-inner .badge{ 
 	margin-right: 5px;
 }
+
+.sidebar-nav .active_header {
+	background: #206BA7 !important;
+	-webkit-background-clip: border-box !important;
+	background-clip: border-box !important;
+	zoom: 1;
+	-webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	-moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	-ms-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	-o-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
+
+}
+
+.sidebar-nav .active_header a{ 
+	color : white;
+}
+
 
 .ticket_badges .badge {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -79,6 +99,10 @@ a {
 }
 .sidebar-nav .accordion-inner li i{ 
 	margin-right: 10px;
+}
+
+.sidebar-nav .nav_selected_item {
+	background: white;
 }
 
 
@@ -112,7 +136,7 @@ a {
 }
 
 .modal-header {
-	background: whiteSmoke;
+	background: #f2f2f2;
 }
 footer {
 	text-align: center;
