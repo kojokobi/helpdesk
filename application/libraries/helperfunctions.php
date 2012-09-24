@@ -67,4 +67,18 @@ class HelperFunction extends Eloquent{
 	public static function get_user_id(){
 		return 1;
 	}
+	/**
+	 * converts field names containing underscores to camel casing
+	 * @param  [array] $list[a list of field names.a field can or can not contain underscores]
+	 * @return [type]       [description]
+	 */
+	public function array_mapper($fields){
+
+		//ticket_id
+		foreach ($fields as $field) {
+
+			# if $field contans an underscore, split by the underscore
+			if($field)
+		}
+	}
 }
