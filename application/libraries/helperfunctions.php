@@ -78,7 +78,7 @@ class HelperFunction extends Eloquent{
 		foreach ($fields as $field) {
 
 			# if $field contans an underscore, split by the underscore
-			if($field)
+			//if($field)
 		}
 	}
 }
