@@ -1,10 +1,11 @@
 body {
 	padding-top: 40px;
-	background: whiteSmoke;
-	font-size: 13px;
+	background: #f2f2f2;
+	font-size: 12px !important;
+	font-family:  "Lucida Sans Unicode", "Lucida Grande", "tahoma", Verdana, sans-serif !important; 
 	/*padding-bottom: 40px;*/
 	/*background-color: #C6BEA6;
-	background: url("../img/custom/fabric_plaid.png");
+	background: url("../img/custom/bg_body.jpg");
 	background-repeat: repeat repeat;*/
 }
 
@@ -52,6 +53,7 @@ a {
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
+	border-right: 0px;
 }
 
 .sidebar-nav .accordion-inner {
@@ -61,6 +63,30 @@ a {
 }
 .sidebar-nav .accordion-inner .badge{ 
 	margin-right: 5px;
+}
+
+.sidebar-nav .active_header {
+	background: #206BA7 !important;
+	-webkit-background-clip: border-box !important;
+	background-clip: border-box !important;
+	zoom: 1;
+	-webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	-moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	-ms-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	-o-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
+
+}
+
+.sidebar-nav .active_header a{ 
+	color : white;
+}
+
+
+.ticket_badges .badge {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 10px;	
 }
 .sidebar-nav .accordion-inner ul{
 	margin-bottom: 0px;
@@ -74,6 +100,12 @@ a {
 .sidebar-nav .accordion-inner li i{ 
 	margin-right: 10px;
 }
+
+.sidebar-nav .nav_selected_item {
+	background: white;
+}
+
+
 #main_pane {
 	/*width: 100%;*/
 	background: white;
@@ -99,11 +131,12 @@ a {
 }
 
 .my-table th, .my-table td{
-	font-size: 13px;
+	font-size: 12px;
+	line-height: 13px;
 }
 
 .modal-header {
-	background: whiteSmoke;
+	background: #f2f2f2;
 }
 footer {
 	text-align: center;
@@ -176,6 +209,35 @@ footer p {
 
 .project_item_group .action , .my-table .action{
 	width: 10px;
+}
+
+#tickets_form .title_field, #tickets_form .message_field {
+	width :97%;
+}
+#tickets_form .ticket_combo {
+	width: 130px;
+	margin-right: 24px;
+}
+
+.project_ticket_control {
+	margin-bottom: 4px;
+}
+.project_ticket_control label {
+	display: inline;
+	font-size: 15px;
+}
+
+.project_ticket_control select {
+	margin-bottom: 0px;
+}
+
+.my_clear {
+	clear : both;
+	overflow: hidden;
+}
+
+label, input, button, select, textarea { 
+	font-size: 12px;
 }
 
 

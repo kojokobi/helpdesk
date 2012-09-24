@@ -1,8 +1,8 @@
 <?php echo View::make("common.header"); ?>
     <?php echo View::make("common.topmenu"); ?>
     <div class="container-fluid">
-      <div class="row-fluid">
-      <?php echo View::make("common.navigation"); ?>
+      <div class="row-fluid"> 
+     <?php echo View::make("common.navigation")->with("page","admin"); ?>
         <div class="span10" id="main_pane">
           <?php echo View::make("admin.main"); ?>
         </div><!--/span-->
