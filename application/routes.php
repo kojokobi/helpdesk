@@ -70,6 +70,27 @@ Route::put('projectgroups',array('uses' => 'home@update_project_group'));
 Route::get('projectgroups',array('uses' => 'home@project_groups'));
 Route::delete('projectgroups',array('uses' => 'home@project_group'));
 /*
+ *Ticket Statuses
+ */
+Route::post('ticketstatus',array('uses'=>'home@create_ticket_type'));
+Route::put('ticketstatus',array('uses'=>'home@update_ticket_type'));
+Route::delete('ticketstatus',array('uses'=>'home@ticket_type'));
+Route::get('ticketstatus',array('uses'=>'home@ticket_types'));
+/*
+ *Priority routes
+ */
+Route::post('priorities',array('uses'=>'home@create_priority'));
+Route::put('priorities',array('uses'=>'home@update_priority'));
+Route::delete('priorities',array('uses'=>'home@priority'));
+Route::get('priorities',array('uses'=>'home@priorities'));
+/*
+ *Ticket Types
+ */
+Route::post('tickettypes',array('uses'=>'home@create_ticket_type'));
+Route::put('tickettypes',array('uses'=>'home@ticket_type'));
+Route::delete('tickettypes',array('uses'=>'home@ticket_type'));
+Route::get('tickettypes',array('uses'=>'home@ticket_types'));
+/*
  *Tickets routes
  */
 Route::post('tickets',array('uses'=>'home@create_ticket'));

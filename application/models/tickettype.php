@@ -3,52 +3,30 @@
 class TicketType extends Eloquent{
 	
 	
-	public static function create_ticket_type($ticket){
+	public static function create_ticket_type($ticket_type){
 
-			$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
+			$grp_array = DataHelper::create_audit_entries(Auth::user()->id);
+            $grp_array['name'] = $ticket_type->name;
+            $grp_array['description'] = $ticket_type->description;
 
-            
-
-			$id = DB::table('ticketTypes')->insert_get_id(
-					$arrayName = array(
-
-							'name' 			=>	$ticketType['name'],
-							'description'	=>  $ticketType['description'],
-							'createdDate' 	=>  $createdDate,
-							'lastUpdateDate'=>  $lastUpdatedDate,
-							'createdBy'		=>	$ticketType['createdBy'],
-							'lastUpdateBy'	=>	$ticketType['lastUpdateBy']
-						)
-				);
-			
-		$data = HelperFunction::return_json_data($id,true,'record loaded');
-		return $data;
+            $inserted_record = DataHelper::insert_record('ticket_types',$grp_array);
+            return $inserted_record;
 	}
-	public static function update_ticket_type($ticket){
+	public static function update_ticket_type($ticket_type){
 
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$update = DB::table('ticketTypes')
-						->where('id','=',$ticketType['id'])
-						->update($arrayName = array(
+			$grp_array = DataHelper::update_audit_entries(Auth::user()->id);
+            $grp_array['name'] = $ticket_type->name;
+            $grp_array['description'] = $ticket_type->description;
 
-							'id' 			 =>	$ticketType['id'],
-							'name' 			 =>	$ticketType['name'],
-							'description'	 => $ticketType['description'],
-							'lastUpdateDate' => $lastUpdatedDate,
-							'lastUpdateBy'	 =>	$ticketType['lastUpdateBy']
-
-							)
-						);
-			$data = HelperFunction::return_json_data($update,true,'record loaded');
-			return $data;
+            $inserted_record = DataHelper::update_record('ticket_types',$grp_array);
+            return $inserted_record;
 	}
-	public static function delete_ticket_type($ticket){
+	public static function delete_ticket_type($ticketTypeId){
 
 		DB::table('ticketTypes')->delete($ticketTypeId);
 
 	}
-	public static function get_ticket_type($obj = null){
+	public static function get_ticket_types($obj = null){
 
 		$selectQuery = DB::table('ticketTypes')
 
@@ -57,7 +35,7 @@ class TicketType extends Eloquent{
 						$query = HelperFunction::filter_data($query,'name',$obj,'string');
 				});
 					
-		$data = HelperFunction::return_json_data($selectQuery->get(),true,'record loaded',$selectQuery->count());
+		$data = DataHelper::return_json_data($selectQuery->get(),true,'record loaded',$selectQuery->count());
 		return $data;
 	}
 }

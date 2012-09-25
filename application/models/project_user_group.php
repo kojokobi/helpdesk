@@ -28,19 +28,23 @@ class ProjectUserGroup extends Eloquent{
 	public static function get_project_user_groups($obj){
 
 		$filter_array = array();
+		var_dump($obj);
+		if(!is_object($obj))
+			$filter_array['user_id'] = Auth::user()->id;
 		if(array_key_exists("projectId", $obj))
 			$filter_array['project_id'] = $obj['projectId'];
 		if(array_key_exists("userId", $obj))
 			$filter_array['user_id'] = $obj['userId'];
 
-		// $selectQuery = DB::query('select u.first_name,u.last_name,pg.name,pg.project_id,pug.project_group_id
-		// 							from users u,project_groups pg,project_user_groups pug
-		// 								where u.id = pug.user_id and pg.id = pug.project_group_id');
-											//and pg.project_id = ?',array(2));
+		// $selectQuery = DB::query('select u.first_name,u.last_name,pg.name,pg.project_id,pug.project_group_id,p.name as projectname
+		// 							from users u,project_groups pg,project_user_groups pug,projects p
+		// 								where u.id = pug.user_id and pg.id = pug.project_group_id and p.id = pg.project_id
+		// 									and u.id = ?',array(13));
 
 		$selectQuery = DB::table('project_user_groups')
 				->join('users','project_user_groups.user_id','=','users.id')
 				->join('project_groups','project_user_groups.project_group_id','=','project_groups.id')
+				->join('projects','projects.id','=','project_groups.project_id')
 				->where(function($query) use ($filter_array){
 
 						$query = HelperFunction::filter_data($query,'project_id',$filter_array,'int');
@@ -52,8 +56,8 @@ class ProjectUserGroup extends Eloquent{
 
 						array(
 							'project_user_groups.project_group_id','project_groups.name as name','project_user_groups.user_id','first_name',
-								'users.first_name','users.last_name','project_user_groups.created_at','project_groups.project_id'
-
+								'users.first_name','users.last_name','project_user_groups.created_at','project_groups.project_id',
+									'projects.name as projectname'
 							)
 					);
 				
@@ -61,7 +65,7 @@ class ProjectUserGroup extends Eloquent{
 
 					$array['projectGroupId'] = $data->project_group_id;
 					$array['groupName'] 	 = $data->name;
-					$array['projectName']	 = $data->name;
+					$array['projectName']	 = $data->projectname;
 					$array['name']	 		 = $data->first_name . ' ' . $data->last_name;
 					$array['userId']		 = $data->user_id;
 					$array['firstName']		 = $data->first_name;
@@ -72,6 +76,7 @@ class ProjectUserGroup extends Eloquent{
 					return $array;
 				},$result_set);
 		//$out
+		//return DataHelper::return_json_data($selectQuery,true,'record loaded',0);
 		return DataHelper::return_json_data($out,true,'record loaded',$total);
 		//return $data;
 	}
