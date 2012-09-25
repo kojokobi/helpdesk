@@ -71,7 +71,6 @@ Autoloader::map(array(
 	'ProjectGroup'		=>	path('app').'models/project_group.php',
 	'ProjectUserGroup'	=>	path('app').'models/project_user_group.php',
 	'DataHelper'		=>	path('app').'libraries/dbhelperfunctions.php',
-	'__'				=>	path('app').'libraries/underscore.php',
 	'Ticket'			=>	path('app').'models/tickets.php',
 
 	
