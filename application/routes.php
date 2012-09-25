@@ -83,34 +83,34 @@ Route::post('usergroups',array('uses'=>'home@create_project_user_group'));
 Route::put('usergroups',array('uses'=>'home@update_project_user_group'));
 Route::delete('usergroups',array('uses'=>'home@project_user_group'));
 Route::get('usergroups',array('uses'=>'home@project_user_groups'));
+
 /*
  *secutity routes
  */
-
-Route::get("en", function (){
-	echo "hello selasie";
-});
 Route::post('login',array('uses' => 'security@login'));
 Route::get("logout", array("uses" => "security@logout"));
+
 /*
- *Admin routes go here
+ *Applcation View routes go here
  */
 Route::get("admin", array("as"=> "admin", "uses"=> "admin@index"));
 Route::get("tickets", function (){
 	return View::make("tickets.index");
 });
 
+Route::get("dashboard", function (){
+	return View::make("dashboard.index");
+});
 Route::get("tickets_view",function (){
 	echo View::make("tickets.main"); 
 });
 
+//these view are submitted via ajax there do not need any aunthentication
 Route::get("single_ticket_view",function (){
 	echo View::make("tickets.single_ticket"); 
 });
 
-Route::get("dashboard", function (){
-	return View::make("dashboard.index");
-});
+
 
 Route::get('login', function()
 {

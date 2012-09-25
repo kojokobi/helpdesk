@@ -28,14 +28,21 @@ function TicketController ($scope){
 	];
 
 	$scope.userProjects = [];
-	
+
 	$scope.addTicket =  function (ticket){
 		console.log(ticket);
 		return false;
+	}
+
+	function getUserProjects () {
+
 	}
 
 	$scope.showForm = function (){
 		var ticketsForm = $("#tickets_form");
 		ticketsForm.modal();
 	}
+
+	console.log($scope.app);
+	console.log($("#currentUser").val());
 }
