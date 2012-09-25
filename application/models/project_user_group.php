@@ -43,7 +43,7 @@ class ProjectUserGroup extends Eloquent{
 				->join('project_groups','project_user_groups.project_group_id','=','project_groups.id')
 				->where(function($query) use ($filter_array){
 
-						$query = DataHelper::filter_data($query,'project_groups.project_id',$filter_array,'int');
+						$query = HelperFunction::filter_data($query,'project_id',$filter_array,'int');
 						$query = HelperFunction::filter_data($query,'user_id',$filter_array,'int');
 				})
 				->order_by('project_user_groups.created_at','desc');
@@ -56,7 +56,7 @@ class ProjectUserGroup extends Eloquent{
 
 							)
 					);
-				// //var_dump($result_set);
+				
 				$out = array_map(function($data){
 
 					$array['projectGroupId'] = $data->project_group_id;

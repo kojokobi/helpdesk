@@ -10,7 +10,7 @@ class Ticket {
 
 		$ticket_array['title'] = $ticket->title;
 		//$ticket_array['number'] = $ticket->number;
-		//tickets by default should ne opened
+		//tickets by default should be opened
 		//ticket number should be generated automatically on the server
 		//
 		
@@ -90,6 +90,10 @@ class Ticket {
 
 		return HelperFunction::return_json_data($out,true,'record loaded',$total);
 	};
+	public static function generate_id(){
+
+
+	}
 
 
 
