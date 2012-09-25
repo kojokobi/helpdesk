@@ -72,10 +72,10 @@ Route::delete('projectgroups',array('uses' => 'home@project_group'));
 /*
  *Ticket Statuses
  */
-Route::post('ticketstatus',array('uses'=>'home@create_ticket_type'));
-Route::put('ticketstatus',array('uses'=>'home@update_ticket_type'));
-Route::delete('ticketstatus',array('uses'=>'home@ticket_type'));
-Route::get('ticketstatus',array('uses'=>'home@ticket_types'));
+Route::post('ticketstatuses',array('uses'=>'home@ticket_status'));
+Route::put('ticketstatuses',array('uses'=>'home@ticket_status'));
+Route::delete('ticketstatuses',array('uses'=>'home@ticket_type'));
+Route::get('ticketstatuses',array('uses'=>'home@ticket_statuses'));
 /*
  *Priority routes
  */
