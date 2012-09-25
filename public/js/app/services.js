@@ -13,7 +13,7 @@ factory("User", function ($resource){
 		},
 	    update : {method : 'PUT'}
 	});
-}).factory("Group", function ($resource){
+}).factory("ProjectGroup", function ($resource){
 	return $resource('projectgroups/:id', {id : '@id'}, {
 	    query: {
 	    	method:'GET', params:{}, //isArray:true

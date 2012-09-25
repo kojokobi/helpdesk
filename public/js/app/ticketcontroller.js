@@ -11,12 +11,38 @@ function TicketController ($scope){
 		{id : 1, name : 'High'}
 	];
 
+	$scope.tickets = [
+		{
+			id : 1,
+			status : "open",
+			title : "A very big problem",
+			assignedTo : 'Kofi Poku',
+			issuedDate : (new Date()).toDateString(),
+			priority : "High"
+		},
+
+	];
+
 	$scope.projectUsers = [
 		{id : 1, name : "Kojo Kumah"}
 	];
 
+	$scope.userProjects = [];
 
 	$scope.addTicket =  function (ticket){
 		console.log(ticket);
+		return false;
 	}
+
+	function getUserProjects () {
+
+	}
+
+	$scope.showForm = function (){
+		var ticketsForm = $("#tickets_form");
+		ticketsForm.modal();
+	}
+
+	console.log($scope.app);
+	console.log($("#currentUser").val());
 }

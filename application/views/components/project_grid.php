@@ -9,7 +9,7 @@
   <table  class='table table-striped table-bordered my-table'>
       <thead>
         <tr>
-          <!-- <th>#</th> -->
+          <th class="grid_action1">#</th>
           <th>Title</th>
           <th>Description</th>
           <th>Date Created</th>
@@ -22,6 +22,7 @@
         </tr> -->
 
         <tr ng-repeat="project in projects">
+            <td> {{ $index + 1}}</td>
             <td> {{project.name}} </td>
             <td> {{project.description }} </td>
             <td> {{project.createdAt}} </td>
