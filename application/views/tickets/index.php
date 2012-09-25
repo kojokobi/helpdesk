@@ -4,8 +4,6 @@
       <div class="row-fluid">
       <?php echo View::make("common.navigation")->with("page","tickets"); ?>
         <div class="" id="main_pane">
-
-
           <div class="inner span12">
              <!-- <div class="frame"> -->
                 <ng-view>
