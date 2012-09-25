@@ -163,29 +163,22 @@ class Home_Controller extends Base_Controller {
 		return Response::json(ProjectUserGroup::get_project_user_groups(Input::all()));
 	}
 
-	//ticketStatus Actions
-	public function post_ticketstatus(){
-		$clientdata = Input::all();
-		$ticketStatusArray = array(
-				   'name' 			=> $clientdata['name'],
-				   'description' 	=> $clientdata['description'],
-				   'createdBy'		=> HelperFunction::get_user_id(),
-				   'lastUpdateBy'	=> HelperFunction::get_user_id()
-		);
-
-		return  Response::json(ticketStatus::create_ticket_status($roleArray));
+	//ticketStatus
+	public function post_ticket_status(){
+		
+		return Response::json(TicketStatus::create_ticket_status(Input::json()));
 	}
-	public function put_ticketstatus(){
+	public function put_ticket_status(){
 
 		$client_data = Input::json();
 		return Response::json(TicketStatus::create_project($client_data));
 		
 	}
-	public function delete_ticketstatus(){
-		return Reponse::json(ticketStatus::delete_ticket_status(Input::get('id')));
+	public function delete_ticket_status(){
+		return Reponse::json(TicketStatus::delete_ticket_status(Input::get('id')));
 	}
 	public function get_ticketstatus(){
-		return Response::json(ticketStatus::get_ticket_status(Input::all()));
+		return Response::json(TicketStatus::get_ticket_status(Input::all()));
 	}
 
 	public function post_tickettype(){
@@ -219,7 +212,7 @@ class Home_Controller extends Base_Controller {
 	public function get_tickettypes(){
 		return Response::json(tickettype::get_ticket_type(Input::all()));
 	}
-
+	//Tickets
 	public function post_tickets(){
 
 		return  Response::json(Ticket::create_ticket(Input::json()));
@@ -234,6 +227,36 @@ class Home_Controller extends Base_Controller {
 	}
 	public function get_tickets(){
 		return Response::json(Ticket::get_ticket_type(Input::all()));
+	}
+	//Tickets Types
+	public function post_ticket_type(){
+
+		return  Response::json(Ticket::create_ticket_type(Input::json()));
+	}
+	public function put_ticket_type(){
+		
+		return Response::json(TicketType::update_ticket_type(Input::json()));
+	}
+	public function delete_ticket_type(){
+		return Reponse::json(TicketType::delete_ticket_type(Input::get('id')));
+	}
+	public function get_ticket_types(){
+		return Response::json(TicketType::get_ticket_types(Input::all()));
+	}
+	//Priorities actions
+	public function post_create_priority(){
+
+		return  Response::json(Priority::create_priority(Input::json()));
+	}
+	public function put_update_priority(){
+		
+		return Response::json(Priority::update_priority(Input::json()));
+	}
+	public function delete_priority(){
+		return Reponse::json(Priority::delete_priority(Input::get('id')));
+	}
+	public function get_priorities(){
+		return Response::json(Priority::get_priorities(Input::all()));
 	}
 	
 	public static function get_number(){
