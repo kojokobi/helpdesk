@@ -61,6 +61,7 @@ class ProjectUserGroup extends Eloquent{
 
 					$array['projectGroupId'] = $data->project_group_id;
 					$array['groupName'] 	 = $data->name;
+					$array['projectName']	 = $data->name;
 					$array['name']	 		 = $data->first_name . ' ' . $data->last_name;
 					$array['userId']		 = $data->user_id;
 					$array['firstName']		 = $data->first_name;

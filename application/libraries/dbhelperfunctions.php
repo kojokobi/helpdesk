@@ -28,6 +28,51 @@ class DataHelper extends Eloquent {
 
 		return DataHelper::return_json_data(array(),false,$e);
 	}
+}
+public static function insert_get_id($table_name,$insert_parameters_array){
+
+		try{
+
+		$id = DB::table($table_name)->insert_get_id(
+				$inserted_record = $insert_parameters_array
+			);
+
+		return $id;
+		
+	}catch(Exception $e){
+
+		return 0;
+	}
+}
+	
+	public static function insert_and_update($table_name,$insert_parameters_array,$key,$operator,$update_field,$value){
+
+		try{
+
+		$id = DB::table($table_name)->insert_get_id(
+				$inserted_record = $insert_parameters_array
+			);
+
+		if($id > 0){
+			$inserted_record['id'] = $id;
+			$id = DB::table($table_name)
+					->where($key,$operator,$id)
+					->update(
+
+							$update_array = array($update_field => $value . $inserted_record['id'])
+					);
+			$inserted_record[$update_field] = $value . $inserted_record['id'];
+		}
+		else
+			return DataHelper::return_json_data(array(),true,HelperFunction::success_save_message());	
+
+		 $data_to_return  = DataHelper::return_json_data($inserted_record,true,HelperFunction::success_save_message());	
+		 return $data_to_return;
+		
+	}catch(Exception $e){
+
+		return DataHelper::return_json_data(array(),false,$e);
+	}
 
 }
 	/**

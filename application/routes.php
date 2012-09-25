@@ -70,6 +70,13 @@ Route::put('projectgroups',array('uses' => 'home@update_project_group'));
 Route::get('projectgroups',array('uses' => 'home@project_groups'));
 Route::delete('projectgroups',array('uses' => 'home@project_group'));
 /*
+ *Tickets routes
+ */
+Route::post('tickets',array('uses'=>'home@create_ticket'));
+Route::put('tickets',array('uses'=>'home@update_ticket'));
+Route::delete('tickets',array('uses'=>'home@ticket'));
+Route::get('tickets',array('uses'=>'home@tickets'));
+/*
  *Project User Groups routes
  */
 Route::post('usergroups',array('uses'=>'home@create_project_user_group'));
@@ -110,6 +117,7 @@ Route::get('login', function()
 	
 	return View::make('login.index');
 });
+Route::get('number',array('uses' => 'home@number'));
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
