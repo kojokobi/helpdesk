@@ -23,12 +23,12 @@ class TicketType extends Eloquent{
 	}
 	public static function delete_ticket_type($ticketTypeId){
 
-		DB::table('ticketTypes')->delete($ticketTypeId);
+		DB::table('ticket_types')->delete($ticketTypeId);
 
 	}
 	public static function get_ticket_types($obj = null){
 
-		$selectQuery = DB::table('ticketTypes')
+		$selectQuery = DB::table('ticket_types')
 
 					->where(function($query) use ($obj){
 						$query = HelperFunction::filter_data($query,'id',$obj,'int');

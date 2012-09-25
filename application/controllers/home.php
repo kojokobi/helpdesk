@@ -171,14 +171,14 @@ class Home_Controller extends Base_Controller {
 	public function put_ticket_status(){
 
 		$client_data = Input::json();
-		return Response::json(TicketStatus::create_project($client_data));
+		return Response::json(TicketStatus::update_ticket_status($client_data));
 		
 	}
 	public function delete_ticket_status(){
 		return Reponse::json(TicketStatus::delete_ticket_status(Input::get('id')));
 	}
-	public function get_ticketstatus(){
-		return Response::json(TicketStatus::get_ticket_status(Input::all()));
+	public function get_ticket_statuses(){
+		return Response::json(TicketStatus::get_ticket_statuses(Input::all()));
 	}
 
 	public function post_tickettype(){
