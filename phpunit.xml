@@ -1,0 +1,9 @@
+<phpunit colors="true"
+         bootstrap="C:\xampp\htdocs\helpdesk\laravel\cli\tasks\test\phpunit.php"
+         backupGlobals="false">
+	<testsuites>
+		<testsuite name="Test Suite">
+			<directory suffix=".test.php">C:\xampp\htdocs\helpdesk\application\tests</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

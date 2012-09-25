@@ -85,8 +85,6 @@ class ProjectGroup extends Eloquent{
 		},$result_set);
 
 		return HelperFunction::return_json_data($out,true,'record loaded',$total);
-
-		//$data = HelperFunction::return_json_data($selectQuery->get(),true,'record loaded',$selectQuery->count());
-		//return $data;
+		
 	}
 }
