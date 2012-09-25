@@ -65,7 +65,7 @@ class Ticket {
 		$selectQuery = DB::table('tickets')
 				->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
 				->join('priorities','priority_id','=','priority_id')
-				->join('users','assigned_to','=','users_id')
+				->join('users','assigned_to','=','users.id')
 				->where(function($query) use ($new_filter_array){
 
 
@@ -81,8 +81,10 @@ class Ticket {
 		$result_set = $selectQuery->get(
 
 			array(
-					'tickets.id as id','number','ticket_statuses.ticket_status_id','ticket_statuses.name','priority_id','priorities.name','ticket_type_id',
-							'ticket_types.name',
+					'tickets.id as id','number','ticket_statuses.id','ticket_statuses.name','priority_id','priorities.name','title',
+						'tickets.created_at'
+
+							
 						)
 		);
 		//var_dump($selectQuery);
@@ -90,10 +92,9 @@ class Ticket {
 
 			$arr = array();
 			$arr['id'] 			= $data->id;
-			$arr['name']		= $data->project_group_name;
-			$arr['projectId']	= $data->project_id;
-			$arr['projectName']	= $data->project_name;
-			$arr['description']	= $data->description;
+			$arr['title']		= $data->title;
+			$arr['number']		= $data->number;
+			//$arr['description']	= $data->description;
 			$arr['createdAt']	= $data->created_at;
 			
 

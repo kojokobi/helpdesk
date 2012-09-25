@@ -213,7 +213,7 @@ class Home_Controller extends Base_Controller {
 		return Response::json(tickettype::get_ticket_type(Input::all()));
 	}
 	//Tickets
-	public function post_tickets(){
+	public function post_ticket(){
 
 		return  Response::json(Ticket::create_ticket(Input::json()));
 	}
@@ -226,7 +226,7 @@ class Home_Controller extends Base_Controller {
 		return Reponse::json(Ticket::delete_ticket_type(Input::get('id')));
 	}
 	public function get_tickets(){
-		return Response::json(Ticket::get_ticket_type(Input::all()));
+		return Response::json(Ticket::get_tickets(Input::all()));
 	}
 	//Tickets Types
 	public function post_ticket_type(){
