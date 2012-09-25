@@ -12,14 +12,6 @@ function TicketController ($scope, $http, Ticket, MSG){
 	];
 
 	$scope.tickets = [
-		{
-			id : 1,
-			status : "open",
-			title : "A very big problem",
-			assignedTo : 'Kofi Poku',
-			issuedDate : (new Date()).toDateString(),
-			priority : "High"
-		},
 
 	];
 
@@ -27,9 +19,20 @@ function TicketController ($scope, $http, Ticket, MSG){
 		{id : 1, name : "Kojo Kumah"}
 	];
 
-	$scope._currentProjectId = 1;
+	//$scope._currentProjectId = 1;
 	$scope.userProjects = [];
 
+	function getProirities(){
+
+	}
+
+	function getTicketTypes (){
+
+	}
+
+	function getProjectUsers() {
+		
+	}
 	
 	$scope.addTicket =  function (newTicket){
 		var ticket = new Ticket(newTicket);
@@ -56,17 +59,16 @@ function TicketController ($scope, $http, Ticket, MSG){
 		$scope.newTicket = {};
 		var ticketsForm = $("#tickets_form");
 		ticketsForm.modal();
-		$scope.newTicket.projectId = $scope._currentProjectId;
+		$scope.newTicket.projectId = $scope.currentProjectId;
 	}
 
-	$scope.$watch("currentProjectId",function (newValue){
-		alert("");
-		loadTickets()
-	})
+	
 
-	var loadTickets = function (){
-		MSG.show("Loading New tickets")
-		
+	$scope.loadTickets = function (){
+		Ticket.query(
+			{ projectId: $scope.currentProjectId},function (res){
+			$scope.tickets = res.data;
+		});	
 	}
 
 
