@@ -93,6 +93,14 @@ Route::get("tickets", function (){
 	return View::make("tickets.index");
 });
 
+Route::get("tickets_view",function (){
+	echo View::make("tickets.main"); 
+});
+
+Route::get("single_ticket_view",function (){
+	echo View::make("tickets.single_ticket"); 
+});
+
 Route::get("dashboard", function (){
 	return View::make("dashboard.index");
 });

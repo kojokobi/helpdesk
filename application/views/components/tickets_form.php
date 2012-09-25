@@ -45,7 +45,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-success" ng-click="addTicket(newTicket)"><i class='icon-white icon-tags'></i> Create Ticket </a>
+        <a href="#add_tickets" class="btn btn-success" ng-click="addTicket(newTicket)"><i class='icon-white icon-tags'></i> Create Ticket </a>
         <a href="#" class="btn"><i class='icon icon-ban-circle'></i> Cancel</a>
       </div>
     </div>

@@ -11,6 +11,18 @@ function TicketController ($scope){
 		{id : 1, name : 'High'}
 	];
 
+	$scope.tickets = [
+		{
+			id : 1,
+			status : "open",
+			title : "A very big problem",
+			assignedTo : 'Kofi Poku',
+			issuedDate : (new Date()).toDateString(),
+			priority : "High"
+		},
+
+	];
+
 	$scope.projectUsers = [
 		{id : 1, name : "Kojo Kumah"}
 	];
@@ -18,5 +30,6 @@ function TicketController ($scope){
 
 	$scope.addTicket =  function (ticket){
 		console.log(ticket);
+		return false;
 	}
 }

@@ -45,7 +45,10 @@ function ProjectController ($scope,$http,Project,Group,UserGroup,User,MSG) {
 	}
 
 	function getUsers(){
-		User.query(function (res){
+		// User.query(function (res){
+		// 	$scope.users = res.data;
+		// });
+		User.query().then(function (res){
 			$scope.users = res.data;
 		});
 	}

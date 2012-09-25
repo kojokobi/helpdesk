@@ -3,8 +3,10 @@
     <div class="container-fluid">
       <div class="row-fluid"> 
      <?php echo View::make("common.navigation")->with("page","admin"); ?>
-        <div class="span10" id="main_pane">
-          <?php echo View::make("admin.main"); ?>
+        <div class="row-fluid" id="main_pane">
+          <div class="inner span12">
+            <?php echo View::make("admin.main"); ?>
+          </div>
         </div><!--/span-->
         
         <!-- <footer>

@@ -13,16 +13,27 @@
 		</legend>
 	</fieldset>
 	<div>
-		<table class='table table-bordered table-striped my-table'>
+		<table class='table table-bordered table-striped my-table ticket_table'>
 			<thead>
 				<tr>
-					<th>#</th>
-					<th>Status</th>
-					<th>Title</th>
-					<th>Description</th>
-					<th></th>
+					<th class="grid_action1">#</th>
+					<th class="ticket_status">Status</th>
+					<th class="ticket_title">Title</th>
+					<th class="ticket_assigned_to">Assigned To</th>
+					<th class="ticket_date">Date Issued</th>
+					<th class="ticket_priority">Priority</th>
 				</tr>
 			</thead>
+			<tbody>
+				<tr ng-repeat="ticket in tickets">
+					<td> {{$index +1}} </td>
+					<td> {{ticket.status}} </td>
+					<td> <a href="#ticket/{{ticket.id}}"> {{ticket.title}}  </td>
+					<td> {{ticket.assignedTo}} </a>  </td>
+					<td> {{ticket.issuedDate}} </td>
+					<td> {{ticket.priority}} </td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 	

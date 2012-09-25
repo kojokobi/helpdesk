@@ -44,6 +44,7 @@
       <table class='table table-striped table-bordered my-table user_group_table'>
         <thead>
           <tr>
+            <th class="grid_action1"></th>
             <th>User</th>
             <th>Group</th>
             <th class="action"></th>
@@ -51,6 +52,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="prus in projectUsers">
+            <td> {{$index + 1}} </td>
             <td> {{ prus.name }}</td>
             <td> {{ prus.group }} </td>
             <td> <a href="#"> <i class='icon icon-remove'></i></a> </td>

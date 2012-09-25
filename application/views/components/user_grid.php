@@ -10,7 +10,7 @@
             <table class='table table-striped table-bordered my-table'>
                 <thead>
                   <tr>
-                    <!-- <th>#</th> -->
+                    <th class="grid_action1">#</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Username</th>
@@ -23,6 +23,7 @@
                     <td colspan='100'>No Users created.</td>
                   </tr> -->
                   <tr ng-repeat="user in users">
+                    <td> {{$index + 1}} </td>
                     <td> {{user.firstName}} </td>
                     <td> {{user.lastName}} </td>
                     <td> {{user.userName}} </td>

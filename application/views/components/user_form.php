@@ -49,7 +49,8 @@
                 <div class="controls">
                   <select id="roleId" ng-model="newUser.roleId" class='input-xlarge user_select' name="roleId"
                     ng-options='role.id as role.name for role in roles'
-                   ></select>
+                   >
+                 </select>
                 </div>
               </div>
             </form>
