@@ -1,45 +1,69 @@
-function TicketController ($scope, $http, Ticket, MSG){
-	$scope.ticketTypes = [
-		{id : 1 , name : "Bug"},
-		{id : 2 , name : "Problem"},
-		{id : 3 , name : "Question"},
-		{id : 4 , name : "Todo"}
-	];
+function TicketController ($scope, $http, Ticket, MSG, UserGroup){
+	/**
+	 * reference to the ticket form
+	 * @type {[type]}
+	 */
+	var ticketsForm = $("#tickets_form");
 
-	$scope.priorityTypes = [
-		{id : 1, name : 'Low'},
-		{id : 1, name : 'High'}
-	];
+	/**
+	 * ticket Types
+	 * @type {Array}
+	 */
+	$scope.ticketTypes = [];
 
-	$scope.tickets = [
+	/**
+	 * ticket priorities
+	 * @type {Array}
+	 */
+	$scope.priorityTypes = [];
 
-	];
+	/**
+	 * ticket for a particular project
+	 * @type {Array}
+	 */
+	$scope.tickets = [];
 
-	$scope.projectUsers = [
-		{id : 1, name : "Kojo Kumah"}
-	];
+	/**
+	 * All users in  the current project
+	 * @type {Array}
+	 */
+	$scope.projectUsers = [];
 
-	//$scope._currentProjectId = 1;
+	/**
+	 * refers to all the projets that the user belongs to
+	 * @type {Array}
+	 */
 	$scope.userProjects = [];
 
 	function getProirities(){
-
+		$http.get("priorities").then(function (res){
+			$scope.priorityTypes = res.data.data;
+		});
 	}
 
 	function getTicketTypes (){
-
+		$http.get("tickettypes").then(function (res){
+			$scope.ticketTypes = res.data.data;
+		});
 	}
 
-	function getProjectUsers() {
-		
+	function getProjectUsers(id) {
+		UserGroup.query({projectId : id }, function (res){
+			$scope.projectUsers =  res.data;
+		});
 	}
 	
+	/**
+	 * create a new ticket
+	 * @param {object} newTicket the content of th new ticket to be created
+	 */
 	$scope.addTicket =  function (newTicket){
 		var ticket = new Ticket(newTicket);
 		ticket.$save(function (res){
 			if(res.success){
 				var msg = res.message || "Ticket saved succefully"; 
 				MSG.show(msg,"success");
+				getTickets();
 			} else {
 				var msg = res.message || "Sorry errors were ecountered"; 
 				MSG.show(msg); 
@@ -47,6 +71,7 @@ function TicketController ($scope, $http, Ticket, MSG){
 		});
 	}
 
+	
 	function getUserProjects () {
 		$http.get("usergroups").then(function (res){
 			$scope.userProjects = res.data.data;
@@ -55,20 +80,42 @@ function TicketController ($scope, $http, Ticket, MSG){
 
 	getUserProjects();
 
+	/**
+	 * Makes a few ajax call to populate dropdown and loads data as well
+	 * @return {void} 
+	 */
 	$scope.showForm = function (){
+		//todo: set the first project to the first item in the projects list
+		getTicketTypes();
+		getProirities();
+		if(!$scope.currentProjectId){
+			MSG.show("Please Select a Project first.");
+			return;
+		}
 		$scope.newTicket = {};
-		var ticketsForm = $("#tickets_form");
+		
 		ticketsForm.modal();
 		$scope.newTicket.projectId = $scope.currentProjectId;
+		
+		getProjectUsers($scope.currentProjectId);
 	}
 
 	
 
 	$scope.loadTickets = function (){
+		getTickets();		
+	}
+
+	/**
+	 * Retrieves all ticket for a particular project. Default is ie the current project
+	 * @return {[type]} [description]
+	 */
+	var getTickets =  function (id) {
+		var _id = id || $scope.currentProjectId;
 		Ticket.query(
 			{ projectId: $scope.currentProjectId},function (res){
 			$scope.tickets = res.data;
-		});	
+		});
 	}
 
 

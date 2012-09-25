@@ -37,7 +37,7 @@
               <div class="pull-right">
                   <label>Who is Responsible?:</label>
                   <div>
-                   <select ng-model="newTicket.assignedId" ng-options='user.id as user.name for user in projectUsers'>
+                   <select ng-model="newTicket.assignedId" ng-options='user.userId as user.name for user in projectUsers'>
 
                 </select>
                 </div>
