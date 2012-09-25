@@ -4,7 +4,7 @@
 			Tickets
 			<div  class='project_ticket_control pull-right'> 
 				<label>Project:</label>
-				<select ng-model="currentProjectId" ng-options="userProject.projectId as userProject.projectName for userProject in userProjects"></select>
+				<select ng-change="loadTickets()" ng-model="currentProjectId" ng-options="userProject.projectId as userProject.projectName for userProject in userProjects"></select>
 				<a class="btn btn-info" ng-click="showForm()"> 
 					<i class="icon-white icon-tags"></i> Add Ticket</a>
 			</div>

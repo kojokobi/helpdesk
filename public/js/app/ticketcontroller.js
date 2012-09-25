@@ -1,4 +1,4 @@
-function TicketController ($scope, $http, Ticket){
+function TicketController ($scope, $http, Ticket, MSG){
 	$scope.ticketTypes = [
 		{id : 1 , name : "Bug"},
 		{id : 2 , name : "Problem"},
@@ -57,6 +57,16 @@ function TicketController ($scope, $http, Ticket){
 		var ticketsForm = $("#tickets_form");
 		ticketsForm.modal();
 		$scope.newTicket.projectId = $scope._currentProjectId;
+	}
+
+	$scope.$watch("currentProjectId",function (newValue){
+		alert("");
+		loadTickets()
+	})
+
+	var loadTickets = function (){
+		MSG.show("Loading New tickets")
+		
 	}
 
 
