@@ -1,4 +1,4 @@
-function TicketController ($scope){
+function TicketController ($scope, $http, Ticket){
 	$scope.ticketTypes = [
 		{id : 1 , name : "Bug"},
 		{id : 2 , name : "Problem"},
@@ -27,22 +27,37 @@ function TicketController ($scope){
 		{id : 1, name : "Kojo Kumah"}
 	];
 
+	$scope._currentProjectId = 1;
 	$scope.userProjects = [];
 
-	$scope.addTicket =  function (ticket){
-		console.log(ticket);
-		return false;
+	
+	$scope.addTicket =  function (newTicket){
+		var ticket = new Ticket(newTicket);
+		ticket.$save(function (res){
+			if(res.success){
+				var msg = res.message || "Ticket saved succefully"; 
+				MSG.show(msg,"success");
+			} else {
+				var msg = res.message || "Sorry errors were ecountered"; 
+				MSG.show(msg); 
+			}
+		});
 	}
 
 	function getUserProjects () {
-
+		$http.get("usergroups").then(function (res){
+			$scope.userProjects = res.data.data;
+		})
 	}
+
+	getUserProjects();
 
 	$scope.showForm = function (){
+		$scope.newTicket = {};
 		var ticketsForm = $("#tickets_form");
 		ticketsForm.modal();
+		$scope.newTicket.projectId = $scope._currentProjectId;
 	}
 
-	console.log($scope.app);
-	console.log($("#currentUser").val());
+
 }

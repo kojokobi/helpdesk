@@ -6,6 +6,7 @@
       </div>
       <div class="modal-body">
         <form class="form-vertical">
+          <input type="hidden" ng-model="newTicket.projectId">
           <div class="control-group">
             <label class="control-label" for="title">Title:</label>
             <div class="controls">
@@ -47,7 +48,7 @@
       <div class="modal-footer">
         <!-- <a href="#add_tickets" class="btn btn-success" ng-click="addTicket(newTicket)"><i class='icon-white icon-tags'></i> Create Ticket </a> -->
         <button class="btn btn-success" ng-click="addTicket(newTicket)"><i class='icon-white icon-tags'></i> Create Ticket </button>
-        <a href="#" class="btn"><i class='icon icon-ban-circle'></i> Cancel</a>
+        <button class="btn"><i class='icon icon-ban-circle'></i> Cancel</button>
       </div>
     </div>
     <!-- END OF ADD TICKETS FORM -->

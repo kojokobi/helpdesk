@@ -93,19 +93,19 @@ Route::get("logout", array("uses" => "security@logout"));
 /*
  *Applcation View routes go here
  */
-Route::get("admin", array("as"=> "admin", "uses"=> "admin@index"));
-Route::get("tickets", function (){
+Route::get("admin_view", array("as"=> "admin", "uses"=> "admin@index"));
+Route::get("tickets_view", function (){
 	return View::make("tickets.index");
 });
 
-Route::get("dashboard", function (){
+Route::get("dashboard_view", function (){
 	return View::make("dashboard.index");
 });
-Route::get("tickets_view",function (){
+Route::get("tickets_main",function (){
 	echo View::make("tickets.main"); 
 });
 
-//these view are submitted via ajax there do not need any aunthentication
+//these view are submitted via ajax there do not need any aunthen
 Route::get("single_ticket_view",function (){
 	echo View::make("tickets.single_ticket"); 
 });

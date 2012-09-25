@@ -27,4 +27,11 @@ factory("User", function ($resource){
 		},
 	    update : {method : 'PUT'}
 	});
-});
+}).factory("Ticket", function ($resource){
+	return $resource('tickets/:id', {id : '@id'}, {
+	    query: {
+	    	method:'GET', params:{}, //isArray:true
+		},
+	    update : {method : 'PUT'}
+	});
+});;

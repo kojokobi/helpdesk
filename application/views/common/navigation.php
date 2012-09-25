@@ -26,7 +26,7 @@
           <div class="accordion-body <?php open_menu($page,"dashboard"); ?>" id="dashboardCollapse" >
             <div class="accordion-inner">
               <ul>
-                <li><a href="dashboard#">dashboard </a> </li>
+                <li><a href="dashboard_view#">dashboard </a> </li>
                 
               </ul>
             </div>
@@ -41,11 +41,11 @@
           <div class="accordion-body <?php open_menu($page,"tickets"); ?>" id="ticketsCollapse" >
             <div class="accordion-inner">
              <ul class="ticket_badges">
-                <li><a href="tickets#unassigned"> Unassigned tickets</a> <span class='badge pull-right'> 35 </span> </li>
-                <li><a href="tickets#assigned"> Assigned tickets</a> <span class='badge badge-info pull-right'> 30 </span> </li>
-                <li><a href="tickets#opened"> Open tickets </a> <span class='badge badge-warning pull-right'> 20 </span> </li>
-                <li><a href="tickets#closed"> Closed tickets</a> <span class='badge badge-success pull-right'> 15 </span> </li>
-                <li><a href="tickets#all"> All tickets</a> <span class='badge badge-info pull-right'> 100 </span> </li>
+                <li><a href="tickets_view#unassigned"> Unassigned tickets</a> <span class='badge pull-right'> 35 </span> </li>
+                <li><a href="tickets_view#assigned"> Assigned tickets</a> <span class='badge badge-info pull-right'> 30 </span> </li>
+                <li><a href="tickets_view#opened"> Open tickets </a> <span class='badge badge-warning pull-right'> 20 </span> </li>
+                <li><a href="tickets_view#closed"> Closed tickets</a> <span class='badge badge-success pull-right'> 15 </span> </li>
+                <li><a href="tickets_view#all"> All tickets</a> <span class='badge badge-info pull-right'> 100 </span> </li>
               </ul>
             </div>
           </div>
@@ -59,7 +59,7 @@
           <div class="accordion-body <?php open_menu($page,"admin"); ?>" id="adminCollapse" >
             <div class="accordion-inner">
               <ul>
-                <li class=''><a href="admin#">Management </a> </li>
+                <li class=''><a href="admin_view#">Management </a> </li>
                 
               </ul>
             </div>
