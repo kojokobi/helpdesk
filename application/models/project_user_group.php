@@ -28,7 +28,6 @@ class ProjectUserGroup extends Eloquent{
 	public static function get_project_user_groups($obj){
 
 		$filter_array = array();
-		var_dump($obj);
 		if(!is_object($obj))
 			$filter_array['user_id'] = Auth::user()->id;
 		if(array_key_exists("projectId", $obj))
