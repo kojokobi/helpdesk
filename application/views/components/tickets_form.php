@@ -9,13 +9,13 @@
           <div class="control-group">
             <label class="control-label" for="title">Title:</label>
             <div class="controls">
-              <input type="text" id="title" class='title_field' ng-model="newTicket.title">
+              <input type="text" id="ticket_title" class='title_field' ng-model="newTicket.title">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="message">Describe the Problem:</label>
             <div class="controls">
-              <textarea id="message" class='message_field' rows="6" ng-model="newTicket.message"></textarea>
+              <textarea id="ticket_message" class='message_field' rows="6" ng-model="newTicket.message"></textarea>
             </div>
           </div>
           <div class="controls my_clear">
@@ -45,7 +45,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="#add_tickets" class="btn btn-success" ng-click="addTicket(newTicket)"><i class='icon-white icon-tags'></i> Create Ticket </a>
+        <!-- <a href="#add_tickets" class="btn btn-success" ng-click="addTicket(newTicket)"><i class='icon-white icon-tags'></i> Create Ticket </a> -->
+        <button class="btn btn-success" ng-click="addTicket(newTicket)"><i class='icon-white icon-tags'></i> Create Ticket </button>
         <a href="#" class="btn"><i class='icon icon-ban-circle'></i> Cancel</a>
       </div>
     </div>

@@ -27,9 +27,15 @@ function TicketController ($scope){
 		{id : 1, name : "Kojo Kumah"}
 	];
 
-
+	$scope.userProjects = [];
+	
 	$scope.addTicket =  function (ticket){
 		console.log(ticket);
 		return false;
+	}
+
+	$scope.showForm = function (){
+		var ticketsForm = $("#tickets_form");
+		ticketsForm.modal();
 	}
 }

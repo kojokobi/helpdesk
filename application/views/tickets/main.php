@@ -6,7 +6,7 @@
 			<div  class='project_ticket_control pull-right'> 
 				
 				<label>Project:</label>
-				<select></select>
+				<select ng-options="userProject.id as userProject.name"></select>
 				<a href="#tickets_form" data-toggle="modal" class="btn btn-info"> 
 					<i class="icon-white icon-tags"></i> Add Ticket</a>
 			</div>

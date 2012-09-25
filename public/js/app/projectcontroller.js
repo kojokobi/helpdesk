@@ -1,9 +1,13 @@
-function ProjectController ($scope,$http,Project,Group,UserGroup,User,MSG) {
+function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG) {
 	$scope.formTitle = "Add Project";
 	$scope.projects = [];
 	$scope.userGroups = [];
+	$scope.projectGroups = [];
+
 	$scope.users = [];
 	$scope.projectUsers = [];
+
+	$scope._currentProjectId ;
 	/**
 	 * Gets all projects
 	 * @return void
@@ -45,16 +49,22 @@ function ProjectController ($scope,$http,Project,Group,UserGroup,User,MSG) {
 	}
 
 	function getUsers(){
-		// User.query(function (res){
-		// 	$scope.users = res.data;
-		// });
-		User.query().then(function (res){
+		User.query(function (res){
 			$scope.users = res.data;
 		});
+		// User.get().then(function (res){
+		// 	$scope.users = res.data;
+		// });
 	}
 
 	function getProjectGroups(id){
-		Group.query({projectId : id },function (res){
+		ProjectGroup.query({projectId : id },function (res){
+			$scope.projectGroups =  res.data;
+		});
+	}
+
+	function getUserGroups (id){
+		UserGroup.query({projectId : id }, function (res){
 			$scope.userGroups =  res.data;
 		});
 	}
@@ -73,17 +83,18 @@ function ProjectController ($scope,$http,Project,Group,UserGroup,User,MSG) {
 		$scope.currentProject.projectId = project.id;
 		getUsers();
 		getProjectGroups(project.id);
+		getUserGroups(project.id);
 	}
 
-	$scope.addGroup = function (currentProject){
-		var group =  new Group(angular.copy(currentProject));
+	$scope.addProjectGroup = function (currentProject){
+		var group =  new ProjectGroup(angular.copy(currentProject));
 		group["name"] = group["newGroup"];
 		group["description"] = "";
 		
 		//todo add description later
 		group.$save(function (res){
 			if (res.success){
-				var msg = res.message || "Group created"; 
+				var msg = res.message || "Project Group created"; 
 				MSG.show(msg,"success");
 				getProjectGroups(currentProject.projectId);
 			} else {
@@ -94,14 +105,20 @@ function ProjectController ($scope,$http,Project,Group,UserGroup,User,MSG) {
 	}
 
 	$scope.addUserToGroup =  function (userGroup){
+		console.log(userGroup)
 		var projectUserGroup = new UserGroup(userGroup);
+		$scope._currentProjectId = $scope.currentProject.projectId
 		projectUserGroup.$save(function (res){
 			if(res.success){
 				var msg = res.message || "User added to group created"; 
 				MSG.show(msg,"success");
+				//load the user
+				getUserGroups($scope._currentProjectId);
 			}else {
 				var msg = res.message || "Sorry errors were ecountered"; 
 				MSG.show(msg);
+
+				
 			}
 		});
 	}

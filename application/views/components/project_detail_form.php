@@ -16,7 +16,7 @@
       <label>New Group:</label>
       <div class='controls'>
         <input type="text" class="input-xlarge" ng-model="currentProject.newGroup"/>  
-        <a href="#" class="" ng-click="addGroup(currentProject)"><i class="icon icon-plus-sign"></i></a>
+        <a href="#" class="" ng-click="addProjectGroup(currentProject)"><i class="icon icon-plus-sign"></i></a>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
         <label>Group:</label>
         <div class=''>
           <select id="user_group_group" ng-model="userGroup.projectGroupId" class='input-small' name="user_group_group"
-                    ng-options='group.id as group.name for group in userGroups'
+                    ng-options='pgroup.id as pgroup.name for pgroup in projectGroups'
           ></select>
            <a href="#" class="" ng-click="addUserToGroup(userGroup)"><i class="icon icon-plus-sign"></i></a>
         </div>
@@ -51,10 +51,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="prus in projectUsers">
+          <tr ng-repeat="userGroup in userGroups">
             <td> {{$index + 1}} </td>
-            <td> {{ prus.name }}</td>
-            <td> {{ prus.group }} </td>
+            <td> {{ userGroup.name }}</td>
+            <td> {{ userGroup.groupName }} </td>
             <td> <a href="#"> <i class='icon icon-remove'></i></a> </td>
           </tr>
         </tbody>
