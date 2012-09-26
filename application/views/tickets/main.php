@@ -20,6 +20,7 @@
 					<th class="grid_action1">#</th>
 					<th class="ticket_status">Status</th>
 					<th class="ticket_title">Title</th>
+					<th class="ticket_assigned_to">Ticket Type</th>
 					<th class="ticket_assigned_to">Assigned To</th>
 					<th class="ticket_date">Date Issued</th>
 					<th class="ticket_priority">Priority</th>
@@ -28,8 +29,10 @@
 			<tbody>
 				<tr ng-repeat="ticket in tickets">
 					<td> {{$index +1}} </td>
-					<td> {{ticket.status}} </td>
+					
+					<td> {{ticket.ticketType}} </td>
 					<td> <a href="#ticket/{{ticket.id}}"> {{ticket.title}}  </td>
+					<td> {{ticket.ticketStatus}} </td>
 					<td> {{ticket.assignedTo}} </a>  </td>
 					<td> {{ticket.createdAt}} </td>
 					<td> {{ticket.priority}} </td>

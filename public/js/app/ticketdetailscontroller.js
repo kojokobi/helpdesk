@@ -1,5 +1,5 @@
 function TicketDetailsController($scope,MSG,$routeParams,$http){
-	var url = '/tickets/' +$routeParams.id ;
+	var url = 'tickets/' +$routeParams.id ;
 	$scope.originalTicket = {};
 	$scope.currentTicketId = $routeParams.id;
 	/**
@@ -17,7 +17,7 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 	 * Gets thread of the current ticket
 	 * @return {void} 
 	 */
-	$scope.getThread =  function (){
+	var getThread =  function (){
 		$http.get(url).success(function (res){
 			var data = res.data.data;
 			$scope.originalTicket = data.pop()
