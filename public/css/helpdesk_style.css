@@ -16,6 +16,22 @@ a {
 	color : #444;
 	font-size: 13px;
 }
+
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
 .divider {
 	height: 5px;
 	background: #bbb;
@@ -131,14 +147,17 @@ a {
 	position: relative;
 }
 #main_pane .row-fluid{
-	/*width: 100%*/
+	position: absolute;
+	overflow: auto;
 }
 
 #main_pane .inner {
 	padding: 20px;
 	position: absolute;
 	right: 0px;
-	overflow: auto;
+	overflow: hidden;
+	min-height: 500px;
+	padding-top: 0px;
 } 
 .toolbar {
 	margin-bottom: 30px;
@@ -301,13 +320,53 @@ label, input, button, select, textarea {
 	font-size: 11px;
 }
 
-.single_ticket_thread .message {
-	overflow: hidden;
-	border-bottom: 1px solid #DDD;
-	/*background: #FAFAFA;*/
-	padding: 2px
+.single_ticket_thread {
+	border-bottom: 1px solid #AAA !important;
+}
+.single_ticket_thread .thread {
+	border: 1px solid #BEBEBE;
+	border-bottom: none;
+	overflow: auto;
+	height: 250px;
 }
 
+.single_ticket_thread .original_message {
+	background: #DDD;
+	/*border-bottom: 1px solid #AAA !important;*/
+}
+
+.single_ticket_thread .message {
+	overflow: hidden;
+	border-bottom: 1px solid #BEBEBE;
+	padding: 6px;
+	padding-top: 12px;
+}
+
+.message_and_reply_box {
+	border: 1px solid #BEBEBE;
+	border-bottom: none;
+	overflow: auto;
+}
+
+.thread_box {
+	margin-top: 20px;
+	background: #DDD;
+	border-radius: 5px;
+	border-bottom-right-radius:0px;
+	border-bottom-left-radius:0px;
+}
+
+.thread_box h4 {
+	padding: 5px;
+	margin: 0px;
+	font-size: 13px;
+}
+
+.single_ticket_thread .message .caption {
+	background: #DDD;
+	text-align: left;
+	font-weight: bold;
+}
 .single_ticket_thread .picture_box {
 	width: 50px;
 	padding-top: 10px;
@@ -330,7 +389,7 @@ label, input, button, select, textarea {
 	font-size: 10px;
 }
 .single_ticket_thread .ticket_content .datebox .date{
-	color : #667;
+	color : #444;
 }
 
 .single_ticket_thread .reply textarea {

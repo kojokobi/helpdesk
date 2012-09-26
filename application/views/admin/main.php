@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div>
   <div class="span12">
     <fieldset>
       <legend >Management</legend>
