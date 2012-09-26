@@ -6,28 +6,49 @@ class Ticket {
 	public static function create_ticket($ticket){
 
 
+	$result = 	DB::transaction(function() use ($ticket) {
+			
 		$ticket_array = DataHelper::create_audit_entries(Auth::user()->id);
 		$ticket_array['ticket_status_id'] = 1;//ticketStatus is always bydefault set to 1=opened
 		$ticket_array['priority_id'] = $ticket->priorityId;
-		$ticket_array['assigned_to'] = $ticket->assignedTo;
+		$ticket_array['assigned_to'] = $ticket->assignedId;
 		$ticket_array['title'] = $ticket->title;
-		$ticket_array['ticket_type_id'] = $ticketTypeId;
+		//$ticket_array['ticket_type_id'] = $ticket->ticketTypeId
+		//$ticket_array['ticket_type_id'] = 1;
+		//$ticket_array['message'] = $ticket->message;
 
+		$id = DB::table('tickets')->insert_get_id(
+				$array = $ticket_array
+			);
 		//insert_get_id($table_name,$insert_parameters_array)
 		//first into 'tickets table'
-		$id = DataHelper::insert_get_id('tickets',$ticket_array);
+	//$id = DataHelper::insert_get_id('tickets',$ticket_array);
 		//add ticket number 
 		//update_record($table_name,$value,$update_parameters_array,$key='id',$operator='=')
-		$update = DataHelper::update_record('tickets',$id,array('number'=>Date('Ymd') . $id));
+	//$update = DataHelper::update_record('tickets',$id,array('number'=>Date('Ymd') + $id));
+		DB::table('tickets')
+			->where('id','=',$id)
+			->update(
+					$update_array = array('number'=>Date('Ymd') . $id)
+			);
 
 		//insert into ticket_details
 		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
-		$ticket_details_array['message'] = $ticket['message'];
+		$ticket_details_array['ticket_id'] = $id;
+		$ticket_details_array['message'] = $ticket->message;
 
-		$ret_value = DataHelper::inserted_record('ticket_details',$ticket_details_array);
+		$ticket_details_id	= DB::table('ticket_details')->insert_get_id(
 
-		$inserted_record = DataHelper::insert_and_update('tickets',$ticket_array,'id','=','number',Date('Ymd'));
-		return $inserte;
+				$ticket_details = $ticket_details_array
+			);
+
+		//$ret_value = DataHelper::inserted_record('ticket_details',$ticket_details_array);
+		//$data =null,$success = false,$message="",$total=0
+		return array('id'=>$ticket_details_id);
+		
+
+		});
+		return DataHelper::return_json_data($result,true,"Ticket created successfully");
 
 	}
 	public static function update_ticket(){
@@ -65,7 +86,7 @@ class Ticket {
 		$selectQuery = DB::table('tickets')
 				->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
 				->join('priorities','priority_id','=','priority_id')
-				->join('users','assigned_to','=','users_id')
+				->join('users','assigned_to','=','users.id')
 				->where(function($query) use ($new_filter_array){
 
 
@@ -81,19 +102,18 @@ class Ticket {
 		$result_set = $selectQuery->get(
 
 			array(
-					'tickets.id as id','number','ticket_statuses.ticket_status_id','ticket_statuses.name','priority_id','priorities.name','ticket_type_id',
-							'ticket_types.name',
-						)
+					'tickets.id as id','number','ticket_statuses.id','ticket_statuses.name','priority_id','priorities.name','title',
+						'tickets.created_at'
+				)
 		);
 		//var_dump($selectQuery);
 		$out = array_map(function($data){
 
 			$arr = array();
 			$arr['id'] 			= $data->id;
-			$arr['name']		= $data->project_group_name;
-			$arr['projectId']	= $data->project_id;
-			$arr['projectName']	= $data->project_name;
-			$arr['description']	= $data->description;
+			$arr['title']		= $data->title;
+			$arr['number']		= $data->number;
+			//$arr['description']	= $data->description;
 			$arr['createdAt']	= $data->created_at;
 			
 

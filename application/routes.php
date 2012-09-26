@@ -93,7 +93,7 @@ Route::get('tickettypes',array('uses'=>'home@ticket_types'));
 /*
  *Tickets routes
  */
-Route::post('tickets',array('uses'=>'home@create_ticket'));
+Route::post('tickets',array('uses'=>'home@ticket'));
 Route::put('tickets',array('uses'=>'home@update_ticket'));
 Route::delete('tickets',array('uses'=>'home@ticket'));
 Route::get('tickets',array('uses'=>'home@tickets'));
