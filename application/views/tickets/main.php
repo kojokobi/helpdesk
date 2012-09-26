@@ -31,7 +31,7 @@
 					<td> {{ticket.status}} </td>
 					<td> <a href="#ticket/{{ticket.id}}"> {{ticket.title}}  </td>
 					<td> {{ticket.assignedTo}} </a>  </td>
-					<td> {{ticket.issuedDate}} </td>
+					<td> {{ticket.createdAt}} </td>
 					<td> {{ticket.priority}} </td>
 				</tr>
 			</tbody>

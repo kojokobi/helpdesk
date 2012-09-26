@@ -23,7 +23,7 @@
               <div class="pull-left">
                 <label>Type:</label>
                 <div>
-                  <select class="ticket_combo" ng-model="newTicket.ticketId" ng-options='ticketType.id as ticketType.name for ticketType in ticketTypes'>
+                  <select class="ticket_combo" ng-model="newTicket.ticketTypeId" ng-options='ticketType.id as ticketType.name for ticketType in ticketTypes'>
                   </select>
                 </div>
               </div>

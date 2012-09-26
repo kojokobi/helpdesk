@@ -82,7 +82,10 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 	function getUserProjects () {
 		$http.get("usergroups").then(function (res){
 			$scope.userProjects = res.data.data;
-		})
+			var obj = $scope.userProjects[0];
+
+			$scope.currentProjectId = {projectId : obj["projectId"] , projectName : obj["projectName"] }
+		});
 	}
 
 	getUserProjects();
@@ -120,10 +123,11 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 	var getTickets =  function (id) {
 		var _id = id || $scope.currentProjectId;
 		Ticket.query(
-			{ projectId: $scope.currentProjectId},function (res){
+			{ projectId: _id},function (res){
 			$scope.tickets = res.data;
 		});
 	}
 
+	//$currentProjectId = 
 
 }
