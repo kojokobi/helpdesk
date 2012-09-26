@@ -120,7 +120,7 @@ class Ticket {
 			$arr['priorityId'] 	= $data->priority_id;
 			$arr['priority'] 	= $data->priorityname;
 			$arr['assignedId'] 	= $data->assigned_to;
-			$arr['assingedTo'] 	= $data->first_name . ' ' . $data->last_name;
+			$arr['assignedTo'] 	= $data->first_name . ' ' . $data->last_name;
 			$arr['message'] 	= $data->message;
 			$arr['ticketTypeId'] = $data->ticket_type_id;
 			$arr['ticketType'] = $data->ticket_type;
