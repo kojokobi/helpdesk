@@ -21,7 +21,14 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 	 * ticket for a particular project
 	 * @type {Array}
 	 */
-	$scope.tickets = [];
+	$scope.tickets = [
+		// {
+		// 	id : 1,
+		// 	title : "some title",
+			
+
+		// }
+	];
 
 	/**
 	 * All users in  the current project
@@ -71,7 +78,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 		});
 	}
 
-	
+
 	function getUserProjects () {
 		$http.get("usergroups").then(function (res){
 			$scope.userProjects = res.data.data;
