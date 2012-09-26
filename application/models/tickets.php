@@ -13,10 +13,12 @@ class Ticket {
 		$ticket_array['priority_id'] = $ticket->priorityId;
 		$ticket_array['assigned_to'] = $ticket->assignedId;
 		$ticket_array['title'] = $ticket->title;
-		//$ticket_array['ticket_type_id'] = $ticket->ticketTypeId
+		$ticket_array['ticket_type_id'] = $ticket->ticketTypeId;
+		$ticket_array['project_id'] = $ticket->projectId;
 		//$ticket_array['ticket_type_id'] = 1;
 		//$ticket_array['message'] = $ticket->message;
 
+		//Insert into Tickets
 		$id = DB::table('tickets')->insert_get_id(
 				$array = $ticket_array
 			);
@@ -26,6 +28,7 @@ class Ticket {
 		//add ticket number 
 		//update_record($table_name,$value,$update_parameters_array,$key='id',$operator='=')
 	//$update = DataHelper::update_record('tickets',$id,array('number'=>Date('Ymd') + $id));
+	////Update Tickte and add number
 		DB::table('tickets')
 			->where('id','=',$id)
 			->update(
@@ -51,17 +54,14 @@ class Ticket {
 		return DataHelper::return_json_data($result,true,"Ticket created successfully");
 
 	}
-	public static function update_ticket(){
+	public static function create_ticket_details($ticket){
 
-	$ticket_array = DataHelper::update_audit_entries(Auth::user()->id);
+		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
 
-		$ticket_array['title'] = $ticket->title;
-		$ticket_array['number'] = $ticket->number;
-		$ticket_array['ticket_status_id'] = $ticket->ticket_status_id;
-		$ticket_array['priority_id'] = $ticket->priorityId;
-		$ticket_array['assigned_to'] = $ticket->assignedTo;
-
-		$inserted_record = DataHelper::update_record('tickets',$ticket_array);
+		$ticket_details_array['message'] = $ticket->message;
+		$ticket_details_array['ticket_id'] = $ticket->ticketId;
+		
+		$inserted_record = DataHelper::insert_record('tickets_details',$ticket_array);
         return $inserted_record;
 
 	}
@@ -74,8 +74,8 @@ class Ticket {
 		$new_filter_array = array();
 		if(array_key_exists("ticketId", $obj))
 			$new_filter_array['ticket_id']  = $obj['ticketId'];
-		if(array_key_exists("number", $obj))
-			$new_filter_array['number']  = $obj['number'];
+		if(array_key_exists("projectId", $obj))
+			$new_filter_array['project_id']  = $obj['projectId'];
 		if(array_key_exists("priorityId", $obj))
 			$new_filter_array['priority_id'] = $obj['priorityId'];
 		if(array_key_exists("ticketStatusId", $obj))
@@ -83,17 +83,20 @@ class Ticket {
 		if(array_key_exists("assignedTo", $obj))
 			$new_filter_array['assigned_to'] = $obj['assignedTo'];
 
-		$selectQuery = DB::table('tickets')
-				->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
-				->join('priorities','priority_id','=','priority_id')
-				->join('users','assigned_to','=','users.id')
+		$selectQuery = DB::table('ticket_details')
+				->join('tickets','ticket_details.ticket_id','=','tickets.id')
+				->join('ticket_statuses','tickets.ticket_status_id','=','ticket_statuses.id')
+				->join('priorities','tickets.priority_id','=','priorities.id')
+				->join('users','tickets.assigned_to','=','users.id')
+				->join('ticket_types','tickets.ticket_type_id','=','ticket_types.id')
+				->join('projects','tickets.project_id','=','projects.id')
 				->where(function($query) use ($new_filter_array){
 
 
 						$query = DataHelper::filter_data($query,'tickets.id',$new_filter_array,'int');
 						$query = DataHelper::filter_data($query,'number',$new_filter_array,'string');
 						$query = DataHelper::filter_data($query,'priority_id',$new_filter_array,'int');
-						$query = DataHelper::filter_data($query,'priority_id',$new_filter_array,'int');
+						$query = DataHelper::filter_data($query,'project_id',$new_filter_array,'int');
 
 				})
 		->order_by('tickets.id','desc');
@@ -102,18 +105,68 @@ class Ticket {
 		$result_set = $selectQuery->get(
 
 			array(
-					'tickets.id as id','number','ticket_statuses.id','ticket_statuses.name','priority_id','priorities.name','title',
-						'tickets.created_at'
+					'tickets.id as id','number','ticket_statuses.id as ticket_status_id','ticket_statuses.name as ticket_status',
+						'priority_id','priorities.name as priorityname','tickets.title','tickets.assigned_to','users.first_name','users.last_name',
+							'ticket_details.message','tickets.ticket_type_id','ticket_types.name as ticket_type','tickets.created_at','tickets.project_id'
 				)
 		);
 		//var_dump($selectQuery);
 		$out = array_map(function($data){
 
 			$arr = array();
-			$arr['id'] 			= $data->id;
+			$arr['id']	= $data->id;
+			$arr['ticketStatusId'] 	= $data->ticket_status_id;
+			$arr['ticketStatus'] 	= $data->ticket_status;
+			$arr['priorityId'] 	= $data->priority_id;
+			$arr['priority'] 	= $data->priorityname;
+			$arr['assignedId'] 	= $data->assigned_to;
+			$arr['assingedTo'] 	= $data->first_name . ' ' . $data->last_name;
+			$arr['message'] 	= $data->message;
+			$arr['ticketTypeId'] = $data->ticket_type_id;
+			$arr['ticketType'] = $data->ticket_type;
 			$arr['title']		= $data->title;
 			$arr['number']		= $data->number;
+			$arr['projectId']		= $data->project_id;
 			//$arr['description']	= $data->description;
+			$arr['createdAt']	= $data->created_at;
+			
+
+			return $arr;
+		},$result_set);
+
+		return HelperFunction::return_json_data($out,true,'record loaded',$total);
+	}
+	public static function get_ticket_details($obj){
+
+		$new_filter_array = array();
+		if(array_key_exists("ticketId", $obj))
+			$new_filter_array['ticket_id']  = $obj['ticketId'];
+		else
+			return HelperFunction::return_json_data(array(),false,'ticket Id required');
+
+		$selectQuery = DB::table('ticket_details')
+				->join('users','ticket_details.created_by','=','users.id')
+				->where(function($query) use ($new_filter_array){
+
+						$query = DataHelper::filter_data($query,'ticket_id',$new_filter_array,'int');
+
+				})
+		->order_by('ticket_details.id','desc');
+		//get total count 
+		$total =$selectQuery->count();
+		$result_set = $selectQuery->get(
+
+			array(
+						
+							'ticket_details.message','ticket_details.id as ticket_details_id','ticket_details.created_at',
+				)
+		);
+		//var_dump($selectQuery);
+		$out = array_map(function($data){
+
+			$arr = array();
+			$arr['id']	= $data->ticket_details_id;
+			$arr['message'] 	= $data->message;
 			$arr['createdAt']	= $data->created_at;
 			
 
