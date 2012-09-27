@@ -98,7 +98,7 @@ Route::post('tickets/:id',array('uses'=>'home@ticket_details'));
 Route::put('tickets',array('uses'=>'home@update_ticket'));
 Route::delete('tickets',array('uses'=>'home@ticket'));
 Route::get('tickets',array('uses'=>'home@tickets'));
-Route::get('tickets/:id',array('uses'=>'home@ticket_details'));
+Route::get('tickets/(:num)',array('uses'=>'home@ticket_details'));
 /*
  *Project User Groups routes
  */
