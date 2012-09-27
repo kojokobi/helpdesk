@@ -14,4 +14,20 @@ angular.module('myHelpers', []).
 	    	
 	    }
     };
+  }).
+  factory("ARR",function (){
+  	return {
+  		sort : function  (arr, fieldToUse) {
+  			var name  = fieldToUse || "name";
+  			function compare (a,b) {
+  				if (a[name] < b[name])
+  					return -1;
+  				if (a[name] > b[name])
+  					return 1;
+  				return 0;
+  			}
+
+  			return arr.sort(compare);
+  		}
+  	}
   });

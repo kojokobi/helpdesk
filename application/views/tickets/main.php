@@ -2,7 +2,7 @@
 	<div class='span12'>
 		<fieldset>
 			<legend>
-				Tickets
+				Tickets for {{currentProjectName}}
 				<div  class='project_ticket_control pull-right'> 
 					<label>Project:</label>
 					<select 

@@ -1,9 +1,11 @@
-function TicketController ($scope, $http, Ticket, MSG, UserGroup){
+function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 	/**
 	 * reference to the ticket form
 	 * @type {[type]}
 	 */
 	var ticketsForm = $("#tickets_form");
+
+	$scope.currentProjectName = "";
 
 	/**
 	 * ticket Types
@@ -21,14 +23,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 	 * ticket for a particular project
 	 * @type {Array}
 	 */
-	$scope.tickets = [
-		// {
-		// 	id : 1,
-		// 	title : "some title",
-			
-
-		// }
-	];
+	$scope.tickets = [];
 
 	/**
 	 * All users in  the current project
@@ -83,10 +78,11 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 
 	function getUserProjects () {
 		$http.get("usergroups").then(function (res){
-			$scope.userProjects = res.data.data;
-			var obj = $scope.userProjects[0];
+			$scope.userProjects = ARR.sort(res.data.data,"projectName");
 
-			$scope.currentProjectId = {projectId : obj["projectId"] , projectName : obj["projectName"] }
+			//make initial call
+			$scope.currentProjectId = $scope.userProjects[0].projectId;
+			$scope.loadTickets();
 		});
 	}
 
