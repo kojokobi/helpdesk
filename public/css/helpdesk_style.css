@@ -136,7 +136,7 @@ a {
 	padding-right: 20px;
 	padding-top: 10px;
 
-	position: fixed;
+	position: absolute;
 	margin: 0px;
 	/*margin-left: 270px !important;*/
 	left: 270px;
