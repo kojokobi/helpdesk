@@ -5,7 +5,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 	 */
 	var ticketsForm = $("#tickets_form");
 
-	$scope.currentProjectName = "";
+	$scope.currentProject = {};
 
 	/**
 	 * ticket Types
@@ -81,7 +81,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 			$scope.userProjects = ARR.sort(res.data.data,"projectName");
 
 			//make initial call
-			$scope.currentProjectId = $scope.userProjects[0].projectId;
+			$scope.currentProject = $scope.userProjects[0]
 			$scope.loadTickets();
 		});
 	}
@@ -96,16 +96,16 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 		//todo: set the first project to the first item in the projects list
 		getTicketTypes();
 		getProirities();
-		if(!$scope.currentProjectId){
+		if(!$scope.currentProject){
 			MSG.show("Please Select a Project first.");
 			return;
 		}
 		$scope.newTicket = {};
 		
 		ticketsForm.modal();
-		$scope.newTicket.projectId = $scope.currentProjectId;
+		$scope.newTicket.projectId = $scope.currentProject.projectId;
 		
-		getProjectUsers($scope.currentProjectId);
+		getProjectUsers($scope.currentProject);
 	}
 
 	
@@ -119,10 +119,11 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 	 * @return {[type]} [description]
 	 */
 	var getTickets =  function (id) {
-		var _id = id || $scope.currentProjectId;
+		var _id = id || $scope.currentProject.projectId;
 		Ticket.query(
 			{ projectId: _id},function (res){
 			$scope.tickets = res.data;
+			//$scope.currentProjectName = 
 		});
 	}
 

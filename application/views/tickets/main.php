@@ -2,13 +2,13 @@
 	<div class='span12'>
 		<fieldset>
 			<legend>
-				Tickets for {{currentProjectName}}
+				Tickets for {{currentProject.projectName}}
 				<div  class='project_ticket_control pull-right'> 
 					<label>Project:</label>
 					<select 
-						ng-model="currentProjectId" 
+						ng-model="currentProject" 
 						ng-change="loadTickets()" 
-						ng-options="userProject.projectId as userProject.projectName for userProject in userProjects"></select>
+						ng-options="userProject as userProject.projectName for userProject in userProjects"></select>
 					<a class="btn btn-info" ng-click="showForm()"> 
 						<i class="icon-white icon-tags"></i> Add Ticket</a>
 				</div>
