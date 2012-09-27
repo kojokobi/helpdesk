@@ -29,10 +29,9 @@
 			<tbody>
 				<tr ng-repeat="ticket in tickets">
 					<td> {{$index +1}} </td>
-					
-					<td> {{ticket.ticketType}} </td>
-					<td> <a href="#ticket/{{ticket.id}}"> {{ticket.title}}  </td>
 					<td> {{ticket.ticketStatus}} </td>
+					<td> <a href="#ticket/{{ticket.id}}"> {{ticket.title}}  </td>
+					<td> {{ticket.ticketType}} </td>
 					<td> {{ticket.assignedTo}} </a>  </td>
 					<td> {{ticket.createdAt}} </td>
 					<td> {{ticket.priority}} </td>

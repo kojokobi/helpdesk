@@ -2,7 +2,7 @@
 angular.module('myHelpers', []).
   factory('MSG', function($window) {
     return {
-      	show : function (message,status, title){
+      	show : function (message, status, title){
       		var status = status ? status: "error";
       		$.pnotify({
 				title: title || "",

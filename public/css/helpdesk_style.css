@@ -320,6 +320,10 @@ label, input, button, select, textarea {
 	font-size: 11px;
 }
 
+.ticket_table tr td a {
+	color: #08C;
+}
+
 .single_ticket_thread {
 	border-bottom: 1px solid #AAA !important;
 }

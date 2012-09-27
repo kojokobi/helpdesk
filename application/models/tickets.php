@@ -136,11 +136,14 @@ class Ticket {
 
 		return HelperFunction::return_json_data($out,true,'record loaded',$total);
 	}
-	public static function get_ticket_details($obj){
-
+	
+	//public static function get_ticket_details($obj){
+	public static function get_ticket_details($ticketId){
+		//print_r($obj);
 		$new_filter_array = array();
-		if(array_key_exists("ticketId", $obj))
-			$new_filter_array['ticket_id']  = $obj['ticketId'];
+		//if(array_key_exists("ticketId", $obj))
+		if(isset($ticketId) && !empty($ticketId))
+			$new_filter_array['ticket_id']  = $ticketId;
 		else
 			return HelperFunction::return_json_data(array(),false,'ticket Id required');
 

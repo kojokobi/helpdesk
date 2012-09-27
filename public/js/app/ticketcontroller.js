@@ -42,11 +42,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 	 */
 	$scope.userProjects = [];
 
-	/**
-	 *  Refers to the thread in a particular
-	 * @type {Array}
-	 */
-	$scope.ticketThread = [];
+	
 
 	function getProirities(){
 		$http.get("priorities").then(function (res){
