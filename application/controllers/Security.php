@@ -15,7 +15,7 @@ class Security_Controller extends Base_Controller{
 		$isAuth = $security->login($credentials);
 
 		if($isAuth)
-			return Redirect::to("ticket_view");
+			return Redirect::to("tickets_view");
 		else
 			return Redirect::to('login')->with('login_errors',true);
 	}
