@@ -7,8 +7,9 @@ class Ticket {
 
 
 	$result = 	DB::transaction(function() use ($ticket) {
-			
+		
 		$ticket_array = DataHelper::create_audit_entries(Auth::user()->id);
+		//todo:change this
 		$ticket_array['ticket_status_id'] = 1;//ticketStatus is always bydefault set to 1=opened
 		$ticket_array['priority_id'] = $ticket->priorityId;
 		$ticket_array['assigned_to'] = $ticket->assignedId;
@@ -177,6 +178,7 @@ class Ticket {
 		//Select data from Ticket_Details table
 		$ticket_details_filter = array();
 		$ticket_details_filter['ticket_id'] = $id;
+		//
 		$ticket_details_query = DB::table('ticket_details')
 				->where(function($query)use($ticket_details_filter){
 
@@ -199,7 +201,7 @@ class Ticket {
 
 			return $arr;
 		},$result_set);
-		$out_tickets['thread'] = $out_ticket_details;
+		$out_tickets[0]['thread'] = $out_ticket_details;
 		return HelperFunction::return_json_data($out_tickets,true,'record loaded',$total);
 		
 	}
