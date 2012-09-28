@@ -4,11 +4,18 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 	$scope.currentTicketId = $routeParams.id;
 	
 	/**
+	 * The various ticket status. This is required so that every reply can be sent with a status
+	 * @type {Array}
+	 */
+	$scope.ticketStatuses = [];
+	/**
 	 * The thread for a particular ticket
 	 * @type {Array}
 	 */
 	$scope.ticketThread = [];
 	
+	$scope.newReply = {}
+
 	/**
 	 * Gets thread of the current ticket
 	 * @return {void} 
@@ -24,6 +31,13 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 			//delete data.thread;
 		});
 	}
+
+	var getStatuses = function (){
+		$http.get('ticketstatuses').success(function (res) {
+			$scope.ticketStatuses = res.data ;
+			$scope.newReply.status = $scope.ticketStatuses[0];
+		});
+	}
 	
 	/**
 	 * Submit the reply
@@ -32,6 +46,8 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 	 */
 	$scope.submitReply =  function (newReply) {
 		newReply["ticketId"] = $scope.currentTicketId;
+		newReply["statusId"] = newReply.status.id;
+		delete newReply["status"];
 		$http.post(url, newReply).success(function (res){
 			if(res.success){
 				var msg = res.message || "Reply Sent";
@@ -49,6 +65,7 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 	/**
 	 * make Initial to get thread
 	 */
+	getStatuses();
 	getThread();	
 }
 

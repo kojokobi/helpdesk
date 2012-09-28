@@ -378,12 +378,17 @@ label, input, button, select, textarea {
 	border: 1px solid #BEBEBE;
 	border-bottom: none;
 	overflow: auto;
-	height: 250px;
+	height: 320px;
 }
 
 .single_ticket_thread .original_message {
 	background: #DDD;
 	/*border-bottom: 1px solid #AAA !important;*/
+}
+
+.single_ticket_thread .original_message p {
+	overflow: auto !important;
+	height: 120px;
 }
 
 .single_ticket_thread .message {
@@ -434,6 +439,9 @@ label, input, button, select, textarea {
 .single_ticket_thread .ticket_content .title{
 	font-weight: Bold;
 	font-size: 13px;
+	margin-left: 40px;
+	border-bottom: 1px solid #BEBEBE;
+	margin-bottom: 10px;
 }
 
 .single_ticket_thread .ticket_content .datebox{
@@ -441,6 +449,7 @@ label, input, button, select, textarea {
 	color: #206BA7;
 	font-weight: bold;
 	font-size: 10px;
+	margin-right: 50px;
 }
 .single_ticket_thread .ticket_content .datebox .date{
 	color : #444;
