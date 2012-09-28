@@ -390,7 +390,7 @@ label, input, button, select, textarea {
 	overflow: hidden;
 	border-bottom: 1px solid #BEBEBE;
 	padding: 6px;
-	padding-top: 12px;
+	/*padding-top: 12px;*/
 }
 
 .message_and_reply_box {
@@ -407,6 +407,9 @@ label, input, button, select, textarea {
 	border-bottom-left-radius:0px;
 }
 
+.thread .message {
+	min-height: 50px;
+}
 .thread_box h4 {
 	padding: 5px;
 	margin: 0px;
@@ -420,7 +423,7 @@ label, input, button, select, textarea {
 }
 .single_ticket_thread .picture_box {
 	width: 50px;
-	padding-top: 10px;
+	/*padding-top: 10px;*/
 }
 
 .single_ticket_thread .ticket_content {

@@ -4,7 +4,7 @@
 			<div class="span12 outer">
 				<div class="message original_message">
 						<div class="picture_box span1">
-							<?php echo HTML::image('img/icons/blue_user48.png',""); ?>
+							<?php echo HTML::image('img/icons/blue_user32.png',""); ?>
 						</div>
 						<div class="ticket_content span11" >
 							<div class="title"> {{originalTicket.title}} </div>
@@ -18,7 +18,7 @@
 			<div class="span12 outer">
 				<div class="message reply">
 					<div class="picture_box span1">
-						<?php echo HTML::image('img/icons/blue_user48.png',""); ?>
+						<?php echo HTML::image('img/icons/blue_user32.png',""); ?>
 					</div>
 					<div class="ticket_content span11">
 							
@@ -39,7 +39,7 @@
 		<!-- start of thread block -->
 		<div class="message" ng-repeat="reply in ticketThread">
 			<div class="picture_box span1">
-				<?php echo HTML::image('img/icons/blue_user48.png',""); ?>
+				<?php echo HTML::image('img/icons/blue_user32.png',""); ?>
 			</div>
 			<div class="ticket_content">
 					<p>
