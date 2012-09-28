@@ -15,6 +15,22 @@
 			</legend>
 		</fieldset>
 		<div>
+			<div class="btn-group">
+			  <button class="btn btn-info">Ticket Summaries</button>
+			  <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu ticket_badges">
+			    <li><a href="tickets_view#all"> All  <span class='badge badge-inverse pull-right'> 100 </span> </a>  </li>
+			    <li><a href="tickets_view#opened"> Open tickets <span class='badge badge-warning pull-right'> 20 </span> </a>  </li>
+                <li><a href="tickets_view#closed"> Closed tickets <span class='badge badge-success pull-right'> 15 </span></a>  </li>
+                
+              </ul>
+			  </ul>
+			</div>
+		</div>
+		<br>
+		<div>
 			<table class='table table-bordered table-striped my-table ticket_table'>
 				<thead>
 					<tr>

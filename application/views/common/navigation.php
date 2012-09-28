@@ -41,11 +41,12 @@
           <div class="accordion-body <?php open_menu($page,"tickets"); ?>" id="ticketsCollapse" >
             <div class="accordion-inner">
              <ul class="ticket_badges">
-                <li><a href="tickets_view#unassigned"> Unassigned tickets</a> <span class='badge pull-right'> 35 </span> </li>
+                <li><a href="tickets_view#"> view tickets</a>  </li>
+                <!-- <li><a href="tickets_view#unassigned"> Unassigned tickets</a> <span class='badge pull-right'> 35 </span> </li>
                 <li><a href="tickets_view#assigned"> Assigned tickets</a> <span class='badge badge-info pull-right'> 30 </span> </li>
                 <li><a href="tickets_view#opened"> Open tickets </a> <span class='badge badge-warning pull-right'> 20 </span> </li>
                 <li><a href="tickets_view#closed"> Closed tickets</a> <span class='badge badge-success pull-right'> 15 </span> </li>
-                <li><a href="tickets_view#all"> All tickets</a> <span class='badge badge-info pull-right'> 100 </span> </li>
+                <li><a href="tickets_view#all"> All tickets</a> <span class='badge badge-info pull-right'> 100 </span> </li> -->
               </ul>
             </div>
           </div>
@@ -60,7 +61,6 @@
             <div class="accordion-inner">
               <ul>
                 <li class=''><a href="admin_view#">Management </a> </li>
-                
               </ul>
             </div>
           </div>
