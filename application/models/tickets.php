@@ -47,7 +47,6 @@ class Ticket {
 	}
 	public static function create_ticket_details($ticket){
 
-		
 		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
 
 		$ticket_details_array['message'] = $ticket->message;
@@ -63,7 +62,6 @@ class Ticket {
 	}
 	public static function get_tickets($obj){
 
-		
 		$new_filter_array = array();
 		if(array_key_exists("ticketId", $obj))
 			$new_filter_array['ticket_id']  = $obj['ticketId'];
@@ -84,6 +82,7 @@ class Ticket {
 				->join('ticket_types','tickets.ticket_type_id','=','ticket_types.id')
 				->join('projects','tickets.project_id','=','projects.id')
 				->where(function($query) use ($new_filter_array){
+
 
 						$query = DataHelper::filter_data($query,'tickets.id',$new_filter_array,'int');
 						$query = DataHelper::filter_data($query,'number',$new_filter_array,'string');
@@ -128,7 +127,6 @@ class Ticket {
 
 		return HelperFunction::return_json_data($out,true,'record loaded',$total);
 	}
-<<<<<<< HEAD
 	public static function get_ticket_details($id){
 		
 		
@@ -151,24 +149,12 @@ class Ticket {
 					array(
 							'tickets.id as id','number','ticket_statuses.id as ticket_status_id','ticket_statuses.name as ticket_status',
 								'priority_id','priorities.name as priorityname','tickets.title','tickets.assigned_to','users.first_name','users.last_name',
-									'tickets.ticket_type_id','ticket_types.name as ticket_type','tickets.created_at'//,'tickets.project_id'
+									'tickets.ticket_type_id','ticket_types.name as ticket_type','tickets.created_at'
 					)
 				);
 		//to comply with javascript naming conventions assign the 
 		//the columns selected to a new array through the array_map php function
 		$out_tickets = array_map(function($data){
-=======
-	
-	//public static function get_ticket_details($obj){
-	public static function get_ticket_details($ticketId){
-		//print_r($obj);
-		$new_filter_array = array();
-		//if(array_key_exists("ticketId", $obj))
-		if(isset($ticketId) && !empty($ticketId))
-			$new_filter_array['ticket_id']  = $ticketId;
-		else
-			return HelperFunction::return_json_data(array(),false,'ticket Id required');
->>>>>>> 7d43fe9327f9c05e29b94aa541a55d9c9fc216b5
 
 			$arr = array();
 			$arr['id']	= $data->id;
@@ -182,7 +168,6 @@ class Ticket {
 			$arr['ticketType'] 	 = $data->ticket_type;
 			$arr['title']		 = $data->title;
 			$arr['number']		 = $data->number;
-			//$arr['projectId']	 = $data->project_id;
 			$arr['createdAt']	 = $data->created_at;
 			
 			//return the array caontaining the new recordset
