@@ -60,7 +60,7 @@ class HelperFunction extends Eloquent{
 				}
 				return $query;
 	}
-	public static function get_date($format='Y-m-d'){
+	public static function get_date($format='Y-m-d H:i:s'){
 		return Date($format);
 	}
 

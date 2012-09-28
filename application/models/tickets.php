@@ -187,41 +187,34 @@ class Ticket {
 		->order_by('ticket_details.id','desc');
 		//get total count 
 		$total 		=$ticket_details_query->count();
+		//specify columns to retrive from query
 		$result_set =$ticket_details_query ->get(
 
 					array(
-							'ticket_details.message','ticket_details.id as ticket_details_id','ticket_details.created_at'
+							'ticket_details.message','ticket_details.id as ticket_details_id','ticket_details.created_at',
+								'ticket_id as ticketid',
 					)
 				);
+		//map ticket details resultSet to outTicketDetails array
 		$out_ticket_details = array_map(function($data){
 
 			$arr = array();
 			$arr['ticketDetailsId'] = $data->ticket_details_id;
 			$arr['message'] = $data->message;
+			$arr['createdAt'] = $data->created_at;
+			$arr['ticketId'] = $data->ticketid;
 
 			return $arr;
 		},$result_set);
+
+		//add outticketDetails array object to outTickets array
 		$out_tickets[0]['thread'] = $out_ticket_details;
 		return HelperFunction::return_json_data($out_tickets,true,'record loaded',$total);
 		
 	}
 	public static function generate_id(){
 
-		//insert_and_update($table_name,$insert_parameters_array,$key='id',$operator='=',$update_field,$value)
-		//$new_record = $arrayName();
 		$ret = DataHelper::insert_and_update('sample',array(),'id','=','generated',Date('Ymd'));
-
-		//$r = __()->_uniqueId('stooge_');
-		//var_dump($r);
-		//$r = __uniqueId('st');
-		//$p = new __();
-		//$id=__(uniqId('T'));
-		// DB::table('sample')->insert(
-
-		// 		$array=array(
-		// 			'generated'=>
-		// 		)
-		// 	);
 		return DataHelper::return_json_data($ret,true,'record inserted',0);
 	}
 
