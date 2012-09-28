@@ -1,9 +1,11 @@
-function TicketController ($scope, $http, Ticket, MSG, UserGroup){
+function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 	/**
 	 * reference to the ticket form
 	 * @type {[type]}
 	 */
 	var ticketsForm = $("#tickets_form");
+
+	$scope.currentProject = {};
 
 	/**
 	 * ticket Types
@@ -21,14 +23,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 	 * ticket for a particular project
 	 * @type {Array}
 	 */
-	$scope.tickets = [
-		// {
-		// 	id : 1,
-		// 	title : "some title",
-			
-
-		// }
-	];
+	$scope.tickets = [];
 
 	/**
 	 * All users in  the current project
@@ -42,11 +37,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 	 */
 	$scope.userProjects = [];
 
-	/**
-	 *  Refers to the thread in a particular
-	 * @type {Array}
-	 */
-	$scope.ticketThread = [];
+	
 
 	function getProirities(){
 		$http.get("priorities").then(function (res){
@@ -87,10 +78,11 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 
 	function getUserProjects () {
 		$http.get("usergroups").then(function (res){
-			$scope.userProjects = res.data.data;
-			var obj = $scope.userProjects[0];
+			$scope.userProjects = ARR.sort(res.data.data,"projectName");
 
-			$scope.currentProjectId = {projectId : obj["projectId"] , projectName : obj["projectName"] }
+			//make initial call
+			$scope.currentProject = $scope.userProjects[0]
+			$scope.loadTickets();
 		});
 	}
 
@@ -104,16 +96,16 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 		//todo: set the first project to the first item in the projects list
 		getTicketTypes();
 		getProirities();
-		if(!$scope.currentProjectId){
+		if(!$scope.currentProject){
 			MSG.show("Please Select a Project first.");
 			return;
 		}
 		$scope.newTicket = {};
 		
 		ticketsForm.modal();
-		$scope.newTicket.projectId = $scope.currentProjectId;
+		$scope.newTicket.projectId = $scope.currentProject.projectId;
 		
-		getProjectUsers($scope.currentProjectId);
+		getProjectUsers($scope.currentProject);
 	}
 
 	
@@ -127,10 +119,11 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup){
 	 * @return {[type]} [description]
 	 */
 	var getTickets =  function (id) {
-		var _id = id || $scope.currentProjectId;
+		var _id = id || $scope.currentProject.projectId;
 		Ticket.query(
 			{ projectId: _id},function (res){
 			$scope.tickets = res.data;
+			//$scope.currentProjectName = 
 		});
 	}
 

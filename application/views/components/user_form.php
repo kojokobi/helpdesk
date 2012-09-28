@@ -56,8 +56,8 @@
             </form>
           </div>
           <div class="modal-footer"> 
-            <a href="#" class="btn btn-success" ng-click="addUser(newUser)"><i class='icon-white icon-user'></i> Save User </a>
-            <a href="#" class="btn"><i class='icon icon-ban-circle'></i> Cancel</a>
+            <button href="#" class="btn btn-success" ng-click="addUser(newUser)"><i class='icon-white icon-user'></i> Save User </button>
+            <button data-dismiss="modal" href="#" class="btn"><i class='icon icon-ban-circle'></i> Cancel</button>
           </div>
         </div>
         <!-- END OF ADD USER FORM -->

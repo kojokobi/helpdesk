@@ -15,7 +15,7 @@ class Security_Controller extends Base_Controller{
 		$isAuth = $security->login($credentials);
 
 		if($isAuth)
-			return Redirect::to("admin");
+			return Redirect::to("tickets_view");
 		else
 			return Redirect::to('login')->with('login_errors',true);
 	}
@@ -29,8 +29,8 @@ class Security_Controller extends Base_Controller{
 		$client_data = Input::json();
 		return Response::json(User::create_user($client_data));
 	}
-	public function put_user(){
 
+	public function put_user(){
 		$client_data = Input::json();
 		return Response::json(User::update_user($client_data));
 	}

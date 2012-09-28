@@ -128,6 +128,7 @@ class Ticket {
 
 		return HelperFunction::return_json_data($out,true,'record loaded',$total);
 	}
+<<<<<<< HEAD
 	public static function get_ticket_details($id){
 		
 		
@@ -156,6 +157,18 @@ class Ticket {
 		//to comply with javascript naming conventions assign the 
 		//the columns selected to a new array through the array_map php function
 		$out_tickets = array_map(function($data){
+=======
+	
+	//public static function get_ticket_details($obj){
+	public static function get_ticket_details($ticketId){
+		//print_r($obj);
+		$new_filter_array = array();
+		//if(array_key_exists("ticketId", $obj))
+		if(isset($ticketId) && !empty($ticketId))
+			$new_filter_array['ticket_id']  = $ticketId;
+		else
+			return HelperFunction::return_json_data(array(),false,'ticket Id required');
+>>>>>>> 7d43fe9327f9c05e29b94aa541a55d9c9fc216b5
 
 			$arr = array();
 			$arr['id']	= $data->id;
