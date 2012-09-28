@@ -233,10 +233,7 @@ class Home_Controller extends Base_Controller {
 	}
 	public function get_ticket_details($id){
 
-		//return Response::json(Ticket::get_ticket_details(Input::all());
-
-		return Response::json(Ticket::get_ticket_details(Input::all()));
-
+		return Response::json(Ticket::get_ticket_details($id));
 	}
 	//Tickets Types
 	public function post_ticket_type(){

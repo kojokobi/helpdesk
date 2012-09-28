@@ -7,7 +7,7 @@ function UserController ($scope, User,$http,MSG){
 	function getUsers(){
 		User.query(function (res){
 			$scope.users = angular.copy(res.data);
-		});	
+		});
 	}
 
 	function getRoles(){
