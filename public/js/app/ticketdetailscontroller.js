@@ -1,8 +1,10 @@
-function TicketDetailsController($scope,MSG,$routeParams,$http){
+function TicketDetailsController($scope,MSG,$routeParams,$http, $resource){
 	var url = 'tickets/' +$routeParams.id ;
 	$scope.originalTicket = {};
 	$scope.currentTicketId = $routeParams.id;
 	
+	//move this to a service instead
+	var TicketStatus = $resource('ticketstatuses');
 	/**
 	 * The various ticket status. This is required so that every reply can be sent with a status
 	 * @type {Array}
@@ -33,7 +35,7 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 	}
 
 	var getStatuses = function (){
-		$http.get('ticketstatuses').success(function (res) {
+		TicketStatus.get({ticketId : $scope.currentTicketId} , function (res) {
 			$scope.ticketStatuses = res.data ;
 			$scope.newReply.status = $scope.ticketStatuses[0];
 		});
