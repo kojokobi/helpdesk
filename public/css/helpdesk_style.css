@@ -79,6 +79,9 @@ a {
 	height: 100%;
 	border-right: 1px solid #E5E5E5;
 	left: 0px;
+	overflow-x: hidden;
+	z-index: 9000;
+	background: #FAFAFA;
 }
 
 .sidebar-nav a {
@@ -111,7 +114,8 @@ a {
 }
 
 .sidebar-nav .active_header {
-	background: #206BA7 !important;
+	background: #49AFCD !important;
+	/*background: #206BA7 !important;*/
 	-webkit-background-clip: border-box !important;
 	background-clip: border-box !important;
 	zoom: 1;

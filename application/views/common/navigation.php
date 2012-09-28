@@ -1,5 +1,11 @@
-<?php $attr = array();
-    function print_active($page, $header){
+<?php 
+    function print_selected_item($page, $header){
+      $selectedItem = "";
+      if($page===$header)
+        $selectedItem = " nav_selected_item";
+      echo $selectedItem;
+    }
+    function print_active_header($page, $header){
       $active_header = "";
       if($page===$header)
         $active_header = " active_header ";
@@ -18,7 +24,7 @@
   <div class="sidebar-nav list_view" id='nav_menu'>
     <div id="navigatingAccordion" class="accordion">
       <div class="accordion-group">
-          <div class="accordion-heading <?php  print_active($page, "dashboard"); ?>">
+          <div class="accordion-heading <?php  print_active_header($page, "dashboard"); ?>">
             <a href="#dashboardCollapse" data-parent="#navigatingAccordion" data-toggle="collapse" class="accordion-toggle">
              <i class='icon-picture <?php  if($page === "dashboard") echo " icon-white"; ?> '></i> Dashboard
             </a>
@@ -26,14 +32,13 @@
           <div class="accordion-body <?php open_menu($page,"dashboard"); ?>" id="dashboardCollapse" >
             <div class="accordion-inner">
               <ul>
-                <li><a href="dashboard_view#">dashboard </a> </li>
-                
+                <li class='<?php print_selected_item($page,"dashboard"); ?>' ><a href="dashboard_view#">Dashboard </a> </li>
               </ul>
             </div>
           </div>
         </div> 
         <div class="accordion-group">
-          <div class="accordion-heading <?php  print_active($page, "tickets"); ?>">
+          <div class="accordion-heading <?php  print_active_header($page, "tickets"); ?>">
             <a href="#ticketsCollapse" data-parent="#navigatingAccordion" data-toggle="collapse" class="accordion-toggle">
               <i class='icon-tags <?php  if($page === "tickets") echo " icon-white"; ?> '></i> Tickets
             </a>
@@ -41,18 +46,13 @@
           <div class="accordion-body <?php open_menu($page,"tickets"); ?>" id="ticketsCollapse" >
             <div class="accordion-inner">
              <ul class="ticket_badges">
-                <li><a href="tickets_view#"> view tickets</a>  </li>
-                <!-- <li><a href="tickets_view#unassigned"> Unassigned tickets</a> <span class='badge pull-right'> 35 </span> </li>
-                <li><a href="tickets_view#assigned"> Assigned tickets</a> <span class='badge badge-info pull-right'> 30 </span> </li>
-                <li><a href="tickets_view#opened"> Open tickets </a> <span class='badge badge-warning pull-right'> 20 </span> </li>
-                <li><a href="tickets_view#closed"> Closed tickets</a> <span class='badge badge-success pull-right'> 15 </span> </li>
-                <li><a href="tickets_view#all"> All tickets</a> <span class='badge badge-info pull-right'> 100 </span> </li> -->
-              </ul>
+                <li class='<?php print_selected_item($page,"tickets"); ?>' ><a href="tickets_view#"> View tickets</a>  </li>
+                </ul>
             </div>
           </div>
         </div>
         <div class="accordion-group">
-          <div class="accordion-heading <?php  print_active($page, "admin"); ?>">
+          <div class="accordion-heading <?php  print_active_header($page, "admin"); ?>">
             <a href="#adminCollapse" data-parent="#navigatingAccordion" data-toggle="collapse" class="accordion-toggle">
              <i class='icon-th-list <?php  if($page === "admin") echo " icon-white"; ?> '></i> Admin
             </a>
@@ -60,7 +60,7 @@
           <div class="accordion-body <?php open_menu($page,"admin"); ?>" id="adminCollapse" >
             <div class="accordion-inner">
               <ul>
-                <li class=''><a href="admin_view#">Management </a> </li>
+                <li class='<?php print_selected_item($page,"admin"); ?>'><a href="admin_view#">Management </a> </li>
               </ul>
             </div>
           </div>

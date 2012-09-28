@@ -22,8 +22,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-success" ng-click="addProject(newProject)"><i class='icon-white icon-th-list'></i> Save Project </a>
-        <a href="#" class="btn"><i class='icon icon-ban-circle'></i> Cancel</a>
+        <button href="#" class="btn btn-success" ng-click="addProject(newProject)"><i class='icon-white icon-th-list'></i> Save Project </button>
+        <button href="#" class="btn" data-dismiss="modal"><i class='icon icon-ban-circle'></i> Cancel</button>
       </div>
     </div>
     <!-- END OF ADD PAROJECT FORM -->
