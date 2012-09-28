@@ -2,7 +2,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
           <div class="container-fluid">
-            <a class="brand" href="">OUR Desk</a>
+            <a class="brand" href="">AXON-Desk</a>
             <div class="nav-collapse">
               <ul class="nav pull-right">
                 <li class="dropdown">

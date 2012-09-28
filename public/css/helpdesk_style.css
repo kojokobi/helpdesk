@@ -378,7 +378,7 @@ label, input, button, select, textarea {
 	border: 1px solid #BEBEBE;
 	border-bottom: none;
 	overflow: auto;
-	height: 250px;
+	height: 320px;
 }
 
 .single_ticket_thread .original_message {
@@ -386,11 +386,16 @@ label, input, button, select, textarea {
 	/*border-bottom: 1px solid #AAA !important;*/
 }
 
+.single_ticket_thread .original_message p {
+	overflow: auto !important;
+	height: 120px;
+}
+
 .single_ticket_thread .message {
 	overflow: hidden;
 	border-bottom: 1px solid #BEBEBE;
 	padding: 6px;
-	padding-top: 12px;
+	/*padding-top: 12px;*/
 }
 
 .message_and_reply_box {
@@ -407,6 +412,9 @@ label, input, button, select, textarea {
 	border-bottom-left-radius:0px;
 }
 
+.thread .message {
+	min-height: 50px;
+}
 .thread_box h4 {
 	padding: 5px;
 	margin: 0px;
@@ -420,7 +428,7 @@ label, input, button, select, textarea {
 }
 .single_ticket_thread .picture_box {
 	width: 50px;
-	padding-top: 10px;
+	/*padding-top: 10px;*/
 }
 
 .single_ticket_thread .ticket_content {
@@ -431,6 +439,9 @@ label, input, button, select, textarea {
 .single_ticket_thread .ticket_content .title{
 	font-weight: Bold;
 	font-size: 13px;
+	margin-left: 40px;
+	border-bottom: 1px solid #BEBEBE;
+	margin-bottom: 10px;
 }
 
 .single_ticket_thread .ticket_content .datebox{
@@ -438,6 +449,7 @@ label, input, button, select, textarea {
 	color: #206BA7;
 	font-weight: bold;
 	font-size: 10px;
+	margin-right: 50px;
 }
 .single_ticket_thread .ticket_content .datebox .date{
 	color : #444;

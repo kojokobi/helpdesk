@@ -4,9 +4,9 @@
 			<div class="span12 outer">
 				<div class="message original_message">
 						<div class="picture_box span1">
-							<?php echo HTML::image('img/icons/blue_user48.png',""); ?>
+							<?php echo HTML::image('img/icons/blue_user32.png',""); ?>
 						</div>
-						<div class="ticket_content span11" >
+						<div class="ticket_content" >
 							<div class="title"> {{originalTicket.title}} </div>
 							<p> {{originalTicket.message}} </p>
 							<div class="datebox"> Issued On: <span class="date"> {{ originalTicket.createdAt}} </span> </div>
@@ -18,14 +18,21 @@
 			<div class="span12 outer">
 				<div class="message reply">
 					<div class="picture_box span1">
-						<?php echo HTML::image('img/icons/blue_user48.png',""); ?>
+						<?php echo HTML::image('img/icons/blue_user32.png',""); ?>
 					</div>
 					<div class="ticket_content span11">
 							
 						<div>
 							<textarea ng-model="newReply.message"></textarea>
 						</div>
-						<button class="btn btn-info" ng-click="submitReply(newReply)"> <i class="icon-white icon-share-alt"></i> </button>
+						<div class="form-inline">
+
+							<label>Submit As:</label> 
+							<select 
+							ng-model="newReply.status"
+							ng-options="status as status.name for status in ticketStatuses"></select>
+							<button class="btn btn-info" ng-click="submitReply(newReply)"> <i class="icon-white icon-share-alt"></i> </button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -39,7 +46,7 @@
 		<!-- start of thread block -->
 		<div class="message" ng-repeat="reply in ticketThread">
 			<div class="picture_box span1">
-				<?php echo HTML::image('img/icons/blue_user48.png',""); ?>
+				<?php echo HTML::image('img/icons/blue_user32.png',""); ?>
 			</div>
 			<div class="ticket_content">
 					<p>
