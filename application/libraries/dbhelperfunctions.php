@@ -26,7 +26,7 @@ class DataHelper extends Eloquent {
 		
 	}catch(Exception $e){
 
-		return DataHelper::return_json_data(array(),false,$e);
+		return DataHelper::return_json_data(array(),false,$e->getMessage());
 	}
 }
 public static function insert_get_id($table_name,$insert_parameters_array){
