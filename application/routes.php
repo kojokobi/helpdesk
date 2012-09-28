@@ -76,6 +76,7 @@ Route::post('ticketstatuses',array('uses'=>'home@ticket_status'));
 Route::put('ticketstatuses',array('uses'=>'home@ticket_status'));
 Route::delete('ticketstatuses',array('uses'=>'home@ticket_type'));
 Route::get('ticketstatuses',array('uses'=>'home@ticket_statuses'));
+Route::get('ticketstatuses/(:num)',array('uses'=>'home@statuses_by_user'));
 /*
  *Priority routes
  */
