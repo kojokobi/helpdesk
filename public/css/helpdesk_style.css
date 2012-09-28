@@ -72,7 +72,14 @@ a {
     font-style: italic;
     font-size: 11px;
 }
+/*.navbar-inner{
+	background: #49AFCD !important;
+}
 
+.navbar-inner .brand {
+	color: white;
+	text-shadow : none;
+}*/
 .thesidebar {
 	position: fixed; !important;
 	width: 270px !important;
