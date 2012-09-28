@@ -105,7 +105,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 		ticketsForm.modal();
 		$scope.newTicket.projectId = $scope.currentProject.projectId;
 		
-		getProjectUsers($scope.currentProject);
+		getProjectUsers($scope.currentProject.projectId);
 	}
 
 	

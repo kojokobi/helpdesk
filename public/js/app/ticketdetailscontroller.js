@@ -15,8 +15,13 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 	 */
 	var getThread =  function (){
 		$http.get(url).success(function (res){
-			$scope.originalTicket = res.data.pop();
-			$scope.ticketThread = res.data;
+			var data =  res.data[0];
+			//console.log(data)
+			$scope.originalTicket.title = data.title;
+			$scope.originalTicket.createdAt = data.createdAt;
+			$scope.originalTicket.message = data.thread.pop()["message"];
+			$scope.ticketThread = data.thread;
+			//delete data.thread;
 		});
 	}
 	
@@ -28,7 +33,16 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 	$scope.submitReply =  function (newReply) {
 		newReply["ticketId"] = $scope.currentTicketId;
 		$http.post(url, newReply).success(function (res){
-			MSG.show("Error Encountered");
+			if(res.success){
+				var msg = res.message || "Reply Sent";
+				MSG.show(msg, "success");
+				getThread();
+				newReply.message = "";
+			}
+			else {
+				var msg = res.message || "An Error was encountered. Please try again";
+				MSG.show(msg);
+			}
 		});
 	}
 
@@ -37,3 +51,4 @@ function TicketDetailsController($scope,MSG,$routeParams,$http){
 	 */
 	getThread();	
 }
+
