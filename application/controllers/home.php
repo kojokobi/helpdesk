@@ -283,5 +283,4 @@ class Home_Controller extends Base_Controller {
 
 		return Response::json(Ticket::generate_id());
 	}
-	
 }

@@ -9,7 +9,7 @@
 						ng-model="currentProject" 
 						ng-change="loadTickets()" 
 						ng-options="userProject as userProject.projectName for userProject in userProjects"></select>
-					<a class="btn btn-info" ng-click="showForm()"> 
+						<a class="btn btn-info" ng-click="showForm()"> 
 						<i class="icon-white icon-tags"></i> Add Ticket</a>
 				</div>
 			</legend>
@@ -47,7 +47,7 @@
 					<tr ng-repeat="ticket in tickets">
 						<td> {{$index +1}} </td>
 						<td> {{ticket.ticketStatus}} </td>
-						<td> <a href="#ticket/{{ticket.id}}"> {{ticket.title}}  </td>
+						<td> <a href="#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
 						<td> {{ticket.ticketType}} </td>
 						<td> {{ticket.assignedTo}} </a>  </td>
 						<td> {{ticket.createdAt}} </td>

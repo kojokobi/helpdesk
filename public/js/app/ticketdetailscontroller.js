@@ -1,4 +1,9 @@
-function TicketDetailsController($scope,MSG,$routeParams,$http, $resource){
+function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParams, $location){
+
+	// $scope.$route = $route;
+	// $scope.$routeParams = $routeParams;
+	// $scope.location = $location;
+
 	var url = 'tickets/' +$routeParams.id ;
 	$scope.originalTicket = {};
 	$scope.currentTicketId = $routeParams.id;
@@ -48,7 +53,7 @@ function TicketDetailsController($scope,MSG,$routeParams,$http, $resource){
 	 */
 	$scope.submitReply =  function (newReply) {
 		newReply["ticketId"] = $scope.currentTicketId;
-		newReply["statusId"] = newReply.status.id;
+		newReply["ticketStatusId"] = newReply.status.id;
 		delete newReply["status"];
 		$http.post(url, newReply).success(function (res){
 			if(res.success){

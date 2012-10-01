@@ -29,8 +29,8 @@
 
     <!-- header scripts go here -->
     <!-- libraries -->
-    <script type="text/javascript" src='js/libs/angular-1.0.1.js'></script>
-    <script type="text/javascript" src='js/libs/angular-resource-1.0.1.js'></script>
+    <script type="text/javascript" src='js/libs/angular.js'></script>
+    <script type="text/javascript" src='js/libs/angular-resource.js'></script>
     <!-- end of libs -->
     
     <!-- app scripts -->
