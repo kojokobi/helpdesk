@@ -52,6 +52,7 @@
 					<p>
 						{{reply.message}}
 					</p>
+					<div class="datebox"> Status: <span class="date"> {{reply.ticketStatus}}  </span> </div>
 					<div class="datebox"> Issued On: <span class="date"> {{reply.createdAt}}  </span> </div>
 			</div>
 		</div>

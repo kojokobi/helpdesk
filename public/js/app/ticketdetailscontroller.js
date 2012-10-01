@@ -53,7 +53,7 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 	 */
 	$scope.submitReply =  function (newReply) {
 		newReply["ticketId"] = $scope.currentTicketId;
-		newReply["statusId"] = newReply.status.id;
+		newReply["ticketStatusId"] = newReply.status.id;
 		delete newReply["status"];
 		$http.post(url, newReply).success(function (res){
 			if(res.success){

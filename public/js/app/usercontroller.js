@@ -39,11 +39,14 @@ function UserController ($scope, User,$http,MSG){
 			var theUser = new User(user);
 			theUser.$save(function (res){
 				//fetch fresh items
+				var msg = "";
 				if(res.success){
 					getUsers();
+					msg = res.message || "User created"; 
+					MSG.show(msg);
 					$scope.clear();	
 				}else {
-					var msg = res.message || "Sorry errors were ecountered"; 
+					msg = res.message || "Sorry errors were ecountered"; 
 					MSG.show(msg);
 				}
 				
