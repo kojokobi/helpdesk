@@ -46,8 +46,8 @@ class TicketStatus extends Eloquent{
 	 */
 	public static function get_ticket_statuses_by_user($ticketId){
 		//var_dump(config::get($config['my_environment']);
-		var_dump(Config::get('myconfigs.globalconfig.environment'));
-		return;
+		//var_dump(Config::get('myconfigs.globalconfig.environment'));
+		//return;
 		try{
 
 

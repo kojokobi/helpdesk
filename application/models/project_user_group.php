@@ -34,8 +34,8 @@ class ProjectUserGroup extends Eloquent{
 			$filter_array['user_id'] = Auth::user()->id;
 		if(array_key_exists("projectId", $obj))
 			$filter_array['project_id'] = $obj['projectId'];
-		// if(array_key_exists("userId", $obj))
-		// 	$filter_array['user_id'] = $obj['userId'];
+		if(array_key_exists("userId", $obj))
+			$filter_array['user_id'] = $obj['userId'];
 		//$filter_array = array();
 
 		//var_dump($filter_array);
@@ -52,7 +52,7 @@ class ProjectUserGroup extends Eloquent{
 				->where(function($query) use ($filter_array){
 
 						$query = HelperFunction::filter_data($query,'project_id',$filter_array,'int');
-						//$query = HelperFunction::filter_data($query,'user_id',$filter_array,'int');
+						$query = HelperFunction::filter_data($query,'user_id',$filter_array,'int');
 				})
 				->order_by('project_user_groups.created_at','desc');
 				$total = $selectQuery->count();
