@@ -38,36 +38,49 @@ class TicketStatus extends Eloquent{
 		$data = DataHelper::return_json_data($selectQuery->get(),true,'record loaded',$selectQuery->count());
 		return $data;
 	}
+	/**
+	 * Selects tickets statuses filtered by the current users Id and a ticketId.
+	 * 
+	 * @param  int 		[$ticketId] [Id of a ticket]
+	 * @return json 	a json object containing statuses 
+	 */
 	public static function get_ticket_statuses_by_user($ticketId){
+		try{
 
-		$user_id = Auth::user()->id;
-		var_dump($user_id);
-		var_dump($ticketId);
-		$result = DB::table('tickets')
+
+			$user_id = Auth::user()->id;
+			$result = DB::table('tickets')
 				->where(function($query) use($ticketId,$user_id){
 
 					$query->where('id','=',$ticketId);
 					$query->where('created_by','=',$user_id);
 
 				})->get(
-					array('id')
+					array('id' )
 				);
+				
 		$out = array_map(function($data){
 
 			$arr = array();
-			$arr['id'] = $data->id;
+			$arr["id"] = $data->id;
 			return $arr;
+
 		}, $result);
-		var_dump($out);
-		if(array_key_exists('id', $out)){
-			echo "admin";
+				
+		if(array_key_exists(0, $out)){
 			return TicketStatus::get_ticket_statuses();
 		}
-		else{
-			echo "not admin";
 			return TicketStatus::get_without_closed_status();
-		}
+	}catch(Exception $e){
+
+		return return_json_data(array(),false,$e);
 	}
+		
+	}
+	/**
+	 * Selects statuses where status name is not equal to closed
+	 * @return [json] [a json object containing statuses ]
+	 */
 	public static function get_without_closed_status(){
 
 		$result = DB::table('ticket_statuses')
@@ -77,6 +90,6 @@ class TicketStatus extends Eloquent{
 
 				})->get();
 
-		return  DataHelper::return_json_data($result,true,'record loaded',0);
+		return  DataHelper::return_json_data($result,true,'record loaded');
 	}
 } 
