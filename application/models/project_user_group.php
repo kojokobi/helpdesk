@@ -27,30 +27,32 @@ class ProjectUserGroup extends Eloquent{
 	}
 	public static function get_project_user_groups($obj){
 
-		var_dump($obj);
+		
 		$filter_array = array();
-		if(!is_object($obj))
+		//var_dump($obj);
+		if(!array_key_exists('projectId',$obj))
 			$filter_array['user_id'] = Auth::user()->id;
 		if(array_key_exists("projectId", $obj))
 			$filter_array['project_id'] = $obj['projectId'];
-		if(array_key_exists("userId", $obj))
-			$filter_array['user_id'] = $obj['userId'];
+		// if(array_key_exists("userId", $obj))
+		// 	$filter_array['user_id'] = $obj['userId'];
+		//$filter_array = array();
 
-
-		$t = DB::query('select u.first_name,u.last_name,pg.name,pg.project_id,pug.project_group_id,p.name as projectname
-									from users u,project_groups pg,project_user_groups pug,projects p
-										where u.id = pug.user_id and pg.id = pug.project_group_id 
-											and pg.project_id = ?',array(1));
-		var_dump($t);
+		//var_dump($filter_array);
+		// $t = DB::query('select u.first_name,u.last_name,pg.name,pg.project_id,pug.project_group_id,p.name as projectname
+		// 							from users u,project_groups pg,project_user_groups pug,projects p
+		// 								where u.id = pug.user_id and pg.id = pug.project_group_id 
+		// 									and pg.project_id = ?',array(1));
+		// var_dump($t);
 
 		$selectQuery = DB::table('project_user_groups')
 				->join('users','project_user_groups.user_id','=','users.id')
-				->left_join('project_groups','project_user_groups.project_group_id','=','project_groups.id')
+				->join('project_groups','project_user_groups.project_group_id','=','project_groups.id')
 				->join('projects','projects.id','=','project_groups.project_id')
 				->where(function($query) use ($filter_array){
 
 						$query = HelperFunction::filter_data($query,'project_id',$filter_array,'int');
-						$query = HelperFunction::filter_data($query,'user_id',$filter_array,'int');
+						//$query = HelperFunction::filter_data($query,'user_id',$filter_array,'int');
 				})
 				->order_by('project_user_groups.created_at','desc');
 				$total = $selectQuery->count();
