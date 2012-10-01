@@ -52,7 +52,7 @@ class Ticket {
 
 		$ticket_details_array['message'] = $ticket->message;
 		$ticket_details_array['ticket_id'] = $ticket->ticketId;
-		$ticket_details_array['ticket_status_id'] = $ticket->ticketStatusId;
+		$ticket_details_array['status_id'] = $ticket->ticketStatusId;
 		
 		$inserted_record = DataHelper::insert_record('ticket_details',$ticket_details_array);
         return $inserted_record;
@@ -181,6 +181,7 @@ class Ticket {
 		$ticket_details_filter['ticket_id'] = $id;
 		//
 		$ticket_details_query = DB::table('ticket_details')
+				->join('ticket_statuses','ticket_details.status_id','=','ticket_statuses.id')
 				->where(function($query)use($ticket_details_filter){
 
 					$query = DataHelper::filter_data($query,'ticket_id',$ticket_details_filter,'int');
@@ -193,7 +194,7 @@ class Ticket {
 
 					array(
 							'ticket_details.message','ticket_details.id as ticket_details_id','ticket_details.created_at',
-								'ticket_id as ticketid',
+								'ticket_id as ticketid','status_id','ticket_statuses.name as statusname'
 					)
 				);
 		//map ticket details resultSet to outTicketDetails array
@@ -204,6 +205,9 @@ class Ticket {
 			$arr['message'] = $data->message;
 			$arr['createdAt'] = $data->created_at;
 			$arr['ticketId'] = $data->ticketid;
+			$arr['ticketStatusId'] = $data->status_id;
+			$arr['ticketStatus'] = $data->statusname;
+
 
 			return $arr;
 		},$result_set);

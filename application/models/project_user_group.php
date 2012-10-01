@@ -29,7 +29,7 @@ class ProjectUserGroup extends Eloquent{
 
 		
 		$filter_array = array();
-		//var_dump($obj);
+		
 		if(!array_key_exists('projectId',$obj))
 			$filter_array['user_id'] = Auth::user()->id;
 		if(array_key_exists("projectId", $obj))

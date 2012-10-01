@@ -82,7 +82,8 @@ class HelperFunction extends Eloquent{
 	}
 	public static function catch_error($exception,$status){
 
-			//if()
+			$env = Config::get('globalconfig.environment','development');
+			
 
 	}
 }

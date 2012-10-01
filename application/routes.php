@@ -134,8 +134,6 @@ Route::get("single_ticket_view",function (){
 	echo View::make("tickets.single_ticket"); 
 });
 
-
-
 Route::get('login', function()
 {
 	

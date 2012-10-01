@@ -179,6 +179,8 @@ class Home_Controller extends Base_Controller {
 	}
 	public function get_ticket_statuses(){
 
+		$t = Config::get('globalconfig.environment');
+		var_dump($t);
 		$client_data = Input::all();
 		if(array_key_exists('ticketId',$client_data))
 			return Response::json(TicketStatus::get_ticket_statuses_by_user($client_data['ticketId']));
