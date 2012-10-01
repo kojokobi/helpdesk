@@ -2,7 +2,7 @@
 
 class TicketStatus extends Eloquent{
 	
-	
+	//public  $config = Config::get('myconfigs.globalconfig');
 	public static function create_ticket_status($ticketStatus){
 
 			$grp_array = DataHelper::create_audit_entries(Auth::user()->id);
@@ -45,6 +45,9 @@ class TicketStatus extends Eloquent{
 	 * @return json 	a json object containing statuses 
 	 */
 	public static function get_ticket_statuses_by_user($ticketId){
+		//var_dump(config::get($config['my_environment']);
+		var_dump(Config::get('myconfigs.globalconfig.environment'));
+		return;
 		try{
 
 

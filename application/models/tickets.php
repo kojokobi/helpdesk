@@ -52,6 +52,7 @@ class Ticket {
 
 		$ticket_details_array['message'] = $ticket->message;
 		$ticket_details_array['ticket_id'] = $ticket->ticketId;
+		$ticket_details_array['ticket_status_id'] = $ticket->ticketStatusId;
 		
 		$inserted_record = DataHelper::insert_record('ticket_details',$ticket_details_array);
         return $inserted_record;

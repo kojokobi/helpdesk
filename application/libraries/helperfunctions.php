@@ -63,7 +63,6 @@ class HelperFunction extends Eloquent{
 	public static function get_date($format='Y-m-d H:i:s'){
 		return Date($format);
 	}
-
 	public static function get_user_id(){
 		return 1;
 	}
@@ -80,5 +79,10 @@ class HelperFunction extends Eloquent{
 			# if $field contans an underscore, split by the underscore
 			//if($field)
 		}
+	}
+	public static function catch_error($exception,$status){
+
+			//if()
+
 	}
 }
