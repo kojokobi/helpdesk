@@ -1,4 +1,9 @@
-function TicketDetailsController($scope,MSG,$routeParams,$http, $resource){
+function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParams, $location){
+
+	// $scope.$route = $route;
+	// $scope.$routeParams = $routeParams;
+	// $scope.location = $location;
+
 	var url = 'tickets/' +$routeParams.id ;
 	$scope.originalTicket = {};
 	$scope.currentTicketId = $routeParams.id;

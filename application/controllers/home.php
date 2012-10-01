@@ -274,8 +274,9 @@ class Home_Controller extends Base_Controller {
 
 		return Response::json(Ticket::generate_id());
 	}
-	public function get_statuses_by_user($ticketId){
-		
+	public function get_statuses_by_user($id){
+		$data = Input::all();
+		$ticketId = $data["ticketId"];
 		return Response::json(TicketStatus::get_ticket_statuses_by_user($ticketId));
 	}
 }

@@ -1,4 +1,4 @@
-<div class='container-fluid'>
+<div class='container-fluid' ng-controller="RouteController">
 	<div class='span12'>
 		<fieldset>
 			<legend>
@@ -47,7 +47,7 @@
 					<tr ng-repeat="ticket in tickets">
 						<td> {{$index +1}} </td>
 						<td> {{ticket.ticketStatus}} </td>
-						<td> <a href="#ticket/{{ticket.id}}"> {{ticket.title}}  </td>
+						<td> <a href="#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
 						<td> {{ticket.ticketType}} </td>
 						<td> {{ticket.assignedTo}} </a>  </td>
 						<td> {{ticket.createdAt}} </td>
