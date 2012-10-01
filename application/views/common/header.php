@@ -36,7 +36,6 @@
     <!-- app scripts -->
     <script type="text/javascript" src="js/app/app.js"></script>
     <script type="text/javascript" src="js/app/services.js"></script>
-    <script type="text/javascript" src="js/app/routecontroller.js"></script>
     <script type="text/javascript" src="js/app/usercontroller.js"></script>
     <script type="text/javascript" src="js/app/projectcontroller.js"></script>
     <script type="text/javascript" src="js/app/ticketcontroller.js"></script>

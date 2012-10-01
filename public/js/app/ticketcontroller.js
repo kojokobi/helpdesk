@@ -111,7 +111,6 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 	
 
 	$scope.loadTickets = function (){
-		console.log($scope.currentProject);
 		getTickets();		
 	}
 
@@ -120,7 +119,6 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 	 * @return {[type]} [description]
 	 */
 	var getTickets =  function (id) {
-		alert($scope.currentProject.projectId);
 		var _id = id || $scope.currentProject.projectId;
 		Ticket.query(
 			{ projectId: _id},function (res){

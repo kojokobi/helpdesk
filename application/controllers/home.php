@@ -178,9 +178,17 @@ class Home_Controller extends Base_Controller {
 		return Reponse::json(TicketStatus::delete_ticket_status(Input::get('id')));
 	}
 	public function get_ticket_statuses(){
-		return Response::json(TicketStatus::get_ticket_statuses(Input::all()));
-	}
 
+		$client_data = Input::all();
+		if(array_key_exists('ticketId',$client_data))
+			return Response::json(TicketStatus::get_ticket_statuses_by_user($client_data['ticketId']));
+		else
+			return Response::json(TicketStatus::get_ticket_statuses(Input::all()));
+	}
+	public function get_statuses_by_user($ticketId){
+		
+		return Response::json(TicketStatus::get_ticket_statuses_by_user($ticketId));
+	}
 	public function post_tickettype(){
 
 		$clientdata = Input::all();
@@ -238,7 +246,6 @@ class Home_Controller extends Base_Controller {
 
 		return Response::json(Ticket::get_ticket_details($id));
 	}
-	
 	//Tickets Types
 	public function post_ticket_type(){
 
@@ -273,10 +280,5 @@ class Home_Controller extends Base_Controller {
 	public static function get_number(){
 
 		return Response::json(Ticket::generate_id());
-	}
-	public function get_statuses_by_user($id){
-		$data = Input::all();
-		$ticketId = $data["ticketId"];
-		return Response::json(TicketStatus::get_ticket_statuses_by_user($ticketId));
 	}
 }
