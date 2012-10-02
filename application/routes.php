@@ -87,19 +87,22 @@ Route::get('priorities',array('uses'=>'home@priorities'));
 /*
  *Ticket Types
  */
-Route::post('tickettypes',array('uses'=>'home@create_ticket_type'));
-Route::put('tickettypes',array('uses'=>'home@ticket_type'));
-Route::delete('tickettypes',array('uses'=>'home@ticket_type'));
-Route::get('tickettypes',array('uses'=>'home@ticket_types'));
+Route::post('tickettypes',array('uses'=>'ticket@create_ticket_type'));
+Route::put('tickettypes',array('uses'=>'ticket@ticket_type'));
+Route::delete('tickettypes',array('uses'=>'ticket@ticket_type'));
+Route::get('tickettypes',array('uses'=>'ticket@ticket_types'));
 /*
  *Tickets routes
  */
-Route::post('tickets',array('uses'=>'home@ticket'));
-Route::post('tickets/(:num)',array('uses'=>'home@ticket_details'));
-Route::put('tickets',array('uses'=>'home@update_ticket'));
-Route::delete('tickets',array('uses'=>'home@ticket'));
-Route::get('tickets',array('uses'=>'home@tickets'));
-Route::get('tickets/(:num)',array('uses'=>'home@ticket_details'));
+Route::post('tickets',array('uses'=>'ticket@ticket'));
+Route::post('tickets/(:num)',array('uses'=>'ticket@ticket_details'));
+Route::put('tickets',array('uses'=>'ticket@update_ticket'));
+Route::delete('tickets',array('uses'=>'ticket@ticket'));
+Route::get('tickets',array('uses'=>'ticket@tickets'));
+Route::get('tickets/(:num)',array('uses'=>'ticket@ticket_details'));
+Route::get('tickets_main',array('uses'=>'ticket@ticket_main'));
+Route::get('tickets_view',array('uses'=>'ticket@tickets_view'));
+Route::get('single_ticket_view',array('uses'=>'ticket@single_ticket_view'));
 /*
  *Project User Groups routes
  */
@@ -113,32 +116,33 @@ Route::get('usergroups',array('uses'=>'home@project_user_groups'));
  */
 Route::post('login',array('uses' => 'security@login'));
 Route::get("logout", array("uses" => "security@logout"));
+Route::get('login',array('uses'=> 'security@login'));
 
 /*
  *Applcation View routes go here
  */
 Route::get("admin_view", array("as"=> "admin", "uses"=> "admin@index"));
-Route::get("tickets_view", function (){
-	return View::make("tickets.index");
-});
+Route::get("dashboard_view", array("uses"=> "home@dash_board"));
+// Route::get("tickets_view", function (){
+// 	return View::make("tickets.index");
+// });
 
-Route::get("dashboard_view", function (){
-	return View::make("dashboard.index");
-});
-Route::get("tickets_main",function (){
-	echo View::make("tickets.main"); 
-});
+// Route::get("dashboard_view", function (){
+// 	return View::make("dashboard.index");
+// });
+// Route::get("tickets_main",function (){
+// 	echo View::make("tickets.main"); 
+// });
 
 //these view are submitted via ajax there do not need any aunthen
 Route::get("single_ticket_view",function (){
 	echo View::make("tickets.single_ticket"); 
 });
 
-Route::get('login', function()
-{
-	
-	return View::make('login.index');
-});
+// Route::get('login', function()
+// {
+// 	return View::make('login.index');
+// });
 Route::get('number',array('uses' => 'home@number'));
 /*
 |--------------------------------------------------------------------------

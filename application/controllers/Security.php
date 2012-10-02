@@ -19,6 +19,10 @@ class Security_Controller extends Base_Controller{
 		else
 			return Redirect::to('login')->with('login_errors',true);
 	}
+	public function get_login(){
+
+		return View::make('login.index');
+	}
 
 	public function get_logout(){
 		Auth::logout();

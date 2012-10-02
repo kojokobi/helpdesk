@@ -5,12 +5,17 @@ class Ticket {
 
 	public static function create_ticket($ticket){
 
+	try{
+		//validate_user_input($input,$rules)
+		$input = array(
 
-	$result = 	DB::transaction(function() use ($ticket) {
+			);
+
+		$result = 	DB::transaction(function() use ($ticket) {
 		
 		$ticket_array = DataHelper::create_audit_entries(Auth::user()->id);
 		//todo:change this
-		$ticket_array['ticket_status_id'] = 1;//ticketStatus is always bydefault set to 1=opened
+		$ticket_array['ticket_status_id'] = 1;//move this to a config file
 		$ticket_array['priority_id'] = $ticket->priorityId;
 		$ticket_array['assigned_to'] = $ticket->assignedId;
 		$ticket_array['title'] = $ticket->title;
@@ -31,7 +36,7 @@ class Ticket {
 		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
 		$ticket_details_array['ticket_id'] = $id;
 		$ticket_details_array['message'] = $ticket->message;
-		$ticket_details_array['status_id'] = 1;
+		$ticket_details_array['status_id'] = 1;//value should be from a config value;
 
 		$ticket_details_id	= DB::table('ticket_details')->insert_get_id(
 
@@ -45,6 +50,9 @@ class Ticket {
 
 		});
 		return DataHelper::return_json_data($result,true,"Ticket created successfully");
+	}catch(Exception $e){
+		return HelperFunction::catch_error($e,true,Config::get("globalconfig.global_error_message"));
+	}
 
 	}
 	public static function create_ticket_details($ticket){

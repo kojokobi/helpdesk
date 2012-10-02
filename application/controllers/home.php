@@ -163,105 +163,8 @@ class Home_Controller extends Base_Controller {
 		return Response::json(ProjectUserGroup::get_project_user_groups(Input::all()));
 	}
 
-	//ticketStatus
-	public function post_ticket_status(){
-		
-		return Response::json(TicketStatus::create_ticket_status(Input::json()));
-	}
-	public function put_ticket_status(){
+	
 
-		$client_data = Input::json();
-		return Response::json(TicketStatus::update_ticket_status($client_data));
-		
-	}
-	public function delete_ticket_status(){
-		return Reponse::json(TicketStatus::delete_ticket_status(Input::get('id')));
-	}
-	public function get_ticket_statuses(){
-
-		
-		$client_data = Input::all();
-		if(array_key_exists('ticketId',$client_data))
-			return Response::json(TicketStatus::get_ticket_statuses_by_user($client_data['ticketId']));
-		else
-			return Response::json(TicketStatus::get_ticket_statuses(Input::all()));
-	}
-	public function get_statuses_by_user($ticketId){
-		
-		return Response::json(TicketStatus::get_ticket_statuses_by_user($ticketId));
-	}
-	public function post_tickettype(){
-
-		$clientdata = Input::all();
-		$tickettype = array(
-
-						   'name' 			=> $clientdata['name'],
-						   'description' 	=> $clientdata['description'],
-						   'createdBy'		=> HelperFunction::get_user_id(),
-						   'lastUpdateBy'	=> HelperFunction::get_user_id()
-		 		);
-
-		return  Response::json(tickettypes::create_ticket_type($tickettype));
-	}
-
-	public function put_tickettype(){
-
-		$project = Input::all();
-				$tickettype = array(
-							'id'			=> $project['id'],
-							'name' 			=> $project['name'],
-						   'description' 	=> $project['description'],
-						   'lastUpdateBy'	=> HelperFunction::get_user_id()
-		 		);
-				return Response::json(tickettype::update_ticket_type($projectArray));
-	}
-	public function delete_tickettype(){
-		return Reponse::json(tickettype::delete_ticket_type(Input::get('id')));
-	}
-	public function get_tickettypes(){
-		return Response::json(tickettype::get_ticket_type(Input::all()));
-	}
-	//Tickets
-	public function post_ticket(){
-
-		return  Response::json(Ticket::create_ticket(Input::json()));
-	}
-	public function post_ticket_details($id){
-		
-		return Response::json(Ticket::create_ticket_details(Input::json()));
-	}
-	public function put_ticket(){
-		
-		return Response::json(Ticket::update_ticket(Input::json()));
-	}
-	public function delete_ticket(){
-		return Reponse::json(Ticket::delete_ticket_type(Input::get('id')));
-	}
-	public function get_tickets(){
-		return Response::json(Ticket::get_tickets(Input::all()));
-	}
-	public function get_ticket_details($id){
-
-
-		//return Response::json(Ticket::get_ticket_details(Input::all()));
-
-		return Response::json(Ticket::get_ticket_details($id));
-	}
-	//Tickets Types
-	public function post_ticket_type(){
-
-		return  Response::json(Ticket::create_ticket_type(Input::json()));
-	}
-	public function put_ticket_type(){
-		
-		return Response::json(TicketType::update_ticket_type(Input::json()));
-	}
-	public function delete_ticket_type(){
-		return Reponse::json(TicketType::delete_ticket_type(Input::get('id')));
-	}
-	public function get_ticket_types(){
-		return Response::json(TicketType::get_ticket_types(Input::all()));
-	}
 	//Priorities actions
 	public function post_create_priority(){
 
@@ -281,6 +184,11 @@ class Home_Controller extends Base_Controller {
 	public static function get_number(){
 
 		return Response::json(Ticket::generate_id());
+	}
+
+	//Dash Board
+	public function get_dash_board(){
+		return View::make("dashboard.index");
 	}
 	
 }
