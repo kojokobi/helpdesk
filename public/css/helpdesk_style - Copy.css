@@ -1,6 +1,6 @@
 body {
 	padding-top: 40px;
-	background: #F1F3F5 ;
+	background: #f2f2f2;
 	font-size: 12px !important;
 	font-family:  "Lucida Sans Unicode", "Lucida Grande", "tahoma", Verdana, sans-serif !important; 
 	/*padding-bottom: 40px;*/
@@ -13,7 +13,7 @@ label, input, button, select, textarea {
 	font-size: 13px;
 }
 a {
-	color : #222;
+	color : #444;
 	font-size: 13px;
 }
 
@@ -72,32 +72,14 @@ a {
     font-style: italic;
     font-size: 11px;
 }
-.navbar-inverse .navbar-inner{
-	background: #417CBD;
-	background-image: -webkit-linear-gradient(#3895CB, #015E94);
-	background-image: -moz-linear-gradient(#3895CB, #015E94);
-	background-image: -o-linear-gradient(#3895CB, #015E94);
-	background-image: -ms-linear-gradient(#3895CB, #015E94);
-	background-image: linear-gradient(#3895CB, #015E94);
+/*.navbar-inner{
+	background: #49AFCD !important;
 }
-.dash_overides{
-	padding: 0px !important;
-	margin-top: -20px;
-}
+
 .navbar-inner .brand {
 	color: white;
 	text-shadow : none;
-	padding-left: 30px;
-}
-
-.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
-	border-top-color: white;
-	border-bottom-color: white;
-}
-
-.user {
-	color : white !important;
-}
+}*/
 .thesidebar {
 	position: fixed; !important;
 	width: 270px !important;
@@ -105,16 +87,9 @@ a {
 	border-right: 1px solid #E5E5E5;
 	left: 0px;
 	overflow-x: hidden;
-	z-index: 100;
-	background: white;
-	background: #F1F3F5 url("../img/custom/table_back.png");
+	z-index: 9000;
+	background: #FAFAFA;
 }
-
-
-table {
-	background: white;
-}
-
 
 .sidebar-nav a {
 	text-decoration: none;
@@ -129,20 +104,16 @@ table {
 
 .sidebar-nav .accordion-group {
 	margin-bottom: 0px;
-	border-bottom: 1px solid #bab9b9;
+	border-bottom: 1px solid #E5E5E5;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
 	border-right: 0px;
 }
 
-.sidebar-nav .accordion-heading {
-	/*background: #E8EBEF;*/
-}
-
 .sidebar-nav .accordion-inner {
 	padding: 0px;
-	background: #dbe3ee;
+	background: #ECECEC;
 	border-top: 1px solid #A1A1A1;
 }
 .sidebar-nav .accordion-inner .badge{ 
@@ -192,12 +163,11 @@ table {
 	border-bottom: 1px solid #DDD;
 }
 
-
 .sidebar-nav .accordion-inner li:last-child{ 
 	border-bottom: none;
 }
 .sidebar-nav .accordion-inner li i{ 
-	margin-right: 6px;
+	margin-right: 10px;
 }
 
 .sidebar-nav .nav_selected_item {
@@ -212,13 +182,12 @@ table {
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 10px;
-	/*background: url("../img/custom/table_back.png");*/
+
 	position: absolute;
 	margin: 0px;
 	/*margin-left: 270px !important;*/
 	left: 270px;
 	/*right: 0px;*/
-	/*background: url(../img/custom/darkgrain.png);*/
 }
 
 .frame {
