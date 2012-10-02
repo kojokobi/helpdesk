@@ -129,7 +129,7 @@ table {
 
 .sidebar-nav .accordion-group {
 	margin-bottom: 0px;
-	border-bottom: 1px solid #E5E5E5;
+	border-bottom: 1px solid #bab9b9;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
@@ -197,7 +197,7 @@ table {
 	border-bottom: none;
 }
 .sidebar-nav .accordion-inner li i{ 
-	margin-right: 10px;
+	margin-right: 6px;
 }
 
 .sidebar-nav .nav_selected_item {
