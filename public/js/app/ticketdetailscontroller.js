@@ -33,7 +33,10 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 			//console.log(data)
 			$scope.originalTicket.title = data.title;
 			$scope.originalTicket.createdAt = data.createdAt;
-			$scope.originalTicket.message = data.thread.pop()["message"];
+			
+			var firstMessage = data.thread.pop();
+			$scope.originalTicket.message = firstMessage["message"];
+			$scope.originalTicket.ticketStatus  = data["ticketStatus"];
 			$scope.ticketThread = data.thread;
 			//delete data.thread;
 		});
@@ -52,10 +55,11 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 	 * @return {void}    
 	 */
 	$scope.submitReply =  function (newReply) {
-		newReply["ticketId"] = $scope.currentTicketId;
-		newReply["ticketStatusId"] = newReply.status.id;
-		delete newReply["status"];
-		$http.post(url, newReply).success(function (res){
+		var reply = angular.copy(newReply)
+		reply["ticketId"] = $scope.currentTicketId;
+		reply["ticketStatusId"] = reply.status.id;
+		delete reply["status"];
+		$http.post(url, reply).success(function (res){
 			if(res.success){
 				var msg = res.message || "Reply Sent";
 				MSG.show(msg, "success");

@@ -9,6 +9,7 @@
 						<div class="ticket_content" >
 							<div class="title"> {{originalTicket.title}} </div>
 							<p> {{originalTicket.message}} </p>
+							<div class="datebox"> Status: <span class="date"> {{originalTicket.ticketStatus}}  </span> </div>
 							<div class="datebox"> Issued On: <span class="date"> {{ originalTicket.createdAt}} </span> </div>
 						</div>
 					</div>
