@@ -2,7 +2,8 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
           <div class="container-fluid">
-            <a class="brand" href="">AXON-Desk</a>
+
+            <a class="brand" href=""><?php echo  HTML::image("img/custom/icon.png"); ?> AXON-Desk</a>
             <div class="nav-collapse">
               <ul class="nav pull-right">
                 <li class="dropdown ">

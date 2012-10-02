@@ -28,7 +28,9 @@
 
 	.dash_item {
 		color: white;
-		width: 150px;
+		/*margin-right: 50px;*/
+		/*min-width: 100px;*/
+		/*width: 150px;*/
 		/*float: left;*/
 	}
 
@@ -36,8 +38,8 @@
 		margin-bottom: 0px;
 	}
 	.dash_title {
-		display: block;
-		color: #999;
+		/*display: block;*/
+		color: #eee;
 	}
 
 	.dash_item .dash_percent {
@@ -54,40 +56,66 @@
 	.dash_item .unresolved{
 		color : #ee0909 ;
 	}
+
+	.dash_mini_graph {
+		width: 60px;
+	}
 </style>
 
-<div>
-	
+<div ng-controller="DashController">
 	<div class="dash_content">
 		<ul>
 			<li>
 				<div class="dash_item">
-					<h2>8</h2>
-					<span class='dash_title'>Projects</span>
-					<span class="dash_percent success">100</span>
+					<div class='pull-left dash_mini_graph'>
+						<h2><span class="bar">2,4,9,7,12,10,12</span></h2>
+					</div>
+					<div class='pull-left'>
+						<h2>8</h2>
+						<span class="dash_title">Projects</span>
+					</div>
 				</div>
 			</li>
 			<li>
 				<div class="dash_item">
-					<h2>150</h2>
-					<span class='dash_title'>Tickets</span>
-					<span class="dash_percent success">100%</span>
+					<div class='pull-left success dash_mini_graph'>
+						<h2><span class="bar">2,4,9,7,12,10,12</span></h2>
+						<span>100%</span>
+					</div>
+					<div class='pull-left'>
+						<h2>150</h2>
+						<span class="dash_title">Tickets</span>
+					</div>
+					
 				</div>
 			</li>
 			<li>
 				<div class="dash_item">
-					<h2>50</h2>
-					<span class="dash_title">Resolved Tickets</span>
-					<span class="dash_percent success">33.33%</span>
+					<div class='pull-left success dash_mini_graph'>
+						<h2><span class="bar_good">2,4,9,7,12,10,12</span></h2>
+						<span>66.66%</span>
+					</div>
+					<div class='pull-left'>
+						<h2>100</h2>
+						<span class="dash_title	">Resolved Tickets</span>
+					</div>
+					
 				</div>
 			</li>
 			<li>
 				<div class="dash_item">
-					<h2>100</h2>
-					<span class="dash_title">Unresolved Tickets</span>
-					<span class="dash_percent unresolved">66.66%</span>
+					<div class='pull-left unresolved dash_mini_graph'>
+						<h2><span class="bar_bad">0,-3,-6,-4,-5,-4,-7</span></h2>
+						<span>33.33%</span>
+					</div>
+					<div class='pull-left'>
+						<h2>50</h2>
+						<span class="dash_title">Unresolved Tickets</span>
+					</div>
+					
 				</div>
 			</li>
+			
 		</ul>
 		
 	</div>

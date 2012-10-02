@@ -51,6 +51,7 @@
             </div>
           </div>
         </div>
+        <?php //if (Auth::user()->role === "admin") { ?>
         <div class="accordion-group">
           <div class="accordion-heading <?php  print_active_header($page, "admin"); ?>">
             <a href="#adminCollapse" data-parent="#navigatingAccordion" data-toggle="collapse" class="accordion-toggle">
@@ -65,6 +66,8 @@
             </div>
           </div>
         </div>   
+
+        <?php //} ?>
     </div>  
   </div><!--/.well -->
 </div><!--/span-->
