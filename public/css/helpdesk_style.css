@@ -1,6 +1,6 @@
 body {
 	padding-top: 40px;
-	background: #F1F3F5;
+	background: #F1F3F5 ;
 	font-size: 12px !important;
 	font-family:  "Lucida Sans Unicode", "Lucida Grande", "tahoma", Verdana, sans-serif !important; 
 	/*padding-bottom: 40px;*/
@@ -13,7 +13,7 @@ label, input, button, select, textarea {
 	font-size: 13px;
 }
 a {
-	color : #444;
+	color : #222;
 	font-size: 13px;
 }
 
@@ -105,9 +105,16 @@ a {
 	border-right: 1px solid #E5E5E5;
 	left: 0px;
 	overflow-x: hidden;
-	/*z-index: 9000;*/
-	background: #F1F3F5;
+	z-index: 100;
+	background: white;
+	background: #F1F3F5 url("../img/custom/table_back.png");
 }
+
+
+table {
+	background: white;
+}
+
 
 .sidebar-nav a {
 	text-decoration: none;
@@ -129,9 +136,13 @@ a {
 	border-right: 0px;
 }
 
+.sidebar-nav .accordion-heading {
+	/*background: #E8EBEF;*/
+}
+
 .sidebar-nav .accordion-inner {
 	padding: 0px;
-	background: #ECECEC;
+	background: #dbe3ee;
 	border-top: 1px solid #A1A1A1;
 }
 .sidebar-nav .accordion-inner .badge{ 
@@ -181,6 +192,7 @@ a {
 	border-bottom: 1px solid #DDD;
 }
 
+
 .sidebar-nav .accordion-inner li:last-child{ 
 	border-bottom: none;
 }
@@ -200,7 +212,7 @@ a {
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 10px;
-
+	/*background: url("../img/custom/table_back.png");*/
 	position: absolute;
 	margin: 0px;
 	/*margin-left: 270px !important;*/
