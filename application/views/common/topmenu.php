@@ -5,8 +5,8 @@
             <a class="brand" href="">AXON-Desk</a>
             <div class="nav-collapse">
               <ul class="nav pull-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <li class="dropdown ">
+                    <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
                       Logged in as<span class='username'> <?php echo Auth::user()->user_name; ?> </span>
                     <b class="caret"></b>
                     </a>
@@ -20,5 +20,5 @@
           </div>
       </div>
     </div>
-    <div class='divider'></div>
+    <!-- <div class='divider'></div> -->
     <!-- Beginning of header -->

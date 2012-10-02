@@ -64,12 +64,13 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 	$scope.addTicket =  function (newTicket){
 		var ticket = new Ticket(newTicket);
 		ticket.$save(function (res){
+			var msg = "";
 			if(res.success){
-				var msg = res.message || "Ticket saved succefully"; 
+				msg = res.message || "Ticket saved succefully"; 
 				MSG.show(msg,"success");
 				getTickets();
 			} else {
-				var msg = res.message || "Sorry errors were ecountered"; 
+				msg = res.message || "Sorry errors were ecountered"; 
 				MSG.show(msg); 
 			}
 		});

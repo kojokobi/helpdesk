@@ -1,6 +1,6 @@
 body {
 	padding-top: 40px;
-	background: #F1F3F5;
+	background: #f2f2f2;
 	font-size: 12px !important;
 	font-family:  "Lucida Sans Unicode", "Lucida Grande", "tahoma", Verdana, sans-serif !important; 
 	/*padding-bottom: 40px;*/
@@ -72,32 +72,14 @@ a {
     font-style: italic;
     font-size: 11px;
 }
-.navbar-inverse .navbar-inner{
-	background: #417CBD;
-	background-image: -webkit-linear-gradient(#3895CB, #015E94);
-	background-image: -moz-linear-gradient(#3895CB, #015E94);
-	background-image: -o-linear-gradient(#3895CB, #015E94);
-	background-image: -ms-linear-gradient(#3895CB, #015E94);
-	background-image: linear-gradient(#3895CB, #015E94);
+/*.navbar-inner{
+	background: #49AFCD !important;
 }
-.dash_overides{
-	padding: 0px !important;
-	margin-top: -20px;
-}
+
 .navbar-inner .brand {
 	color: white;
 	text-shadow : none;
-	padding-left: 30px;
-}
-
-.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
-	border-top-color: white;
-	border-bottom-color: white;
-}
-
-.user {
-	color : white !important;
-}
+}*/
 .thesidebar {
 	position: fixed; !important;
 	width: 270px !important;
@@ -105,8 +87,8 @@ a {
 	border-right: 1px solid #E5E5E5;
 	left: 0px;
 	overflow-x: hidden;
-	/*z-index: 9000;*/
-	background: #F1F3F5;
+	z-index: 9000;
+	background: #FAFAFA;
 }
 
 .sidebar-nav a {
@@ -206,7 +188,6 @@ a {
 	/*margin-left: 270px !important;*/
 	left: 270px;
 	/*right: 0px;*/
-	/*background: url(../img/custom/darkgrain.png);*/
 }
 
 .frame {

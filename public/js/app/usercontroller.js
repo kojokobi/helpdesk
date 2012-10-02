@@ -43,7 +43,7 @@ function UserController ($scope, User,$http,MSG){
 				if(res.success){
 					getUsers();
 					msg = res.message || "User created"; 
-					MSG.show(msg);
+					MSG.show(msg,"success");
 					$scope.clear();	
 				}else {
 					msg = res.message || "Sorry errors were ecountered"; 
