@@ -8,16 +8,20 @@ class Group extends Eloquent{
 	 * @return  [int]           [json containing Id of record created and other properties]
 	 */
 	public static function create_group($group){
-
+		//$exception=null,$is_error=true,$message=""
+		try{
+			
 			$grp_array = DataHelper::create_audit_entries(Auth::user()->id);
             $grp_array['name'] = $group->name;
             $grp_array['project_id'] = $group->project_id;
             $grp_array['description'] = $group->description;
 
             $inserted_record = DataHelper::insert_record('project_groups',$grp_array);
-
-            
             return $inserted_record;
+
+        }catch(Exception $e){
+            return HelperFunction::catch_error($e,true,Config::get("globalconfig.global_error_message", $default));
+        }
 	}
 	/**
 	 * [update]

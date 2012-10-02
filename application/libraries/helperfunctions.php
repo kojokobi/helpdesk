@@ -80,10 +80,28 @@ class HelperFunction extends Eloquent{
 			//if($field)
 		}
 	}
-	public static function catch_error($exception,$status){
-
+	/**
+	 * use to determine  messages to send to the client side when an error occurs.
+	 * @param  [type]  $exception [the exception that occured]
+	 * @param  boolean $is_error  [whether an error or a validation failure]
+	 * @return [type]             [returns a json object]
+	 */
+	public static function catch_error($exception=null,$is_error=true,$message=""){
+    //$data =null,$success = false,$message="",$total=0
+    try{
+    	    //get config value with key 'environment' from the globalconfig file.
 			$env = Config::get('globalconfig.environment','development');
-			
+			if($is_error)
+			{
+				if($env === 'development')
+                    return DataHelper::return_json_data(null,false,$exception->getMessage());
+				return DataHelper::return_json_data(null,false,$message);
+			}
+			return DataHelper::return_json_data(null,false,$message);
+
+	}catch(Exception $e){
+      return DataHelper::return_json_data(null,false,"an error occured.contact your system admin");
+	}
 
 	}
 }

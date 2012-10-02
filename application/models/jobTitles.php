@@ -5,34 +5,42 @@ class JobTitle extends Eloquent{
 	
 	public static function create_jobtitle($jobTitle){
 
-			$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
+		try{
 
-			//add created and lastUpdated date to $jobTitle array
-			$jobTitle['createdDate'] = $createdDate;
-			$jobTitle['lastUpdateDate'] = $lastUpdatedDate;
+			var $validator = Validator::validate_lookup();
+			if(!$validator)
+				return $validator;
 
-			$jobTitleId = DB::table('job_titles')->insert_get_id(
-					$arrayName	=	$jobTitle
-				);
+			$job_title_array = DataHelper::create_audit_entries(Auth::user()->id);
+			$job_title_array['name'] = $jobTitle->name;
+            $job_title_array['description'] = $jobTitle->description;
+			
+            $inserted_record = DataHelper::insert_record('job_titles',$job_title_array);
+            return $inserted_record;
 
-			$arrayName['id'] = $jobTitleId;
-			return $arrayName;
+        }catch(){
+        	return HelperFunction::catch_error($e,true,Config::get("globalconfig.global_error_message"));
+        }
 	}
 	public static function update_jobTitle($jobTitle){
 
-			$lastUpdateDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
+			try{
 
-			$jobTitle['$lastUpdateDate'] = $lastUpdateDate;
+			var $validator = Validator::validate_lookup(false);
+			if(!$validator)
+				return $validator;
+			
+			$job_title_array = DataHelper::update_audit_entries(Auth::user()->id);
+			$job_title_array['id'] = $jobTitle->name;
+			$job_title_array['name'] = $jobTitle->name;
+            $job_title_array['description'] = $jobTitle->description;
+			
+            $inserted_record = DataHelper::insert_record('job_titles',$job_title_array);
+            return $inserted_record;
 
-			$update = DB::table('job_titles')
-						->where('id','=',$jobTitle['id'])
-						->update(
-							$arrayName = array(
-								$jobTitle
-							)
-						);
-			return $arrayName;
+        }catch(){
+        	return HelperFunction::catch_error($e,true,Config::get("globalconfig.global_error_message"));
+        }
 	}
 	public static function delete_jobTitle($jobTitleId){
 

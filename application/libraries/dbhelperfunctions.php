@@ -151,10 +151,7 @@ public static function insert_get_id($table_name,$insert_parameters_array){
 	 * @return [type]        [query]
 	 */
 	public static function filter_data($query = null,$key='id',$array = null,$type='int'){
-				// var_dump($query);
-				// var_dump($key);
-				// var_dump($array);
-				//var_dump($array[$key]);
+				
 				if($query == null or $array == null) return;
 				switch ($type) {
 

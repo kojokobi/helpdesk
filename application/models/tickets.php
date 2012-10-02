@@ -31,6 +31,7 @@ class Ticket {
 		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
 		$ticket_details_array['ticket_id'] = $id;
 		$ticket_details_array['message'] = $ticket->message;
+		$ticket_details_array['status_id'] = 1;
 
 		$ticket_details_id	= DB::table('ticket_details')->insert_get_id(
 

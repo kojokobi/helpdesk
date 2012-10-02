@@ -39,17 +39,13 @@ class TicketStatus extends Eloquent{
 		return $data;
 	}
 	/**
-	 * Selects tickets statuses filtered by the current users Id and a ticketId.
+	 * Selects tickets statuses filtered by the current user's Id and a ticketId.
 	 * 
-	 * @param  int 		[$ticketId] [Id of a ticket]
+	 * @param  int 		$ticketId [Id of the ticket to select]
 	 * @return json 	a json object containing statuses 
 	 */
 	public static function get_ticket_statuses_by_user($ticketId){
-		//var_dump(config::get($config['my_environment']);
-		//var_dump(Config::get('myconfigs.globalconfig.environment'));
-		//return;
 		try{
-
 
 			$user_id = Auth::user()->id;
 			$result = DB::table('tickets')
