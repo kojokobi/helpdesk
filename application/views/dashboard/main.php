@@ -60,8 +60,14 @@
 	.dash_mini_graph {
 		width: 60px;
 	}
-</style>
 
+	.my_container {
+		padding-top: 20px;
+		padding-left: 20px;
+		padding-right : 20px;
+		background: white;
+	}
+</style>
 <div ng-controller="DashController">
 	<div class="dash_content">
 		<ul>
@@ -114,9 +120,64 @@
 					</div>
 					
 				</div>
-			</li>
-			
+			</li>	
 		</ul>
+	</div>
+
+	<div class='container-fluid my_container'>
+		
+		<div class="span6">
+			<h4>Latest Incoming Ticket</h4>
+			<table class='table table-bordered table-striped my-table ticket_table'>
+				<thead>
+					<tr>
+						<th class="grid_action1">#</th>
+						<th class="ticket_status">Status</th>
+						<th >Title</th>
+						<th class="ticket_type">Ticket Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ticket in incomingTickets">
+						<td>{{$index + 1}} </td>
+						<td> {{ticket.ticketStatus}}</td>
+						<td> <a href="tickets_view#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
+						<td>{{ticket.ticketType}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span6">
+			<div id="stack_div" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
+		</div>
+		
+	</div>
+	<div class='container-fluid my_container'>
+		
+		<div class="span6">
+			<h4>Latest Outgoing Ticket</h4>
+			<table class='table table-bordered table-striped my-table ticket_table'>
+				<thead>
+					<tr>
+						<th class="grid_action1">#</th>
+						<th class="ticket_status">Status</th>
+						<th >Title</th>
+						<th class="ticket_type">Ticket Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ticket in outgoingTickets">
+						<td>{{$index + 1}} </td>
+						<td> {{ticket.ticketStatus}}</td>
+						<td> <a href="tickets_view#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
+						<td>{{ticket.ticketType}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span6">
+			<div id="pie_div" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
+		</div>
 		
 	</div>
 </div>

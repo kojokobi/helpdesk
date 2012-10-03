@@ -394,6 +394,10 @@ label, input, button, select, textarea {
 	width : 150px;
 }
 
+.ticket_table .ticket_type {
+	width : 80px;
+}
+
 .ticket_table  tr td , .ticket_table  tr td a {
 	font-size: 11px;
 }
