@@ -1,4 +1,11 @@
-function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG) {
+function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG,OBJ) {
+
+	var projectDefault= {
+		id : "",
+		name : "",
+		description : ""
+	};
+
 	$scope.formTitle = "Add Project";
 	$scope.projects = [];
 	$scope.userGroups = [];
@@ -19,9 +26,10 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 	}
 
 
-	$scope.addProject =  function (newProject){
-		if (newProject["id"]){
-			Project.update(newProject, function (res){
+	$scope.addProject = function (newProject){
+		var project = OBJ.rectify(angular.copy(newProject),projectDefault);
+		if (project["id"]){
+			Project.update(project, function (res){
 				if (res.success){
 					getProjects();
 					$scope.clear();
@@ -31,7 +39,7 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 			});
 			
 		} else {
-			var project =  angular.copy(newProject);
+		
 			var theProject = new Project(project);
 			theProject.$save(function (res){
 				//fetch fresh items

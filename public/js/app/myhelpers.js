@@ -30,4 +30,21 @@ angular.module('myHelpers', []).
   			return arr.sort(compare);
   		}
   	}
+  }).factory("OBJ",function (){
+    return {
+      rectify : function (obj,_default) {
+        var out = {}
+        if(obj){
+          for (var i in _default){
+            console.log(i)
+            obj[i] = obj[i] || _default[i]
+          }
+
+           out = obj;
+        }else {
+          out = _default;
+        }
+       return out;
+      }
+    }
   });

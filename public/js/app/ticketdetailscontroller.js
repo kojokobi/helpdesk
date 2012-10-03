@@ -1,4 +1,4 @@
-function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParams, $location){
+function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParams, $location,OBJ){
 
 	// $scope.$route = $route;
 	// $scope.$routeParams = $routeParams;
@@ -8,6 +8,10 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 	$scope.originalTicket = {};
 	$scope.currentTicketId = $routeParams.id;
 	
+	 var defaultReply = {
+	 	message : ""
+	 }
+
 	//move this to a service instead
 	var TicketStatus = $resource('ticketstatuses');
 	/**
@@ -30,7 +34,6 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 	var getThread =  function (){
 		$http.get(url).success(function (res){
 			var data =  res.data[0];
-			//console.log(data)
 			$scope.originalTicket.title = data.title;
 			$scope.originalTicket.createdAt = data.createdAt;
 			
@@ -55,7 +58,7 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 	 * @return {void}    
 	 */
 	$scope.submitReply =  function (newReply) {
-		var reply = angular.copy(newReply)
+		var reply = OBJ.rectify(angular.copy(newReply),defaultReply);
 		reply["ticketId"] = $scope.currentTicketId;
 		reply["ticketStatusId"] = reply.status.id;
 		delete reply["status"];

@@ -1,10 +1,18 @@
-function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
+function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 	/**
 	 * reference to the ticket form
 	 * @type {[type]}
 	 */
 	var ticketsForm = $("#tickets_form");
 
+	var ticketDefaults = {
+		title : "",
+		message : "",
+		ticketTypeId : "",
+		priorityId : "",
+		assignedId : ""
+	}
+	
 	$scope.currentProject = {};
 
 	/**
@@ -62,13 +70,15 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR){
 	 * @param {object} newTicket the content of th new ticket to be created
 	 */
 	$scope.addTicket =  function (newTicket){
-		var ticket = new Ticket(newTicket);
+		var params = OBJ.rectify( angular.copy(newTicket),ticketDefaults);
+		var ticket = new Ticket(params);
 		ticket.$save(function (res){
 			var msg = "";
 			if(res.success){
 				msg = res.message || "Ticket saved succefully"; 
 				MSG.show(msg,"success");
 				getTickets();
+				newTicket = {}
 			} else {
 				msg = res.message || "Sorry errors were ecountered"; 
 				MSG.show(msg); 
