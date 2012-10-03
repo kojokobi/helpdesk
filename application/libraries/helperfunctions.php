@@ -94,7 +94,7 @@ class HelperFunction extends Eloquent{
 			if($is_error)
 			{
 				if($env === 'development')
-                    return DataHelper::return_json_data(null,false,$exception->getMessage());
+                    return DataHelper::return_json_data(null,false,HelperFunction::format_exception($exception));
 				return DataHelper::return_json_data(null,false,$message);
 			}
 			return DataHelper::return_json_data(null,false,$message);
@@ -103,5 +103,16 @@ class HelperFunction extends Eloquent{
       return DataHelper::return_json_data(null,false,"an error occured.contact your system admin");
 	}
 
+	}
+	public static function get_admin_error_msg(){
+
+		return Config::get("globalconfig.global_error_message");
+	}
+	
+	private static function format_exception($exception){
+
+		$message = $exception->getMessage(). 'On Line Number-> '. $exception->getLine().
+					'<br>In file '. $exception->getFile();
+		return $message;
 	}
 }

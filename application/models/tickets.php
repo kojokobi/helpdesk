@@ -1,15 +1,15 @@
 <?php
 
-class Ticket {
+class Ticket extends Eloquent{
 
 
 	public static function create_ticket($ticket){
 
 	try{
 		//validate_user_input($input,$rules)
-		$input = array(
+		// $input = array(
 
-			);
+		// 	);
 
 		$result = 	DB::transaction(function() use ($ticket) {
 		
@@ -57,11 +57,24 @@ class Ticket {
 	}
 	public static function create_ticket_details($ticket){
 
+
+		//only allow replies if status_id is not closed
 		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
 
 		$ticket_details_array['message'] = $ticket->message;
 		$ticket_details_array['ticket_id'] = $ticket->ticketId;
 		$ticket_details_array['status_id'] = $ticket->ticketStatusId;
+		
+		$record = DB::table('ticket_details')
+				  ->where(function($query) use ($ticket_details_array){
+
+				  		$query->where('ticket_id','=',$ticket_details_array['ticket_id']);
+				  		$query->where('status_id','=',Config::get("globalconfig.closed_ticket_status_id"));
+				 
+				  })->get();
+
+		if(array_key_exists(0,$record))
+			return HelperFunction::catch_error(null,false,"can't reply to a closed ticket");
 		
 		$inserted_record = DataHelper::insert_record('ticket_details',$ticket_details_array);
         return $inserted_record;

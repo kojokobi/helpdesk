@@ -5,12 +5,22 @@ class Priority extends Eloquent{
 	
 	public static function create_priority($priority){
 
+		try{
+
+			// $validation_error = HelperFunction::validate_lookup();
+			// if($validation_error)
+			// 	return $validation_error->errors;
+
 			$grp_array = DataHelper::create_audit_entries(Auth::user()->id);
             $grp_array['name'] = $priority->name;
             $grp_array['description'] = $priority->description;
 
             $inserted_record = DataHelper::insert_record('priorities',$grp_array);
             return $inserted_record;
+
+        }catch(Exception $e){
+        	return HelperFunction::catch_error($e,true,Config::get("globalconfig.global_error_message"));
+        }
 	}
 	public static function update_priority($priority){
 

@@ -7,9 +7,10 @@ class JobTitle extends Eloquent{
 
 		try{
 
-			var $validator = Validator::validate_lookup();
-			if(!$validator)
-				return $validator;
+			// var $validation_error = Validator::validate_lookup();
+			// //if not validator return validation error
+			// if($validation_error)
+			// 	return $validation_error->errors;
 
 			$job_title_array = DataHelper::create_audit_entries(Auth::user()->id);
 			$job_title_array['name'] = $jobTitle->name;
@@ -18,17 +19,17 @@ class JobTitle extends Eloquent{
             $inserted_record = DataHelper::insert_record('job_titles',$job_title_array);
             return $inserted_record;
 
-        }catch(){
+        }catch(Exception $e){
         	return HelperFunction::catch_error($e,true,Config::get("globalconfig.global_error_message"));
         }
 	}
 	public static function update_jobTitle($jobTitle){
 
 			try{
-
-			var $validator = Validator::validate_lookup(false);
-			if(!$validator)
-				return $validator;
+			//notify validate_lookup that the current operation is an update by passing false;
+			// var $validator = Validator::validate_lookup(false);
+			// if(!$validator)
+			// 	return $validator;
 			
 			$job_title_array = DataHelper::update_audit_entries(Auth::user()->id);
 			$job_title_array['id'] = $jobTitle->name;
@@ -38,13 +39,13 @@ class JobTitle extends Eloquent{
             $inserted_record = DataHelper::insert_record('job_titles',$job_title_array);
             return $inserted_record;
 
-        }catch(){
+        }catch(Exception $e){
         	return HelperFunction::catch_error($e,true,Config::get("globalconfig.global_error_message"));
         }
 	}
 	public static function delete_jobTitle($jobTitleId){
 
-		//DB::table('jobTitles')->where('id','=',$jobTitleId)->delete();
+		
 		DB:table('jobTitles')->where('id','=',$jobTitleId)->delete();
 	}
 	public static function get_jobTitles($obj = null){
