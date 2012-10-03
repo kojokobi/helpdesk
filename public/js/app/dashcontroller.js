@@ -21,7 +21,7 @@ function DashController ($scope){
 
 	$scope.outgoingTickets = [];
 
-	for (var i = 0; i < 5; i++) {
+	for (var i = 0; i < 7; i++) {
 		var obj = {
 			id : i +1,
 			title : "title_" + (i + 1),
@@ -33,17 +33,20 @@ function DashController ($scope){
 		$scope.outgoingTickets.push(obj);
 	}
 
-	var graphEl = "pie_div";
+	var pieGraphEl = "pie_div";
 	var pieChart;
+
+	var stackChart;
+	var stackGraphEl = "stack_div"
 	var graphCaptions = {
 		title : "Summary Of Tickets"
 	}
-	var initializeGraph = function() {
+	var initializePieGraph = function() {
         var self;
         self = this;
         pieChart = new Highcharts.Chart({
           chart: {
-            renderTo: graphEl,
+            renderTo: pieGraphEl,
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false,
@@ -78,8 +81,48 @@ function DashController ($scope){
                 ]
             }]
         });
-     }
-     var fetchData = function() {
+    }
+    
+
+    var initializeStackedGraph = function (){
+    	stackChart = new Highcharts.Chart({
+            chart: {
+                renderTo: stackGraphEl,
+                type: 'column'
+            },
+            title: {
+                text: '% Success On Project Basis'
+            },
+            xAxis: {
+                categories: ['Project 1', 'Project 2', 'Project 3', 'Project 4', 'Project 5']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Amount of Work'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''+
+                        this.series.name +': '+ this.y +' ('+ Math.round(this.percentage) +'%)';
+                }
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+                series: [{
+                name: 'Resolved',
+                data: [5, 3, 4, 7, 2]
+            }, {
+                name: 'Unresolved',
+                data: [2, 2, 3, 2, 1]
+            }]
+        });
+    }
+    var fetchData = function() {
         // var url = 'getPieSummary'  ;
         // $.ajax({
         //   url: url,
@@ -91,6 +134,7 @@ function DashController ($scope){
 
 	//make calls
 	start();
-	initializeGraph();
+	initializePieGraph();
+	initializeStackedGraph();
 	
 }

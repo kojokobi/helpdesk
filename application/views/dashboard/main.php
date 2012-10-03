@@ -65,6 +65,7 @@
 		padding-top: 20px;
 		padding-left: 20px;
 		padding-right : 20px;
+		background: white;
 	}
 </style>
 <div ng-controller="DashController">
@@ -124,6 +125,7 @@
 	</div>
 
 	<div class='container-fluid my_container'>
+		
 		<div class="span6">
 			<h4>Latest Incoming Ticket</h4>
 			<table class='table table-bordered table-striped my-table ticket_table'>
@@ -145,9 +147,10 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="span4">
-			<div id="pie_div" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
+		<div class="span6">
+			<div id="stack_div" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
 		</div>
+		
 	</div>
 	<div class='container-fluid my_container'>
 		
@@ -173,6 +176,7 @@
 			</table>
 		</div>
 		<div class="span6">
+			<div id="pie_div" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
 		</div>
 		
 	</div>
