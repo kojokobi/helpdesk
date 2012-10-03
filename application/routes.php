@@ -72,11 +72,11 @@ Route::delete('projectgroups',array('uses' => 'home@project_group'));
 /*
  *Ticket Statuses
  */
-Route::post('ticketstatuses',array('uses'=>'home@ticket_status'));
-Route::put('ticketstatuses',array('uses'=>'home@ticket_status'));
-Route::delete('ticketstatuses',array('uses'=>'home@ticket_type'));
-Route::get('ticketstatuses',array('uses'=>'home@ticket_statuses'));
-Route::get('ticketstatuses/(:num)',array('uses'=>'home@statuses_by_user'));
+Route::post('ticketstatuses',array('uses'=>'ticket@ticket_status'));
+Route::put('ticketstatuses',array('uses'=>'ticket@ticket_status'));
+Route::delete('ticketstatuses',array('uses'=>'ticket@ticket_type'));
+Route::get('ticketstatuses',array('uses'=>'ticket@ticket_statuses'));
+Route::get('ticketstatuses/(:num)',array('uses'=>'ticket@statuses_by_user'));
 /*
  *Priority routes
  */
@@ -135,9 +135,9 @@ Route::get("dashboard_view", array("uses"=> "home@dash_board"));
 // });
 
 //these view are submitted via ajax there do not need any aunthen
-Route::get("single_ticket_view",function (){
-	echo View::make("tickets.single_ticket"); 
-});
+// Route::get("single_ticket_view",function (){
+// 	echo View::make("tickets.single_ticket"); 
+// });
 
 // Route::get('login', function()
 // {

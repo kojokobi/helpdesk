@@ -4,8 +4,8 @@ class ProjectUserGroup extends Eloquent{
 
 	public static function create_project_user_group($project_user_group){
 
+		
 			$grp_array = DataHelper::create_audit_entries(Auth::user()->id);
-
             $grp_array['project_group_id'] = $project_user_group->projectGroupId;
             $grp_array['user_id'] = $project_user_group->userId;
             
@@ -36,14 +36,7 @@ class ProjectUserGroup extends Eloquent{
 			$filter_array['project_id'] = $obj['projectId'];
 		if(array_key_exists("userId", $obj))
 			$filter_array['user_id'] = $obj['userId'];
-		//$filter_array = array();
-
-		//var_dump($filter_array);
-		// $t = DB::query('select u.first_name,u.last_name,pg.name,pg.project_id,pug.project_group_id,p.name as projectname
-		// 							from users u,project_groups pg,project_user_groups pug,projects p
-		// 								where u.id = pug.user_id and pg.id = pug.project_group_id 
-		// 									and pg.project_id = ?',array(1));
-		// var_dump($t);
+		
 
 		$selectQuery = DB::table('project_user_groups')
 				->join('users','project_user_groups.user_id','=','users.id')
@@ -79,10 +72,9 @@ class ProjectUserGroup extends Eloquent{
 
 					return $array;
 				},$result_set);
-		//$out
-		//return DataHelper::return_json_data($selectQuery,true,'record loaded',0);
+		
 		return DataHelper::return_json_data($out,true,'record loaded',$total);
-		//return $data;
+		
 	}
 	
 

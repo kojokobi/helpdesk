@@ -4,16 +4,31 @@ class Project extends Eloquent {
 	
 	public static function create_project($project){
 
-			$arr = DataHelper::create_audit_entries(Auth::user()->id);
-            $arr['name'] = $project->name;
-            $arr['description'] = $project->description; 
+		try{
+				// $validation_error = MyValidator::validate_lookup(true,$project);
+				// var_dump($validation_error);
+				// if(!$validation_error)
+				// 	return $validation_error;
+				
+				$arr = DataHelper::create_audit_entries(Auth::user()->id);
+	            $arr['name'] = $project->name;
+	            $arr['description'] = $project->description;
 
-            $inserted_record = DataHelper::insert_record('projects',$arr);
-            return $inserted_record;
+	            $inserted_record = DataHelper::insert_record('projects',$arr);
+	            return $inserted_record;
+
+           }catch(Exception $e){
+
+           		return HelperFunction::catch_error($e,true,HelperFunction::get_admin_error_msg());
+           }
 			
 	}
 	public static function update_project($project){
 
+		try{
+			$validation_error = HelperFunction::validate_lookup(false);
+			if($validation_error)
+				return $validation_error->errors;
 
 			$project = DataHelper::update_audit_entries(Auth::user()->id);
             $project['name'] = $project->name;
@@ -21,6 +36,10 @@ class Project extends Eloquent {
             
             $updated_record = DataHelper::update_record('projects',$project->id,$project);
             return $updated_record;
+
+        }catch(Exception $e){
+        	return HelperFunction::catch_error($e,true,HelperFunction::get_admin_error_msg());
+        }
 	}
 	public static function delete_project($projectId){
 
