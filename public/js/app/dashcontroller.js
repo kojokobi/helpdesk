@@ -45,35 +45,42 @@ function DashController ($scope){
         var self;
         self = this;
         pieChart = new Highcharts.Chart({
-          chart: {
-            renderTo: pieGraphEl,
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            // events: {
-            //   load: fetchData()
-            // }
-          },
-          title: {
-            text: graphCaptions.title
-          },
-          plotOptions: {
-            pie: {
-              allowPointSelect: true,
-              cursor: 'pointer',
-              dataLabels: {
-                enabled: false
-              }
-            }
-          },
-           series: [{
+         	chart: {
+                renderTo: pieGraphEl,
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Summary Of Tickets'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 2
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                        	var percentage = Math.round(this.percentage *100)/100;
+                            return '<b>'+ this.point.name +'</b>: '+ percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
                 type: 'pie',
                 name: 'Tickets',
                 data: [
-                    ['Resolved',   66.66],
+                    ['Resolved',   100],
                     {
-                        name: 'Uresolved',
-                        y: 33.33,
+                        name: 'Unresolved',
+                        y: 50,
                         sliced: true,
                         selected: true
                     }

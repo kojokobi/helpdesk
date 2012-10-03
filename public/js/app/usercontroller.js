@@ -1,9 +1,19 @@
-function UserController ($scope, User,$http,MSG){
+function UserController ($scope, User,$http,MSG,OBJ){
+	
+	var userDefault = {
+		id : "",
+		firstName : "",
+		lastName : "",
+		userName : "",
+		email : "",
+		password : "",
+		jobTitleId : "",
+		roleId : ""
+	};
+
 	$scope.formTitle = "Add User";
 	$scope.users = [];
 
-	
-	
 	function getUsers(){
 		User.query(function (res){
 			$scope.users = angular.copy(res.data);
@@ -23,7 +33,8 @@ function UserController ($scope, User,$http,MSG){
 	}
 
 	$scope.addUser =  function (newUser){
-		if (newUser["id"]){
+		var user =  OBJ.rectify( angular.copy(newUser), userDefault);
+		if (user["id"]){
 			User.update(newUser, function (res){
 				if (res.success){
 					getUsers();
@@ -31,11 +42,9 @@ function UserController ($scope, User,$http,MSG){
 				}else {
 
 				}
-				
 			});
 			
 		}else {
-			var user =  angular.copy(newUser);
 			var theUser = new User(user);
 			theUser.$save(function (res){
 				//fetch fresh items

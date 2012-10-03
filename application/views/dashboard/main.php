@@ -67,6 +67,12 @@
 		padding-right : 20px;
 		background: white;
 	}
+
+	.dash_caption {
+		color: #3E576F;
+		font-weight: normal;
+	}
+
 </style>
 <div ng-controller="DashController">
 	<div class="dash_content">
@@ -127,7 +133,7 @@
 	<div class='container-fluid my_container'>
 		
 		<div class="span6">
-			<h4>Latest Incoming Ticket</h4>
+			<h4 class="dash_caption">Latest Incoming Ticket</h4>
 			<table class='table table-bordered table-striped my-table ticket_table'>
 				<thead>
 					<tr>
@@ -155,7 +161,7 @@
 	<div class='container-fluid my_container'>
 		
 		<div class="span6">
-			<h4>Latest Outgoing Ticket</h4>
+			<h4 class="dash_caption">Latest Outgoing Ticket</h4>
 			<table class='table table-bordered table-striped my-table ticket_table'>
 				<thead>
 					<tr>
