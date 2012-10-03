@@ -117,12 +117,14 @@ Route::get('usergroups',array('uses'=>'home@project_user_groups'));
 Route::post('login',array('uses' => 'security@login'));
 Route::get("logout", array("uses" => "security@logout"));
 Route::get('login',array('uses'=> 'security@login'));
-
 /*
  *Applcation View routes go here
  */
 Route::get("admin_view", array("as"=> "admin", "uses"=> "admin@index"));
 Route::get("dashboard_view", array("uses"=> "home@dash_board"));
+Route::get("profile_view", function (){
+	return View::make("profile.index");
+});
 // Route::get("tickets_view", function (){
 // 	return View::make("tickets.index");
 // });
