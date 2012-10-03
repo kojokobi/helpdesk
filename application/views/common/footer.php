@@ -17,6 +17,9 @@
     <script src="js/bootstrap-typeahead.js"></script>
     <script type="text/javascript" src="js/libs/jquery.pnotify.js"></script>
     <script type="text/javascript" src="js/libs/jquery.peity.min.js"></script>
+    <!-- Graph Libraries -->
+    <script type="text/javascript" src="js/libs/highcharts.src.js" ></script>
+    <!-- <script type="text/javascript" src="js/libs/exporting.js" ></script> -->
 
   </body>
 </html>
