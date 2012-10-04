@@ -123,13 +123,9 @@ Route::get('login',array('uses'=> 'security@login'));
 Route::get("admin_view", array("as"=> "admin", "uses"=> "admin@index"));
 Route::get("dashboard_view", array("uses"=> "home@dash_board"));
 
-
 Route::get("summaries",array('uses'=>"summary@counts"));
 
-
-
-
-Route::get("profile_view", function (){
+Route::get("profile_view", function(){
 	return View::make("profile.index");
 });
 
