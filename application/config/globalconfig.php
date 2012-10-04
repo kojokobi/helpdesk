@@ -25,7 +25,7 @@ return array(
 			|--------------------------------------------------------------------------
 			| Default Ticket_Status Id
 			|--------------------------------------------------------------------------
-			|Default ticket_status_id as auto-generated in the db table ticket_status
+			|Default ticket_status_id as auto-generated in the db table ticket_statuses
 			|
 			|
 			*/
@@ -34,9 +34,27 @@ return array(
 			|--------------------------------------------------------------------------
 			| Closed ticket_status Id
 			|--------------------------------------------------------------------------
-			|The id of a closed ticket_status in the ticket_details table
+			|The id of a closed ticket_status in the ticket_statuses table
 			|
 			|
 			*/
 			'closed_ticket_status_id'=>2,
+			/*
+			|--------------------------------------------------------------------------
+			| Resolved ticket_status Id
+			|--------------------------------------------------------------------------
+			|The id of a resolved ticket in the ticket_statuses table
+			|
+			|
+			*/
+			'resolved_ticket_status_id'=>3,
+			/*
+			|--------------------------------------------------------------------------
+			| UnResolved ticket_status Id
+			|--------------------------------------------------------------------------
+			|The id of an unresolved ticket in the ticket_statuses table
+			|
+			|
+			*/
+			'unresolved_ticket_status_id'=>4,
 		);

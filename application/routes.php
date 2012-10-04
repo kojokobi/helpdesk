@@ -112,7 +112,7 @@ Route::delete('usergroups',array('uses'=>'home@project_user_group'));
 Route::get('usergroups',array('uses'=>'home@project_user_groups'));
 
 /*
- *secutity routes
+ *security routes
  */
 Route::post('login',array('uses' => 'security@login'));
 Route::get("logout", array("uses" => "security@logout"));
@@ -122,9 +122,17 @@ Route::get('login',array('uses'=> 'security@login'));
  */
 Route::get("admin_view", array("as"=> "admin", "uses"=> "admin@index"));
 Route::get("dashboard_view", array("uses"=> "home@dash_board"));
+
+
+Route::get("summaries",array('uses'=>"summary@counts"));
+
+
+
+
 Route::get("profile_view", function (){
 	return View::make("profile.index");
 });
+
 // Route::get("tickets_view", function (){
 // 	return View::make("tickets.index");
 // });
