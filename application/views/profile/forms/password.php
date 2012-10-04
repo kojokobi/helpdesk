@@ -1,5 +1,5 @@
 <div>
-	<h4>Basic Info</h4>
+	<h4>Password Change</h4>
 	<div class="container-fluid">
 		<div class="container-fluid">
 			<div class="span6">
@@ -14,16 +14,17 @@
 						<div class="pull-left">
 				            <label  for="title">New Password:</label>
 				            <div >
-				              <input type="text" id="ticket_title" class="input-xlarge" ng-model="user.newPassword">
+				              <input type="text" id="ticket_title" class="input-xlarge" ng-model="password.newPassword">
 				             </div>
 				         </div>
 			            <div class="pull-right">
 				            <label for="title">Confirm New Password:</label>
 					            <div >
-					              <input type="text" id="ticket_title" class="input-xlarge" ng-model="user.confirmPassword">
+					              <input type="text" id="ticket_title" class="input-xlarge" ng-model="password.confirmPassword">
 					            </div>
 							</div>
 					</div>
+					<input type="hidden" ng-model="password.userId" ng-init="password.userId='<?php echo Auth::user()->id; ?>' ">
 					<button class="btn btn-info" ng-click=""> <i class="icon-random icon-white"></i> Change</button>
 				</form>
 			</div>
