@@ -20,7 +20,7 @@ function DashController ($scope, $http){
 
     var getOutgoing = function (){
         $http.get("summaries/tickets/outgoing").success(function (res){
-            $scope.incomingTickets = res.data;
+            $scope.outgoingTickets = res.data;
         });
     }
 
