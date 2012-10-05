@@ -83,7 +83,7 @@
 						<h2><span class="bar">2,4,9,7,12,10,12</span></h2>
 					</div>
 					<div class='pull-left'>
-						<h2> {{summary.project.count}}</h2>
+						<h2> {{summary.projects.count}}</h2>
 						<span class="dash_title">Projects</span>
 					</div>
 				</div>
@@ -105,10 +105,10 @@
 				<div class="dash_item">
 					<div class='pull-left success dash_mini_graph'>
 						<h2><span class="bar_good">2,4,9,7,12,10,12</span></h2>
-						<span>{{summary.resolved.percent}}</span>
+						<span>{{summary.closed.percentage}}</span>
 					</div>
 					<div class='pull-left'>
-						<h2>{{summary.resolved.count}}</h2>
+						<h2>{{summary.closed.count}}</h2>
 						<span class="dash_title	">Resolved Tickets</span>
 					</div>
 					
@@ -118,10 +118,10 @@
 				<div class="dash_item">
 					<div class='pull-left unresolved dash_mini_graph'>
 						<h2><span class="bar_bad">0,-3,-6,-4,-5,-4,-7</span></h2>
-						<span>{{summary.closed.percent}}</span>
+						<span>{{summary.unresolved.percentage}}</span>
 					</div>
 					<div class='pull-left'>
-						<h2>{{summary.closed.count}}</h2>
+						<h2>{{summary.unresolved.count}}</h2>
 						<span class="dash_title">Unresolved Tickets</span>
 					</div>
 					

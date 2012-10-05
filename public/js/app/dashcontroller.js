@@ -2,11 +2,28 @@ function DashController ($scope, $http){
 	
 	$scope.summary = {};
 
+    $scope.incomingTickets = [];
+
+    $scope.outgoingTickets = [];
+
 	var getSummaries = function (){
-		$http.get("summaries/").success(function (res){
+		$http.get("summaries").success(function (res){
 			$scope.summary = res.data;
 		});
 	}
+
+    var getIncoming = function (){
+        $http.get("summaries/tickets/incoming").success(function (res){
+            $scope.incomingTickets = res.data;
+        });
+    }
+
+    var getOutgoing = function (){
+        $http.get("summaries/tickets/outgoing").success(function (res){
+            $scope.incomingTickets = res.data;
+        });
+    }
+
 
 	/**
 	 * Initial call to set up our perfomance board
@@ -26,21 +43,19 @@ function DashController ($scope, $http){
 		});
 	}
 
-	$scope.incomingTickets = [];
+	
 
-	$scope.outgoingTickets = [];
-
-	for (var i = 0; i < 7; i++) {
-		var obj = {
-			id : i +1,
-			title : "title_" + (i + 1),
-			ticketStatus : "Open",
-			ticketType : "Bug"
-		}
+	// for (var i = 0; i < 7; i++) {
+	// 	var obj = {
+	// 		id : i +1,
+	// 		title : "title_" + (i + 1),
+	// 		ticketStatus : "Open",
+	// 		ticketType : "Bug"
+	// 	}
 		
-		$scope.incomingTickets.push(obj);
-		$scope.outgoingTickets.push(obj);
-	}
+	// 	$scope.incomingTickets.push(obj);
+	// 	$scope.outgoingTickets.push(obj);
+	// }
 
 	var pieGraphEl = "pie_div";
 	var pieChart;
@@ -150,6 +165,9 @@ function DashController ($scope, $http){
 
 	//make calls
 	start();
+    getSummaries();
+    getIncoming();
+    getOutgoing();
 	initializePieGraph();
 	initializeStackedGraph();
 	
