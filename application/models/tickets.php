@@ -15,7 +15,7 @@ class Ticket extends Eloquent{
 		
 		$ticket_array = DataHelper::create_audit_entries(Auth::user()->id);
 		//todo:change this
-		$ticket_array['ticket_status_id'] = 1;//move this to a config file
+		$ticket_array['ticket_status_id'] = config::get('globalconfig.default_ticket_status');
 		$ticket_array['priority_id'] = $ticket->priorityId;
 		$ticket_array['assigned_to'] = $ticket->assignedId;
 		$ticket_array['title'] = $ticket->title;
@@ -36,7 +36,7 @@ class Ticket extends Eloquent{
 		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
 		$ticket_details_array['ticket_id'] = $id;
 		$ticket_details_array['message'] = $ticket->message;
-		$ticket_details_array['status_id'] = 1;//value should be from a config value;
+		$ticket_details_array['status_id'] = config::get('globalconfig.default_ticket_status');
 
 		$ticket_details_id	= DB::table('ticket_details')->insert_get_id(
 
@@ -57,9 +57,8 @@ class Ticket extends Eloquent{
 	}
 	public static function create_ticket_details($ticket){
 
-
 		//only allow replies if status_id is not closed
-		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
+		$ticket_details_array = DataHelper::create_audit_entries(HelperFunction::get_user_id());
 
 		$ticket_details_array['message'] = $ticket->message;
 		$ticket_details_array['ticket_id'] = $ticket->ticketId;
@@ -73,12 +72,30 @@ class Ticket extends Eloquent{
 				 
 				  })->get();
 
+		
 		if(array_key_exists(0,$record))
 			return HelperFunction::catch_error(null,false,"can't reply to a closed ticket");
-		
-		$inserted_record = DataHelper::insert_record('ticket_details',$ticket_details_array);
-        return $inserted_record;
 
+			$inserted	= DB::transaction(function() use ($ticket_details_array) {
+			
+			$inserted_record = DataHelper::insert_record('ticket_details',$ticket_details_array);
+			$update_record_array =  array(
+										
+										'ticket_status_id'=>$ticket_details_array['status_id'],
+										'updated_by' => Auth::user()->id,
+										'updated_at' => HelperFunction::get_date(),
+									);
+			//$update_record = DataHelper::update_record('tickets',$ticket_details_array['status_id'],$update_record_array);
+			DB::table('tickets')
+				->where('id','=',$ticket_details_array['ticket_id'])
+				->update(
+						array('ticket_status_id'=>$ticket_details_array['status_id'])
+					);
+			return $inserted_record;
+			
+		});
+		return DataHelper::return_json_data($inserted,true,"reply posted succesfully");
+  
 	}
 	public static function delete_ticket(){
 

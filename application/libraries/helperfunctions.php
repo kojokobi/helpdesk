@@ -64,7 +64,7 @@ class HelperFunction extends Eloquent{
 		return Date($format);
 	}
 	public static function get_user_id(){
-		return 1;
+		return Auth::user()->id;
 	}
 	/**
 	 * converts field names containing underscores to camel casing
@@ -108,7 +108,7 @@ class HelperFunction extends Eloquent{
 
 		return Config::get("globalconfig.global_error_message");
 	}
-	
+
 	private static function format_exception($exception){
 
 		$message = $exception->getMessage(). 'On Line Number-> '. $exception->getLine().
