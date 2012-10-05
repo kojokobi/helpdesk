@@ -45,10 +45,10 @@ class Summary extends Eloquent{
 			$filter = array();
 			$filter['user_id'] = Auth::user()->id;
 			$resolved_tickets = DB::table('tickets')
-							->join('ticket_details','tickets.id','=','ticket_details.ticket_id')
+							//->join('ticket_details','tickets.id','=','ticket_details.ticket_id')
 							->where(function($query) use($filter){
 										$query = HelperFunction::filter_data($query,'assigned_to',$filter,'int');
-										$query->where('status_id','=',Config::get('globalconfig.closed_ticket_status_id'));
+										$query->where('ticket_status_id','=',Config::get('globalconfig.closed_ticket_status_id'));
 							})->count();
 
 			$total = Summary::ticket_count();
@@ -57,22 +57,21 @@ class Summary extends Eloquent{
 			//return DataHelper::return_json_data(array('count'=>$resolved_tickets,'percentage'=>round($percentage,2)),true,'record loaded',0);
 		}
 		public static function count_unresolved_tickets(){
-
+			//->join('ticket_details','tickets.id','=','ticket_details.ticket_id')
 			$filter = array();
 			$filter['user_id'] 	= Auth::user()->id;
 			$unresolved_tickets = DB::table('tickets')
-								->join('ticket_details','tickets.id','=','ticket_details.ticket_id')
+								//->join('ticket_details','tickets.id','=','ticket_details.ticket_id')
 								->where(function($query) use($filter){
 
 										$query = HelperFunction::filter_data($query,'assigned_to',$filter,'int');
-										$query->where('status_id','!=',Config::get('globalconfig.closed_ticket_status_id'));
+										$query->where('ticket_status_id','<>',Config::get('globalconfig.closed_ticket_status_id'));
 
 								})->count();
 
 			$total = Summary::ticket_count();
 			$percentage = $unresolved_tickets/100 * $total;
 			return array('count'=>$unresolved_tickets,'percentage'=>round($percentage,2) . '%');
-			//return DataHelper::return_json_data(array('count'=>$resolved_tickets,'percentage'=>round($percentage,2)),true,'record loaded',0);
 
 		}
 		public static function ticket_count(){
@@ -101,7 +100,6 @@ class Summary extends Eloquent{
 			try{
 
 					$filter_array = array();
-					echo HelperFunction::get_user_id();
 					$filter_array['assigned_to'] = HelperFunction::get_user_id();
 					$query_results = DB::table('tickets')
 									 ->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
@@ -144,7 +142,6 @@ class Summary extends Eloquent{
 			try{
 
 					$filter_array = array();
-					echo HelperFunction::get_user_id();
 					$filter_array['created_by'] = HelperFunction::get_user_id();
 					$query_results = DB::table('tickets')
 									 ->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
