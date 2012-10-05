@@ -1,4 +1,13 @@
-function DashController ($scope){
+function DashController ($scope, $http){
+	
+	$scope.summary = {};
+
+	var getSummaries = function (){
+		$http.get("summaries/").success(function (res){
+			$scope.summary = res.data;
+		});
+	}
+
 	/**
 	 * Initial call to set up our perfomance board
 	 * @return {[type]} [description]
