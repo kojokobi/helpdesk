@@ -147,7 +147,7 @@
 					<tr ng-repeat="ticket in incomingTickets">
 						<td>{{$index + 1}} </td>
 						<td> {{ticket.ticketStatus}}</td>
-						<td> <a href="tickets_view#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
+						<td> <a href="tickets_view#/tickets/{{ticket.ticketId}}"> {{ticket.title}}  </td>
 						<td>{{ticket.ticketType}}</td>
 					</tr>
 				</tbody>
@@ -175,7 +175,7 @@
 					<tr ng-repeat="ticket in outgoingTickets">
 						<td>{{$index + 1}} </td>
 						<td> {{ticket.ticketStatus}}</td>
-						<td> <a href="tickets_view#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
+						<td> <a href="tickets_view#/tickets/{{ticket.ticketId}}"> {{ticket.title}}  </td>
 						<td>{{ticket.ticketType}}</td>
 					</tr>
 				</tbody>

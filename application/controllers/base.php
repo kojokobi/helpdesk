@@ -23,7 +23,7 @@ class Base_Controller extends Controller {
         $class = get_called_class();
         switch($class) {
             case 'Home_Controller':
-                $this->filter('before', 'auth')->only(array('logout'));
+                $this->filter('before', 'auth')->only(array('logout',"dash_board"));
                 $this->filter('before', 'nonauth');
                 break;
             case "Security_Controller":

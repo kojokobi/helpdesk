@@ -43,20 +43,6 @@ function DashController ($scope, $http){
 		});
 	}
 
-	
-
-	// for (var i = 0; i < 7; i++) {
-	// 	var obj = {
-	// 		id : i +1,
-	// 		title : "title_" + (i + 1),
-	// 		ticketStatus : "Open",
-	// 		ticketType : "Bug"
-	// 	}
-		
-	// 	$scope.incomingTickets.push(obj);
-	// 	$scope.outgoingTickets.push(obj);
-	// }
-
 	var pieGraphEl = "pie_div";
 	var pieChart;
 
