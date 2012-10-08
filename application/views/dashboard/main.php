@@ -133,7 +133,7 @@
 	<div class='container-fluid my_container'>
 		
 		<div class="span6">
-			<h4 class="dash_caption">Latest Incoming Ticket</h4>
+			<h4 class="dash_caption">Tickets Assigned To Me</h4>
 			<table class='table table-bordered table-striped my-table ticket_table'>
 				<thead>
 					<tr>
@@ -161,7 +161,7 @@
 	<div class='container-fluid my_container'>
 		
 		<div class="span6">
-			<h4 class="dash_caption">Latest Outgoing Ticket</h4>
+			<h4 class="dash_caption">Tickets From Me</h4>
 			<table class='table table-bordered table-striped my-table ticket_table'>
 				<thead>
 					<tr>

@@ -126,8 +126,8 @@ Route::get("dashboard_view", array("uses"=> "home@dash_board"));
 Route::get("summaries",array('uses'=>"summary@counts"));
 Route::get("summaries/tickets/incoming",array('uses'=>"summary@incoming_tickets"));
 Route::get("summaries/tickets/outgoing",array('uses'=>"summary@outgoing_tickets"));
-
-Route::get("profile_view", function(){
+Route
+::get("profile_view", function(){
 	return View::make("profile.index");
 });
 
