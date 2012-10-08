@@ -6,7 +6,7 @@ class Project extends Eloquent {
 
 		try{
 				// $validation_error = MyValidator::validate_lookup(true,$project);
-				// var_dump($validation_error);
+				// //var_dump($validation_error);
 				// if(!$validation_error)
 				// 	return $validation_error;
 				

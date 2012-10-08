@@ -27,7 +27,7 @@ class Summary extends Eloquent{
 		public static function count_assigned_tickets(){
 
 			$filter = array();
-			$filter['user_id'] = Auth::user()->id;
+			$filter['assigned_to'] = Auth::user()->id;
 			$count = DB::table('tickets')
 								->where(function($query) use($filter){
 										$query = HelperFunction::filter_data($query,'assigned_to',$filter,'int');
@@ -42,7 +42,7 @@ class Summary extends Eloquent{
 		public static function count_resolved_tickets(){
 
 			$filter = array();
-			$filter['user_id'] = Auth::user()->id;
+			$filter['assigned_to'] = Auth::user()->id;
 			$resolved_tickets = DB::table('tickets')
 							->where(function($query) use($filter){
 										$query = HelperFunction::filter_data($query,'assigned_to',$filter,'int');
@@ -55,7 +55,7 @@ class Summary extends Eloquent{
 		}
 		public static function count_unresolved_tickets(){
 			$filter = array();
-			$filter['user_id'] 	= Auth::user()->id;
+			$filter['assigned_to'] 	= Auth::user()->id;
 			$unresolved_tickets = DB::table('tickets')
 								->where(function($query) use($filter){
 
@@ -72,9 +72,11 @@ class Summary extends Eloquent{
 		public static function ticket_count(){
 
 			$filter = array();
-			$filter['user_id'] = Auth::user()->id;
+			$filter['assigned_to'] = Auth::user()->id;
 			$count = DB::table('tickets')
+							->where('assigned_to','=',HelperFunction::get_user_id())
 							->count();
+
 			
 			return $count;
 
@@ -95,7 +97,7 @@ class Summary extends Eloquent{
 			try{
 
 					$filter_array = array();
-					$filter_array['assigned_to'] = HelperFunction::get_user_id();
+					$filter_array['assigned_to'] = Auth::user()->id;
 					$query_results = DB::table('tickets')
 									 ->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
 									 ->join('ticket_types','ticket_type_id','=','ticket_types.id')
@@ -103,6 +105,8 @@ class Summary extends Eloquent{
 
 									 		$query = DataHelper::filter_data($query,'assigned_to',$filter_array,'int');
 									 });
+					// print_r($filter_array);
+					// var_dump($query_results);
 					$total = $query_results->count();
 					$data = $query_results->get(
 
@@ -137,13 +141,14 @@ class Summary extends Eloquent{
 			try{
 
 					$filter_array = array();
-					$filter_array['created_by'] = HelperFunction::get_user_id();
+					$filter_array['tickets.created_by'] = HelperFunction::get_user_id();
+					//print_r($filter_array);
 					$query_results = DB::table('tickets')
 									 ->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
 									 ->join('ticket_types','ticket_type_id','=','ticket_types.id')
 									 ->where(function($query) use($filter_array){
 
-									 		$query = DataHelper::filter_data($query,'assigned_to',$filter_array,'int');
+									 		$query = DataHelper::filter_data($query,'tickets.created_by',$filter_array,'int');
 									 });
 					$total = $query_results->count();
 					$data = $query_results->get(
