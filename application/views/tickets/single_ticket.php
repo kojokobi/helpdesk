@@ -15,7 +15,7 @@
 					</div>
 			</div>
 		</div>
-		<div class="single_ticket_thread">
+		<div class="single_ticket_thread" ng-hide="projectClosed">
 			<div class="span12 outer">
 				<div class="message reply">
 					<div class="picture_box span1">

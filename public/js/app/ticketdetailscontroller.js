@@ -8,9 +8,11 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 	$scope.originalTicket = {};
 	$scope.currentTicketId = $routeParams.id;
 	
-	 var defaultReply = {
+	var defaultReply = {
 	 	message : ""
-	 }
+	}
+
+	$scope.projectClosed = 0;
 
 	//move this to a service instead
 	var TicketStatus = $resource('ticketstatuses');
@@ -40,6 +42,8 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 			var firstMessage = data.thread.pop();
 			$scope.originalTicket.message = firstMessage["message"];
 			$scope.originalTicket.ticketStatus  = data["ticketStatus"];
+			if(data["ticketStatus"].toLowerCase() === "closed")
+				$scope.projectClosed = 1;
 			$scope.ticketThread = data.thread;
 			//delete data.thread;
 		});
