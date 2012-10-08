@@ -63,6 +63,6 @@
     <input type="hidden" name="projectId" ng-model="currentProject.projectId">
   </div>
   <div class="modal-footer">
-    <button href="#" class="btn btn-info" data-dismiss="modal">Done</button>
+    <button href="#" class="btn btn-info" data-dismiss="modal">Close</button>
   </div>
 </div>

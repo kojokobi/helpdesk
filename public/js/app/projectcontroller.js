@@ -1,5 +1,11 @@
 function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG,OBJ) {
 
+	/**
+	 * Reference to the project form
+	 * @type {[type]}
+	 */
+	var projectForm = $("#project_form");
+	
 	var projectDefault= {
 		id : "",
 		name : "",
@@ -33,6 +39,7 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 				if (res.success){
 					getProjects();
 					$scope.clear();
+					
 				}else {
 
 				}
@@ -48,6 +55,8 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 					$scope.clear();	
 					var msg = res.message || "Record saved succefully"; 
 					MSG.show(msg,"success");
+					//hide project form
+					projectForm.modal("hide");
 				} else {
 					var msg = res.message || "Sorry errors were ecountered"; 
 					MSG.show(msg);
@@ -105,6 +114,7 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 				var msg = res.message || "Project Group created"; 
 				MSG.show(msg,"success");
 				getProjectGroups(currentProject.projectId);
+				currentProject.newGroup = "";
 			} else {
 				var msg = res.message || "Sorry errors were ecountered"; 
 				MSG.show(msg);

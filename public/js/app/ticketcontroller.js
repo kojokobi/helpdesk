@@ -79,6 +79,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 				MSG.show(msg,"success");
 				getTickets();
 				newTicket = {}
+				ticketsForm.modal("hide");
 			} else {
 				msg = res.message || "Sorry errors were ecountered"; 
 				MSG.show(msg); 
