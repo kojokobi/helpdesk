@@ -27,20 +27,20 @@ class User extends Eloquent{
 			return $inserted_record;
 		
 	}
-
 	public static function update_user_profile($user_update){
 
 		try{
-				$inputs = array('firstName'=>$user->firstName,'lastName'=>$user->lastName,'userName'=>$user->userName,'email'=>$user->email);
+				$inputs = array('firstName'=>$user_update->firstName,'lastName'=>$user_update->lastName,
+										'userName'=>$user_update->userName,'email'=>$user_update->email);
 				$validation = MyValidator::validate_user_input($inputs,HelperFunction::get_config_value('update_user_profile_rule'));
 				if($validation->fails())
 					return $validation->errors;
 
 				$arr = DataHelper::update_audit_entries(HelperFunction::get_user_id());
 				$arr['id']	= HelperFunction::get_user_id();
-				$arr['firstName']	= $user_update->first_name;
-				$arr['lastName']	= $user_update->last_name;
-				$arr['userName']	= $user_update->user_name;
+				$arr['first_name']	= $user_update->firstName;
+				$arr['last_name']	= $user_update->lastName;
+				$arr['user_name']	= $user_update->userName;
 				$arr['email']		= $user_update->email;
 
 				$updated_record = DataHelper::update_record('users',$arr['id'],$arr);
@@ -59,12 +59,12 @@ class User extends Eloquent{
 			return HelperFunction::catch_error(null,false,$validation->errors.all());
 
 		$update_array = array();
-		$update_array = DataHelper::create_audit_entries(HelperFunction::get_user_id());
+		$update_array = DataHelper::update_audit_entries(HelperFunction::get_user_id());
 		$update_array['id'] = HelperFunction::get_user_id();
-		$update_array['oldPassword'] = $password->oldPassword;
-		$update_array['newPassword'] = $password->newPassword;
-		$update_array['confirmPassword'] = $password->confirmPassword;
-
+		if($password->oldPassword == $password->newPassword)
+			$update_array['password'] = Hash::make($password->newPassword);
+		//$update_array['confirmPassword'] = $password->confirmPassword;
+		//$update_array['password'] 
 		$updated_record = DataHelper::update_record('users',$update_array['id'],$update_array);
         return $updated_record;
 	}

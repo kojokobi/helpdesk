@@ -7,10 +7,7 @@ class JobTitle extends Eloquent{
 
 		try{
 
-			// var $validation_error = Validator::validate_lookup();
-			// //if not validator return validation error
-			// if($validation_error)
-			// 	return $validation_error->errors;
+			
 
 			$job_title_array = DataHelper::create_audit_entries(Auth::user()->id);
 			$job_title_array['name'] = $jobTitle->name;

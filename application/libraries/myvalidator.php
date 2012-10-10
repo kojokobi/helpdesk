@@ -6,7 +6,7 @@ class MyValidator extends Eloquent{
 	public static function validate_user_input($input,$rules){
       
       try{
-      		
+      		 
 	         $validation =  Validator::make($input,$rules);
 	         return $validation;
 

@@ -130,7 +130,7 @@ Route::get("summaries/tickets/incoming",array('uses'=>"summary@incoming_tickets"
 Route::get("summaries/tickets/outgoing",array('uses'=>"summary@outgoing_tickets"));
 
 
-::get("profile_view", function(){
+Route::get("profile_view", function(){
 	return View::make("profile.index");
 });
 
