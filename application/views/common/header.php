@@ -41,6 +41,7 @@
     <script type="text/javascript" src="js/app/ticketcontroller.js"></script>
     <script type="text/javascript" src="js/app/ticketdetailscontroller.js"></script>
     <script type="text/javascript" src="js/app/dashcontroller.js"></script>
+    <script type="text/javascript" src="js/app/profilecontroller.js"></script>
     <script type="text/javascript" src="js/app/myhelpers.js"></script>
     <!-- end of app scripts -->
   </head>

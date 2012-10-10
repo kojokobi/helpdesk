@@ -10,7 +10,9 @@ function UserController ($scope, User,$http,MSG,OBJ){
 		jobTitleId : "",
 		roleId : ""
 	};
-
+	
+	var userForm = $("#user_form");
+	
 	$scope.formTitle = "Add User";
 	$scope.users = [];
 
@@ -54,6 +56,7 @@ function UserController ($scope, User,$http,MSG,OBJ){
 					msg = res.message || "User created"; 
 					MSG.show(msg,"success");
 					$scope.clear();	
+					userForm.modal("hide");
 				}else {
 					msg = res.message || "Sorry errors were ecountered"; 
 					MSG.show(msg);
