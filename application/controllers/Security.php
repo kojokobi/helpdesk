@@ -42,5 +42,13 @@ class Security_Controller extends Base_Controller{
 		//var_dump(Auth::user());
 		return Response::json(User::get_users(Input::all()));
 	}
+	public function post_change_password(){
+
+		return Reponse::json(User::change_password(Input::json()));
+	}
+	public function post_update_user_profile(){
+
+		return Response::json(User::update_user_profile(input::json()));
+	}
 	
 }

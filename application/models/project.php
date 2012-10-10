@@ -5,10 +5,17 @@ class Project extends Eloquent {
 	public static function create_project($project){
 
 		try{
-				// $validation_error = MyValidator::validate_lookup(true,$project);
-				// //var_dump($validation_error);
-				// if(!$validation_error)
-				// 	return $validation_error;
+				// $validation = MyValidator::validate_lookup(true,$project);
+				// if($validation->fails())
+				// 	return $validation->errors;
+				// $inputs = array('name'=>'required|max:128');
+				// $rules = HelperFunction::get_config_value('default_lookup_rules');
+			//$rules =  ;
+			// var_dump($rules);
+			// return;
+			$validation = MyValidator::validate_user_input(array('name'=>$project->name),HelperFunction::get_config_value('default_lookup_rules'));
+			if($validation->fails())
+					return $validation->errors;
 				
 				$arr = DataHelper::create_audit_entries(Auth::user()->id);
 	            $arr['name'] = $project->name;
@@ -26,9 +33,10 @@ class Project extends Eloquent {
 	public static function update_project($project){
 
 		try{
-			$validation_error = HelperFunction::validate_lookup(false);
-			if($validation_error)
-				return $validation_error->errors;
+			
+			$validation = MyValidator::validate_user_input(array('name'=>$project->name),HelperFunction::get_config_value('default_lookup_rules'));
+			if($validation->fails())
+					return HelperFunction::catch_error(null,false,$validation->errors.all());
 
 			$project = DataHelper::update_audit_entries(Auth::user()->id);
             $project['name'] = $project->name;

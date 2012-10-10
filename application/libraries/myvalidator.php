@@ -5,8 +5,15 @@ class MyValidator extends Eloquent{
 
 	public static function validate_user_input($input,$rules){
       
-         $validation =  Validator::make($input,$rules);
-         return $validation;
+      try{
+      		
+	         $validation =  Validator::make($input,$rules);
+	         return $validation;
+
+     }catch(Exception $e)
+     {
+     	var_dump($e);
+     }
 	}
 	public static function validate_lookup($is_insert = true,$input){
 		try{
@@ -20,11 +27,7 @@ class MyValidator extends Eloquent{
 			}
 
 			$validation = Validator::make($input,$rules);
-			//var_dump($validation);
-			if($validation->fails())
-				return $validation->errors;
-			else
-				return false;
+			return $validation;
 
 		}catch(Exception $e){
 			var_dump($e);

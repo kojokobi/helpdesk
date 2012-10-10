@@ -108,11 +108,25 @@ class HelperFunction extends Eloquent{
 
 		return Config::get("globalconfig.global_error_message");
 	}
+	public static function get_config_value($config_key)
+	{
+		//var_dump($config_key);
+		return Config::get('validationconfig.'.$config_key);
+	}
 
 	private static function format_exception($exception){
 
 		$message = $exception->getMessage(). 'On Line Number-> '. $exception->getLine().
 					'<br>In file '. $exception->getFile();
 		return $message;
+	}
+	public static function format_message($validation){
+
+			$message= "";
+			foreach ($validation as $key => $value) {
+
+					$message = $message . $value . "<br>";
+				}
+			return $message;
 	}
 }
