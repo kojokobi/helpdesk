@@ -23,7 +23,6 @@ class Security_Controller extends Base_Controller{
 
 		return View::make('login.index');
 	}
-
 	public function get_logout(){
 		Auth::logout();
 		return Redirect::to("login");
@@ -48,7 +47,7 @@ class Security_Controller extends Base_Controller{
 	}
 	public function post_update_user_profile(){
 
-		return Response::json(User::update_user_profile(input::json()));
+		return Response::json(User::update_user_profile(Input::json()));
 	}
 	
 }

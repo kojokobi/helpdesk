@@ -26,11 +26,8 @@ return array(
 			| User model validation rule
 			|--------------------------------------------------------------------------
 			|Validation rules to be applied to the user model before a save or update operation
-			|
-			|
-			|
 			*/
-			'user_rules' => array('firstName'=>'required|max:128','lastName'=>'required|max:128','email'=>'required|email|unique:users',
+			'user_rules' => array('firstName'=>'required|max:128','lastName'=>'required|max:128','email'=>'required|email|unique:users,',
 										'password'=>'required|max:128','userName'=>'required|max:128','jobTitleId'=>'required|numeric',
 												'roleId'=>'required|numeric'),
 			/*
@@ -38,19 +35,13 @@ return array(
 			| User model update_user_profile rules
 			|--------------------------------------------------------------------------
 			|Validation rules to be applied to the user model before a profile update
-			|
-			|
-			|
 			*/
-			'update_user_profile_rule' => array('firstName'=>'required|max:128','lastName'=>'required|max:128','email'=>'required|email|unique:users','userName'=>'required|max:128'),
+			'update_user_profile_rule' => array('firstName'=>'required|max:128','lastName'=>'required|max:128','email'=>'required|email','userName'=>'required|max:128'),
 			/*
 			|--------------------------------------------------------------------------
 			| User model change password validation rule
 			|--------------------------------------------------------------------------
 			|Validation rules to be applied to the user model when changing a password
-			|
-			|
-			|oldPassword, newPassword, confirmPassword
 			*/
 			'change_password' => array('oldPassword'=>'required|max:128','newPassword'=>'required|max:128','confirmPassword'=>'required|max:128'),
 		);
