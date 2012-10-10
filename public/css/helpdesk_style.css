@@ -484,9 +484,20 @@ label, input, button, select, textarea {
 	color: #206BA7;
 	font-weight: bold;
 	font-size: 10px;
-	margin-right: 50px;
+	margin-right: 15px;
+	width: 200px;
 }
-.single_ticket_thread .ticket_content .datebox .date{
+
+.single_ticket_thread .ticket_content .statusbox{
+	float: right;
+	color: #206BA7;
+	font-weight: bold;
+	font-size: 10px;
+	margin-right: 10px;
+	width: 100px;
+}
+
+.single_ticket_thread .ticket_content .datebox .date, .single_ticket_thread .ticket_content .statusbox .status{
 	color : #444;
 }
 

@@ -43,7 +43,7 @@ function TicketDetailsController($scope,MSG,$http, $resource,$route, $routeParam
 			$scope.originalTicket.message = firstMessage["message"];
 			$scope.originalTicket.ticketStatus  = data["ticketStatus"];
 			if(data["ticketStatus"].toLowerCase() === "closed")
-				$scope.projectClosed = 1;
+				$scope.projectClosed = 1; // this disables replies from being sent from the browser
 			$scope.ticketThread = data.thread;
 			//delete data.thread;
 		});
