@@ -62,6 +62,8 @@ Route::post('users',array('uses' => 'security@user'));
 Route::put('users',array('uses' => 'security@user'));
 Route::get('users',array('uses' => 'security@users'));
 Route::delete('users',array('uses' => 'security@user'));
+Route::post('users/changepassword',array('uses' => 'security@change_password'));
+Route::post('users/updateprofile',array('uses' => 'security@update_user_profile'));
 /*
  *Project Groups routes
  */
@@ -126,7 +128,8 @@ Route::get("dashboard_view", array("uses"=> "home@dash_board"));
 Route::get("summaries",array('uses'=>"summary@counts"));
 Route::get("summaries/tickets/incoming",array('uses'=>"summary@incoming_tickets"));
 Route::get("summaries/tickets/outgoing",array('uses'=>"summary@outgoing_tickets"));
-Route
+
+
 ::get("profile_view", function(){
 	return View::make("profile.index");
 });
