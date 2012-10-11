@@ -38,7 +38,9 @@
 							</div>
 					</div>
 					<input type="hidden" ng-model="user.id" ng-init="user.id='<?php echo Auth::user()->id; ?>' ">
-					<button class="btn btn-info" ng-click="updateProfile(user)"> <i class="icon-inbox icon-white"></i> Update</button> <?php echo HTML::image("img/icons/loading.gif"); ?> Saving...
+					<button class="btn btn-info" ng-click="updateProfile(user)"> <i class="icon-inbox icon-white"></i> Update</button>  
+					 <span ng-show='saving'><?php echo HTML::image("img/icons/loading.gif"); ?> Saving...</span>
+					
 				</form>
 			</div>
 			<div class="span6">
