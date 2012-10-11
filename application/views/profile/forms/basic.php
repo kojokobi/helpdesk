@@ -10,14 +10,14 @@
 				            <label  for="title">First Name:</label>
 				            <div >
 				              <input type="text" id="ticket_title" class="input-xlarge" 
-				              ng-model="user.firstName" ng-init="user.firstName=' <?php echo Auth::user()->first_name; ?> '">
+				              ng-model="user.firstName" ng-init="user.firstName='<?php echo Auth::user()->first_name; ?>'">
 				             </div>
 				         </div>
 			            <div class="pull-right">
 				            <label for="title">Last Name:</label>
 					            <div >
 					              <input type="text" id="ticket_title" class="input-xlarge" 
-					              ng-model="user.lastName" ng-init="user.lastName=' <?php echo Auth::user()->last_name; ?> '">
+					              ng-model="user.lastName" ng-init="user.lastName='<?php echo Auth::user()->last_name; ?>'">
 					            </div>
 							</div>
 					</div>
@@ -26,20 +26,20 @@
 				            <label  for="title">Username:</label>
 				            <div>
 				              <input type="text" id="ticket_title" class="input-xlarge" 
-				              ng-model="user.userName" ng-init="user.userName=' <?php echo Auth::user()->user_name; ?> '">
+				              ng-model="user.userName" ng-init="user.userName='<?php echo Auth::user()->user_name; ?>'">
 				             </div>
 				         </div>
 			            <div class="pull-right">
 				            <label for="title">Email:</label>
 					            <div>
 					              <input type="text" id="ticket_title" class="input-xlarge" 
-					              ng-model="user.email" ng-init="user.email=' <?php echo Auth::user()->email; ?> '">
+					              ng-model="user.email" ng-init="user.email='<?php echo Auth::user()->email; ?>'">
 					            </div>
 							</div>
 					</div>
 					<input type="hidden" ng-model="user.id" ng-init="user.id='<?php echo Auth::user()->id; ?>' ">
 					<button class="btn btn-info" ng-click="updateProfile(user)"> <i class="icon-inbox icon-white"></i> Update</button>  
-					 <span ng-show='saving'><?php echo HTML::image("img/icons/loading.gif"); ?> Saving...</span>
+					<span ng-show='updatingProfile'><?php echo HTML::image("img/icons/loading.gif"); ?> Saving...</span>
 					
 				</form>
 			</div>
