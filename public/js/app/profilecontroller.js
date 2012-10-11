@@ -1,19 +1,22 @@
 function ProfileController ($scope,$http, MSG, User){
 
 	$user = {}
-
+	$scope.saving = 0;
 	$scope.updateProfile = function (user){
 		var theUser = angular.copy(user);
+		$scope.saving = 1;
 		$http.post("users/updateprofile",theUser).success(function (res){
 			var msg = "";
 			if(res.success){
 				msg = res.message || "Profile Updated Successfully";
 				MSG.show(msg, "success");
+				$scope.saving = 0;
 			}else {
 				msg = res.message || "Sorry errors were ecountered"; 
 				MSG.show(msg);
+				$scope.saving = 0;
 			}
-		})
+		});
 		
 	}
 
