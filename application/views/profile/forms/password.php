@@ -26,6 +26,7 @@
 					</div>
 					<input type="hidden" ng-model="password.userId" ng-init="password.userId='<?php echo Auth::user()->id; ?>' ">
 					<button class="btn btn-info" ng-click="changePassword(password)"> <i class="icon-random icon-white"></i> Change</button>
+					<span ng-show='changingPassword'><?php echo HTML::image("img/icons/loading.gif"); ?> Saving...</span>
 				</form>
 			</div>
 		</div>
