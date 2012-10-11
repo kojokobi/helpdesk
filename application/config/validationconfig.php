@@ -27,7 +27,7 @@ return array(
 			|--------------------------------------------------------------------------
 			|Validation rules to be applied to the user model before a save or update operation
 			*/
-			'user_rules' => array('firstName'=>'required|max:128','lastName'=>'required|max:128','email'=>'required|email|unique:users,',
+			'user_rules' => array('firstName'=>'required|max:128','lastName'=>'required|max:128','email'=>'required|email',
 										'password'=>'required|max:128','userName'=>'required|max:128','jobTitleId'=>'required|numeric',
 												'roleId'=>'required|numeric'),
 			/*

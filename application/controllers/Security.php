@@ -43,7 +43,7 @@ class Security_Controller extends Base_Controller{
 	}
 	public function post_change_password(){
 
-		return Reponse::json(User::change_password(Input::json()));
+		return Response::json(User::change_password(Input::json()));
 	}
 	public function post_update_user_profile(){
 

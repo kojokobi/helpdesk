@@ -60,11 +60,21 @@ class User extends Eloquent{
 
 		$update_array = array();
 		$update_array = DataHelper::update_audit_entries(HelperFunction::get_user_id());
-		$update_array['id'] = HelperFunction::get_user_id();
-		if($password->oldPassword == $password->newPassword)
+		
+		$update_array['password'] = $password->oldPassword;
+		$is_valid_password = DB::table('users')
+							->where(function($query)use($update_array) {
+
+									$query->where('id','=',HelperFunction::get_user_id());
+
+							})->first();
+		if (Hash::check($password->oldPassword, $is_valid_password->password))
+		{
+		    $update_array['id'] = HelperFunction::get_user_id();
 			$update_array['password'] = Hash::make($password->newPassword);
-		//$update_array['confirmPassword'] = $password->confirmPassword;
-		//$update_array['password'] 
+		}else
+			return HelperFunction::return_json_data(array(),false,'password is not valid',0);
+
 		$updated_record = DataHelper::update_record('users',$update_array['id'],$update_array);
         return $updated_record;
 	}
