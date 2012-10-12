@@ -1,7 +1,8 @@
-<div class="tab-pane active" id="users" ng-controller="UserController">
+<script type="text/javascript" src="js/app/permissionscontroller.js"></script>
+<div class="tab-pane" id="permissions" ng-controller="PermissionsController">
            <div class="btn-toolbar" style="margin-bottom: 9px">
             <div class="btn-group">
-              <button class='btn btn-success' data-toggle="modal" href="#user_form"> <i class='icon-white icon-user'></i> </button>
+              <button class='btn btn-success' data-toggle="modal" href="#permission_form"> <i class='icon-white icon-th'></i> </button>
               <button class='btn btn-info' ng-click="reload()"> <i class='icon-white icon- icon-repeat'></i> </button>
             </div>
           </div>
@@ -15,7 +16,6 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>No. Projects</th>
-                    <th class='grid_action2'></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -29,13 +29,9 @@
                     <td> {{user.userName}} </td>
                     <td> {{user.email}} </td>
                     <td> {{user.numProjects}} </td>
-                    <td> 
-                      <a href="#"  ng-click="editUser(user)"> <i class='icon icon-pencil'> </a></i> 
-                      <a href="#"  ng-click="deleteUser(user)"> <i class='icon icon-remove'> </a></i> 
-                    </td>
                   </tr>
                 </tbody>
             </table>
           </div>
-  <?php echo View::make("components.user_form"); ?>
+  <?php //echo View::make("components.user_form"); ?>
   </div>

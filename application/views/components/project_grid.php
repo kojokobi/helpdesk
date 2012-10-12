@@ -1,9 +1,8 @@
 <div class="tab-pane" id="project" ng-controller="ProjectController">         
   <div class="btn-toolbar" style="margin-bottom: 9px">
     <div class="btn-group">
-      <a class='btn btn-success' data-toggle="modal" href="#project_form"> <i class='icon-white icon-th-list'></i></a>
-      <a class='btn btn-info'> <i class='icon-white icon-pencil'></i></a>
-      <a class='btn btn-danger'> <i class='icon-white icon-trash'></i></a>
+      <button class='btn btn-success' data-toggle="modal" href="#project_form"> <i class='icon-white icon-th-list'></i></button>
+      <button class='btn btn-info' ng-click="reload()"> <i class='icon-white icon- icon-repeat'></i> </button>
     </div>
   </div>
   <table  class='table table-striped table-bordered my-table'>
@@ -13,7 +12,7 @@
           <th>Title</th>
           <th>Description</th>
           <th>Date Created</th>
-          <th class='action'></th>
+          <th class='grid_action3'></th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +25,11 @@
             <td> {{project.name}} </td>
             <td> {{project.description }} </td>
             <td> {{project.createdAt}} </td>
-            <td> <a href="#"  ng-click="updateProjectDetails(project)"> <i class='icon icon-pencil'> </a></i> </td>
+            <td> 
+              <a href="#"  ng-click="updateProjectDetails(project)"> <i class='icon icon-plus'> </a></i>
+              <a href="#"  ng-click="editProject(project)"> <i class='icon icon-pencil'> </a></i>  
+              <a href="#"  ng-click="deleteProject(project)"> <i class='icon icon-remove'> </a></i>  
+            </td>
         </tr>
       </tbody>
   </table>

@@ -31,6 +31,13 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 		})
 	}
 
+	/**
+	 * When the user clicks the refresh button to reload new records that might been added
+	 * @return {void} 
+	 */
+	$scope.reload = function (){
+		getProjects();
+	}
 
 	$scope.addProject = function (newProject){
 		var project = OBJ.rectify(angular.copy(newProject),projectDefault);
@@ -140,6 +147,25 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 			}
 		});
 	}
+
+	/**
+	 * Shows the form for editing the project
+	 * @param  {object} project the project object
+	 * @return {void}  
+	 */
+	$scope.editProject = function (project){
+
+	}
+
+	/**
+	 * Delete the project
+	 * @param  {object} project the project object
+	 * @return {void} 
+	 */
+	$scope.deleteProject = function(project){
+
+	}
+
 
 	$scope.clear =  function (){
 		$scope.newProject = {};

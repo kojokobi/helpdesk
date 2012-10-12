@@ -1,0 +1,3 @@
+function PermissionsController ($scope){
+	
+}
