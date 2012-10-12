@@ -65,6 +65,7 @@ class HelperFunction extends Eloquent{
 	}
 	public static function get_user_id(){
 		return Auth::user()->id;
+		
 	}
 	/**
 	 * converts field names containing underscores to camel casing

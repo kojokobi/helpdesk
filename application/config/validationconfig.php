@@ -44,4 +44,18 @@ return array(
 			|Validation rules to be applied to the user model when changing a password
 			*/
 			'change_password' => array('oldPassword'=>'required|max:128','newPassword'=>'required|max:128','confirmPassword'=>'required|max:128'),
+			/*
+			|--------------------------------------------------------------------------
+			| Module validation rule
+			|--------------------------------------------------------------------------
+			|Validation rules to be applied to the module entity
+			*/
+			'create_module_rule' => array('name'=>'required|max:128','role_id'=>'required|numeric','display_name'=>'required|max:128'),
+			/*
+			|--------------------------------------------------------------------------
+			| Permissions Validation Rule
+			|--------------------------------------------------------------------------
+			|Validation rules to be applied to the Permissions entity
+			*/
+			'create_permisson_rule' => array('module_id'=>'required|numeric','securable_id'=>'required|numeric'),
 		);

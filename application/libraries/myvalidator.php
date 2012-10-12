@@ -2,7 +2,12 @@
 
 class MyValidator extends Eloquent{
 
-
+	/**
+	 * Performs laravel validation based 
+	 * @param  [array] $input [array containing data to be validation]
+	 * @param  [array] $rules [array containing rules to to validate against]
+	 * @return [object]        [validation object]
+	 */
 	public static function validate_user_input($input,$rules){
       
       try{
