@@ -14,7 +14,8 @@
               <th>Name</th>
               <th>Description</th>
               <th>List Order</th>
-              <th>Created On</th>
+              <th>Date Created</th>
+              <th class='grid_action2'></th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +28,10 @@
               <td> {{module.description}} </td>
               <td> {{module.position}} </td>
               <td> {{module.created_at}} </td>
+              <td> 
+                  <a href="#"  ng-click="editModule(module)"> <i class='icon icon-pencil'> </a></i> 
+                  <a href="#"  ng-click="deleteModule(module)"> <i class='icon icon-remove'> </a></i> 
+              </td>
             </tr>
           </tbody>
       </table>

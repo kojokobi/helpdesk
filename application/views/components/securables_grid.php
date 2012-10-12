@@ -15,7 +15,7 @@
               <th>Display Name</th>
               <th>Module</th>
               <th>Date Created</th>
-              <th></th>
+              <th class="grid_action2"></th>
             </tr>
           </thead>
           <tbody>
@@ -24,10 +24,14 @@
             </tr> -->
             <tr ng-repeat="securable in securables">
               <td> {{$index + 1}} </td>
-              <td> {{securables.name}} </td>
-              <td> {{securables.displayName}} </td>
-              <td> {{securables.moduleName}} </td>
-              <td> <a href="#"> <i class="icon-pencil"></i> </a> </td>
+              <td> {{securable.name}} </td>
+              <td> {{securable.displayName}} </td>
+              <td> {{securable.moduleName}} </td>
+              <th> {{securable.createdAt}} </th>
+              <td> 
+                  <a href="#"  ng-click="editSecurable(securable)"> <i class='icon icon-pencil'> </a></i> 
+                  <a href="#"  ng-click="deleteSecurable(securable)"> <i class='icon icon-remove'> </a></i> 
+              </td>
               
             </tr>
           </tbody>

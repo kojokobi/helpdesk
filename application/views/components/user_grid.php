@@ -15,6 +15,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>No. Projects</th>
+                    <th class='grid_action2'></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,10 @@
                     <td> {{user.userName}} </td>
                     <td> {{user.email}} </td>
                     <td> {{user.numProjects}} </td>
+                    <td> 
+                      <a href="#"  ng-click="editUser(user)"> <i class='icon icon-pencil'> </a></i> 
+                      <a href="#"  ng-click="deleteUser(user)"> <i class='icon icon-remove'> </a></i> 
+                    </td>
                   </tr>
                 </tbody>
             </table>

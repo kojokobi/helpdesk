@@ -32,4 +32,4 @@
         <button href="#" class="btn" data-dismiss="modal"><i class='icon icon-ban-circle'></i> Cancel</button>
       </div>
     </div>
-<!-- END OF ADD MODULE FORM -->
+<!-- END OF MODULE FORM -->

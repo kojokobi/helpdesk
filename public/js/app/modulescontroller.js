@@ -7,6 +7,8 @@ function ModulesController($scope,Module,OBJ,MSG) {
 		listOrder : ""
 	}
 
+	var moduleForm = $("#module_form");
+
 	$scope.modules = [];
 
 	$scope.formTitle = "Add Module";
@@ -55,7 +57,7 @@ function ModulesController($scope,Module,OBJ,MSG) {
 			msg = res.message || "Module Created";
 			MSG.show(msg,"success");
 			$scope.clear();
-			secForm.modal("hide");
+			moduleForm.modal("hide");
 			
 			//any other business
 			if(callback)
@@ -64,6 +66,25 @@ function ModulesController($scope,Module,OBJ,MSG) {
 			msg = res.message || "Sorry, errors were ecountered";
 			MSG.show(msg);
 		}
+	}
+
+	/**
+	 * Show's the form for editing a module
+	 * @param  {objecy} module the module object
+	 * @return {void}        
+	 */
+	$scope.editModule = function (module){
+		$scope.newModule = angular.copy(module);
+		moduleForm.modal("show");
+	}
+
+	/**
+	 * Deletes a module object
+	 * @param  {object} module the module object
+	 * @return {void}        
+	 */
+	$scope.deleteModule =  function (module){
+
 	}
 
 	/**

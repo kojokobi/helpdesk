@@ -14,6 +14,7 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Date Created</th>
+                    <th class='grid_action2'></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,10 @@
                     <td> {{role.name}} </td>
                     <td> {{role.description}} </td>
                     <td> {{role.createdAt}} </td>
+                    <td> 
+                        <a href="#"  ng-click="editRole(role)"> <i class='icon icon-pencil'> </a></i> 
+                        <a href="#"  ng-click="deleteRole(role)"> <i class='icon icon-remove'> </a></i> 
+                    </td>
                   </tr>
                 </tbody>
             </table>

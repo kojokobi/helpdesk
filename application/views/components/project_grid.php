@@ -12,7 +12,7 @@
           <th>Title</th>
           <th>Description</th>
           <th>Date Created</th>
-          <th class='action'></th>
+          <th class='grid_action3'></th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +25,11 @@
             <td> {{project.name}} </td>
             <td> {{project.description }} </td>
             <td> {{project.createdAt}} </td>
-            <td> <a href="#"  ng-click="updateProjectDetails(project)"> <i class='icon icon-pencil'> </a></i> </td>
+            <td> 
+              <a href="#"  ng-click="updateProjectDetails(project)"> <i class='icon icon-plus'> </a></i>
+              <a href="#"  ng-click="editProject(project)"> <i class='icon icon-pencil'> </a></i>  
+              <a href="#"  ng-click="deleteProject(project)"> <i class='icon icon-remove'> </a></i>  
+            </td>
         </tr>
       </tbody>
   </table>

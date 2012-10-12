@@ -68,6 +68,26 @@ function SecurablesController ($scope,Securable,OBJ,MSG) {
 	}
 
 	/**
+	 * Shows the form for edting the securable
+	 * @param  {object} securable the securable object
+	 * @return {void}  
+	 */
+	$scope.editSecurable = function (securable){
+		$scope.newSec = angular.copy(securable);
+		secForm.modal("show");
+	}
+
+	/**
+	 * Delete the securable object
+	 * @param  {object} securable the securable object
+	 * @return {void}           
+	 */
+	$scope.deleteSecurable = function(securable){
+
+	}
+
+
+	/**
 	 * Clean up Method
 	 * @return {void} 
 	 */

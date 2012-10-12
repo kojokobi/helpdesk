@@ -70,6 +70,24 @@ function UserController ($scope, User,$http,MSG,OBJ){
 		}
 	}
 
+	/**
+	 * This brings up the form and preloaded with the user's data
+	 * @param  {object} user the user object
+	 * @return {void}
+	 */
+	$scope.editUser = function (user){
+
+	}
+
+	/**
+	 * deletes the user
+	 * @param  {object} user the user object
+	 * @return {void}   
+	 */
+	$scope.deleteUser = function(user){
+
+	}
+
 	$scope.clear =  function (){
 		$scope.newUser = {};
 		//$scope.title = "Add New User";
