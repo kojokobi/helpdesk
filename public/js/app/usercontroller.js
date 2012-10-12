@@ -15,8 +15,11 @@ function UserController ($scope, User,$http,MSG,OBJ){
 	
 	$scope.formTitle = "Add User";
 	$scope.users = [];
+	$scope.reload = function (){
+		getUsers();
+	}
 
-	function getUsers(){
+	var getUsers = function (){
 		User.query(function (res){
 			$scope.users = angular.copy(res.data);
 		});
@@ -34,6 +37,7 @@ function UserController ($scope, User,$http,MSG,OBJ){
 		});
 	}
 
+	//todo	refactor to use structure in securables
 	$scope.addUser =  function (newUser){
 		var user =  OBJ.rectify( angular.copy(newUser), userDefault);
 		if (user["id"]){
@@ -58,7 +62,7 @@ function UserController ($scope, User,$http,MSG,OBJ){
 					$scope.clear();	
 					userForm.modal("hide");
 				}else {
-					msg = res.message || "Sorry errors were ecountered"; 
+					msg = res.message || "Sorry, errors were ecountered"; 
 					MSG.show(msg);
 				}
 				

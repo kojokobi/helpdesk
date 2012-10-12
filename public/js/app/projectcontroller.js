@@ -31,6 +31,13 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 		})
 	}
 
+	/**
+	 * When the user clicks the refresh button to reload new records that might been added
+	 * @return {void} 
+	 */
+	$scope.reload = function (){
+		getProjects();
+	}
 
 	$scope.addProject = function (newProject){
 		var project = OBJ.rectify(angular.copy(newProject),projectDefault);

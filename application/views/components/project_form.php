@@ -26,4 +26,4 @@
         <button href="#" class="btn" data-dismiss="modal"><i class='icon icon-ban-circle'></i> Cancel</button>
       </div>
     </div>
-    <!-- END OF ADD PAROJECT FORM -->
+    <!-- END OF ADD PROJECT FORM -->

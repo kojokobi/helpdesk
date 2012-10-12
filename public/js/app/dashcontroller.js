@@ -62,7 +62,7 @@ function DashController ($scope, $http){
                 plotShadow: false
             },
             title: {
-                text: 'Summary Of Tickets'
+                text: 'Summary Of Tickets Assigned To Me'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage}%</b>',

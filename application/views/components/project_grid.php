@@ -1,9 +1,8 @@
 <div class="tab-pane" id="project" ng-controller="ProjectController">         
   <div class="btn-toolbar" style="margin-bottom: 9px">
     <div class="btn-group">
-      <a class='btn btn-success' data-toggle="modal" href="#project_form"> <i class='icon-white icon-th-list'></i></a>
-      <a class='btn btn-info'> <i class='icon-white icon-pencil'></i></a>
-      <a class='btn btn-danger'> <i class='icon-white icon-trash'></i></a>
+      <button class='btn btn-success' data-toggle="modal" href="#project_form"> <i class='icon-white icon-th-list'></i></button>
+      <button class='btn btn-info' ng-click="reload()"> <i class='icon-white icon- icon-repeat'></i> </button>
     </div>
   </div>
   <table  class='table table-striped table-bordered my-table'>
