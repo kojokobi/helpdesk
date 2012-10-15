@@ -2,7 +2,7 @@
 <div class="tab-pane" id="modules" ng-controller="ModulesController">
      <div class="btn-toolbar" style="margin-bottom: 9px">
       <div class="btn-group">
-        <button class='btn btn-success' data-toggle="modal" href="#module_form"> <i class='icon-white icon-th'></i> </button>
+        <button class='btn btn-success' data-toggle="modal" href="#module_form" ng-click="showNewModule()"> <i class='icon-white icon-th'></i> </button>
         <button class='btn btn-info' ng-click="reload()"> <i class='icon-white icon- icon-repeat'></i> </button>
       </div>
     </div>
