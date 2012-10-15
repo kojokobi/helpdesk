@@ -57,4 +57,34 @@ return array(
 			|
 			*/
 			'unresolved_ticket_status_id'=>4,
+			/*
+			|--------------------------------------------------------------------------
+			| Securable/System Object Permissions
+			|--------------------------------------------------------------------------
+			|Permissions to set on system objects.Will be used on the clientSide
+			|
+			|
+			*/
+			'secuable_permissions'=>array(
+
+					'canView'=>'Can View',
+					'canInsert'=>'Can Insert',
+					'canUpdate'=>'Can Update',
+					'canDelete'=>'Can Delete',
+					'canSearch'=>'Can Search',
+					'canReport'=>'Can Report',
+
+				),
+			/*
+			|--------------------------------------------------------------------------
+			| Modules Object Permissions
+			|--------------------------------------------------------------------------
+			|Permissions to set on system modules.Will be used on the clientSide
+			|
+			|
+			*/
+			'module_permissions'=>array(
+
+					'canView'=>'Can View',
+				)
 		);

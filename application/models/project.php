@@ -5,7 +5,7 @@ class Project extends Eloquent {
 	public static function create_project($project){
 
 		try{
-				
+			
 			$validation = MyValidator::validate_user_input(array('name'=>$project->name),HelperFunction::get_config_value('default_lookup_rules'));
 			if($validation->fails())
 					return $validation->errors;

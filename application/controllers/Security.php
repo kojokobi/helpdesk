@@ -49,5 +49,53 @@ class Security_Controller extends Base_Controller{
 
 		return Response::json(User::update_user_profile(Input::json()));
 	}
+	//modules
+	public function post_create_module(){
+		return  Response::json(Module::create_module(Input::json()));
+	}
+	public function get_modules(){
+	
+		return 	Response::json(Module::get_modules(Input::all()));
+
+	}
+	public function put_update_module(){
+		return Response::json(Module::update_module(Input::json()));
+	}
+	public function delete_module(){
+		return Response::json(Module::delete_module(Input::json()));
+	}
+	//securables
+	public function post_create_securable(){
+		return Response::json(Securable::create_securable(Input::json()));
+	}
+	public function get_securables(){
+		return Response::json(Securable::get_securables(Input::json()));
+	}
+	public function put_update_securable(){
+		return Response::json(Securable::update_securable(Input::json()));
+	}
+	public function delete_securable(){
+		return Response::json(Securable::delete_securable(Input::json()));
+	}
+	//permissions
+	public function post_create_permission(){
+		return Response::json(Securable::create_permissions(Input::json()));
+	}
+	public function get_permissions(){
+		return Response::json(Securable::get_permissions());
+	}
+	public function put_update_permission(){
+		return Response::json(Securable::update_permissions(Input::json()));
+	}
+	public function delete_permission(){
+		return Response::json(Securable::delete_permissions(Input::json()));
+	}
+	public function get_securables_array(){
+		return Response::json(get_config('secuable_permissions'));
+	}
+	public function get_modules_array(){
+		return Response::json(get_config('module_permissions'));
+	}
+
 	
 }
