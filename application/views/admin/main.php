@@ -4,7 +4,7 @@
       <legend >Management</legend>
     </fieldset>
     <div class="tabbable">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs tab_headers">
         <li class="active"><a href="#users" data-toggle="tab"> Users</a></li>
         <li><a href="#project" data-toggle="tab"> Projects</a></li>
         

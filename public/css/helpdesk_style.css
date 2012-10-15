@@ -506,6 +506,14 @@ label, input, button, select, textarea {
 	width: 100%;
 	min-height: 50px;
 }
+
+/*tabs*/
+
+.tabbable .tab_headers{
+	background: #F1F3F5 ;
+	/*url("../img/custom/table_back.png")*/
+}
+
 /*pnotify*/
 .ui-pnotify-title {
 	font-size: 14px;
