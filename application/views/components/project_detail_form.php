@@ -53,7 +53,7 @@
         <tbody>
           <tr ng-repeat="userGroup in userGroups">
             <td> {{$index + 1}} </td>
-            <td> {{ userGroup.name }}</td>
+            <td> {{ userGroup.name }} </td>
             <td> {{ userGroup.groupName }} </td>
             <td> <a href="#"> <i class='icon icon-remove'></i></a> </td>
           </tr>

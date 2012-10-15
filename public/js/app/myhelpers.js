@@ -36,7 +36,6 @@ angular.module('myHelpers', []).
         var out = {}
         if(obj){
           for (var i in _default){
-            console.log(i)
             obj[i] = obj[i] || _default[i]
           }
 

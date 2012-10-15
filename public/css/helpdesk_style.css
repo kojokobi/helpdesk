@@ -314,7 +314,7 @@ footer p {
 	margin-left: 0px;
 	margin-right: 3px;
 }
-.project_item_group .user_group_table {
+.project_item_group .user_group_table , .securable_permissions .permissions_table{
 	margin-left: 50px;
 	width: 400px;
 }
@@ -512,6 +512,10 @@ label, input, button, select, textarea {
 .tabbable .tab_headers{
 	background: #F1F3F5 ;
 	/*url("../img/custom/table_back.png")*/
+}
+
+.mini_table_header{
+	margin-left: 50px;
 }
 
 /*pnotify*/

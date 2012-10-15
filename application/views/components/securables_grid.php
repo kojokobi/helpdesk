@@ -2,7 +2,7 @@
 <div class="tab-pane" id="securables" ng-controller="SecurablesController">
      <div class="btn-toolbar" style="margin-bottom: 9px">
       <div class="btn-group">
-        <button class='btn btn-success' data-toggle="modal" href="#securable_form"> <i class='icon-white icon-th'></i> </button>
+        <button class='btn btn-success' data-toggle="modal" href="#securable_form" ng-click="newSecurable()"> <i class='icon-white icon-th'></i> </button>
         <button class='btn btn-info' ng-click="reload()"> <i class='icon-white icon- icon-repeat'></i> </button>
       </div>
     </div>

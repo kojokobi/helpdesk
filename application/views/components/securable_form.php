@@ -27,7 +27,28 @@
            </select>
           </div>
         </div>
+        <div class="control-group">
+          <label class="control-label" for="roleId">Role:</label>
+          <div class="controls">
+            <select id="roleId" ng-model="newSec.roleId" class='input-xlarge user_select' name="roleId"
+              ng-options='role.id as role.name for role in roles'
+             >
+           </select>
+          </div>
+        </div>
         <input type="hidden" ng-model="newSec.id">
+        <div class="securable_permissions">
+          <h4 class='mini_table_header'>Permissions</h4>
+          <table class="table table-striped table-bordered my-table permissions_table">
+            <tbody >
+              <tr ng-repeat="permission in permissions">
+                <td class="grid_action1"> {{$index + 1}} </td>
+                <td> {{ permission.label }} </td>
+                <td class="grid_action2"> <input type="checkbox" ng-model='permission.val' ng-true-value="1" ng-false-value="0"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </form>
     </div>
     <div class="modal-footer">
