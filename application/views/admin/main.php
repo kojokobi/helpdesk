@@ -7,12 +7,11 @@
       <ul class="nav nav-tabs tab_headers">
         <li class="active"><a href="#users" data-toggle="tab"> Users</a></li>
         <li><a href="#project" data-toggle="tab"> Projects</a></li>
-        
+        <li><a href="#roles" data-toggle="tab">Roles</a></li>
         <li><a href="#modules" data-toggle="tab">Modules</a></li>
         <li><a href="#securables" data-toggle="tab">Securables</a></li>
-        <!-- <li><a href="#permissions" data-toggle="tab">Permissions</a></li> -->
-        <li><a href="#roles" data-toggle="tab">Roles</a></li>
-
+        <li><a href="#permissions" data-toggle="tab">Permissions</a></li>
+        
       </ul>
       <div class="tab-content">
         <?php echo View::make("components.user_grid"); ?>
@@ -20,7 +19,7 @@
         <?php echo View::make("components.securables_grid"); ?>
         <?php echo View::make("components.roles_grid"); ?>
         <?php echo View::make("components.modules_grid"); ?>
-        <?php //echo View::make("components.permissions_grid"); ?>
+        <?php echo View::make("components.permissions_grid"); ?>
       </div>
     </div>
   </div><!--/span12-->

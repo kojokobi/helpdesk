@@ -1,37 +1,67 @@
 <script type="text/javascript" src="js/app/permissionscontroller.js"></script>
+<style type="text/css">
+  .role_securables_container {
+    overflow: hidden;
+    width: 900px;
+  }
+
+  .role_securables_container .control-label{
+    margin-left: 50px;
+    text-align: left;
+    width: 0px;
+    min-width: 120px;
+    min-width: 60px;
+  }
+
+  .role_securables_container .controls {
+    margin-left: 112px;
+  }
+</style>
 <div class="tab-pane" id="permissions" ng-controller="PermissionsController">
-           <div class="btn-toolbar" style="margin-bottom: 9px">
+          <!--  <div class="btn-toolbar" style="margin-bottom: 9px">
             <div class="btn-group">
               <button class='btn btn-success' data-toggle="modal" href="#permission_form"> <i class='icon-white icon-th'></i> </button>
               <button class='btn btn-info' ng-click="reload()"> <i class='icon-white icon- icon-repeat'></i> </button>
             </div>
-          </div>
+          </div> -->
           <div>
-            <table class='table table-striped table-bordered my-table'>
-                <thead>
-                  <tr>
-                    <th class="grid_action1">#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>No. Projects</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- <tr>
-                    <td colspan='100'>No Users created.</td>
-                  </tr> -->
-                  <tr ng-repeat="user in users">
-                    <td> {{$index + 1}} </td>
-                    <td> {{user.firstName}} </td>
-                    <td> {{user.lastName}} </td>
-                    <td> {{user.userName}} </td>
-                    <td> {{user.email}} </td>
-                    <td> {{user.numProjects}} </td>
+            <div class="">
+              <div class="role_securables_container">
+              <form class="form-horizontal">
+                <div class="pull-left">
+                  <label class="control-label" for="roleId">Role:</label>
+                  <div class="controls">
+                    <select id="roleId" ng-model="secPerm.roleId" class='input-xlarge user_select' name="roleId"
+                      ng-options='role.id as role.name for role in roles'
+                     >
+                   </select> <button class='btn btn-info' ng-click="reload('roles')"> <i class='icon-white icon- icon-repeat'></i> </button>
+                  </div>
+                </div>
+                <div class="pull-right">
+                  <label class="control-label" for="SecId">Securable:</label>
+                  <div class="controls">
+                    <select id="SecId" ng-model="secPerm.SecId" class='input-xlarge user_select' name="SecId"
+                      ng-options='role.id as role.name for role in roles'
+                     >
+                   </select> <button class='btn btn-info' ng-click="reload('securables')"> <i class='icon-white icon- icon-repeat'></i> </button>
+                  </div>
+                </div>
+                <input type="hidden" ng-model="secPerm.id" > <!--The id if the permission object-->
+              </form>
+              </div>
+              <br>
+              <h4 class='mini_table_header'>Permissions</h4>
+              <table class="table table-striped table-bordered my-table permissions_table">
+                <tbody >
+                  <tr ng-repeat="permission in permissions">
+                    <td class="grid_action1"> {{$index + 1}} </td>
+                    <td> {{ permission.label }} </td>
+                    <td class="grid_action2"> <input type="checkbox" ng-model='permission.val' ng-true-value="1" ng-false-value="0"> </td>
                   </tr>
                 </tbody>
-            </table>
+              </table>
+              <div> <button class="btn btn-success" ng-click="savePermissions()">Update Permissions</button> </div>
+            </div>
           </div>
   <?php //echo View::make("components.user_form"); ?>
   </div>
