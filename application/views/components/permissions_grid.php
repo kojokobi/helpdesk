@@ -41,12 +41,12 @@
                   <label class="control-label" for="SecId">Securable:</label>
                   <div class="controls">
                     <select id="SecId" ng-model="secPerm.SecId" class='input-xlarge user_select' name="SecId"
-                      ng-options='role.id as role.name for role in roles'
+                      ng-options='securable.id as securable.name for securable in securables'
                      >
                    </select> <button class='btn btn-info' ng-click="reload('securables')"> <i class='icon-white icon- icon-repeat'></i> </button>
                   </div>
                 </div>
-                <input type="hidden" ng-model="secPerm.id" > <!--The id if the permission object-->
+                <input type="hidden" ng-model="secPerm.id" > <!--The id if the permission -->
               </form>
               </div>
               <br>
