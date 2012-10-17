@@ -148,6 +148,10 @@ Route::get("permissions/securables",array('uses'=>"security@securables_array"));
 Route::get("permissions/modules",array('uses'=>"security@modules_array"));
 
 
+//modulePermissions Routes
+Route::post("modulepermissions",array('uses'=>"security@module_permission"));
+Route::get("modulepermissions",array('uses'=>"security@module_permissions"));
+
 
 Route::get("profile_view", function(){
 	return View::make("profile.index");

@@ -57,8 +57,10 @@ class Role extends Eloquent{
 						$query = HelperFunction::filter_data($query,'name',$obj,'string');
 
 				});
+		$data = $selectQuery->order_by('id','desc');
+
 					
-		$data = HelperFunction::return_json_data($selectQuery->get(),true,'record loaded',$selectQuery->count());
+		$data = HelperFunction::return_json_data($data->get(),true,'record loaded',$selectQuery->count());
 		return $data;
 	}
 }
