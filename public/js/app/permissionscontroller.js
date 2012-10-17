@@ -1,5 +1,5 @@
 function PermissionsController ($scope, $http,Securable, Role){
-	
+	$scope.secPerm = {};
 	$scope.roles = [];
 	$scope.permissions = [];
 	$scope.securables = []
@@ -55,7 +55,8 @@ function PermissionsController ($scope, $http,Securable, Role){
 	}
 
 	$scope.savePermissions =  function () {
-		alert("saving")
+		console.log($scope.secPerm);
+		console.log($scope.permissions);
 	}
 
 	$scope.reload =  function (type){

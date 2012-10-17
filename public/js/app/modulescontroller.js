@@ -46,10 +46,6 @@ function ModulesController($scope,$http,Module,OBJ,MSG, Role) {
 	 */
 	$scope.modulePermissions = [];
 
-	var serverData = [
-		{canView : "Can View"}
-	]
-
 	
 
 	function processRawPermissions (inData){
@@ -102,15 +98,16 @@ function ModulesController($scope,$http,Module,OBJ,MSG, Role) {
 	/**
 	 * Method to be run after saving /updating a record
 	 * @param  {object}   res      the response from the server
+	 * @param  {object}   obj      an object containing extra info to be used id no response is sent
 	 * @param  {Function} callback an additional callback function that we might want to run
 	 * @return {[void]}     
 	 */
-	function afterSave(res,callback){
+	function afterSave(res,obj,callback){
 		var msg = "";
 		if(res.success){
 			//reload data into grid
 			getModules();
-			msg = res.message || "Module Created";
+			msg = res.message || obj.message || "Module Saved";
 			MSG.show(msg,"success");
 			$scope.clear();
 			moduleForm.modal("hide");
@@ -119,7 +116,7 @@ function ModulesController($scope,$http,Module,OBJ,MSG, Role) {
 			if(callback)
 				callback();
 		}else {
-			msg = res.message || "Sorry, errors were ecountered";
+			msg = res.message || obj.message || "Sorry, errors were ecountered";
 			MSG.show(msg);
 		}
 	}

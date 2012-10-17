@@ -27,15 +27,7 @@
            </select>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="roleId">Role:</label>
-          <div class="controls">
-            <select id="roleId" ng-model="newSec.roleId" class='input-xlarge user_select' name="roleId"
-              ng-options='role.id as role.name for role in roles'
-             >
-           </select>
-          </div>
-        </div>
+      
         <input type="hidden" ng-model="newSec.id">
         
       </form>

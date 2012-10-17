@@ -43,32 +43,40 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 		var project = OBJ.rectify(angular.copy(newProject),projectDefault);
 		if (project["id"]){
 			Project.update(project, function (res){
-				if (res.success){
-					getProjects();
-					$scope.clear();
-					
-				}else {
-
-				}
+				afterSave(res, {message : "Project Updated"});
 			});
-			
 		} else {
 		
 			var theProject = new Project(project);
 			theProject.$save(function (res){
-				//fetch fresh items
-				if(res.success){
-					getProjects();
-					$scope.clear();	
-					var msg = res.message || "Record saved succefully"; 
-					MSG.show(msg,"success");
-					//hide project form
-					projectForm.modal("hide");
-				} else {
-					var msg = res.message || "Sorry errors were ecountered"; 
-					MSG.show(msg);
-				}
+				afterSave(res, {message : "Project created"});
 			});
+		}
+	}
+
+	/**
+	 * Method to be run after saving /updating a record
+	 * @param  {object}   res      the response from the server
+	 * @param  {object}   obj      an object containing extra info to be used id no response is sent
+	 * @param  {Function} callback an additional callback function that we might want to run
+	 * @return {[void]}     
+	 */
+	function afterSave(res,obj,callback){
+		var msg = "";
+		if(res.success){
+			//reload data into grid
+			getProjects();
+			msg = res.message || obj.message || "Project Saved";
+			MSG.show(msg,"success");
+			$scope.clear();
+			projectForm.modal("hide");
+			
+			//any other business
+			if(callback)
+				callback();
+		}else {
+			msg = res.message || obj.message || "Sorry, errors were ecountered";
+			MSG.show(msg);
 		}
 	}
 
@@ -148,13 +156,21 @@ function ProjectController ($scope,$http,Project,ProjectGroup,UserGroup,User,MSG
 		});
 	}
 
+
+	$scope.showNewProject = function () {
+		$scope.clear();
+		$scope.formTitle =  "Add Project";
+	}
+
 	/**
 	 * Shows the form for editing the project
 	 * @param  {object} project the project object
 	 * @return {void}  
 	 */
 	$scope.editProject = function (project){
-
+		$scope.formTitle = "Edit Project";
+		projectForm.modal("show");
+		$scope.newProject = angular.copy(project);
 	}
 
 	/**

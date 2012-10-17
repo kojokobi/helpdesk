@@ -1,7 +1,7 @@
 <div class="tab-pane active" id="users" ng-controller="UserController">
            <div class="btn-toolbar" style="margin-bottom: 9px">
             <div class="btn-group">
-              <button class='btn btn-success' data-toggle="modal" href="#user_form"> <i class='icon-white icon-user'></i> </button>
+              <button class='btn btn-success' ng-click="showNewUser()" data-toggle="modal" href="#user_form"> <i class='icon-white icon-user'></i> </button>
               <button class='btn btn-info' ng-click="reload()"> <i class='icon-white icon- icon-repeat'></i> </button>
             </div>
           </div>

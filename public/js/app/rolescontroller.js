@@ -63,12 +63,18 @@ function RolesController ($scope, Role, MSG,OBJ){
 		}
 	}
 
+	$scope.showNewRole = function () {
+		$scope.clear();
+		$scope.formTitle =  "Add Role";
+	}
+
 	/**
 	 * Show the form with the data preloaded
 	 * @param  {object} role 
 	 * @return {void} 
 	 */
 	$scope.editRole = function(role){
+		$scope.formTitle = "Edit Role";
 		$scope.newRole = angular.copy(role)
 		rolesForm.modal("show");
 	}
