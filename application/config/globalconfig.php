@@ -67,12 +67,12 @@ return array(
 			*/
 			'secuable_permissions'=>array(
 
-					'canView'=>'Can View',
-					'canInsert'=>'Can Insert',
-					'canUpdate'=>'Can Update',
-					'canDelete'=>'Can Delete',
-					'canSearch'=>'Can Search',
-					'canReport'=>'Can Report',
+					array('canView'=>'Can View'),
+					array('canInsert'=>'Can Insert'),
+					array('canUpdate'=>'Can Update'),
+					array('canDelete'=>'Can Delete'),
+					array('canSearch'=>'Can Search'),
+					array('canReport'=>'Can Report'),
 
 				),
 			/*
@@ -85,6 +85,6 @@ return array(
 			*/
 			'module_permissions'=>array(
 
-					'canView'=>'Can View',
+					array('canView'=>'Can View'),
 				)
 		);

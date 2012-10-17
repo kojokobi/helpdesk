@@ -11,14 +11,15 @@ class Module extends Eloquent{
 
 		try{
 
-		$input = array('name'=>$client_data->name,/*'display_name'=>$client_data->displayName',*/'role_id'=>$client_data->roleId);
+		$inputs = array('name'=>$client_data->name,/*'display_name'=>$client_data->displayName',*/'role_id'=>$client_data->roleId);
 		$validation = MyValidator::validate_user_input($inputs,HelperFunction::get_config_value('create_module_rule'));
 			if($validation->fails())
 				return HelperFunction::catch_error(null,false,HelperFunction::format_message($validation->errors->all()));
 
-		$module_array = HelperFunction::create_audit_entries(HelperFunction::get_user_id());
+		$module_array = DataHelper::create_audit_entries(HelperFunction::get_user_id());
 		$module_array['name'] = $client_data->name;
 		$module_array['role_id'] = $client_data->roleId;
+		$module_array['display_name'] = $client_data->name;
 
 		return DataHelper::insert_record('modules',$module_array);
 
@@ -35,7 +36,7 @@ class Module extends Eloquent{
 			if($validation->fails())
 				return HelperFunction::catch_error(null,false,HelperFunction::format_message($validation->errors->all()));
 
-		$module_array = HelperFunction::update_audit_entries(HelperFunction::get_user_id());
+		$module_array = DataHelper::update_audit_entries(HelperFunction::get_user_id());
 		$module_array['name'] = $client_data->name;
 		$module_array['role_id'] = $client_data->roleId;
 
@@ -73,7 +74,7 @@ class Module extends Eloquent{
 			$total = $query_result->count();
 			$result = $query_result->get(
 
-					array('modules.id','modules.name','display_name','role_id','roles.name as role_name','priveleges')
+					array('modules.id','modules.name','display_name','role_id','roles.name as role_name','privileges')
 				);
 
 			$out = array_map(function($data){
@@ -84,15 +85,20 @@ class Module extends Eloquent{
 			$arr['displayName']	= $data->display_name;
 			$arr['roleId']		= $data->role_id;
 			$arr['roleName']	= $data->role_name;
-			$arr['priveleges']	= $data->privileges;
+			$arr['privileges']	= $data->privileges;
 			
 
 			return $arr;
 		},$result);
-		echo "here";
+		
 		return  HelperFunction::return_json_data($out,true,'record loaded',$total);
 		
 			
+	}
+	public static function get_modules_array(){
+
+		$data = DataHelper::return_json_data(HelperFunction::get_config('module_permissions'),true,"data loaded");
+		return $data;
 	}
 
 }

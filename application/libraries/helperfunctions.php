@@ -109,7 +109,7 @@ class HelperFunction extends Eloquent{
 
 		return Config::get("globalconfig.global_error_message");
 	}
-	publick static function get_config($config_key){
+	public static function get_config($config_key){
 
 		return Config::get('globalconfig.'.$config_key);
 	}

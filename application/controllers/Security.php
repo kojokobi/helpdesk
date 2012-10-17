@@ -91,10 +91,12 @@ class Security_Controller extends Base_Controller{
 		return Response::json(Securable::delete_permissions(Input::json()));
 	}
 	public function get_securables_array(){
-		return Response::json(get_config('secuable_permissions'));
+
+		return Response::json(Securables::get_securables_array());
 	}
 	public function get_modules_array(){
-		return Response::json(get_config('module_permissions'));
+
+		return Response::json(Module::get_modules_array());
 	}
 
 	

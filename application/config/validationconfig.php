@@ -50,7 +50,7 @@ return array(
 			|--------------------------------------------------------------------------
 			|Validation rules to be applied to the module entity
 			*/
-			'create_module_rule' => array('name'=>'required|max:128','role_id'=>'required|numeric','display_name'=>'required|max:128'),
+			'create_module_rule' => array('name'=>'required|max:128','role_id'=>'required|numeric'),
 			/*
 			|--------------------------------------------------------------------------
 			| Permissions Validation Rule
@@ -58,4 +58,13 @@ return array(
 			|Validation rules to be applied to the Permissions entity
 			*/
 			'create_permisson_rule' => array('module_id'=>'required|numeric','securable_id'=>'required|numeric'),
+			/*
+			|--------------------------------------------------------------------------
+			| Securable Validation Rule
+			|--------------------------------------------------------------------------
+			|Securable Validation rule
+			*/
+			'create_securable_rule' => array('name'=>'required|max:128'),
 		);
+		
+		

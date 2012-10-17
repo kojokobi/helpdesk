@@ -11,53 +11,55 @@ class Securable extends Eloquent{
 
 		try{
 
-		$input = array('name'=>$client_data->name,'display_name'=>$client_data->displayName);
-		$validation = MyValidator::validate_user_input($inputs,HelperFunction::get_config_value('create_module_rule'));
+		$inputs = array('name'=>$client_data->name,'display_name'=>$client_data->displayName);
+		$validation = MyValidator::validate_user_input($inputs,HelperFunction::get_config_value('create_securable_rule'));
 			if($validation->fails())
 				return HelperFunction::catch_error(null,false,HelperFunction::format_message($validation->errors->all()));
 
-		$securable_array = HelperFunction::create_audit_entries(HelperFunction::get_user_id());
+		$securable_array = DataHelper::create_audit_entries(HelperFunction::get_user_id());
 		$securable_array['name'] = $client_data->name;
 		$securable_array['display_name'] = $client_data->displayName;
 		
 
 		return DataHelper::insert_record('securables',$securable_array);
 
-	}catch(Exception $e)
+	}catch(Exception $e){
 		return HelperFunction::catch_error($e,true);
 	}
+}
 	public static function update_securable($client_data){
 
 		try{
 
-		$input = array('name'=>$client_data->name,'display_name'=>$client_data->displayName);
+		$inputs = array('name'=>$client_data->name,'display_name'=>$client_data->displayName);
 		$validation = MyValidator::validate_user_input($inputs,HelperFunction::get_config_value('create_module_rule'));
 			if($validation->fails())
 				return HelperFunction::catch_error(null,false,HelperFunction::format_message($validation->errors->all()));
 
-		$securable_array = HelperFunction::update_audit_entries(HelperFunction::get_user_id());
+		$securable_array = DataHelper::update_audit_entries(HelperFunction::get_user_id());
 		$securable_array['name'] = $client_data->name;
 		$securable_array['display_name'] = $client_data->displayName;
 		
 
 		return DataHelper::update_record('securables',$securable_array);
 
-	}catch(Exception $e)
+	}catch(Exception $e){
 		return HelperFunction::catch_error($e,true);
 	}
+}
 	public static function delete_securable(){
 
 
 
 	}
-	public static function get_securables($client_data = null){
+	public static function get_securables($client_data){
 
 
-			if(array_key_exists('id', $client_data)
+			if(array_key_exists('id', $client_data))
 				$filter_array['id'] = $client_data['id'];
-			if(array_key_exists('name', $client_data)
+			if(array_key_exists('name', $client_data))
 				$filter_array['name'] = $client_data['name'];
-			if(array_key_exists('displayName', $client_data)
+			if(array_key_exists('displayName', $client_data))
 				$filter_array['display_name'] = $client_data['displayName'];
 		
 			$query_result = DB::table('securables')
@@ -88,5 +90,10 @@ class Securable extends Eloquent{
 		$data = HelperFunction::return_json_data($out,true,'record loaded',$total);
 		return $data;
 			
+	}
+	public static function get_securables_array(){
+		
+		$data = DataHelper::return_json_data(HelperFunction::get_config('secuable_permissions'),true,"data loaded")
+		return $data;
 	}
 }
