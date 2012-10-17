@@ -1,8 +1,7 @@
 function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 	
-	$scope.permissions = [];
 	$scope.modules = [];
-	$scope.roles = [];
+	
 
 	
 	var _default = {
@@ -27,11 +26,6 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 		});
 	}
 
-	function getRoles () {
-		Role.get(function (res){
-			$scope.roles = res.data;
-		});
-	}
 
 	function getModules(){
 		Module.get(function (res){
@@ -39,42 +33,9 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 		});
 	}
 
-	function getSecurablePermissionsList(){
-		$http.get("permissions/securables").success(function(res){
-			$scope.permissions = processRawPermissions(res.data);
-		});
-	}
 
-	function processRawPermissions (inData){
-		var outData = [];
-		for(var i= 0; i<inData.length; i++){
-			for(var x in inData[i]){
-				var obj = {
-					key : x,
-					label : inData[i][x],
-					val : "0"			
-				}
-				outData.push(obj);	
-			}
-		}
-		return outData;
-	}
 
-	function extractPermissions (){
-		var data = [];
-		$scope.permissions.forEach(function (permission){
 
-			var out = { };
-			out[ permission["key"] ] =  permission["val"] ;
-			data.push( out);
-		});
-
-		return data;
-	}
-
-	function clearPermissions () {
-
-	}
 
 	/**
 	 * Add or Edit a securable unit
@@ -83,7 +44,7 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 	$scope.addSecurable = function (newSec){
 		//retrieve the model from the client and extend the object with the defaults
 		var theSec = OBJ.rectify(angular.copy(newSec),_default);
-		theSec["permissions"] = extractPermissions();
+		//theSec["permissions"] = extractPermissions();
 		if(theSec["id"] || theSec["id"] !=="") { //this is an update
 			Securable.update(theSec, function (res){
 				afterSave(res);
@@ -128,7 +89,6 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 	 * @return {[type]} [description]
 	 */
 	$scope.newSecurable = function (){
-		getRoles();
 		getModules();
 		//$secForm.modal("show");
 	}
@@ -160,8 +120,6 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 		$scope.newSec = {};
 	}
 
-	//make initial calls
-	getSecurables();
-	getSecurablePermissionsList();
+	
 
 }
