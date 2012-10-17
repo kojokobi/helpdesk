@@ -54,7 +54,7 @@ class Securable extends Eloquent{
 	}
 	public static function get_securables($client_data){
 
-
+			$filter_array = array();
 			if(array_key_exists('id', $client_data))
 				$filter_array['id'] = $client_data['id'];
 			if(array_key_exists('name', $client_data))
@@ -63,29 +63,33 @@ class Securable extends Eloquent{
 				$filter_array['display_name'] = $client_data['displayName'];
 		
 			$query_result = DB::table('securables')
-							->join('roles','role_id','=','roles.id')
+							->join('modules','module_id','=','modules.id')
 							->where(function($query) use ($filter_array){
 
 								$query = DataHelper::filter_data($query,'id',$filter_array,'int');
 								$query = DataHelper::filter_data($query,'name',$filter_array,'string');
 
-							})->order_by('id','desc');
+							})->order_by('securables.id','desc');
 
 			$total = $query_result->count();
 			$result = $query_result->get(
 
-					array('id','name','display_name')
+					array('securables.id','securables.name as securable_name','securables.display_name',
+								'securables.module_id','modules.name as modul_name')
 				);
 
 			$out = array_map(function($data){
 
 			$arr = array();
 			$arr['id'] 			= $data->id;
-			$arr['name']		= $data->name;
+			$arr['name']		= $data->securable_name;
 			$arr['displayName']	= $data->display_name;
+			$arr['moduleName']  = $data->modul_name;
+			$arr['moduleId']  = $data->module_id;
+			$arr['securableName']  = $data->securable_name;
 
 			return $arr;
-		},$resultSet);
+		},$result);
 				
 		$data = HelperFunction::return_json_data($out,true,'record loaded',$total);
 		return $data;
@@ -93,7 +97,7 @@ class Securable extends Eloquent{
 	}
 	public static function get_securables_array(){
 		
-		$data = DataHelper::return_json_data(HelperFunction::get_config('secuable_permissions'),true,"data loaded")
+		$data = DataHelper::return_json_data(HelperFunction::get_config('secuable_permissions'),true,"data loaded");
 		return $data;
 	}
 }

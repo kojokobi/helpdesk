@@ -7,13 +7,13 @@ class Role extends Eloquent{
 
 			try{
 				
-			$validation = MyValidator::validate_user_input(array('name'=>$project->name),HelperFunction::get_config_value('default_lookup_rules'));
+			$validation = MyValidator::validate_user_input(array('name'=>$role->name),HelperFunction::get_config_value('default_lookup_rules'));
 			if($validation->fails())
 					return $validation->errors;
 				
 				$arr = DataHelper::create_audit_entries(Auth::user()->id);
-	            $arr['name'] = $project->name;
-	            $arr['description'] = $project->description;
+	            $arr['name'] = $role->name;
+	            $arr['description'] = $role->description;
 
 	            $inserted_record = DataHelper::insert_record('roles',$arr);
 	            return $inserted_record;
@@ -31,11 +31,11 @@ class Role extends Eloquent{
 			if($validation->fails())
 					return HelperFunction::catch_error(null,false,$validation->errors.all());
 
-			$project = DataHelper::update_audit_entries(HelperFunction::get_user_id());
-            $project['name'] = $project->name;
-            $project['description'] = $project->description;
+			$arr = DataHelper::update_audit_entries(HelperFunction::get_user_id());
+            $arr['name'] = $role->name;
+            $arr['description'] = $role->description;
             
-            $updated_record = DataHelper::update_record('projects',$project->id,$project);
+            $updated_record = DataHelper::update_record('role',$project->id,$project);
             return $updated_record;
 
         }catch(Exception $e){

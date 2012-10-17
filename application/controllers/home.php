@@ -79,28 +79,11 @@ class Home_Controller extends Base_Controller {
 	//Role Actions
 	public function post_role(){
 
-		$clientdata = Input::all();
-		$roleArray = array(
-							'name' 			=> $clientdata['name'],
-						   'description' 	=> $clientdata['description'],
-						   'createdBy'		=> HelperFunction::get_user_id(),
-						   'lastUpdateBy'	=> HelperFunction::get_user_id()
-		 		);
-
-		return  Respons::json(Role::create_role($roleArray));
+		return Response::json(Role::create_role(Input::json()));
 	}
 	public function put_role(){
 
-		$clientdata = Input::all();
-		$roleArray = array(	
-							'id'			=> $clientdata['id'],
-							'name' 			=> $clientdata['name'],
-						    'description' 	=> $clientdata['description'],
-						   'lastUpdateBy'	=> HelperFunction::get_user_id(),
-
-		 		);
-
-		return Reponse::json(Role::update_role($roleArray));
+		return Response::json(Role::update_role(Input::json()));
 	}
 	public function delete_role(){
 
