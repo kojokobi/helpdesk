@@ -79,9 +79,14 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 				console.log(values[x])
 				var obj = {
 					key : x,
-					label : inData[i][x],
-					val : values[x].toString() || "0"			
+					label : inData[i][x]
 				}
+				if(values && values[x]){
+					obj["val"] = values[x].toString() || "0"
+				}else {
+					obj["val"] = "0";	
+				}
+				
 				outData.push(obj);	
 			}
 		}
