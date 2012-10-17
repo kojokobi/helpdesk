@@ -40,7 +40,7 @@
                 <div class="pull-right">
                   <label class="control-label" for="SecId">Securable:</label>
                   <div class="controls">
-                    <select id="SecId" ng-model="secPerm.SecId" class='input-xlarge user_select' name="SecId"
+                    <select id="SecId" ng-model="secPerm.secId" class='input-xlarge user_select' name="SecId"
                       ng-options='securable.id as securable.name for securable in securables'
                      >
                    </select> <button class='btn btn-info' ng-click="reload('securables')"> <i class='icon-white icon- icon-repeat'></i> </button>

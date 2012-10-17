@@ -8,7 +8,8 @@
 					<select 
 						ng-model="currentProject" 
 						ng-change="loadTickets()" 
-						ng-options="userProject as userProject.projectName for userProject in userProjects"></select>
+						ng-options="userProject as userProject.projectName for userProject in userProjects">
+					</select>
 						<a class="btn btn-info" ng-click="showForm()"> 
 						<i class="icon-white icon-tags"></i> Add Ticket</a>
 				</div>

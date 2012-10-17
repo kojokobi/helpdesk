@@ -2,7 +2,7 @@
 <div class="tab-pane" id="roles" ng-controller="RolesController">
            <div class="btn-toolbar" style="margin-bottom: 9px">
             <div class="btn-group">
-              <button class='btn btn-success' ng-click="showNewRole" data-toggle="modal" href="#role_form"> <i class='icon-white icon-th'></i> </button>
+              <button class='btn btn-success' ng-click="showNewRole()" data-toggle="modal" href="#role_form"> <i class='icon-white icon-th'></i> </button>
               <button class='btn btn-info' ng-click="reload()"> <i class='icon-white icon- icon-repeat'></i> </button>
             </div>
           </div>

@@ -33,46 +33,7 @@ function ModulesController($scope,$http,Module,OBJ,MSG, Role) {
 			$scope.roles = res.data;
 		})
 	}
-
-	function getModulePermissionsList(){
-		$http.get("permissions/modules").success(function(res){
-			$scope.modulePermissions = processRawPermissions(res.data);
-		});
-	}
-
-	/**
-	 * The possible permissions that can be set on a module
-	 * @type {Array}
-	 */
-	$scope.modulePermissions = [];
-
 	
-
-	function processRawPermissions (inData){
-		var outData = [];
-		for(var i= 0; i<inData.length; i++){
-			for(var x in inData[i]){
-				var obj = {
-					key : x,
-					label : inData[i][x],
-					val : "0"			
-				}
-				outData.push(obj);	
-			}
-		}
-		return outData;
-	}
-
-	function extractPermissions() {
-		var data = [];
-		$scope.modulePermissions.forEach(function (permission){
-			var out = { };
-			out[ permission["key"] ] =  permission["val"] ;
-			data.push(out);
-		});
-
-		return data;
-	}
 
 	/**
 	 * Add or Edit a module 
@@ -81,7 +42,6 @@ function ModulesController($scope,$http,Module,OBJ,MSG, Role) {
 	$scope.addModule = function (newModule){
 		//retrieve the model from the client and extend the object with the defaults
 		var theModule = OBJ.rectify(angular.copy(newModule),_default);
-		theModule["permissions"] = extractPermissions();
 		if(theModule["id"] || theModule["id"] !=="") { //this is an update
 			Module.update(theModule, function (res){
 				afterSave(res);
@@ -154,5 +114,5 @@ function ModulesController($scope,$http,Module,OBJ,MSG, Role) {
 
 	//make initial calls
 	getModules();
-	getModulePermissionsList();
+	
 }
