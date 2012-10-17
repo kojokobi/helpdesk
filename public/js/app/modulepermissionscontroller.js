@@ -72,11 +72,9 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 
 
 	function processRawPermissions (inData, values){
-		console.log(values)
 		var outData = [];
 		for(var i= 0; i<inData.length; i++){
 			for(var x in inData[i]){
-				console.log(values[x])
 				var obj = {
 					key : x,
 					label : inData[i][x]
