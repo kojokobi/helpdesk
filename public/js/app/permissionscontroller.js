@@ -1,4 +1,4 @@
-function PermissionsController ($scope, $http,Securable, Role){
+function PermissionsController ($scope, $http,Securable, Role, Permission,MSG){
 	$scope.secPerm = {};
 	$scope.roles = [];
 	$scope.permissions = [];
@@ -55,8 +55,21 @@ function PermissionsController ($scope, $http,Securable, Role){
 	}
 
 	$scope.savePermissions =  function () {
-		console.log($scope.secPerm);
-		console.log($scope.permissions);
+		var msg = "";
+		var data = {};
+		data = angular.copy($scope.secPerm);
+		data["permissions"] = extractPermissions();
+		var perm =  new Permission(data);
+		perm.$save(function (res){
+			if(res.success){
+				msg = res.message || "Permissions Updated"
+				MSG.show(msg,"success")
+			}else {
+				msg = res.message || "Errors were encountered";
+				MSG.show(msg)
+			}	
+		});	
+		console.log()
 	}
 
 	$scope.reload =  function (type){
@@ -65,7 +78,7 @@ function PermissionsController ($scope, $http,Securable, Role){
 				getRoles();
 			break;
 			case "securables":
-			getSecurables();
+				getSecurables();
 			break;
 		}
 	}

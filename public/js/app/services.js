@@ -62,4 +62,11 @@ factory("User", function ($resource){
 		},
 		update : {method : 'PUT'}
 	});
+}).factory("Permission", function($resource){
+	return $resource("permisssions/:id", {id : '@id'},{
+		query : {
+			method: "GET", params : {}
+		},
+		update : {method : 'PUT'}
+	});
 });

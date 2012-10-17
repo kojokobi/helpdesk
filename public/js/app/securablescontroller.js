@@ -14,7 +14,7 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 	var secForm = $("#securable_form");
 	$scope.securables  = [];	
 
-	$scope.formTitle = "Add A Securable Unit";
+	
 
 	$scope.reload = function (){
 		getSecurables();
@@ -32,8 +32,6 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 			$scope.modules  = res.data;
 		});
 	}
-
-
 
 
 
@@ -90,7 +88,9 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 	 */
 	$scope.newSecurable = function (){
 		getModules();
-		//$secForm.modal("show");
+		$scope.clear();
+		$scope.formTitle = "Add A Securable Unit";
+		
 	}
 	/**
 	 * Shows the form for edting the securable
@@ -98,8 +98,10 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 	 * @return {void}  
 	 */
 	$scope.editSecurable = function (securable){
+		$scope.formTitle = "Edit the Securable Unit";
 		$scope.newSec = angular.copy(securable);
 		secForm.modal("show");
+		getModules();
 	}
 
 	/**
@@ -120,6 +122,7 @@ function SecurablesController ($scope,$http,Securable,OBJ,MSG, Role,Module) {
 		$scope.newSec = {};
 	}
 
+	getSecurables();
 	
 
 }
