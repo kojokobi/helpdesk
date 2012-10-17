@@ -69,13 +69,13 @@ class Security_Controller extends Base_Controller{
 		return Response::json(Securable::create_securable(Input::json()));
 	}
 	public function get_securables(){
-		return Response::json(Securable::get_securables(Input::json()));
+		return Response::json(Securable::get_securables(Input::all()));
 	}
 	public function put_update_securable(){
 		return Response::json(Securable::update_securable(Input::json()));
 	}
 	public function delete_securable(){
-		return Response::json(Securable::delete_securable(Input::json()));
+		return Response::json(Securable::delete_securable(Input::all()));
 	}
 	//permissions
 	public function post_create_permission(){
@@ -92,7 +92,7 @@ class Security_Controller extends Base_Controller{
 	}
 	public function get_securables_array(){
 
-		return Response::json(Securables::get_securables_array());
+		return Response::json(Securable::get_securables_array());
 	}
 	public function get_modules_array(){
 
