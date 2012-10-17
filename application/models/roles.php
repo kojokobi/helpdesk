@@ -5,41 +5,42 @@ class Role extends Eloquent{
 	
 	public static function create_role($role){
 
-			$createdDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
+			try{
+				
+			$validation = MyValidator::validate_user_input(array('name'=>$project->name),HelperFunction::get_config_value('default_lookup_rules'));
+			if($validation->fails())
+					return $validation->errors;
+				
+				$arr = DataHelper::create_audit_entries(Auth::user()->id);
+	            $arr['name'] = $project->name;
+	            $arr['description'] = $project->description;
 
-			$id = DB::table('roles')->insert_get_id(
-					$arrayName = array(
+	            $inserted_record = DataHelper::insert_record('roles',$arr);
+	            return $inserted_record;
 
-							'name' =>	$role['name'],
-							'description'	=> $role['description'],
-							'createdDate' 	=>  $createdDate,
-							'lastUpdateDate' => $lastUpdatedDate,
-							'createdBy'		=>	$role['createdBy'],
-							'lastUpdateBy'	=>	$role['lastUpdateBy']
-						)
-				);
-			
-		$data = HelperFunction::return_json_data($id,true,'record loaded');
-		return $data;
+           }catch(Exception $e){
+
+           		return HelperFunction::catch_error($e,true,HelperFunction::get_admin_error_msg());
+           }
 	}
 	public static function update_role($role){
 
-			$lastUpdatedDate = new Datetime(null, new DateTimeZone('Pacific/Nauru'));
-			$update = DB::table('roles')
-						->where('id','=',$role['id'])
-						->update($arrayName = array(
+			try{
+			
+			$validation = MyValidator::validate_user_input(array('name'=>$project->name),HelperFunction::get_config_value('default_lookup_rules'));
+			if($validation->fails())
+					return HelperFunction::catch_error(null,false,$validation->errors.all());
 
-							'id' 			 =>	$role['id'],
-							'name' 			 =>	$role['name'],
-							'description'	 => $role['description'],
-							'lastUpdateDate' => $lastUpdatedDate,
-							'lastUpdateBy'	 =>	$role['lastUpdateBy']
+			$project = DataHelper::update_audit_entries(HelperFunction::get_user_id());
+            $project['name'] = $project->name;
+            $project['description'] = $project->description;
+            
+            $updated_record = DataHelper::update_record('projects',$project->id,$project);
+            return $updated_record;
 
-							)
-						);
-			$data = HelperFunction::return_json_data($update,true,'record loaded');
-			return $data;
+        }catch(Exception $e){
+        	return HelperFunction::catch_error($e,true,HelperFunction::get_admin_error_msg());
+        }
 	}
 	public static function delete_role($roleId){
 

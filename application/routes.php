@@ -129,6 +129,25 @@ Route::get("summaries",array('uses'=>"summary@counts"));
 Route::get("summaries/tickets/incoming",array('uses'=>"summary@incoming_tickets"));
 Route::get("summaries/tickets/outgoing",array('uses'=>"summary@outgoing_tickets"));
 
+//Security Routes
+Route::get("securables",array('uses'=>"security@securables"));
+Route::post("securables",array('uses'=>"security@create_securable"));
+Route::put("securables",array('uses'=>"security@update_securable"));
+Route::delete("securables",array('uses'=>"security@securable"));
+
+Route::get("modules",array('uses'=>"security@modules"));
+Route::post("modules",array('uses'=>"security@create_module"));
+Route::put("modules",array('uses'=>"security@update_module"));
+Route::delete("modules",array('uses'=>"security@module"));
+
+Route::get("permissions",array('uses'=>"security@permissions"));
+Route::post("permissions",array('uses'=>"security@create_permission"));
+Route::put("permissions",array('uses'=>"security@update_permission"));
+Route::delete("permissions",array('uses'=>"security@permission"));
+Route::get("permissions/securables",array('uses'=>"security@securables_array"));
+Route::get("permissions/modules",array('uses'=>"security@modules_array"));
+
+
 
 Route::get("profile_view", function(){
 	return View::make("profile.index");

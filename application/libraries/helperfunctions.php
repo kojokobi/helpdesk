@@ -65,6 +65,7 @@ class HelperFunction extends Eloquent{
 	}
 	public static function get_user_id(){
 		return Auth::user()->id;
+		
 	}
 	/**
 	 * converts field names containing underscores to camel casing
@@ -107,6 +108,10 @@ class HelperFunction extends Eloquent{
 	public static function get_admin_error_msg(){
 
 		return Config::get("globalconfig.global_error_message");
+	}
+	public static function get_config($config_key){
+
+		return Config::get('globalconfig.'.$config_key);
 	}
 	public static function get_config_value($config_key)
 	{
