@@ -115,7 +115,7 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 
 		data["permissions"] = extractPermissions()	
 		
-		$http.post("permissions",data, function (res){
+		$http.post("modulepermissions",data, function (res){
 			if(res.success){
 				msg = res.message || "Record Saved successfully";
 				MSG.show(msg, "success");
@@ -144,5 +144,4 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 
 	//make initial call here
 	start();
-	
 }
