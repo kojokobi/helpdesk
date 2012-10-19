@@ -16,7 +16,10 @@ class ModulePermission extends Eloquent{
 		$filter_array = array();
 		$filter_array['module_id'] = $client_data->moduleId;
 		$filter_array['role_id'] = $client_data->roleId;
-		$filter_array['privileges'] = serialize($client_data->permissions);
+		$filter_array['privileges'] = serialize($client_data->permissions[0]);
+
+		// var_dump($client_data->permissions[0]);
+		// return;
 	
 		$exists = DB::table('module_permissions')->where(
 
@@ -36,7 +39,7 @@ class ModulePermission extends Eloquent{
 			$module_array = DataHelper::create_audit_entries(HelperFunction::get_user_id());
 			$module_array['module_id'] = $client_data->moduleId;
 			$module_array['role_id'] = $client_data->roleId;
-			$module_array['privileges'] = serialize($client_data->permissions);//$client_data->permissions;
+			$module_array['privileges'] = serialize($client_data->permissions[0]);//$client_data->permissions;
 		
 		return  DataHelper::insert_record('module_permissions',$module_array);
 		}else{
@@ -91,33 +94,25 @@ class ModulePermission extends Eloquent{
 				$filter_array['role_id'] = $client_data['roleId'];
 			
 			$query_result = DB::table('module_permissions')
-							// ->join('modules','module_permissions.module_id','modules.id')
-							// ->join('roles','module_permissions.role_id','roles.id')
 							->where(function($query) use ($filter_array){
 
 								$query = DataHelper::filter_data($query,'module_id',$filter_array,'int');
 								$query = DataHelper::filter_data($query,'role_id',$filter_array,'int');
-								
 
 							})->order_by('module_permissions.id','desc');
 
 			$total = $query_result->count();
 			$result = $query_result->get(
-
-					array('module_permissions.privileges')
+					array('privileges')
 				);
-
-			$out = array_map(function($data){
-
-			$arr = array();
-			$arr['privileges']	= unserialize($data->privileges);
-			
-			return $arr;
-		},$result);
-		
-		return  HelperFunction::return_json_data($out,true,'record loaded',$total);
-		
-			
+			if($result){
+				$out = unserialize($result[0]->privileges);
+		 		$arr[]	= $out;
+		 		return  HelperFunction::return_json_data($arr,true,'record loaded',$total);
+			}
+			else{
+				return  HelperFunction::return_json_data(array(),true,'record loaded',$total);
+			}
 	}
 	public static function get_modules_array(){
 

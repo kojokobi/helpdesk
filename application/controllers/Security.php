@@ -79,16 +79,16 @@ class Security_Controller extends Base_Controller{
 	}
 	//permissions
 	public function post_create_permission(){
-		return Response::json(Securable::create_permissions(Input::json()));
+		return Response::json(permission::create_permission(Input::json()));
 	}
 	public function get_permissions(){
-		return Response::json(Securable::get_permissions());
+		return Response::json(permission::get_permissions());
 	}
 	public function put_update_permission(){
-		return Response::json(Securable::update_permissions(Input::json()));
+		return Response::json(permission::update_permission(Input::json()));
 	}
 	public function delete_permission(){
-		return Response::json(Securable::delete_permissions(Input::json()));
+		return Response::json(permission::delete_permission(Input::json()));
 	}
 	public function get_securables_array(){
 

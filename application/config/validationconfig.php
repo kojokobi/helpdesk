@@ -57,7 +57,7 @@ return array(
 			|--------------------------------------------------------------------------
 			|Validation rules to be applied to the Permissions entity
 			*/
-			'create_permisson_rule' => array('module_id'=>'required|numeric','securable_id'=>'required|numeric'),
+			'create_permisson_rule' => array('role_id'=>'required|numeric','securable_id'=>'required|numeric'),
 			/*
 			|--------------------------------------------------------------------------
 			| Securable Validation Rule
