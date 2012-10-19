@@ -10,12 +10,14 @@ class ModulePermission extends Eloquent{
 	public static function create_module_permission($client_data){
 
 		try{
-
+		//array to hold values to be inserted or updated
+		// print_r(json_decode($client_data->permissions[0]));
+		// return;
 		$filter_array = array();
 		$filter_array['module_id'] = $client_data->moduleId;
 		$filter_array['role_id'] = $client_data->roleId;
-		$filter_array['privileges'] = $client_data->privileges;
-
+		$filter_array['privileges'] = serialize($client_data->permissions);
+	
 		$exists = DB::table('module_permissions')->where(
 
 				function($query) use($filter_array) {
@@ -23,21 +25,20 @@ class ModulePermission extends Eloquent{
 					$query->where('role_id','=',$filter_array['role_id']);
 				}
 			)->first();
-		if(!$exists){
-				//Since no record exists with this roleId and Module an insert should be performed
-				$inputs = array('module_id'=>$client_data->moduleId,'role_id'=>$client_data->roleId);
+
+		if(is_null($exists)){
+				//Since no record exists with this role_id and module_id an insert should be performed
+			$inputs = array('moduleId'=>$client_data->moduleId,'roleId'=>$client_data->roleId,'permissions'=>$client_data->permissions);
 				$validation = MyValidator::validate_user_input($inputs,HelperFunction::get_config_value('create_module_permission_rule'));
 				if($validation->fails())
-				return HelperFunction::catch_error(null,false,HelperFunction::format_message($validation->errors->all()));
-
+					return HelperFunction::catch_error(null,false,HelperFunction::format_message($validation->errors->all()));
+			$module_array = array();
 			$module_array = DataHelper::create_audit_entries(HelperFunction::get_user_id());
 			$module_array['module_id'] = $client_data->moduleId;
 			$module_array['role_id'] = $client_data->roleId;
-			$module_array['privileges'] = $client_data->privileges;
+			$module_array['privileges'] = serialize($client_data->permissions);//$client_data->permissions;
 		
-
-		return DataHelper::insert_record('module_permissions',$module_array);
-
+		return  DataHelper::insert_record('module_permissions',$module_array);
 		}else{
 				//Do an Update here
 				 DB::table('module_permissions')->where(
@@ -109,7 +110,7 @@ class ModulePermission extends Eloquent{
 			$out = array_map(function($data){
 
 			$arr = array();
-			$arr['privileges']	= $data->privileges;
+			$arr['privileges']	= unserialize($data->privileges);
 			
 			return $arr;
 		},$result);

@@ -103,8 +103,7 @@ class Security_Controller extends Base_Controller{
 		return Response::json(ModulePermission::get_module_permissions(Input::all()));
 	}
 	public function post_module_permission(){
-
-		return Response::json(ModulePermission::create_module_permissions(Input::json()));
+		return Response::json(ModulePermission::create_module_permission(Input::json()));
 	}
 
 	

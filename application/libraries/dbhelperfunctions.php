@@ -9,13 +9,11 @@ class DataHelper extends Eloquent {
 	 * @return array                          [an array of the inserted record.]
 	 */
 	public static function insert_record($table_name,$insert_parameters_array){
-
 		try{
 
 		$id = DB::table($table_name)->insert_get_id(
 				$inserted_record = $insert_parameters_array
 			);
-
 		if($id > 0)
 			$inserted_record['id'] = $id;
 		else

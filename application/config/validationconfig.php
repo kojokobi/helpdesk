@@ -64,7 +64,7 @@ return array(
 			|--------------------------------------------------------------------------
 			|Securable Validation rule
 			*/
-			'create_module_permission_rule' => array('moduleI'=>'required|numeric','roleId'=>'required|numeric'),
+			'create_module_permission_rule' => array('moduleId'=>'required|numeric','roleId'=>'required|numeric','permissions'=>'required'),
 
 		);
 		
