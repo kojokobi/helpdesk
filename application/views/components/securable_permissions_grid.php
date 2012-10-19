@@ -33,7 +33,7 @@
                   <div class="controls">
                     <select id="roleId" 
                       ng-change="changePermissions()"
-                      ng-model="securablePermission.roleId" class='input-xlarge user_select' name="roleId"
+                      ng-model="securablePermission.role" class='input-xlarge user_select' name="roleId"
                       ng-options='role as role.name for role in roles'
                      >
                    </select> <button class='btn btn-info' ng-click="reload('roles')"> <i class='icon-white icon- icon-repeat'></i> </button>
@@ -44,7 +44,7 @@
                   <div class="controls">
                     <select id="SecId" 
                       ng-change="changePermissions()"
-                      ng-model="securablePermission.secId" class='input-xlarge user_select' name="SecId"
+                      ng-model="securablePermission.securable" class='input-xlarge user_select' name="SecId"
                       ng-options='securable as securable.name for securable in securables'
                      >
                    </select> <button class='btn btn-info' ng-click="reload('securables')"> <i class='icon-white icon- icon-repeat'></i> </button>

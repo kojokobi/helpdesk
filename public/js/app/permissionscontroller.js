@@ -1,4 +1,4 @@
-function PermissionsController ($scope, $http,Securable, Role, SecurablePermissions,MSG){
+function PermissionsController ($scope, $http,Securable, Role, SecurablePermissions,MSG, OBJ){
 	
 	var _default = {
 		roleId : "",
@@ -27,7 +27,8 @@ function PermissionsController ($scope, $http,Securable, Role, SecurablePermissi
 
 	function getSecurablePermissionsList(callback){
 		$http.get("permissions/securables").success(function(res){
-			$scope.permissions = res.data.data;
+			rawList = res.data;
+			console.log(res.data)
 			if(callback)
 				callback(rawList);
 		});
@@ -49,8 +50,6 @@ function PermissionsController ($scope, $http,Securable, Role, SecurablePermissi
 				$scope.securablePermission.securable  = $scope.securables[0];
 				
 				getSecurablePermissionsList(function (inData){
-					//var test = [{canView : 1}]
-					//$scope.modulePermissions = processRawPermissions(inData, inData[0]);
 					//fetch the first record
 					var roleId = $scope.securablePermission.role.id ;
 					var securableId = $scope.securablePermission.securable.id;
@@ -65,26 +64,25 @@ function PermissionsController ($scope, $http,Securable, Role, SecurablePermissi
 
 	}
 
-	function processRawPermissions (inData){
+	function processRawPermissions (inData, values){
 		var outData = [];
-		if (values){
-			for(var i= 0; i<inData.length; i++){
-				for(var x in inData[i]){
-					var obj = {
-						key : x,
-						label : inData[i][x]
-					}
-					if(values[x]){
-						obj["val"] = values[x].toString() || "0"
-					}else {
-						obj["val"] = "0";	
-					}
-					
-					outData.push(obj);	
+		
+		for(var i= 0; i<inData.length; i++){
+			for(var x in inData[i]){
+				var obj = {
+					key : x,
+					label : inData[i][x]
 				}
+				if(values && values[x]){
+					obj["val"] = values[x].toString() || "0"
+				}else {
+					obj["val"] = "0";	
+				}
+				
+				outData.push(obj);	
 			}
 		}
-		
+	
 		return outData;
 	}
 
@@ -145,7 +143,7 @@ function PermissionsController ($scope, $http,Securable, Role, SecurablePermissi
 		SecurablePermissions.query({
 			roleId : roleId , 
 			securableId : securableId }, function (res){
-				$scope.securablepermissions = processRawPermissions(rawList, res.data[0]);
+				$scope.securablePermissions = processRawPermissions(rawList, res.data[0]);
 			}
 		);
 	}

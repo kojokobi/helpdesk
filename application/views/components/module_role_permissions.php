@@ -24,7 +24,7 @@
                 <div class="pull-left">
                   <label class="control-label" for="role">Role:</label>
                   <div class="controls">
-                    <select id="role" 
+                    <select id="role"  
                       ng-change="changePermissions()"
                       ng-model="modulePermission.role" class='input-xlarge user_select' name="roleId"
                       ng-options='role as role.name for role in roles'

@@ -70,24 +70,23 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 
 	function processRawPermissions (inData, values){
 		var outData = [];
-		if (values){
-			for(var i= 0; i<inData.length; i++){
-				for(var x in inData[i]){
-					var obj = {
-						key : x,
-						label : inData[i][x]
-					}
-					if(values[x]){
-						obj["val"] = values[x].toString() || "0"
-					}else {
-						obj["val"] = "0";	
-					}
-					
-					outData.push(obj);	
+		
+		for(var i= 0; i<inData.length; i++){
+			for(var x in inData[i]){
+				var obj = {
+					key : x,
+					label : inData[i][x]
 				}
+				if(values && values[x]){
+					obj["val"] = values[x].toString() || "0"
+				}else {
+					obj["val"] = "0";	
+				}
+				
+				outData.push(obj);	
 			}
 		}
-		
+	
 		return outData;
 	}
 
