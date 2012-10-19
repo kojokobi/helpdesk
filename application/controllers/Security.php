@@ -82,7 +82,7 @@ class Security_Controller extends Base_Controller{
 		return Response::json(permission::create_permission(Input::json()));
 	}
 	public function get_permissions(){
-		return Response::json(permission::get_permissions());
+		return Response::json(permission::get_permissions(Input::all()));
 	}
 	public function put_update_permission(){
 		return Response::json(permission::update_permission(Input::json()));

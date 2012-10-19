@@ -151,6 +151,9 @@ Route::get("permissions/modules",array('uses'=>"security@modules_array"));
 //modulePermissions Routes
 Route::post("modulepermissions",array('uses'=>"security@module_permission"));
 Route::get("modulepermissions",array('uses'=>"security@module_permissions"));
+Route::post("securablepermissions",array('uses'=>"security@create_permission"));
+Route::get("securablepermissions",array('uses'=>"security@permissions"));
+
 
 
 Route::get("profile_view", function(){
