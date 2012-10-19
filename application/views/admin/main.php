@@ -11,7 +11,7 @@
         <li><a href="#modules" data-toggle="tab">Modules</a></li>
         <li><a href="#module_permissions" data-toggle="tab">Module Permissions</a></li>
         <li><a href="#securables" data-toggle="tab">Securables</a></li>
-        <li><a href="#permissions" data-toggle="tab">Permissions</a></li>
+        <li><a href="#permissions" data-toggle="tab">Securable Permissions</a></li>
         
       </ul>
       <div class="tab-content">

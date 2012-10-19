@@ -31,8 +31,10 @@
                 <div class="pull-left">
                   <label class="control-label" for="roleId">Role:</label>
                   <div class="controls">
-                    <select id="roleId" ng-model="secPerm.roleId" class='input-xlarge user_select' name="roleId"
-                      ng-options='role.id as role.name for role in roles'
+                    <select id="roleId" 
+                      ng-change="changePermissions()"
+                      ng-model="securablePermission.roleId" class='input-xlarge user_select' name="roleId"
+                      ng-options='role as role.name for role in roles'
                      >
                    </select> <button class='btn btn-info' ng-click="reload('roles')"> <i class='icon-white icon- icon-repeat'></i> </button>
                   </div>
@@ -40,20 +42,22 @@
                 <div class="pull-right">
                   <label class="control-label" for="SecId">Securable:</label>
                   <div class="controls">
-                    <select id="SecId" ng-model="secPerm.secId" class='input-xlarge user_select' name="SecId"
-                      ng-options='securable.id as securable.name for securable in securables'
+                    <select id="SecId" 
+                      ng-change="changePermissions()"
+                      ng-model="securablePermission.secId" class='input-xlarge user_select' name="SecId"
+                      ng-options='securable as securable.name for securable in securables'
                      >
                    </select> <button class='btn btn-info' ng-click="reload('securables')"> <i class='icon-white icon- icon-repeat'></i> </button>
                   </div>
                 </div>
-                <input type="hidden" ng-model="secPerm.id" > <!--The id if the permission -->
+                <input type="hidden" ng-model="securablePermission.id" > <!--The id if the permission -->
               </form>
               </div>
               <br>
               <h4 class='mini_table_header'>Permissions</h4>
               <table class="table table-striped table-bordered my-table permissions_table">
                 <tbody >
-                  <tr ng-repeat="permission in permissions">
+                  <tr ng-repeat="permission in securablePermissions">
                     <td class="grid_action1"> {{$index + 1}} </td>
                     <td> {{ permission.label }} </td>
                     <td class="grid_action2"> <input type="checkbox" ng-model='permission.val' ng-true-value="1" ng-false-value="0"> </td>
