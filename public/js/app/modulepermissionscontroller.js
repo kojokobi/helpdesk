@@ -11,7 +11,7 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 	$scope.modulePermission = {};
 	$scope.roles = [];	
 	$scope.modules = [];
-
+	$scope.modulePermissions = [];
 	function getRoles () {
 		Role.get(function (res){
 			$scope.roles = res.data;
@@ -39,9 +39,6 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 	 * @return {void}
 	 */
 	function start() {
-		//getRoles();
-		//getModules();
-		
 		//This chaining of callbacks is not good. It needs to be changed.
 		$http.get("roles").then(function (res1){
 			$scope.roles = res1.data.data;
@@ -68,7 +65,7 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 	 * The possible permissions that can be set on a module
 	 * @type {Array}
 	 */
-	$scope.modulePermissions = [];
+	
 
 
 	function processRawPermissions (inData, values){

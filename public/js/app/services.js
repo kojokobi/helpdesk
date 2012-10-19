@@ -62,8 +62,8 @@ factory("User", function ($resource){
 		},
 		update : {method : 'PUT'}
 	});
-}).factory("Permission", function($resource){
-	return $resource("permissions/:id", {id : '@id'},{
+}).factory("SecurablePermissions", function($resource){
+	return $resource("securablepermissions/:id", {id : '@id'},{
 		query : {
 			method: "GET", params : {}
 		},
