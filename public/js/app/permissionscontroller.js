@@ -28,7 +28,6 @@ function PermissionsController ($scope, $http,Securable, Role, SecurablePermissi
 	function getSecurablePermissionsList(callback){
 		$http.get("permissions/securables").success(function(res){
 			rawList = res.data;
-			console.log(res.data)
 			if(callback)
 				callback(rawList);
 		});
@@ -82,20 +81,15 @@ function PermissionsController ($scope, $http,Securable, Role, SecurablePermissi
 				outData.push(obj);	
 			}
 		}
-	
 		return outData;
 	}
 
 	function extractPermissions (){
-		var data = [];
+		var out = {};
 		$scope.securablePermissions.forEach(function (permission){
-
-			var out = { };
-			out[ permission["key"] ] =  permission["val"] ;
-			data.push( out);
+			out[ permission["key"] ] =  permission["val"] ;			
 		});
-
-		return data;
+		return out;
 	}
 
 	$scope.savePermissions =  function () {
@@ -110,7 +104,6 @@ function PermissionsController ($scope, $http,Securable, Role, SecurablePermissi
 		data["permissions"] = extractPermissions()	
 		
 		$http.post("securablepermissions",data).success(function (res){
-			console.log(res)
 			if(res.success){
 				msg = res.message || "Record Saved successfully";
 				MSG.show(msg, "success");
@@ -143,7 +136,7 @@ function PermissionsController ($scope, $http,Securable, Role, SecurablePermissi
 		SecurablePermissions.query({
 			roleId : roleId , 
 			securableId : securableId }, function (res){
-				$scope.securablePermissions = processRawPermissions(rawList, res.data[0]);
+				$scope.securablePermissions = processRawPermissions(rawList, res.data);
 			}
 		);
 	}

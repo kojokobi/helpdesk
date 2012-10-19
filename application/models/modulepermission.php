@@ -35,7 +35,7 @@ class ModulePermission extends Eloquent{
 				$validation = MyValidator::validate_user_input($inputs,HelperFunction::get_config_value('create_module_permission_rule'));
 				if($validation->fails())
 					return HelperFunction::catch_error(null,false,HelperFunction::format_message($validation->errors->all()));
-			$module_array = array();
+			
 			$module_array = DataHelper::create_audit_entries(HelperFunction::get_user_id());
 			$module_array['module_id'] = $client_data->moduleId;
 			$module_array['role_id'] = $client_data->roleId;
