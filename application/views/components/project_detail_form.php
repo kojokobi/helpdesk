@@ -1,4 +1,3 @@
-
 <div class="modal fade hide" id="projectDetails" data-backdrop="static" data-keyboard="false">
   <div class="modal-header">
     <a class="close" data-dismiss="modal">×</a>

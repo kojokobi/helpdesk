@@ -409,6 +409,7 @@ label, input, button, select, textarea {
 .single_ticket_thread {
 	border-bottom: 1px solid #AAA !important;
 }
+
 .single_ticket_thread .thread {
 	border: 1px solid #BEBEBE;
 	border-bottom: none;

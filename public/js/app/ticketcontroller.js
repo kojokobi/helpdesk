@@ -98,8 +98,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 		});
 	}
 
-	getUserProjects();
-
+	
 	/**
 	 * Makes a few ajax call to populate dropdown and loads data as well
 	 * @return {void} 
@@ -140,5 +139,6 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 	}
 
 	//$currentProjectId = 
+	getUserProjects();
 
 }
