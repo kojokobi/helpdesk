@@ -6,9 +6,30 @@ function DashController ($scope, $http){
 
     $scope.outgoingTickets = [];
 
+    var pieChart;
+
 	var getSummaries = function (){
 		$http.get("summaries").success(function (res){
 			$scope.summary = res.data;
+            console.log(res.data);
+           
+            var series =  {
+                type: 'pie',
+                name: 'Tickets',
+                data: [
+                    ['Resolved',   res.data.closed.count],
+                    {
+                        name: 'Unresolved',
+                        y: res.data.unresolved.count,
+                        sliced: true,
+                        selected: true
+                    }
+                    
+                ]
+            };
+
+            pieChart.addSeries(series);
+            
 		});
 	}
 
@@ -44,14 +65,15 @@ function DashController ($scope, $http){
 	}
 
 	var pieGraphEl = "pie_div";
-	var pieChart;
+	
 
 	var stackChart;
 	var stackGraphEl = "stack_div"
 	var graphCaptions = {
 		title : "Summary Of Tickets"
 	}
-	var initializePieGraph = function() {
+	
+    var initializePieGraph = function() {
         var self;
         self = this;
         pieChart = new Highcharts.Chart({
@@ -60,6 +82,9 @@ function DashController ($scope, $http){
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false
+            },
+            events: {
+              load: getSummaries()
             },
             title: {
                 text: 'Summary Of Tickets Assigned To Me'
@@ -82,21 +107,7 @@ function DashController ($scope, $http){
                         }
                     }
                 }
-            },
-            series: [{
-                type: 'pie',
-                name: 'Tickets',
-                data: [
-                    ['Resolved',   100],
-                    {
-                        name: 'Unresolved',
-                        y: 50,
-                        sliced: true,
-                        selected: true
-                    }
-                    
-                ]
-            }]
+            }
         });
     }
     
@@ -151,7 +162,6 @@ function DashController ($scope, $http){
 
 	//make calls
 	start();
-    getSummaries();
     getIncoming();
     getOutgoing();
 	initializePieGraph();
