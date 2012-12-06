@@ -19,6 +19,17 @@ function ModulePermissionsController($scope, $http, Role, Module, MSG, OBJ,Modul
 		});
 	}
 
+	$scope.reload =  function (type){
+		switch(type){
+			case  "roles":
+				getRoles();
+			break;
+			case "modules":
+				getModules();
+			break;
+		}
+	}
+	
 	function getModules () {
 		Module.get(function (res){
 			$scope.modules = res.data;

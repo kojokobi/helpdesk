@@ -2,7 +2,7 @@
 	<h4>Basic Info </h4>
 	<div class="container-fluid">
 		<div class="container-fluid">
-			<div class="span6">
+			<div class="span8">
 				<form class="form-vertical">
 					
 					<div class="controls my_clear">
@@ -43,7 +43,7 @@
 					
 				</form>
 			</div>
-			<div class="span6">
+			<div class="span4">
 				<!-- <ul class="thumbnails">
 				  <li class="span4">
 				    <a href="#" class="thumbnail">

@@ -19,7 +19,7 @@
                    <!-- <li> <a href="#"> <i class="icon-off"></i> Settings</a> </li> -->
                   </ul>
                 </li>
-          </ul>
+              </ul>
             </div><!--/.nav-collapse -->
           </div>
       </div>

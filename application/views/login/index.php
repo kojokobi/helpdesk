@@ -16,6 +16,7 @@
 		input {
 			width: 260px;
 		}
+		
 		.panel {
 			border: 1px solid #D6D6D6;
 			box-shadow: 0 1px 3px rgba(100, 100, 100, 0.1);
