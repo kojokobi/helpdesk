@@ -8,9 +8,7 @@
             <?php echo View::make("dashboard.main"); ?>
           </div>
         </div><!--/span-->
-        <!-- <footer>
-          <p>&copy; Axon Information Systems 2012</p>
-        </footer> -->
+        
       </div><!--/row-->
     </div><!--/.fluid-container-->
 
