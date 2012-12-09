@@ -17,17 +17,15 @@ function DashController ($scope, $http){
                 type: 'pie',
                 name: 'Tickets',
                 data: [
-                    ['Resolved',   res.data.closed.count],
+                    ['Resolved', res.data.closed.count],
                     {
                         name: 'Unresolved',
                         y: res.data.unresolved.count,
                         sliced: true,
                         selected: true
                     }
-                    
                 ]
             };
-
             pieChart.addSeries(series);
             
 		});
@@ -141,15 +139,19 @@ function DashController ($scope, $http){
                     stacking: 'percent'
                 }
             },
-                series: [{
-                name: 'Resolved',
-                data: [5, 3, 4, 7, 2]
-            }, {
-                name: 'Unresolved',
-                data: [2, 2, 3, 2, 1]
-            }]
+            series: [
+                {
+                    name: 'Resolved',
+                    data: [5, 3, 4, 7, 2]
+                }, 
+                {
+                    name: 'Unresolved',
+                    data: [2, 2, 3, 2, 1]
+                }
+            ]
         });
     }
+    
     var fetchData = function() {
         // var url = 'getPieSummary'  ;
         // $.ajax({
@@ -158,7 +160,7 @@ function DashController ($scope, $http){
         //     pieChart.addSeries(res["data"]);
         //   }
         // });
-      }
+    }
 
 	//make calls
 	start();
