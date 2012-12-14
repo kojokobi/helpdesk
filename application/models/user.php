@@ -81,15 +81,16 @@ class User extends Eloquent{
 	public static function update_user($user){
 
 			$arr = DataHelper::update_audit_entries(Auth::user()->id);
-			$arr['firstName']	= $$user->first_name;
-			$arr['lastName']	= $$user->last_name;
-			$arr['userName']	= $user->user_name;
+			$arr['first_name']	= $user->firstName;
+			$arr['last_name']	= $user->lastName;
+			$arr['user_name']	= $user->userName;
 			//$arr['other_names']	= $user->othernames;
 			$arr['email']		= $user->email;
 			$arr['phone']		= $user->phone;
-			$arr['jobTitleId']	= $user->job_title_id;
-			$arr['roleId']		= $user->role_id;
-			$arr['password']	= Hash::make($user->password);
+			$arr['job_title_id']	= $user->jobTitleId;
+			$arr['role_id']		= $user->roleId;
+			if(isset($user->password))
+				$arr['password']	= Hash::make($user->password);
 
 			$updated_record = DataHelper::update_record('users',$user->id,$arr);
             return $updated_record;

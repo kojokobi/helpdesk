@@ -59,7 +59,7 @@ Route::delete('projects',array('uses' => 'home@project'));
  *user routes
  */
 Route::post('users',array('uses' => 'security@user'));
-Route::put('users',array('uses' => 'security@user'));
+Route::put('users/(:num)',array('uses' => 'security@user'));
 Route::get('users',array('uses' => 'security@users'));
 Route::delete('users',array('uses' => 'security@user'));
 Route::post('users/changepassword',array('uses' => 'security@change_password'));
