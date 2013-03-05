@@ -39,6 +39,7 @@
 						<th class="ticket_status">Status</th>
 						<th class="ticket_title">Title</th>
 						<th class="ticket_assigned_to">Ticket Type</th>
+						<th class="ticket_assigned_to">From</th>
 						<th class="ticket_assigned_to">Assigned To</th>
 						<th class="ticket_date">Date Issued</th>
 						<th class="ticket_priority">Priority</th>
@@ -47,9 +48,10 @@
 				<tbody>
 					<tr ng-repeat="ticket in tickets">
 						<td> {{$index +1}} </td>
-						<td> {{ticket.ticketStatus}} </td>
+						<td> <span ng-class="checkStatus(ticket.ticketStatus)"> {{ ticket.ticketStatus }} </span></td>
 						<td> <a href="#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
 						<td> {{ticket.ticketType}} </td>
+						<td> {{ticket.assignedFrom }}</td>
 						<td> {{ticket.assignedTo}} </a>  </td>
 						<td> {{ticket.createdAt}} </td>
 						<td> {{ticket.priority}} </td>

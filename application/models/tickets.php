@@ -119,7 +119,8 @@ class Ticket extends Eloquent{
 				//->join('tickets','ticket_details.ticket_id','=','tickets.id')
 				->join('ticket_statuses','tickets.ticket_status_id','=','ticket_statuses.id')
 				->join('priorities','tickets.priority_id','=','priorities.id')
-				->join('users','tickets.assigned_to','=','users.id')
+				->join('users as user_to','tickets.assigned_to','=','user_to.id')
+				->join('users as user_from','tickets.created_by','=','user_from.id')
 				->join('ticket_types','tickets.ticket_type_id','=','ticket_types.id')
 				->join('projects','tickets.project_id','=','projects.id')
 				->where(function($query) use ($new_filter_array){
@@ -138,7 +139,9 @@ class Ticket extends Eloquent{
 
 			array(
 					'tickets.id as id','number','ticket_statuses.id as ticket_status_id','ticket_statuses.name as ticket_status',
-						'priority_id','priorities.name as priorityname','tickets.title','tickets.assigned_to','users.first_name','users.last_name',
+						'priority_id','priorities.name as priorityname','tickets.title','tickets.assigned_to',
+						'user_to.first_name as user_to_first_name','user_to.last_name as user_to_last_name',
+						'user_from.first_name as user_from_first_name','user_from.last_name as user_from_last_name',
 							'tickets.ticket_type_id','ticket_types.name as ticket_type','tickets.created_at','tickets.project_id'
 				)
 		);
@@ -152,7 +155,9 @@ class Ticket extends Eloquent{
 			$arr['priorityId'] 	= $data->priority_id;
 			$arr['priority'] 	= $data->priorityname;
 			$arr['assignedId'] 	= $data->assigned_to;
-			$arr['assignedTo'] 	= $data->first_name . ' ' . $data->last_name;
+
+			$arr['assignedTo'] 	= $data->user_to_first_name . ' ' . $data->user_to_last_name;
+			$arr["assignedFrom"] = $data->user_from_first_name . ' '. $data->user_from_last_name;
 			//$arr['message'] 	= $data->message;
 			$arr['ticketTypeId'] = $data->ticket_type_id;
 			$arr['ticketType'] = $data->ticket_type;

@@ -16,7 +16,6 @@
                    <li> <a href="profile_view"> <i class="icon-wrench"></i> Profile & Settings</a> </li>
                    <li class="divider"></li>
                    <li> <a href="logout"> <i class="icon-off"></i> Sign out</a> </li>
-                   <!-- <li> <a href="#"> <i class="icon-off"></i> Settings</a> </li> -->
                   </ul>
                 </li>
               </ul>

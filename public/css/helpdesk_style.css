@@ -126,6 +126,10 @@ table {
 .sidebar-nav {
 	padding: 0px;
 }
+.label {
+	font-size: 12px;
+	font-weight: normal;
+}
 
 .sidebar-nav .accordion-group {
 	margin-bottom: 0px;
