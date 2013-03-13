@@ -43,6 +43,7 @@
                 </div>
               </div>
           </div>
+          <?php echo Form::token(); ?>
         </form>
       </div>
       <div class="modal-footer">

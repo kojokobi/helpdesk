@@ -16,18 +16,14 @@
 			</legend>
 		</fieldset>
 		<div>
-			<div class="btn-group">
-			  <button class="btn btn-info">Ticket Summaries</button>
-			  <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-			    <span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu ticket_badges">
-			    <li ><a class="clearfix" href="tickets_view#all"> All  <span class='badge badge-inverse pull-right'> 100 </span> </a>  </li>
-			    <li><a href="tickets_view#opened"> Open tickets <span class='badge badge-important pull-right'> 20 </span> </a>  </li>
-                <li><a href="tickets_view#closed"> Closed tickets <span class='badge badge-success pull-right'> 15 </span></a>  </li>
-                
-              </ul>
-			  </ul>
+			
+			<div class="btn-group" data-toggle="buttons-radio">
+			  <button type="button" class="btn {{ changeTicketClass('all') }} active" ng-click="selectTicketStatus('all')">all ({{ count('all') }})</button>
+			  <button type="button" class="btn {{ changeTicketClass('open') }}" ng-click="selectTicketStatus('open')">open ({{ count('open') }})</button>
+			  <button type="button" class="btn {{ changeTicketClass('pending') }}" ng-click="selectTicketStatus('pending')">pending ({{ count('pending') }})</button>
+			  <button type="button" class="btn {{ changeTicketClass('resolved') }}" ng-click="selectTicketStatus('resolved')">resolved ({{ count('resolved') }})</button>
+			  <button type="button" class="btn {{ changeTicketClass('unresolved') }}" ng-click="selectTicketStatus('unresolved')">unresolved ({{ count('unresolved') }})</button>
+			  <button type="button" class="btn {{ changeTicketClass('closed') }}" ng-click="selectTicketStatus('closed')">closed ({{ count('closed') }})</button>
 			</div>
 		</div>
 		<br>
@@ -48,9 +44,9 @@
 				<tbody>
 					<tr ng-repeat="ticket in tickets">
 						<td> {{$index +1}} </td>
-						<td> <span ng-class="checkStatus(ticket.ticketStatus)"> {{ ticket.ticketStatus }} </span></td>
+						<td> <span ng-class="checkStatus(ticket.ticketStatus)"> {{ ticket.ticketStatus | lowercase }} </span></td>
 						<td> <a href="#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
-						<td> {{ticket.ticketType}} </td>
+						<td> {{ticket.ticketType | lowercase }} </td>
 						<td> {{ticket.assignedFrom }}</td>
 						<td> {{ticket.assignedTo}} </a>  </td>
 						<td> {{ticket.createdAt}} </td>

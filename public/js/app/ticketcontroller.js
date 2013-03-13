@@ -32,7 +32,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 	 * @type {Array}
 	 */
 	$scope.tickets = [];
-
+	$scope.rawTickets = [];
 	/**
 	 * All users in  the current project
 	 * @type {Array}
@@ -45,6 +45,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 	 */
 	$scope.userProjects = [];
 
+	$scope.selectedTicketStatus = "all";
 	
 
 	function getProirities(){
@@ -88,6 +89,40 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 
 		return label;
 	}
+
+	$scope.changeTicketClass = function (klass){
+		var outKlass = "";
+		if($scope.selectedTicketStatus === klass){
+			switch(klass){
+				case "open":
+					outKlass = "btn-danger";
+				break;
+				case "pending":
+					outKlass = "btn-warning";
+				break;
+				case "resolved":
+					outKlass = "btn-info";
+				break;
+				case "unresolved":
+					outKlass = "btn-inverse";
+				break;
+				case "closed":
+					outKlass = "btn-success";
+				break;
+				case "all":
+					outKlass = "btn-primary";
+				break;
+			}	
+		}
+			
+		return outKlass;
+	}
+
+	$scope.selectTicketStatus = function (ticketStatus){
+		$scope.selectedTicketStatus = ticketStatus;
+		filterTickets($scope.selectedTicketStatus);
+	}
+
 
 	/**
 	 * create a new ticket
@@ -157,12 +192,37 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 		var _id = id || $scope.currentProject.projectId;
 		Ticket.query(
 			{ projectId: _id},function (res){
-			$scope.tickets = res.data;
-			//$scope.currentProjectName = 
+			$scope.rawTickets = res.data;
+			$scope.selectedTicketStatus = "all";
+
+			filterTickets($scope.selectedTicketStatus);
 		});
 	}
 
-	//$currentProjectId = 
+	$scope.count = function(ticketStatus){
+		var count = 0;
+		if(ticketStatus === "all"){
+			count = $scope.rawTickets.length;
+		}else {
+			tickets = $scope.rawTickets.filter(function (ticket){
+				return  ticketStatus === ticket.ticketStatus.toLowerCase();
+			});	
+			count = tickets.length;
+		}
+
+		return count;
+	}
+
+	function filterTickets(ticketStatus){
+		if(ticketStatus === "all"){
+			$scope.tickets = $scope.rawTickets;
+		}else {
+			$scope.tickets = $scope.rawTickets.filter(function (ticket){
+				return  ticketStatus === ticket.ticketStatus.toLowerCase();
+			});	
+		}
+	}
+
 	getUserProjects();
 
 }
