@@ -132,7 +132,7 @@
 
 	<div class='container-fluid my_container'>
 		
-		<div class="span6">
+		<div class="span6 pull-left">
 			<h4 class="dash_caption">Latest Tickets Assigned To Me</h4>
 			<table class='table table-bordered table-striped my-table ticket_table'>
 				<thead>
@@ -141,20 +141,25 @@
 						<th class="ticket_status">Status</th>
 						<th >Title</th>
 						<th class="ticket_type">Ticket Type</th>
+						<th> Project </th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="ticket in incomingTickets">
 						<td>{{$index + 1}} </td>
-						<td> {{ticket.ticketStatus}}</td>
+						<td> <span ng-class="checkStatus(ticket.ticketStatus)">  {{ticket.ticketStatus}} </span> </td>
 						<td> <a href="tickets_view#/tickets/{{ticket.ticketId}}"> {{ticket.title}}  </td>
 						<td>{{ticket.ticketType}}</td>
+						<td> {{ ticket.projectName }} </td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="span6">
+		<div class="span6 pull-right">
 			<div id="stack_div" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
+			<div class="span6">
+				<div id="pie_div" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
+			</div>
 		</div>
 		
 	</div>
@@ -169,21 +174,21 @@
 						<th class="ticket_status">Status</th>
 						<th >Title</th>
 						<th class="ticket_type">Ticket Type</th>
+						<th> Project </th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="ticket in outgoingTickets">
 						<td>{{$index + 1}} </td>
-						<td> {{ticket.ticketStatus}}</td>
+						<td>  <span ng-class="checkStatus(ticket.ticketStatus)">  {{ticket.ticketStatus}} </span> </td>
 						<td> <a href="tickets_view#/tickets/{{ticket.ticketId}}"> {{ticket.title}}  </td>
-						<td>{{ticket.ticketType}}</td>
+						<td> {{ticket.ticketType}}</td>
+						<td> {{ ticket.projectName }} </td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="span6">
-			<div id="pie_div" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
-		</div>
+		
 		
 	</div>
 </div>

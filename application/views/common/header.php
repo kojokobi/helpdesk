@@ -34,6 +34,7 @@
     <!-- end of libs -->
     
     <!-- app scripts -->
+    <script type="text/javascript" src="js/app/statusservice.js"></script>
     <script type="text/javascript" src="js/app/app.js"></script>
     <script type="text/javascript" src="js/app/services.js"></script>
     <script type="text/javascript" src="js/app/usercontroller.js"></script>
@@ -43,6 +44,7 @@
     <script type="text/javascript" src="js/app/dashcontroller.js"></script>
     <script type="text/javascript" src="js/app/profilecontroller.js"></script>
     <script type="text/javascript" src="js/app/myhelpers.js"></script>
+
     <!-- end of app scripts -->
   </head>
 

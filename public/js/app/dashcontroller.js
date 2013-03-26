@@ -1,4 +1,4 @@
-function DashController ($scope, $http){
+function DashController ($scope, $http, StatusService){
 	
 	$scope.summary = {};
 
@@ -11,7 +11,7 @@ function DashController ($scope, $http){
 	var getSummaries = function (){
 		$http.get("summaries").success(function (res){
 			$scope.summary = res.data;
-            console.log(res.data);
+            //console.log(res.data);
            
             var series =  {
                 type: 'pie',
@@ -35,6 +35,10 @@ function DashController ($scope, $http){
         $http.get("summaries/tickets/incoming").success(function (res){
             $scope.incomingTickets = res.data;
         });
+    }
+
+    $scope.checkStatus =  function (status){
+        return StatusService.checkStatus(status);
     }
 
     var getOutgoing = function (){

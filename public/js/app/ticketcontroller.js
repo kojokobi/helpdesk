@@ -1,4 +1,4 @@
-function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
+function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ, StatusService){
 	/**
 	 * reference to the ticket form
 	 * @type {[type]}
@@ -68,26 +68,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ){
 	
 
 	$scope.checkStatus =  function (status){
-		var label = "label ";
-		switch(status.toLowerCase()){
-			case "open":
-				label += "label-important"
-			break;
-			case "pending":
-				label += "label-warning";
-			break;
-			case "resolved":
-				label += "label-info"
-			break;
-			case "unresolved":
-				label += "label-inverse";
-			break;
-			case "closed":
-				label += 'label-success';
-			break;
-		}
-
-		return label;
+		return StatusService.checkStatus(status);
 	}
 
 	$scope.changeTicketClass = function (klass){

@@ -139,10 +139,10 @@ class Ticket extends Eloquent{
 
 			array(
 					'tickets.id as id','number','ticket_statuses.id as ticket_status_id','ticket_statuses.name as ticket_status',
-						'priority_id','priorities.name as priorityname','tickets.title','tickets.assigned_to',
-						'user_to.first_name as user_to_first_name','user_to.last_name as user_to_last_name',
-						'user_from.first_name as user_from_first_name','user_from.last_name as user_from_last_name',
-							'tickets.ticket_type_id','ticket_types.name as ticket_type','tickets.created_at','tickets.project_id'
+					'priority_id','priorities.name as priorityname','tickets.title','tickets.assigned_to',
+					'user_to.first_name as user_to_first_name','user_to.last_name as user_to_last_name',
+					'user_from.first_name as user_from_first_name','user_from.last_name as user_from_last_name',
+					'tickets.ticket_type_id','ticket_types.name as ticket_type','tickets.created_at', 'tickets.updated_at','tickets.project_id'
 				)
 		);
 		//var_dump($selectQuery);
@@ -166,6 +166,7 @@ class Ticket extends Eloquent{
 			$arr['projectId']		= $data->project_id;
 			//$arr['description']	= $data->description;
 			$arr['createdAt']	= $data->created_at;
+			$arr['updatedAt']	= $data->updated_at;
 			
 
 			return $arr;

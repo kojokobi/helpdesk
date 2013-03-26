@@ -101,6 +101,7 @@ class Summary extends Eloquent{
 					$query_results = DB::table('tickets')
 									 ->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
 									 ->join('ticket_types','ticket_type_id','=','ticket_types.id')
+									 ->join('projects', 'project_id', "=", 'projects.id')
 									 ->where(function($query) use($filter_array){
 
 									 		$query = DataHelper::filter_data($query,'assigned_to',$filter_array,'int');
@@ -111,7 +112,8 @@ class Summary extends Eloquent{
 					$data = $query_results->get(
 
 							array('tickets.id as ticket_id','ticket_statuses.id as ticket_status_id','ticket_statuses.name as ticket_status',
-									'tickets.title as title','ticket_types.id as ticket_type_id','ticket_types.name as ticket_type'
+									'tickets.title as title','ticket_types.id as ticket_type_id','ticket_types.name as ticket_type',
+									'projects.name as project_name'
 									)
 						);
 
@@ -124,6 +126,7 @@ class Summary extends Eloquent{
 					$arr['title'] 		 =   $data->title;
 					$arr['ticketTypeId'] =   $data->ticket_type_id;
 					$arr['ticketType'] =   $data->ticket_type;
+					$arr['projectName'] = $data->project_name;
 
 					return $arr;
 
@@ -146,6 +149,7 @@ class Summary extends Eloquent{
 					$query_results = DB::table('tickets')
 									 ->join('ticket_statuses','ticket_status_id','=','ticket_statuses.id')
 									 ->join('ticket_types','ticket_type_id','=','ticket_types.id')
+									 ->join('projects', 'project_id', "=", 'projects.id')
 									 ->where(function($query) use($filter_array){
 
 									 		$query = DataHelper::filter_data($query,'tickets.created_by',$filter_array,'int');
@@ -154,7 +158,8 @@ class Summary extends Eloquent{
 					$data = $query_results->get(
 
 							array('tickets.id as ticket_id','ticket_statuses.id as ticket_status_id','ticket_statuses.name as ticket_status',
-									'tickets.title as title','ticket_types.id as ticket_type_id','ticket_types.name as ticket_type'
+									'tickets.title as title','ticket_types.id as ticket_type_id','ticket_types.name as ticket_type',
+									'projects.name as project_name'
 									)
 						);
 
@@ -167,7 +172,8 @@ class Summary extends Eloquent{
 					$arr['title'] 		 =   $data->title;
 					$arr['ticketTypeId'] =   $data->ticket_type_id;
 					$arr['ticketType'] =   $data->ticket_type;
-
+					$arr['projectName'] = $data->project_name;
+					
 					return $arr;
 
 				}, $data);	

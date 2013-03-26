@@ -382,7 +382,7 @@ label, input, button, select, textarea {
 }
 
 .ticket_table .ticket_title {
-	/*width: 450px;*/
+	width: 450px;
 }
 
 .ticket_table .ticket_priority {

@@ -38,6 +38,7 @@
 						<th class="ticket_assigned_to">From</th>
 						<th class="ticket_assigned_to">Assigned To</th>
 						<th class="ticket_date">Date Issued</th>
+						<th class="ticket_date">Last Updated</th>
 						<th class="ticket_priority">Priority</th>
 					</tr>
 				</thead>
@@ -50,6 +51,7 @@
 						<td> {{ticket.assignedFrom }}</td>
 						<td> {{ticket.assignedTo}} </a>  </td>
 						<td> {{ticket.createdAt}} </td>
+						<td> {{ticket.updatedAt}} </td>
 						<td> {{ticket.priority}} </td>
 					</tr>
 				</tbody>
