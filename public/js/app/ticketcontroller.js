@@ -1,4 +1,5 @@
-function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ, StatusService){
+function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ, StatusService, $routeParams,$location){
+	
 	/**
 	 * reference to the ticket form
 	 * @type {[type]}
@@ -128,13 +129,13 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ, Status
 	}
 
 
-	function getUserProjects () {
+	function getUserProjects (callback) {
 		$http.get("usergroups").then(function (res){
 			$scope.userProjects = ARR.sort(res.data.data,"projectName");
 
-			//make initial call
-			$scope.currentProject = $scope.userProjects[0]
-			$scope.loadTickets();
+			if(callback)
+				callback();
+			
 		});
 	}
 
@@ -162,7 +163,8 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ, Status
 	
 
 	$scope.loadTickets = function (){
-		getTickets();		
+		var id = $scope.currentProject.projectId;
+		$location.path("/projects/" + id);			
 	}
 
 	/**
@@ -204,6 +206,19 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ, Status
 		}
 	}
 
-	getUserProjects();
+	getUserProjects(function(){
+		var id = $routeParams.id;
+		if(id){
+			getTickets(id);
+			var out = $scope.userProjects.filter(function (n){
+				return n.projectId === id;
+			});
 
+			//set the value in th combo box
+			out = out[0];
+			var idx = $scope.userProjects.indexOf(out);
+			$scope.currentProject = $scope.userProjects[idx];
+		}
+	});
+	
 }

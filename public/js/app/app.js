@@ -8,8 +8,8 @@ var mainMod = angular.module('helpdesk',
 
 mainMod.config(["$routeProvider" , function ($routeProvider,$locationProvider){
 	$routeProvider.
-	when("/tickets/all", {templateUrl : 'tickets_main' , controller : TicketController}).
-	when("/tickets/:id",{templateUrl : 'single_ticket_view' , controller : TicketDetailsController}).
-	otherwise({redirectTo: '/tickets/all'});
+	when("/projects/:id", {templateUrl : 'tickets_main' , controller : TicketController}).
+	when("/projects/:id/tickets/:id",{templateUrl : 'single_ticket_view' , controller : TicketDetailsController}).
+	otherwise({redirectTo: '/projects/:id'});
 
 }]);

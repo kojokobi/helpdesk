@@ -46,7 +46,7 @@
 					<tr ng-repeat="ticket in tickets">
 						<td> {{$index +1}} </td>
 						<td> <span ng-class="checkStatus(ticket.ticketStatus)"> {{ ticket.ticketStatus | lowercase }} </span></td>
-						<td> <a href="#/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
+						<td> <a href="#/projects/{{ticket.projectId}}/tickets/{{ticket.id}}"> {{ticket.title}}  </td>
 						<td> {{ticket.ticketType | lowercase }} </td>
 						<td> {{ticket.assignedFrom }}</td>
 						<td> {{ticket.assignedTo}} </a>  </td>
