@@ -206,6 +206,7 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ, Status
 		}
 	}
 
+	//initial call to fetch the current users projects
 	getUserProjects(function(){
 		var id = $routeParams.id;
 		if(id){
