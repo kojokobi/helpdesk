@@ -218,6 +218,10 @@ function TicketController ($scope, $http, Ticket, MSG, UserGroup,ARR,OBJ, Status
 			out = out[0];
 			var idx = $scope.userProjects.indexOf(out);
 			$scope.currentProject = $scope.userProjects[idx];
+		}else {
+			//lets just default to the very first
+			$scope.currentProject = $scope.userProjects[0];
+			getTickets();
 		}
 	});
 	
