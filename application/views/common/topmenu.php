@@ -10,6 +10,8 @@
                     <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
                       Logged in as<span class='username'> <?php echo Auth::user()->user_name; ?> </span>
                     <b class="caret"></b>
+                    <?php echo HTML::image("img/uploads/". Auth::user()->image, "", ["class" => "user_icon"]) ?>
+                    
                     </a>
                  
                   <ul class="dropdown-menu">

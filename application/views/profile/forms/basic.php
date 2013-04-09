@@ -51,10 +51,21 @@
 				    </a>
 				  </li>
 				</ul> -->
-				<div>
-					<?php echo  HTML::image("img/icons/user128.png", "", array("class"=>"img-polaroid")); ?>
+				
+				<div class="picture_box pull-left">
+				<div class="title">Photograph</div>
+				<div class="body"> 
+					<input type="hidden" ng-model="leftImage">
+					<img ng-src="{{image}}" width="130" height="130">	
 				</div>
-				<input type="file" name="" />   
+				<div class="upload_button"><div id="left_side"></div></div>
+				
+			</div>
+
+				<div>
+					<?php //echo  HTML::image("img/icons/user128.png", "", array("class"=>"img-polaroid")); ?>
+				</div>
+				
 			</div>
 		</div>
 	</div>

@@ -33,6 +33,22 @@
     <script type="text/javascript" src='js/libs/angular-resource.js'></script>
     <!-- end of libs -->
     
+    <!-- Libraries -->
+    <?php 
+        //ajax uploader
+        echo HTML::style("js/libs/ajaxuploader/fineuploader.css");
+        
+        echo HTML::script("js/libs/ajaxuploader/js/header.js");
+        echo HTML::script("js/libs/ajaxuploader/js/util.js");
+        echo HTML::script("js/libs/ajaxuploader/js/button.js");
+        echo HTML::script("js/libs/ajaxuploader/js/handler.base.js");
+        echo HTML::script("js/libs/ajaxuploader/js/handler.form.js");
+        echo HTML::script("js/libs/ajaxuploader/js/handler.xhr.js");
+        echo HTML::script("js/libs/ajaxuploader/js/uploader.basic.js");
+        echo HTML::script("js/libs/ajaxuploader/js/dnd.js");
+        echo HTML::script("js/libs/ajaxuploader/js/uploader.js");
+     ?>
+
     <!-- app scripts -->
     <script type="text/javascript" src="js/app/statusservice.js"></script>
     <script type="text/javascript" src="js/app/app.js"></script>
@@ -46,6 +62,8 @@
     <script type="text/javascript" src="js/app/myhelpers.js"></script>
 
     <!-- end of app scripts -->
+
+
   </head>
 
   <body>

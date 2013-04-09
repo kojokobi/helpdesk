@@ -1,8 +1,9 @@
-function ProfileController ($scope,$http, MSG, User){
+function ProfileController ($scope,$http, $timeout, MSG, User, Photo){
 
-	$user = {}
+	$scope.user = {}
 	$scope.updatingProfile = 0;
 	$scope.changingPassword = 0;
+
 	$scope.updateProfile = function (user){
 		var theUser = angular.copy(user);
 		$scope.updatingProfile = 1;
@@ -37,4 +38,47 @@ function ProfileController ($scope,$http, MSG, User){
 			}
 		})
 	}
+
+	var url = 'photos';
+	var leftSide = new qq.FineUploader({
+        element: $('#left_side')[0],
+        //autoUpload: false,
+        request: {
+            endpoint: url,
+            inputName : "fileName",
+        },
+        callbacks: {
+            //onError: errorHandler,
+            onSubmit :function(event, id, filename) {
+                this.setParams(
+                    {
+                    	userId : $scope.user.id
+                    }
+                );
+            },
+            onComplete : function(id, filename, res){
+                if(res.success){
+                    $scope.image = res.data.image;
+                    $scope.$apply();
+                    
+                }
+               
+            }
+        }
+    });
+	
+    function  getPhoto(id){
+    	console.log(id)
+    	Photo.get( {id :id}, function (res){
+    		$scope.image = res.data.image;
+    	});
+    }
+
+    //start
+    $timeout (function (){
+    	getPhoto($scope.user.id);	
+    }, 300);
+    
+
+	//image stuffs
 }

@@ -7,7 +7,9 @@
 							<?php echo HTML::image('img/icons/blue_user32.png',""); ?>
 						</div>
 						<div class="ticket_content" >
-							<div class="title"> {{originalTicket.title}} </div>
+							<div class="title"> {{originalTicket.title}} 
+								<span class='pull-right'> {{ }} </span>
+							</div>
 							<p> {{originalTicket.message}} </p>
 							<div class="statusbox"> Status: <span class="status"> {{originalTicket.ticketStatus}}  </span> </div>
 							<div class="datebox"> Issued On: <span class="date"> {{ originalTicket.createdAt}} </span> </div>

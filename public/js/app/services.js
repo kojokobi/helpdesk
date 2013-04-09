@@ -76,4 +76,11 @@ factory("User", function ($resource){
 		},
 		update : {method : 'PUT'}
 	});
+}).factory("Photo", function($resource){
+	return $resource("photos/:id", {id : '@id'},{
+		query : {
+			method: "GET", params : {}
+		},
+		update : {method : 'PUT'}
+	});
 });

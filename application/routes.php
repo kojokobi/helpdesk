@@ -155,6 +155,10 @@ Route::post("securablepermissions",array('uses'=>"security@create_permission"));
 Route::get("securablepermissions",array('uses'=>"security@permissions"));
 
 
+Route::get("photos", ["uses" => "photo@photos"]);
+Route::get("photos/(:num)", ["uses" => "photo@photo"]);
+Route::post("photos", ["uses" => "photo@photo"]);
+Route::delete("photos/(:num)", ["uses" => "photo@photo"]);
 
 Route::get("profile_view", function(){
 	return View::make("profile.index");
