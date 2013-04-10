@@ -70,7 +70,7 @@ return array(
 		'mysql' => array(
 			'driver'   => 'mysql',
 			'host'     => 'localhost',
-			'database' => 'helpdesk',
+			'database' => 'axon_helpdesk',
 			'username' => 'root',
 			'password' => 'root',
 			'charset'  => 'utf8',
