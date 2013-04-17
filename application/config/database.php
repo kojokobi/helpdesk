@@ -80,9 +80,9 @@ return array(
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
+			'database' => 'axon_helpdesk',
+			'username' => 'postgres',
+			'password' => 'mascot',
 			'charset'  => 'utf8',
 			'prefix'   => '',
             'schema'   => 'public',

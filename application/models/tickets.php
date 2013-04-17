@@ -36,7 +36,7 @@ class Ticket extends Eloquent{
 		$ticket_details_array = DataHelper::create_audit_entries(Auth::user()->id);
 		$ticket_details_array['ticket_id'] = $id;
 		$ticket_details_array['message'] = $ticket->message;
-		$ticket_details_array['status_id'] = config::get('globalconfig.default_ticket_status');
+		$ticket_details_array['ticket_status_id'] = config::get('globalconfig.default_ticket_status');
 
 		$ticket_details_id	= DB::table('ticket_details')->insert_get_id(
 
@@ -57,18 +57,18 @@ class Ticket extends Eloquent{
 	}
 	public static function create_ticket_details($ticket){
 
-		//only allow replies if status_id is not closed
+		//only allow replies if ticket_status_id is not closed
 		$ticket_details_array = DataHelper::create_audit_entries(HelperFunction::get_user_id());
 
 		$ticket_details_array['message'] = $ticket->message;
 		$ticket_details_array['ticket_id'] = $ticket->ticketId;
-		$ticket_details_array['status_id'] = $ticket->ticketStatusId;
+		$ticket_details_array['ticket_status_id'] = $ticket->ticketStatusId;
 		
 		$record = DB::table('ticket_details')
 				  ->where(function($query) use ($ticket_details_array){
 
 				  		$query->where('ticket_id','=',$ticket_details_array['ticket_id']);
-				  		$query->where('status_id','=',Config::get("globalconfig.closed_ticket_status_id"));
+				  		$query->where('ticket_status_id','=',Config::get("globalconfig.closed_ticket_status_id"));
 				 
 				  })->get();
 
@@ -81,15 +81,15 @@ class Ticket extends Eloquent{
 			$inserted_record = DataHelper::insert_record('ticket_details',$ticket_details_array);
 			$update_record_array =  array(
 										
-										'ticket_status_id'=>$ticket_details_array['status_id'],
+										'ticket_status_id'=>$ticket_details_array['ticket_status_id'],
 										'updated_by' => Auth::user()->id,
 										'updated_at' => HelperFunction::get_date(),
 									);
-			//$update_record = DataHelper::update_record('tickets',$ticket_details_array['status_id'],$update_record_array);
+			//$update_record = DataHelper::update_record('tickets',$ticket_details_array['ticket_status_id'],$update_record_array);
 			DB::table('tickets')
 				->where('id','=',$ticket_details_array['ticket_id'])
 				->update(
-						array('ticket_status_id'=>$ticket_details_array['status_id'])
+						array('ticket_status_id'=>$ticket_details_array['ticket_status_id'])
 					);
 			return $inserted_record;
 			
@@ -226,7 +226,7 @@ class Ticket extends Eloquent{
 		$ticket_details_filter['ticket_id'] = $id;
 		//
 		$ticket_details_query = DB::table('ticket_details')
-				->join('ticket_statuses','ticket_details.status_id','=','ticket_statuses.id')
+				->join('ticket_statuses','ticket_details.ticket_status_id','=','ticket_statuses.id')
 				->where(function($query)use($ticket_details_filter){
 
 					$query = DataHelper::filter_data($query,'ticket_id',$ticket_details_filter,'int');
@@ -239,7 +239,7 @@ class Ticket extends Eloquent{
 
 					array(
 							'ticket_details.message','ticket_details.id as ticket_details_id','ticket_details.created_at',
-								'ticket_id as ticketid','status_id','ticket_statuses.name as statusname'
+								'ticket_id as ticketid','ticket_status_id','ticket_statuses.name as statusname'
 					)
 				);
 		//map ticket details resultSet to outTicketDetails array
@@ -250,7 +250,7 @@ class Ticket extends Eloquent{
 			$arr['message'] = $data->message;
 			$arr['createdAt'] = $data->created_at;
 			$arr['ticketId'] = $data->ticketid;
-			$arr['ticketStatusId'] = $data->status_id;
+			$arr['ticketStatusId'] = $data->ticket_status_id;
 			$arr['ticketStatus'] = $data->statusname;
 
 
