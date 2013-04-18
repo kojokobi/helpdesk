@@ -466,7 +466,7 @@ label, input, button, select, textarea {
 	text-align: left;
 	font-weight: bold;
 }
-.single_ticket_thread .picture_box {
+.single_ticket_thread #profile .picture_box {
 	width: 50px;
 	/*padding-top: 10px;*/
 }
@@ -531,48 +531,51 @@ label, input, button, select, textarea {
 	width: 30px;
 	height: 30px;
 }
-.picture_box {
-	margin-right: 30px;
-	width: 250px;
+#profile .picture_box {
+	/*margin-right: 30px;*/
+	/*width: 200px;*/
 	border: 1px solid #ccc;
 }
 
-.picture_box .title {
-	background: #ddd;
+#profile .picture_box .title {
+	/*background: #ddd;*/
 	padding: 5px;
 	font-weight: bold;
-	border-bottom: 1px solid #ccc;
+	/*border-bottom: 1px solid #ccc;*/
 	text-align: center;
 	text-transform: uppercase;
 }
 
-.picture_box .body {
+#profile .picture_box .body {
 	height: 130px;
-	width: 230px;
+	/*width: 180px;*/
 }
 
-.picture_box .body img{
-		width: 130px;
-		height: 130px;
-		display: block;
-		margin: 0px auto;
+#profile .picture_box .body img{
+	width: 130px;
+	height: 130px;
+	display: block;
+	/*margin: 0px auto;*/
 }
 
-.picture_box .body,  .picture_box .upload_button,
-.picture_box .comments{
+#profile .picture_box .body,  #profile .picture_box .upload_button,
+#profile .picture_box .comments{
 	padding: 10px;
 }
 
-.picture_box label {
+#profile .picture_box label {
 	font-weight: bold;
 }
 
-.picture_box .comments textarea{ 
+#profile .picture_box .comments textarea{ 
 	width: 265px;
 	height: 80px;
 }
 
-
+#profile .qq-upload-button { 
+	background: #DDDDDD;
+	color: black
+}
 
 /*pnotify*/
 .ui-pnotify-title {

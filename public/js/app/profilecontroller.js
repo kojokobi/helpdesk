@@ -60,7 +60,6 @@ function ProfileController ($scope,$http, $timeout, MSG, User, Photo){
                 if(res.success){
                     $scope.image = res.data.image;
                     $scope.$apply();
-                    
                 }
                
             }

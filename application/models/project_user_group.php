@@ -45,7 +45,7 @@ class ProjectUserGroup extends Eloquent{
 				->where(function($query) use ($filter_array){
 
 						$query = HelperFunction::filter_data($query,'project_id',$filter_array,'int');
-						$query = HelperFunction::filter_data($query,'user_id',$filter_array,'int');
+						$query = HelperFunction::filter_data($query,'project_user_groups.user_id',$filter_array,'int');
 				})
 				->order_by('project_user_groups.created_at','desc');
 				$total = $selectQuery->count();
